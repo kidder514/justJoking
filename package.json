@@ -3,9 +3,8 @@
   "version": "0.1.0",
   "private": true,
   "devDependencies": {
-    "babel-preset-react-native-stage-0": "^1.0.1",
-    "jest-react-native": "^18.0.0",
-    "react-test-renderer": "16.2.0"
+    "babel-preset-react-native": "^4.0.0",
+    "redux-logger": "^3.0.6"
   },
   "scripts": {
     "start": "react-native start",
@@ -23,7 +22,9 @@
     "react-native-localization": "^0.2.3",
     "react-navigation": "^1.0.3",
     "react-redux": "^5.0.7",
+    "redux": "^3.7.2",
     "redux-persist": "^5.9.0",
+    "redux-thunk": "^2.2.0",
     "validator": "^9.4.0"
   }
 }
