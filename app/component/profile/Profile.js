@@ -1,31 +1,51 @@
 import React from 'react';
-import { StyleSheet, View, Text } from 'react-native';
-import PropTypes from 'prop-types';
-
-const styles = StyleSheet.create({
-	container: {
-		flex: 1,
-		justifyContent: 'center',
-		alignItems: 'center',
-		backgroundColor: '#F5FCFF',
-	},
-});
+import { connect } from "react-redux";
+import { Button, View, Text } from 'react-native';
+import string from '../../localization/string';
+import { signOut } from '../../reducer/action/authAction';
 
 class Profile extends React.Component {
 	static navigationOptions = () => ({
-		title: 'profile',
+		title: string.Profile,
 		header: null,
 	});
 
+	constructor(props){
+		super(props);
+		this.submit = this.submit.bind(this);
+	}
+
+	submit(){
+		this.props.signOut();
+	}
+
 	render(){
 		return (	
-			<View style={styles.container}>
+			<View >
 				<Text>
 					Profile Screen
 				</Text>
+				<Button
+					onPress={this.submit}
+					title={string.SignOut}
+					accessibilityLabel={string.SignOut}
+				/>
 			</View>
 		);
 	}
 }
 
-export default Profile;
+const mapStateToProps = (state) => {
+	return {
+		auth: state.Auth
+	}
+}
+
+const mapDispatchToProps = (dispatch) => {
+    return {
+        signOut: () => { dispatch(signOut())
+        }
+    };
+};
+
+export default connect(mapStateToProps, mapDispatchToProps)(Profile);

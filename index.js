@@ -1,52 +1,37 @@
 import React, { Component } from 'react';
 import { createStore, applyMiddleware, compose } from 'redux';
+import { persistStore, persistReducer } from 'redux-persist';
+import { PersistGate } from 'redux-persist/integration/react'
 import { AppRegistry, AsyncStorage, Text } from 'react-native';
 import { Provider } from 'react-redux';
 import thunk from 'redux-thunk';
 import logger from 'redux-logger';
 import rootReducer from './app/reducer';
-import AppWithNavigationState from './app/AppNavigator';
-import { persistStore, autoRehydrate } from 'redux-persist'
-import ActivityIndicatorWrapper from "./app/ActivityIndicatorWrapper"
+import App from './app/App';
 
+const persistConfig = {
+    key: 'root',
+    storage: AsyncStorage
+}
+const persistedReducer = persistReducer(persistConfig, rootReducer);
 const store = createStore(
-	rootReducer,
-	undefined,
-	compose(
-		applyMiddleware(thunk, logger),
-		autoRehydrate()
-		)
-	);
+    persistedReducer,
+    undefined,
+    compose(applyMiddleware(thunk, logger))
+);
+const persistor = persistStore(store);
 
-//disable the SetTimeInterval Yellow Box
-// console.disableYellowBox = true;
+// disable the SetTimeInterval Yellow Box
+console.disableYellowBox = true;
 
-export default class JustJoking extends Component {
-	constructor(props){
-		super(props);
-		this.state = {
-			rehydrated: false
-		}
-	}
-
-	// initial the store with AsyncStorage
-	// otherwise the initial store will be used from
-	componentWillMount(){
-		persistStore(store, { storage: AsyncStorage, blacklist: ['Nav'] }, () => {
-			this.setState({ rehydrated: true })
-		})
-	}
-
-  	render() {
-  		if(!this.state.rehydrated) 
-  			return <ActivityIndicatorWrapper />;
-
-		return (
-			<Provider store={store}>
-				<AppWithNavigationState />
-			</Provider>
-		);
-  	}
+const JustJoking = () => {    
+    return (
+        <Provider store={store}>
+            <PersistGate loading={null} persistor={persistor}>
+                <App />
+            </PersistGate>
+        </Provider>
+    );
 }
 
 AppRegistry.registerComponent('JustJoking', () => JustJoking);

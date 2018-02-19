@@ -102,6 +102,15 @@
     </item>
     <item
         is-multidex="false"
+        jar="/Applications/MAMP/htdocs/JustJoking/android/app/build/intermediates/exploded-aar/JustJoking/react-native-vector-icons/unspecified/jars/classes.jar"
+        jumboMode="false"
+        optimize="true"
+        revision="23.0.1"
+        sha1="f2cf527de8d0bd35d72088fafea02395ba4a9eec">
+        <dex dex="/Applications/MAMP/htdocs/JustJoking/android/app/build/intermediates/pre-dexed/debug/JustJoking-react-native-vector-icons-unspecified_fe714e6d209f84e19a7d98ffc8ff5d34b73745a6.jar" />
+    </item>
+    <item
+        is-multidex="false"
         jar="/Users/duo.lu/Library/Android/sdk/extras/android/m2repository/com/android/support/support-annotations/23.0.1/support-annotations-23.0.1.jar"
         jumboMode="false"
         optimize="true"
