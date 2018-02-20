@@ -26,16 +26,25 @@ import ImageList from './component/home/ImageList';
 import TextList from './component/home/TextList';
 import Post from './component/home/Post';
 
-const AuthNavigator = StackNavigator({
-	SignIn: { 
-		screen: SignIn,
-		navigationOptions: ({ navigation }) => ({ 
-			header: null
-		})
-	},
-	SignUp: { screen: SignUp },
-	Policy: { screen: Policy },
-});
+const AuthNavigator = StackNavigator(
+	{
+		SignIn: { 
+			screen: SignIn,
+			navigationOptions: ({ navigation }) => ({ 
+				header: null
+			})
+		},
+		SignUp: { screen: SignUp },
+		Policy: { screen: Policy },
+	},{
+		navigationOptions: {
+			headerStyle: {
+				shadowRadius: 0,
+				elevation: 0
+			}
+		}
+	}
+);
 
 const HomeNavigator = TabNavigator(
 	{

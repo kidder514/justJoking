@@ -1,6 +1,6 @@
 import React from 'react';
 import { connect } from "react-redux";
-import { StyleSheet, Text, TextInput, Button, Image, View, Keyboard, Alert } from 'react-native';
+import { StyleSheet, Text, TextInput, Button, Image, View } from 'react-native';
 import { NavigationActions } from 'react-navigation'
 import string from '../../localization/string';
 import { signIn } from '../../reducer/action/authAction';
@@ -10,10 +10,10 @@ import validator from 'validator';
 
 const initState = {
 	email: "",
-	errorEmail: " ",
+	errorEmail: "",
 	password: "",
-	errorPassword: " ",
-	error: " ",
+	errorPassword: "",
+	error: "",
 }
 
 class SignIn extends React.Component {
@@ -38,14 +38,14 @@ class SignIn extends React.Component {
 			isValid = false;
 			this.setState({errorEmail: string.EmailInvalid});
 		} else {
-			this.setState({errorEmail: ' '});
+			this.setState({errorEmail: ''});
 		}
 
 		if(this.state.password === '') {
 			isValid = false;
 			this.setState({errorPassword: string.PasswordEmpty});
 		} else {
-			this.setState({errorPassword: ' '});
+			this.setState({errorPassword: ''});
 		}
 
 		if(isValid){
@@ -184,7 +184,9 @@ const style = StyleSheet.create({
 	},
 	warning: {
 		color: warningColor,
-		fontSize: 12
+		fontSize: 12,
+		marginRight: 30,
+		marginLeft: 30,
 	}
 });
 
