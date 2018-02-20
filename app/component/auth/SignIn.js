@@ -4,7 +4,7 @@ import { StyleSheet, Text, TextInput, Button, Image, View } from 'react-native';
 import { NavigationActions } from 'react-navigation'
 import string from '../../localization/string';
 import { signIn } from '../../reducer/action/authAction';
-import { primaryColor, greyColor, warningColor } from '../../asset/style/common';
+import { primaryColor, greyColor, warningColor, whiteColor } from '../../asset/style/common';
 import Icon from 'react-native-vector-icons/Entypo';
 import validator from 'validator';
 
@@ -141,7 +141,7 @@ const style = StyleSheet.create({
 		flex: 1,
 		justifyContent: 'center',
 		alignItems: 'center',
-		backgroundColor: '#fff',
+		backgroundColor: whiteColor,
 	},
 	logo: {
 		width: 100,
@@ -180,7 +180,7 @@ const style = StyleSheet.create({
 		width: 200,
 		flexDirection: 'row',
 		justifyContent: 'space-around',
-		backgroundColor: '#fff',
+		backgroundColor: whiteColor,
 	},
 	warning: {
 		color: warningColor,
