@@ -2,7 +2,7 @@ import React from 'react';
 import { connect } from "react-redux";
 import TileList from '../components/TileList';
 
-class TextList extends React.Component {
+class TextList extends React.PureComponent {
 
 	render(){
 		return (	

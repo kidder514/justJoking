@@ -5,7 +5,7 @@ import { primaryColor, greyColor, whiteColor } from '../../asset/style/common';
 import Icon from 'react-native-vector-icons/Entypo';
 import { numberFormatter } from '../../util/numberFormatter';
 
-class TextTile extends React.Component {
+class TextTile extends React.PureComponent {
 
 	render(){
         const { data } = this.props;

@@ -2,7 +2,7 @@ import React from 'react';
 import { View, Text } from 'react-native';
 import string from '../../localization/string';
 
-class Inbox extends React.Component {
+class Inbox extends React.PureComponent {
 	static navigationOptions = () => ({
 		title: string.Inbox,
 		header: null,

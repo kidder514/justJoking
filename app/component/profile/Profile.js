@@ -4,7 +4,7 @@ import { Button, View, Text } from 'react-native';
 import string from '../../localization/string';
 import { signOut } from '../../reducer/action/authAction';
 
-class Profile extends React.Component {
+class Profile extends React.PureComponent {
 	static navigationOptions = () => ({
 		title: string.Profile,
 		header: null,

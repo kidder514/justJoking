@@ -19,7 +19,7 @@ const initState = {
 	error: "",
 }
 
-class SignUp extends React.Component {
+class SignUp extends React.PureComponent {
 	constructor(props) {
 		super(props);
 		this.state = initState;

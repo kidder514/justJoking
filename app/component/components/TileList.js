@@ -3,7 +3,7 @@ import { SectionList } from 'react-native';
 import ImageTile from '../components/ImageTile';
 import TextTile from '../components/TextTile';
 
-class TileList extends React.Component {
+class TileList extends React.PureComponent {
 
     renderItem({item}){
         switch (item.type) {
@@ -18,13 +18,14 @@ class TileList extends React.Component {
         }
     }
 
-    handleData
-
 	render(){
 		return (
             <SectionList
                 renderItem={this.renderItem}
-                sections={[{data : this.props.data}]}
+                sections={[{key:'tileList', data : this.props.data}]}
+                keyExtractor={(item, index) => {
+                    return 'item' + item.id
+                }}
             />
 		);
 	}

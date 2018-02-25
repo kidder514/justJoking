@@ -1,76 +1,82 @@
 import React from 'react';
-import { View, Text, Image, StyleSheet, Dimensions } from 'react-native';
+import { View, Text, Image, StyleSheet, Dimensions, Modal, Button, TouchableHighlight } from 'react-native';
 import string from '../../localization/string';
 import Icon from 'react-native-vector-icons/Entypo';
 import { primaryColor, greyColor, whiteColor } from '../../asset/style/common';
 import { numberFormatter } from '../../util/numberFormatter';
 import FitImage from 'react-native-fit-image';
+import Gallery from 'react-native-image-gallery';
 
 const imageBorderWidth = 1;
 
-class ImageTile extends React.Component {
+class ImageTile extends React.PureComponent {
     constructor(props) {
         super(props);
         this.state = {
             tileWidth: undefined,
             tileHeight: undefined,
             isLongImage: false,
+            modalVisible: false,
+            imageIndex: null
         };
-        
     }
 
-    componentWillMount(){
+    componentWillMount() {
         const images = this.props.data.imageUrls;
-        if (images.length === 1){
+        if (images.length === 1) {
             Image.getSize(images[0], (width, height) => {
                 const windowWidth = Dimensions.get('window').width;
-                const windowHeight = Dimensions.get('window').height;                 
-                const scaledImageHeight = height / (width/windowWidth);
+                const windowHeight = Dimensions.get('window').height;
+                const scaledImageHeight = height / (width / windowWidth);
                 const isLongImage = scaledImageHeight > windowWidth * 0.8;
-                if (isLongImage){
+                if (isLongImage) {
                     this.setState({
                         tileHeight: windowHeight * 0.4,
                         isLongImage: true
                     });
                 }
             });
-        } else if (images.length > 1){
+        } else if (images.length > 1) {
             let layerCount = Math.floor(images.length / 3 + (images.length % 3 > 0 ? 1 : 0));
-            const containerHeight = Dimensions.get('window').width / 3 * layerCount+  imageBorderWidth * layerCount;
-            this.setState({tileHeight: containerHeight});
+            const containerHeight = Dimensions.get('window').width / 3 * layerCount + imageBorderWidth * layerCount;
+            this.setState({ tileHeight: containerHeight });
         }
     }
 
-    renderImages(){
+    renderImages() {
         const images = this.props.data.imageUrls;
-        if (images.length <= 0){
+        if (images.length <= 0) {
             return undefined;
-        } else if (images.length === 1 ){
+        } else if (images.length === 1) {
             return this.renderOneImage(images[0]);
         } else {
             return this.renderMoreImages();
         }
     }
-    renderOneImage(imageUrl){
+    renderOneImage(imageUrl) {
         return (
-            <View style={{
-                height: this.state.tileHeight,
-            }}>
+            <TouchableHighlight 
+                style={{height: this.state.tileHeight}}
+                onPress={() => this.openModal(0)}
+            >
                 <View>
-                    {this.state.isLongImage?<Text style={style.longImageBanner}>{string.LongImage}</Text>: null}
-                    <FitImage overflow='hidden' source={{uri: imageUrl}}/>                
+                    {this.state.isLongImage ? <Text style={style.longImageBanner}>{string.LongImage}</Text> : null}
+                    <FitImage overflow='hidden' source={{ uri: imageUrl }} />
                 </View>
-            </View>
+            </TouchableHighlight>
         );
     }
 
-    renderMoreImages(){
+    renderMoreImages() {
         const containerWidth = Dimensions.get('window').width / 3;
         const images = this.props.data.imageUrls;
         let imageList = [];
         images.map((image, index) => {
             imageList.push(
-                <View key={this.props.data.id + 'image' + index}>
+                <TouchableHighlight
+                    key={this.props.data.id + 'image' + index}
+                    onPress={() => this.openModal(index)}
+                >
                     <FitImage
                         style={{
                             width: containerWidth,
@@ -79,12 +85,12 @@ class ImageTile extends React.Component {
                             borderColor: whiteColor,
                         }}
                         resizeMode={Image.resizeMode.cover}
-                        source={{uri: image}} 
+                        source={{ uri: image }}
                     />
-                </View>
+                </TouchableHighlight>
             );
         });
-        return (                
+        return (
             <View style={{
                 height: this.state.tileHeight,
                 flex: 1,
@@ -96,12 +102,39 @@ class ImageTile extends React.Component {
         );
     }
 
-	render(){
+    renderGallery() {
+        if(this.state.imageIndex !== null) {
+            let images = [];
+            this.props.data.imageUrls.map((imageUrl) => {
+                images.push({source: { uri: imageUrl }});
+            });
+            return (
+                <Gallery
+                    style={{ flex: 1, backgroundColor: 'black' }}
+                    images={images}
+                    initialPage={this.state.imageIndex}
+                />
+            );
+        } else {
+            return undefined;
+        }
+
+    }
+
+    openModal(index) {
+        this.setState({ modalVisible: true, imageIndex: index});
+    }
+
+    closeModal() {
+        this.setState({ modalVisible: false, mageIndex: null });
+    }
+
+    render() {
         const { data } = this.props;
-		return (
+        return (
             <View style={style.tileContainer}>
                 <View style={style.tileBanner}>
-                    <Image style={style.authorPhoto} source={{uri: data.authorPhoto}}/>
+                    <Image style={style.authorPhoto} source={{ uri: data.authorPhoto }} />
                     <Text>{data.authorName}</Text>
                 </View>
                 <View style={style.textSection}>
@@ -113,48 +146,54 @@ class ImageTile extends React.Component {
                 {this.renderImages()}
                 <View style={style.tileBanner}>
                     <View style={style.iconGroup} >
-                        <Icon style={style.icon} name="thumbs-up" size={15}/>
+                        <Icon style={style.icon} name="thumbs-up" size={15} />
                         <Text>{numberFormatter(data.likesCount)}</Text>
                     </View>
                     <View style={style.iconGroup} >
-                        <Icon style={style.icon} name="thumbs-down" size={15}/>
+                        <Icon style={style.icon} name="thumbs-down" size={15} />
                         <Text>{numberFormatter(data.dislikesCount)}</Text>
                     </View>
                     <View style={style.iconGroup} >
-                        <Icon style={style.icon} name="typing" size={15}/>
+                        <Icon style={style.icon} name="typing" size={15} />
                         <Text>{numberFormatter(data.commentCount)}</Text>
                     </View>
                     <View style={style.iconGroup} >
-                        <Icon style={style.icon} name="share" size={15}/>
+                        <Icon style={style.icon} name="share" size={15} />
                         <Text>{numberFormatter(data.shareCount)}</Text>
-                    </View>                    
+                    </View>
                 </View>
-            </View>
+                <Modal
+                    visible={this.state.modalVisible}
+                    animationType={'fade'}
+                    onRequestClose={() => this.closeModal()}
+                >
+                    {this.renderGallery()}
+                </Modal>
+            </View >
 		);
-	}
+    }
 }
 
-
 const style = StyleSheet.create({
-	tileContainer: {
+    tileContainer: {
         backgroundColor: whiteColor,
         marginBottom: 10,
-	},
-	tileBanner: {
+    },
+    tileBanner: {
         height: 40,
         flexDirection: 'row',
         alignItems: 'center',
         paddingLeft: 10,
         paddingRight: 10,
         backgroundColor: whiteColor,
-	},
-	authorPhoto: {
+    },
+    authorPhoto: {
         width: 30,
         height: 30,
         borderRadius: 15,
         marginRight: 10,
-	},
-	textSection: {
+    },
+    textSection: {
         marginLeft: 10,
         marginRight: 10,
         marginTop: 5,
@@ -164,7 +203,7 @@ const style = StyleSheet.create({
     text: {
         fontSize: 16
     },
-	tag: {
+    tag: {
         color: primaryColor,
     },
     longImageBanner: {
@@ -178,7 +217,7 @@ const style = StyleSheet.create({
     icon: {
         marginRight: 5,
         color: greyColor
-    }, 
+    },
     iconGroup: {
         flexDirection: 'row',
         alignItems: 'center',

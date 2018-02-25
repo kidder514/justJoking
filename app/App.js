@@ -163,7 +163,7 @@ const MainNavigator = TabNavigator(
 	}
 );
 
-class App extends React.Component {
+class App extends React.PureComponent {
 
 	render() {
 		if (!!this.props.isSignedIn) {

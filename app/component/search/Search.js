@@ -2,7 +2,7 @@ import React from 'react';
 import { View, Text } from 'react-native';
 import string from '../../localization/string';
 
-class Search extends React.Component {
+class Search extends React.PureComponent {
 	static navigationOptions = () => ({
 		title: string.Search,
 		header: null,
