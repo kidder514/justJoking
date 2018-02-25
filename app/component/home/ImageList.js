@@ -1,22 +1,22 @@
 import React from 'react';
-import { View, Text } from 'react-native';
-import string from '../../localization/string';
+import { connect } from "react-redux";
+import TileList from '../components/TileList';
 
 class ImageList extends React.Component {
-	static navigationOptions = () => ({
-		title: string.Image,
-		header: null,
-	});
 
 	render(){
 		return (	
-			<View >
-				<Text>
-                ImageList 
-				</Text>
-			</View>
+			<TileList 
+				data={this.props.data}
+			/>
 		);
 	}
 }
 
-export default ImageList;
+const mapStateToProps = (state) => {
+	return {
+		data: state.List.followedList
+	}
+}
+
+export default connect(mapStateToProps)(ImageList);

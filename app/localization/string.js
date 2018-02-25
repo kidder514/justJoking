@@ -5,6 +5,10 @@ const string = new LocalizedStrings({
 	en:{
 // common
 		Back: "Back",
+		Thousand: 'K',
+		Million: 'M',
+		Billion: 'B',
+
 // Auth
 		SignIn: 'Sign In',
 		SignUp: 'Sign Up',
@@ -31,6 +35,9 @@ const string = new LocalizedStrings({
 		Hot: 'Hot',
 		Image: 'Image',
 		Text: 'Text',
+// Image Tile List
+		LongImage: 'Long Image ...',
+	
 //Search
 		Search: 'Search',
 //Post 
@@ -39,6 +46,8 @@ const string = new LocalizedStrings({
 		Inbox: 'Inbox',
 //Profile
 		Profile: 'Profile',
+
+
 	}
 });
 

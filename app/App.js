@@ -166,7 +166,7 @@ const MainNavigator = TabNavigator(
 class App extends React.Component {
 
 	render() {
-		if (this.props.isSignedIn) {
+		if (!!this.props.isSignedIn) {
 			return <MainNavigator />;
 		} else {
 			return <AuthNavigator />;
