@@ -24,7 +24,7 @@ class TileList extends React.PureComponent {
                 renderItem={this.renderItem}
                 sections={[{key:'tileList', data : this.props.data}]}
                 keyExtractor={(item, index) => {
-                    return 'item' + item.id
+                    return 'item' + index
                 }}
             />
 		);

@@ -46,7 +46,11 @@ const string = new LocalizedStrings({
 		Inbox: 'Inbox',
 //Profile
 		Profile: 'Profile',
-
+		Setting: 'Setting',
+		Share: 'Share',
+		Followers: 'Followers',
+		Following: 'Following',
+		Post: 'Post',
 
 	}
 });

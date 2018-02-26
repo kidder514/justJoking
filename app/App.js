@@ -1,7 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
-import { BackHandler } from "react-native";
+import { Button } from 'react-native-elements'
 import {
 	NavigationActions,
 	TabNavigator,
@@ -12,7 +12,7 @@ import {
 	HeaderBackButton
 } from 'react-navigation';
 import string from './localization/string';
-import { primaryColor, greyColor, whiteColor, textColor } from './asset/style/common';
+import { primaryColor, greyColor, whiteColor, textColor, blackColor } from './asset/style/common';
 import Icon from 'react-native-vector-icons/Entypo';
 
 import SignIn from './component/auth/SignIn';
@@ -21,7 +21,9 @@ import Policy from './component/auth/Policy';
 
 import Search from './component/search/Search';
 import Inbox from './component/inbox/Inbox';
+
 import Profile from './component/profile/Profile';
+import Setting from './component/profile/Setting';
 
 import FollowedList from './component/home/FollowedList';
 import HotList from './component/home/HotList';
@@ -82,6 +84,45 @@ const HomeNavigator = TabNavigator(
 	}
 );
 
+const ProfileNavigator = StackNavigator(
+	{
+		Profile: { 
+			screen: Profile,
+			navigationOptions: ({ navigation }) => ({ 
+				headerRight: 
+					<Button
+						title={string.Share}
+						color={blackColor}
+						backgroundColor={whiteColor}
+						fontSize={14}
+						outline={true}
+						buttonStyle={{height:30}}
+						borderRadius={5}
+					/>,
+				headerStyle: {
+					height: 40,
+				},
+				headerTitleStyle: {
+					fontWeight: 'normal'
+				}
+			})
+		},
+		Setting: { 
+			screen: Setting,
+			navigationOptions: ({ navigation }) => ({ 
+				title: string.Setting,
+				headerLeft: 
+					<Icon 
+						name="chevron-thin-left" 
+						size={20} 
+						style={{paddingLeft: 10}} 
+						onPress={ () => { navigation.goBack() }}
+					/>
+			})
+		},		
+	}
+);
+
 const PostDrawNavigator = DrawerNavigator(
 	{
 		Post: { screen: Post }
@@ -138,7 +179,7 @@ const MainNavigator = TabNavigator(
 			}
 		},
 		Profile: { 
-			screen: Profile,
+			screen: ProfileNavigator,
 			navigationOptions: {
 				title: string.Profile,
 				tabBarIcon: ({ focused, tintColor }) => (
@@ -175,7 +216,7 @@ class App extends React.PureComponent {
 };
 
 const mapStateToProps = state => ({
-	isSignedIn: state.Auth.isSignedIn
+	isSignedIn: state.Auth.isSignedIn,
 });
 
 export default connect(mapStateToProps)(App);
