@@ -111,6 +111,12 @@ const ProfileNavigator = StackNavigator(
 			screen: Setting,
 			navigationOptions: ({ navigation }) => ({ 
 				title: string.Setting,
+				headerStyle: {
+					height: 40,
+				},
+				headerTitleStyle: {
+					fontWeight: 'normal'
+				},
 				headerLeft: 
 					<Icon 
 						name="chevron-thin-left" 

@@ -8,7 +8,8 @@ const string = new LocalizedStrings({
 		Thousand: 'K',
 		Million: 'M',
 		Billion: 'B',
-
+		Copy: 'Copy',
+		FeatureCommingSoon: 'This feature is comming soon',
 // Auth
 		SignIn: 'Sign In',
 		SignUp: 'Sign Up',
@@ -46,12 +47,28 @@ const string = new LocalizedStrings({
 		Inbox: 'Inbox',
 //Profile
 		Profile: 'Profile',
-		Setting: 'Setting',
 		Share: 'Share',
 		Followers: 'Followers',
 		Following: 'Following',
 		Post: 'Post',
-
+//Setting
+		Setting: 'Setting',
+		Avatar: 'Avatar',
+		UserName: 'User Name',
+		JokeBuddyId: 'Joke Buddy ID',
+		Tagline: 'Tagline',
+		WhoCanSendMeMessages: 'Who can send me messages ?',
+		Anyone: 'Anyone',
+		WhoIAmFollowing: 'Who I am following',
+		NoOne: 'No one',
+		AutoPlayGif:'Autoplay GIF',
+		AutoPlayVideos: 'Autoplay videos',
+		MakeYourGeolocationPublic: 'Make you geolocation public',
+		Help: 'Help',
+		CleanCache: 'Clean Cache',
+		ContactUs: 'Contact us',
+		TermsAndConditions: 'Terms and Conditions',
+		CheckAppUpdates: 'Check App Updates'
 	}
 });
 

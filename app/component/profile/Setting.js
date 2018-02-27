@@ -1,116 +1,94 @@
 import React from 'react';
 import { connect } from "react-redux";
-import { View, Text, Button, StyleSheet} from 'react-native';
+import { View, Text, Button, StyleSheet, ScrollView} from 'react-native';
 import { whiteColor, primaryColor, greyColor } from '../../asset/style/common';
 import string from '../../localization/string';
 import { signOut } from '../../reducer/action/authAction';
-import { Avatar } from 'react-native-elements';
+import { Avatar, List, ListItem } from 'react-native-elements';
+import Icon from 'react-native-vector-icons/Entypo';
 
 class Setting extends React.PureComponent {
 	constructor(props) {
 		super(props);
 	}
 
-	submit() {
-		this.props.signOut();
-	}
-
 	render() {
 		const user = this.props.auth;
 		return (
-			<View >
-				<Avatar
-					medium
-					rounded
-					title={user.name ? user.name.charAt(0).toUpperCase() : ''}
-					source={{ uri: user.photo }}
-					onPress={() => console.log("Works!")}
-					activeOpacity={0.7}
-				/>
-				<View>
-					<View>
-						<View>
-							<Text>{user.postCount}</Text>
-							<Text>{string.Post}</Text>
-						</View>
-						<View>
-							<Text>{string.Followers}</Text>
-						</View>
-						<View>
-							<Text>{string.Following}</Text>
-						</View>
-					</View>
-					<View>
-						<Button
-							onPress={this.submit}
-							title={string.SignOut}
-							accessibilityLabel={string.SignOut}
-						/>
-					</View>
-				</View>
-				<Button
-					onPress={this.submit}
-					title={string.SignOut}
-					accessibilityLabel={string.SignOut}
-				/>
-			</View>
+			<ScrollView>
+				<List key='userSetting' containerStyle={style.listContainer}>
+					<ListItem 
+						titleStyle={style.title}
+						rightTitle={string.Avatar}
+						avatar={<Avatar rounded large source={{ uri: user.photo }}/>}
+					/>
+					<ListItem 
+						titleStyle={style.title}
+						rightTitle={user.name}
+						title={string.UserName}
+					/>
+					<ListItem 
+						titleStyle={style.title}				
+						rightTitle={user.id}
+						title={string.JokeBuddyId}
+					/>
+				</List>
+				<List>
+					<ListItem 
+						titleStyle={style.title}				
+						title={string.WhoCanSendMeMessages}
+					/>
+					<ListItem 
+						titleStyle={style.title}					
+						title={string.AutoPlayGif}
+					/>
+					<ListItem 
+						titleStyle={style.title}				
+						title={string.AutoPlayVideos}
+					/>
+					<ListItem 
+						titleStyle={style.title}
+						title={string.MakeYourGeolocationPublic}
+					/>
+				</List>
+				<List>
+					<ListItem 
+						avatar={<Icon name="help-with-circle" size={20} color={primaryColor} />}
+						titleStyle={style.title}				
+						title={string.Help}
+					/>
+					<ListItem 
+						avatar={<Icon name="trash" size={20} color={primaryColor} />}
+						titleStyle={style.title}
+						title={string.CleanCache}
+					/>
+					<ListItem 
+						avatar={<Icon name="phone" size={20} color={primaryColor} />}
+						titleStyle={style.title}				
+						title={string.ContactUs}
+					/>
+					<ListItem 
+						avatar={<Icon name="ccw" size={20} color={primaryColor} />}
+						titleStyle={style.title}
+						title={string.CheckAppUpdates}
+					/>
+					<ListItem 
+						avatar={<Icon name="open-book" size={20} color={primaryColor} />}
+						titleStyle={style.title}				
+						title={string.TermsAndConditions}
+					/>
+				</List>
+			</ScrollView>
 		);
 	}
 }
 
 const style = StyleSheet.create({
-	tileContainer: {
-		backgroundColor: whiteColor,
-		marginBottom: 10,
-	},
-	tileBanner: {
-		height: 40,
-		flexDirection: 'row',
-		alignItems: 'center',
-		paddingLeft: 10,
-		paddingRight: 10,
-		backgroundColor: whiteColor,
-	},
-	authorPhoto: {
-		width: 30,
-		height: 30,
-		borderRadius: 15,
-		marginRight: 10,
-	},
-	textSection: {
-		marginLeft: 10,
-		marginRight: 10,
-		marginTop: 5,
-		marginBottom: 5,
-		flexWrap: 'wrap',
-	},
-	text: {
-		fontSize: 16
-	},
-	tag: {
-		color: primaryColor,
-	},
-	longImageBanner: {
-		position: 'absolute',
-		zIndex: 10,
-		textAlign: 'center',
-		backgroundColor: 'rgba(42, 44, 44, 0.7)',
-		color: whiteColor,
-	},
-	icon: {
-		marginRight: 5,
-		color: greyColor
-	},
-	iconGroup: {
-		flexDirection: 'row',
-		alignItems: 'center',
-		marginRight: 10
-	},
-	shareGroup: {
-		flexDirection: 'row',
-		alignItems: 'center',
-		position: 'absolute',
-		right: 10
+	listContainer: {
+		marginTop: 0
+	}, 
+	title: {
+		fontSize: 14 
 	}
 });
 
