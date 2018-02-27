@@ -41,6 +41,7 @@ const string = new LocalizedStrings({
 	
 //Search
 		Search: 'Search',
+		TypeHere: 'Type here ...',
 //Post 
 		Post: 'Post',
 //Inbox
