@@ -6,7 +6,10 @@
 # dependencies
 /node_modules
 
-/android/**/*
+!/android
+/android/*
+!/android/app
+/android/app/*
 !/android/app/src
 /ios
 
