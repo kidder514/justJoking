@@ -12,6 +12,7 @@
 - Localization
 - Link to webview
 - compulsory update
+- add ads to app
 
 #### Pages
 - Auth page

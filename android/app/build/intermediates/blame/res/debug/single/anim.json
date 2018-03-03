@@ -1,11 +1,11 @@
 [
     {
         "merged": "/Applications/MAMP/htdocs/JustJoking/android/app/build/intermediates/res/merged/debug/anim/abc_fade_out.xml",
-        "source": "/Applications/MAMP/htdocs/JustJoking/android/app/build/intermediates/exploded-aar/com.android.support/appcompat-v7/23.0.1/res/anim/abc_fade_out.xml"
+        "source": "/Applications/MAMP/htdocs/JustJoking/android/app/build/intermediates/exploded-aar/com.android.support/appcompat-v7/23.4.0/res/anim/abc_fade_out.xml"
     },
     {
         "merged": "/Applications/MAMP/htdocs/JustJoking/android/app/build/intermediates/res/merged/debug/anim/abc_popup_enter.xml",
-        "source": "/Applications/MAMP/htdocs/JustJoking/android/app/build/intermediates/exploded-aar/com.android.support/appcompat-v7/23.0.1/res/anim/abc_popup_enter.xml"
+        "source": "/Applications/MAMP/htdocs/JustJoking/android/app/build/intermediates/exploded-aar/com.android.support/appcompat-v7/23.4.0/res/anim/abc_popup_enter.xml"
     },
     {
         "merged": "/Applications/MAMP/htdocs/JustJoking/android/app/build/intermediates/res/merged/debug/anim/catalyst_fade_in.xml",
@@ -13,7 +13,7 @@
     },
     {
         "merged": "/Applications/MAMP/htdocs/JustJoking/android/app/build/intermediates/res/merged/debug/anim/abc_popup_exit.xml",
-        "source": "/Applications/MAMP/htdocs/JustJoking/android/app/build/intermediates/exploded-aar/com.android.support/appcompat-v7/23.0.1/res/anim/abc_popup_exit.xml"
+        "source": "/Applications/MAMP/htdocs/JustJoking/android/app/build/intermediates/exploded-aar/com.android.support/appcompat-v7/23.4.0/res/anim/abc_popup_exit.xml"
     },
     {
         "merged": "/Applications/MAMP/htdocs/JustJoking/android/app/build/intermediates/res/merged/debug/anim/catalyst_push_up_in.xml",
@@ -25,11 +25,11 @@
     },
     {
         "merged": "/Applications/MAMP/htdocs/JustJoking/android/app/build/intermediates/res/merged/debug/anim/abc_shrink_fade_out_from_bottom.xml",
-        "source": "/Applications/MAMP/htdocs/JustJoking/android/app/build/intermediates/exploded-aar/com.android.support/appcompat-v7/23.0.1/res/anim/abc_shrink_fade_out_from_bottom.xml"
+        "source": "/Applications/MAMP/htdocs/JustJoking/android/app/build/intermediates/exploded-aar/com.android.support/appcompat-v7/23.4.0/res/anim/abc_shrink_fade_out_from_bottom.xml"
     },
     {
         "merged": "/Applications/MAMP/htdocs/JustJoking/android/app/build/intermediates/res/merged/debug/anim/abc_grow_fade_in_from_bottom.xml",
-        "source": "/Applications/MAMP/htdocs/JustJoking/android/app/build/intermediates/exploded-aar/com.android.support/appcompat-v7/23.0.1/res/anim/abc_grow_fade_in_from_bottom.xml"
+        "source": "/Applications/MAMP/htdocs/JustJoking/android/app/build/intermediates/exploded-aar/com.android.support/appcompat-v7/23.4.0/res/anim/abc_grow_fade_in_from_bottom.xml"
     },
     {
         "merged": "/Applications/MAMP/htdocs/JustJoking/android/app/build/intermediates/res/merged/debug/anim/catalyst_fade_out.xml",
@@ -37,7 +37,7 @@
     },
     {
         "merged": "/Applications/MAMP/htdocs/JustJoking/android/app/build/intermediates/res/merged/debug/anim/abc_fade_in.xml",
-        "source": "/Applications/MAMP/htdocs/JustJoking/android/app/build/intermediates/exploded-aar/com.android.support/appcompat-v7/23.0.1/res/anim/abc_fade_in.xml"
+        "source": "/Applications/MAMP/htdocs/JustJoking/android/app/build/intermediates/exploded-aar/com.android.support/appcompat-v7/23.4.0/res/anim/abc_fade_in.xml"
     },
     {
         "merged": "/Applications/MAMP/htdocs/JustJoking/android/app/build/intermediates/res/merged/debug/anim/catalyst_slide_down.xml",
@@ -45,15 +45,15 @@
     },
     {
         "merged": "/Applications/MAMP/htdocs/JustJoking/android/app/build/intermediates/res/merged/debug/anim/abc_slide_in_bottom.xml",
-        "source": "/Applications/MAMP/htdocs/JustJoking/android/app/build/intermediates/exploded-aar/com.android.support/appcompat-v7/23.0.1/res/anim/abc_slide_in_bottom.xml"
+        "source": "/Applications/MAMP/htdocs/JustJoking/android/app/build/intermediates/exploded-aar/com.android.support/appcompat-v7/23.4.0/res/anim/abc_slide_in_bottom.xml"
     },
     {
         "merged": "/Applications/MAMP/htdocs/JustJoking/android/app/build/intermediates/res/merged/debug/anim/abc_slide_out_top.xml",
-        "source": "/Applications/MAMP/htdocs/JustJoking/android/app/build/intermediates/exploded-aar/com.android.support/appcompat-v7/23.0.1/res/anim/abc_slide_out_top.xml"
+        "source": "/Applications/MAMP/htdocs/JustJoking/android/app/build/intermediates/exploded-aar/com.android.support/appcompat-v7/23.4.0/res/anim/abc_slide_out_top.xml"
     },
     {
         "merged": "/Applications/MAMP/htdocs/JustJoking/android/app/build/intermediates/res/merged/debug/anim/abc_slide_out_bottom.xml",
-        "source": "/Applications/MAMP/htdocs/JustJoking/android/app/build/intermediates/exploded-aar/com.android.support/appcompat-v7/23.0.1/res/anim/abc_slide_out_bottom.xml"
+        "source": "/Applications/MAMP/htdocs/JustJoking/android/app/build/intermediates/exploded-aar/com.android.support/appcompat-v7/23.4.0/res/anim/abc_slide_out_bottom.xml"
     },
     {
         "merged": "/Applications/MAMP/htdocs/JustJoking/android/app/build/intermediates/res/merged/debug/anim/catalyst_slide_up.xml",
@@ -61,6 +61,6 @@
     },
     {
         "merged": "/Applications/MAMP/htdocs/JustJoking/android/app/build/intermediates/res/merged/debug/anim/abc_slide_in_top.xml",
-        "source": "/Applications/MAMP/htdocs/JustJoking/android/app/build/intermediates/exploded-aar/com.android.support/appcompat-v7/23.0.1/res/anim/abc_slide_in_top.xml"
+        "source": "/Applications/MAMP/htdocs/JustJoking/android/app/build/intermediates/exploded-aar/com.android.support/appcompat-v7/23.4.0/res/anim/abc_slide_in_top.xml"
     }
 ]

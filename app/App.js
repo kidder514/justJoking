@@ -1,5 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+import SplashScreen from 'react-native-splash-screen';
 import { connect } from 'react-redux';
 import { Text, View} from 'react-native-elements'
 import {
@@ -291,6 +292,9 @@ const MainNavigator = TabNavigator(
 );
 
 class App extends React.PureComponent {
+	componentDidMount(){
+		SplashScreen.hide();
+	}
 
 	render() {
 		if (!!this.props.isSignedIn) {

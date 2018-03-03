@@ -5,7 +5,9 @@
 
 # dependencies
 /node_modules
-/android
+
+/android/**/*
+!/android/app/src
 /ios
 
 # misc
