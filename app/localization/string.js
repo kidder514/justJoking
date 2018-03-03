@@ -9,6 +9,7 @@ const string = new LocalizedStrings({
 		Million: 'M',
 		Billion: 'B',
 		Copy: 'Copy',
+		Submit: 'Submit',
 		FeatureCommingSoon: 'This feature is comming soon',
 // Auth
 		SignIn: 'Sign In',
@@ -69,7 +70,9 @@ const string = new LocalizedStrings({
 		CleanCache: 'Clean Cache',
 		ContactUs: 'Contact us',
 		TermsAndConditions: 'Terms and Conditions',
-		CheckAppUpdates: 'Check App Updates'
+		CheckAppUpdates: 'Check App Updates',
+		UserNameRules: 'User Name must be 2-20 characters long, and not contain any special characters',
+		TaglinePrompt: "Wanna be the champagne of jokes? why don't start writing something funny here to let people remember you?"
 	}
 });
 

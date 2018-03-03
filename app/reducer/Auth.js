@@ -3,12 +3,15 @@ const initState = {
 	id: '1921ije1j11',
 	photo: 'https://independentaustralia.net/_lib/slir/w400/i/profiles/profile-765.jpg',
 	name: 'James Akapala',
-	tagline: '',
+	tagline: 'I am the King of jokes, I can even make myself laugh',
 	followers: [1,2,3,4,5,6,7,8,9,9,8,71,35,2],
 	following: [3,5,6,7,8,11,233,44,555],
 	postCount: 35,
 	location: '',
-	
+	messageSetting: 'all',
+	autoGif: false,
+	autoVideo: false,
+	geoPublic: false,
 }
 
 function Auth(state = initState, action) {

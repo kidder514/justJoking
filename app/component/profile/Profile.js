@@ -1,7 +1,7 @@
 import React from 'react';
 import { connect } from "react-redux";
 import { View, Text, StyleSheet, Dimensions, ScrollView } from 'react-native';
-import { Button, Avatar } from 'react-native-elements'
+import { Avatar, Button } from 'react-native-elements'
 import { whiteColor, primaryColor } from '../../asset/style/common';
 import string from '../../localization/string';
 import TileList from '../components/TileList';
@@ -58,14 +58,12 @@ class Profile extends React.PureComponent {
 							<Button
 								title={string.Setting}
 								onPress={() => navigate("Setting")}
-								backgroundColor={whiteColor}
-								color={primaryColor}
-								textStyle={12}
 								outline={true}
 								buttonStyle={{
-									height: 20,
-									marginRight: 20,
-									marginLeft: 20
+									height: 30,
+									backgroundColor: primaryColor,
+									width: Dimensions.get('window').width * 0.6,
+									alignSelf: 'center'
 								}}
 							/>
 						</View>

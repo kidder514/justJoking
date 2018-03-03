@@ -11,7 +11,7 @@
 - Navigation
 - Localization
 - Link to webview
-
+- compulsory update
 
 #### Pages
 - Auth page

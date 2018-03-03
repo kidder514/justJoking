@@ -1,7 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
-import { Button } from 'react-native-elements'
+import { Text, View} from 'react-native-elements'
 import {
 	NavigationActions,
 	TabNavigator,
@@ -9,8 +9,10 @@ import {
 	TabBarBottom,
 	TabBarTop,
 	DrawerNavigator,
-	HeaderBackButton
+	HeaderBackButton,
 } from 'react-navigation';
+import { Button } from 'react-native';
+import getSlideFromRightTransition from 'react-navigation-slide-from-right-transition';
 import string from './localization/string';
 import { primaryColor, greyColor, whiteColor, textColor, blackColor } from './asset/style/common';
 import Icon from 'react-native-vector-icons/Entypo';
@@ -24,7 +26,9 @@ import Inbox from './component/inbox/Inbox';
 
 import Profile from './component/profile/Profile';
 import Setting from './component/profile/Setting';
-
+import UserNameSetting from './component/profile/UserNameSetting';
+import TaglineSetting from './component/profile/TaglineSetting';
+import Help from './component/profile/Help';
 import FollowedList from './component/home/FollowedList';
 import HotList from './component/home/HotList';
 import ImageList from './component/home/ImageList';
@@ -90,15 +94,21 @@ const ProfileNavigator = StackNavigator(
 			screen: Profile,
 			navigationOptions: ({ navigation }) => ({ 
 				headerRight: 
-					<Button
-						title={string.Share}
-						color={blackColor}
-						backgroundColor={whiteColor}
-						fontSize={14}
-						outline={true}
-						buttonStyle={{height:30}}
-						borderRadius={5}
-					/>,
+					<Text
+						style={{
+							backgroundColor: primaryColor,
+							color: whiteColor,
+							paddingTop:5,
+							paddingBottom:5,
+							paddingRight: 10,
+							paddingLeft: 10,
+							marginRight: 20,
+							justifyContent: 'center',
+							alignItems: 'center'
+						}}
+					>
+					{string.Share}
+					</Text>,
 				headerStyle: {
 					height: 40,
 				},
@@ -110,12 +120,12 @@ const ProfileNavigator = StackNavigator(
 		Setting: { 
 			screen: Setting,
 			navigationOptions: ({ navigation }) => ({ 
-				title: string.Setting,
+				title: null,
 				headerStyle: {
 					height: 40,
 				},
 				headerTitleStyle: {
-					fontWeight: 'normal'
+					fontWeight: 'normal',
 				},
 				headerLeft: 
 					<Icon 
@@ -123,9 +133,79 @@ const ProfileNavigator = StackNavigator(
 						size={20} 
 						style={{paddingLeft: 10}} 
 						onPress={ () => { navigation.goBack() }}
-					/>
+					/>,
+				headerRight: <Text style={{marginRight:20}}>{string.Setting}</Text>
+				
 			})
-		},		
+		},
+		UserNameSetting: { 
+			screen: UserNameSetting,
+			navigationOptions: ({ navigation }) => ({ 
+				title: null,
+				titleStyle: {
+				},
+				headerStyle: {
+					height: 40,
+				},
+				headerTitleStyle: {
+					fontWeight: 'normal',
+				},
+				headerLeft: <Icon 
+						name="chevron-thin-left" 
+						size={20} 
+						style={{paddingLeft: 10}} 
+						onPress={ () => { navigation.goBack() }}
+					/>,
+				headerRight: <Text style={{marginRight:20}}>{string.UserName}</Text>
+
+			})
+		},
+		TaglineSetting: { 
+			screen: TaglineSetting,
+			navigationOptions: ({ navigation }) => ({ 
+				title: null,
+				titleStyle: {
+				},
+				headerStyle: {
+					height: 40,
+				},
+				headerTitleStyle: {
+					fontWeight: 'normal',
+				},
+				headerLeft: <Icon 
+						name="chevron-thin-left" 
+						size={20} 
+						style={{paddingLeft: 10}} 
+						onPress={ () => { navigation.goBack() }}
+					/>,
+				headerRight: <Text style={{marginRight:20}}>{string.Tagline}</Text>
+
+			})
+		},
+		Help: { 
+			screen: Help,
+			navigationOptions: ({ navigation }) => ({ 
+				title: null,
+				titleStyle: {
+				},
+				headerStyle: {
+					height: 40,
+				},
+				headerTitleStyle: {
+					fontWeight: 'normal',
+				},
+				headerLeft: <Icon 
+						name="chevron-thin-left" 
+						size={20} 
+						style={{paddingLeft: 10}} 
+						onPress={ () => { navigation.goBack() }}
+					/>,
+				headerRight: <Text style={{marginRight:20}}>{string.Help}</Text>
+			})
+		},
+	},{
+		headerMode: 'float',
+		transitionConfig: getSlideFromRightTransition
 	}
 );
 
