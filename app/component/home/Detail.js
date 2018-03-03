@@ -2,17 +2,19 @@ import React from 'react';
 import { View, Text } from 'react-native';
 import string from '../../localization/string';
 
-class Post extends React.PureComponent {
+class Detail extends React.PureComponent {
+
+
 
 	render(){
 		return (	
 			<View >
 				<Text>
-				Post 
+					Detail 
 				</Text>
 			</View>
 		);
 	}
 }
 
-export default Post;
+export default Detail;

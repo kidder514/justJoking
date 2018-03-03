@@ -30,11 +30,13 @@ import Setting from './component/profile/Setting';
 import UserNameSetting from './component/profile/UserNameSetting';
 import TaglineSetting from './component/profile/TaglineSetting';
 import Help from './component/profile/Help';
+
 import FollowedList from './component/home/FollowedList';
 import HotList from './component/home/HotList';
 import ImageList from './component/home/ImageList';
 import TextList from './component/home/TextList';
 import Post from './component/home/Post';
+import Detail from './component/home/Detail';
 
 const AuthNavigator = StackNavigator(
 	{
@@ -108,6 +110,33 @@ const HomeNavigator = StackNavigator(
 		},
 		AuthorProfile: { 
 			screen: Profile,
+			navigationOptions: ({ navigation }) => ({ 
+				headerRight: 
+					<Text
+						style={{
+							backgroundColor: primaryColor,
+							color: whiteColor,
+							paddingTop:5,
+							paddingBottom:5,
+							paddingRight: 10,
+							paddingLeft: 10,
+							marginRight: 20,
+							justifyContent: 'center',
+							alignItems: 'center'
+						}}
+					>
+					{string.Share}
+					</Text>,
+				headerStyle: {
+					height: 40,
+				},
+				headerTitleStyle: {
+					fontWeight: 'normal'
+				}
+			})
+		},
+		Detail: { 
+			screen: Detail,
 			navigationOptions: ({ navigation }) => ({ 
 				headerRight: 
 					<Text
