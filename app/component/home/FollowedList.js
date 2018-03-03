@@ -8,6 +8,7 @@ class FollowedList extends React.PureComponent {
 		return (	
 			<TileList 
 				data={this.props.data}
+				navigate={this.props.navigation.navigate}
 			/>
 		);
 	}

@@ -6,11 +6,15 @@
 # dependencies
 /node_modules
 
+
+# ingore android but exclude app/src folder
 !/android
 /android/*
 !/android/app
 /android/app/*
 !/android/app/src
+# ingore android but exclude app/src folder - end
+
 /ios
 
 # misc

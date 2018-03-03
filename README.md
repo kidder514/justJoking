@@ -9,10 +9,10 @@
 #### Features
 - Init
 - Navigation
-- Localization
 - Link to webview
 - compulsory update
 - add ads to app
+- Gif Support
 
 #### Pages
 - Auth page

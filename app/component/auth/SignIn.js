@@ -1,7 +1,7 @@
 import React from 'react';
 import { connect } from "react-redux";
 import { StyleSheet, Text, TextInput, Button, Image, View } from 'react-native';
-import { NavigationActions } from 'react-navigation'
+import { NavigationActions } from 'react-navigation';
 import string from '../../localization/string';
 import { signIn } from '../../reducer/action/authAction';
 import { primaryColor, greyColor, warningColor, whiteColor } from '../../asset/style/common';

@@ -1,5 +1,5 @@
 import React from 'react';
-import { View, Text, Image, StyleSheet, Dimensions, Modal, Button, TouchableHighlight } from 'react-native';
+import { View, Text, Image, StyleSheet, Dimensions, Modal, Button, TouchableHighlight, TouchableOpacity } from 'react-native';
 import string from '../../localization/string';
 import Icon from 'react-native-vector-icons/Entypo';
 import { primaryColor, greyColor, whiteColor } from '../../asset/style/common';
@@ -130,13 +130,15 @@ class ImageTile extends React.PureComponent {
     }
 
     render() {
-        const { data } = this.props;
+        const { data, navigator } = this.props;
         return (
             <View style={style.tileContainer}>
-                <View style={style.tileBanner}>
-                    <Image style={style.authorPhoto} source={{ uri: data.authorPhoto }} />
-                    <Text>{data.authorName}</Text>
-                </View>
+                <TouchableOpacity onPress={() => navigator('AuthorProfile')}>
+                    <View style={style.tileBanner}>
+                        <Image style={style.authorPhoto} source={{ uri: data.authorPhoto }} />
+                        <Text>{data.authorName}</Text>
+                    </View>
+                </TouchableOpacity>
                 <View style={style.textSection}>
                     <Text style={style.text}>
                         <Text style={style.tag}>{'#' + data.tag + "# "}</Text>

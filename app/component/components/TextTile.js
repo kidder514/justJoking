@@ -1,5 +1,6 @@
 import React from 'react';
-import { View, Text, StyleSheet, Image} from 'react-native';
+import { connect } from "react-redux";
+import { View, Text, StyleSheet, Image, TouchableOpacity} from 'react-native';
 import string from '../../localization/string';
 import { primaryColor, greyColor, whiteColor } from '../../asset/style/common';
 import Icon from 'react-native-vector-icons/Entypo';
@@ -7,15 +8,18 @@ import { numberFormatter } from '../../util/numberFormatter';
 
 class TextTile extends React.PureComponent {
 
-	render(){
-        const { data } = this.props;
-
+	render(){ 
+        const { data, navigator } = this.props;
 		return (
             <View style={style.tileContainer}>
-                <View style={style.tileBanner}>
-                    <Image style={style.authorPhoto} source={{uri: data.authorPhoto}}/>
-                    <Text>{data.authorName}</Text>
-                </View>
+                <TouchableOpacity onPress={() => navigator('AuthorProfile')}>
+                    <View style={style.tileBanner}>
+                        <Image 
+                            style={style.authorPhoto} 
+                            source={{uri: data.authorPhoto}}/>
+                        <Text>{data.authorName}</Text>
+                    </View>
+                </TouchableOpacity>
                 <View style={style.textSection}>
                     <Text style={style.text}>
                         <Text style={style.tag}>{'#' + data.tag + "# "}</Text>
@@ -94,4 +98,10 @@ const style = StyleSheet.create({
     }
 });
 
-export default TextTile;
+const mapStateToProps = (state) => {
+	return {
+		auth: state.Auth
+	}
+}
+
+export default connect(mapStateToProps, undefined)(TextTile);

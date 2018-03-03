@@ -56,13 +56,22 @@ const AuthNavigator = StackNavigator(
 	}
 );
 
-const HomeNavigator = TabNavigator(
+const PostDrawNavigator = DrawerNavigator(
+	{
+		Post: { screen: Post }
+	}, {
+		headerMode: 'none',
+		drawerPosition: 'bottom',
+		animationEnabled: true
+	}
+);
+
+const HomePrimaryNavigator = TabNavigator(
 	{
 		Followed: { screen: FollowedList },
 		Hot: { screen: HotList },
 		Image: { screen: ImageList },
 		Text: { screen: TextList },
-		
 	},{
 		tabBarComponent: TabBarTop,
 		tabBarPosition: 'top',
@@ -86,6 +95,46 @@ const HomeNavigator = TabNavigator(
 				width: 100,
 			}
 		}
+	}
+);
+
+const HomeNavigator = StackNavigator(
+	{
+		Home: { 
+			screen: HomePrimaryNavigator,
+			navigationOptions: {
+				header: null
+			}
+		},
+		AuthorProfile: { 
+			screen: Profile,
+			navigationOptions: ({ navigation }) => ({ 
+				headerRight: 
+					<Text
+						style={{
+							backgroundColor: primaryColor,
+							color: whiteColor,
+							paddingTop:5,
+							paddingBottom:5,
+							paddingRight: 10,
+							paddingLeft: 10,
+							marginRight: 20,
+							justifyContent: 'center',
+							alignItems: 'center'
+						}}
+					>
+					{string.Share}
+					</Text>,
+				headerStyle: {
+					height: 40,
+				},
+				headerTitleStyle: {
+					fontWeight: 'normal'
+				}
+			})
+		},
+	},{
+		transitionConfig: getSlideFromRightTransition		
 	}
 );
 
@@ -207,16 +256,6 @@ const ProfileNavigator = StackNavigator(
 	},{
 		headerMode: 'float',
 		transitionConfig: getSlideFromRightTransition
-	}
-);
-
-const PostDrawNavigator = DrawerNavigator(
-	{
-		Post: { screen: Post }
-	}, {
-		headerMode: 'none',
-		drawerPosition: 'bottom',
-		animationEnabled: true
 	}
 );
 

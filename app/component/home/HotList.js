@@ -7,6 +7,7 @@ class HotList extends React.PureComponent {
 	render(){
 		return (	
 			<TileList 
+				navigate={this.props.navigation.navigate}
 				data={this.props.data}
 			/>
 		);

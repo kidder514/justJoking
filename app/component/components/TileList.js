@@ -1,16 +1,17 @@
 import React from 'react';
 import { SectionList } from 'react-native';
+import { connect } from "react-redux";
 import ImageTile from '../components/ImageTile';
 import TextTile from '../components/TextTile';
 
 class TileList extends React.PureComponent {
 
-    renderItem({item}){
+    renderItem({item}, navigator){
         switch (item.type) {
             case 'image':
-                return <ImageTile data={item}/>;
+                return <ImageTile data={item} navigator={navigator}/>;
             case 'text':
-                return <TextTile data={item}/>;
+                return <TextTile data={item} navigator={navigator}/>;
             case 'video':
                 return;
             default:
@@ -21,8 +22,8 @@ class TileList extends React.PureComponent {
 	render(){
 		return (
             <SectionList
-                renderItem={this.renderItem}
-                sections={[{key:'tileList', data : this.props.data}]}
+                renderItem={({item}) => this.renderItem({item}, this.props.navigate)}
+                sections={[{key:'tileList', data :this.props.data}]}
                 keyExtractor={(item, index) => {
                     return 'item' + index
                 }}
@@ -32,3 +33,4 @@ class TileList extends React.PureComponent {
 }
 
 export default TileList;
+
