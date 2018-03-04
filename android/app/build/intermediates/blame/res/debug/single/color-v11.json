@@ -1,10 +1,10 @@
 [
     {
         "merged": "/Applications/MAMP/htdocs/JustJoking/android/app/build/intermediates/res/merged/debug/color-v11/abc_background_cache_hint_selector_material_light.xml",
-        "source": "/Applications/MAMP/htdocs/JustJoking/android/app/build/intermediates/exploded-aar/com.android.support/appcompat-v7/23.4.0/res/color-v11/abc_background_cache_hint_selector_material_light.xml"
+        "source": "/Users/duo.lu/.android/build-cache/819bc1a605a3e89ba605eabcc0eda4bced341c02/output/res/color-v11/abc_background_cache_hint_selector_material_light.xml"
     },
     {
         "merged": "/Applications/MAMP/htdocs/JustJoking/android/app/build/intermediates/res/merged/debug/color-v11/abc_background_cache_hint_selector_material_dark.xml",
-        "source": "/Applications/MAMP/htdocs/JustJoking/android/app/build/intermediates/exploded-aar/com.android.support/appcompat-v7/23.4.0/res/color-v11/abc_background_cache_hint_selector_material_dark.xml"
+        "source": "/Users/duo.lu/.android/build-cache/819bc1a605a3e89ba605eabcc0eda4bced341c02/output/res/color-v11/abc_background_cache_hint_selector_material_dark.xml"
     }
 ]
