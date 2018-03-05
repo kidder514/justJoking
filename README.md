@@ -1,5 +1,9 @@
 ## Main tasks
 
+Top priority: 
+The firebase database is limited so we dont have much options,
+and need to cut of some of the features.
+
 #### Auth
 - login
 - signup
@@ -13,6 +17,7 @@
 - compulsory update
 - add ads to app
 - Gif Support
+
 
 #### Pages
 - Auth page
