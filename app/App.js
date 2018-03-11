@@ -2,7 +2,8 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import SplashScreen from 'react-native-splash-screen';
 import { connect } from 'react-redux';
-import { Text, View} from 'react-native-elements'
+import { Text } from 'react-native-elements'
+
 import {
 	NavigationActions,
 	TabNavigator,
@@ -12,7 +13,7 @@ import {
 	DrawerNavigator,
 	HeaderBackButton,
 } from 'react-navigation';
-import { Button } from 'react-native';
+import { Button, View } from 'react-native';
 import getSlideFromRightTransition from 'react-navigation-slide-from-right-transition';
 import string from './localization/string';
 import { primaryColor, greyColor, whiteColor, textColor, blackColor } from './asset/style/common';
@@ -366,9 +367,9 @@ class App extends React.PureComponent {
 
 	render() {
 		if (!!this.props.isSignedIn) {
-			return <MainNavigator />;
+			return (<MainNavigator />);
 		} else {
-			return <AuthNavigator />;
+			return (<AuthNavigator />);
 		}
 	}
 };

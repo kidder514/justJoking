@@ -120,6 +120,7 @@ class Setting extends React.PureComponent {
 						title={string.TermsAndConditions}
 					/>
 					<ListItem 
+						onPress={() => this.props.signOut()}						
 						avatar={<Icon name="log-out" size={20} color={primaryColor} />}
 						titleStyle={style.title}				
 						title={string.SignOut}

@@ -11,6 +11,7 @@ const string = new LocalizedStrings({
 		Copy: 'Copy',
 		Submit: 'Submit',
 		FeatureCommingSoon: 'This feature is comming soon',
+		Error: 'Error',
 // Auth
 		SignIn: 'Sign In',
 		SignUp: 'Sign Up',
@@ -31,6 +32,12 @@ const string = new LocalizedStrings({
 		ConfirmPasswordEmpty: 'please retype password here.',
 		PasswordNotMatch: 'two passwords entered does not match, please retype again.',
 		PasswordInvalid: 'password needs to contain at least one ahpabetic character, one number and no special characters. The whole password must be at least 8 characters long',
+		ServerSignUpSuccess: 'Sign Up Success',
+		ServerSignInSuccess: 'Sign In Success',
+		ServerEmailInvalid: 'Email is inValid',
+		ServerUserDisabled: 'Oops, your account is disabled, contact us for more info',
+		ServerEmailExist: 'This email address already exists choose another one',
+		ServerWrongEmailOrPassword: 'Your e-mail or passsword is wrong, please check',
 //Home 
 		Home: 'Home',
 		Followed: 'Followed',

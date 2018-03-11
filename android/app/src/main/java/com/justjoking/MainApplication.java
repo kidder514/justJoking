@@ -4,6 +4,8 @@ import android.app.Application;
 
 import com.facebook.react.ReactApplication;
 import io.invertase.firebase.RNFirebasePackage;
+import io.invertase.firebase.auth.RNFirebaseAuthPackage;
+import io.invertase.firebase.database.RNFirebaseDatabasePackage;
 import org.devio.rn.splashscreen.SplashScreenReactPackage;
 import com.oblador.vectoricons.VectorIconsPackage;
 import com.babisoft.ReactNativeLocalization.ReactNativeLocalizationPackage;
@@ -30,7 +32,9 @@ public class MainApplication extends Application implements ReactApplication {
             new RNFirebasePackage(),
             new SplashScreenReactPackage(),
             new VectorIconsPackage(),
-            new ReactNativeLocalizationPackage()
+            new ReactNativeLocalizationPackage(),
+            new RNFirebaseAuthPackage(),
+            new RNFirebaseDatabasePackage() 
       );
     }
 

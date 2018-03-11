@@ -3,7 +3,7 @@ import { connect } from "react-redux";
 import { StyleSheet, Text, TextInput, Button, Image, View, BackHandler } from 'react-native';
 import { NavigationActions } from 'react-navigation'
 import string from '../../localization/string';
-import { signIn } from '../../reducer/action/authAction';
+import { signUpWithEmailCall } from '../../reducer/action/authAction';
 import { primaryColor, greyColor, warningColor, whiteColor } from '../../asset/style/common';
 import validator from 'validator';
 
@@ -85,7 +85,7 @@ class SignUp extends React.PureComponent {
 		}
 
 		if(isValid){
-			this.props.signIn();
+			this.props.signUpCall(this.state.name, this.state.email, this.state.password);
 		}
 	}
 
@@ -193,8 +193,8 @@ const mapStateToProps = (state) => {
 
 const mapDispatchToProps = (dispatch) => {
 	return {
-		signIn: () => {
-			dispatch(signIn())
+		signUpCall: (name, email, password) => {
+			dispatch(signUpWithEmailCall(name, email, password))
 		}
 	};
 };

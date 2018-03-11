@@ -3,11 +3,12 @@ import { connect } from "react-redux";
 import { StyleSheet, Text, TextInput, Button, Image, View } from 'react-native';
 import { NavigationActions } from 'react-navigation';
 import string from '../../localization/string';
-import { signIn } from '../../reducer/action/authAction';
+import { singInWithEmailCall } from '../../reducer/action/authAction';
 import { primaryColor, greyColor, warningColor, whiteColor } from '../../asset/style/common';
 import Icon from 'react-native-vector-icons/Entypo';
 import validator from 'validator';
-
+import firebase from 'react-native-firebase';
+import config from '../../config';
 const initState = {
 	email: "",
 	errorEmail: "",
@@ -49,12 +50,17 @@ class SignIn extends React.PureComponent {
 		}
 
 		if(isValid){
-			this.props.signIn();
+			
+			// this.props.singInWithEmailCall(this.state.email, this.state.password);
 		}
 	}
 
 	googleSignIn(){
-		this.props.signIn();
+		const user = firebase.database().ref('users');
+		user.push({
+			name: 'wja',
+			email: "dsklkfekf@baba.com"
+		})
 	}
 
 	facebookSignIn(){
@@ -198,8 +204,8 @@ const mapStateToProps = (state) => {
 
 const mapDispatchToProps = (dispatch) => {
 	return {
-		signIn: () => {
-			dispatch(signIn())
+		singInWithEmailCall: (email, password) => {
+			dispatch(singInWithEmailCall(email, password));
 		}
 	};
 };
