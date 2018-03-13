@@ -13,7 +13,7 @@ import {
 	DrawerNavigator,
 	HeaderBackButton,
 } from 'react-navigation';
-import { Button, View } from 'react-native';
+import { Button, View, ActivityIndicator, StyleSheet, Dimensions } from 'react-native';
 import getSlideFromRightTransition from 'react-navigation-slide-from-right-transition';
 import string from './localization/string';
 import { primaryColor, greyColor, whiteColor, textColor, blackColor } from './asset/style/common';
@@ -41,15 +41,15 @@ import Detail from './component/home/Detail';
 
 const AuthNavigator = StackNavigator(
 	{
-		SignIn: { 
+		SignIn: {
 			screen: SignIn,
-			navigationOptions: ({ navigation }) => ({ 
+			navigationOptions: ({ navigation }) => ({
 				header: null
 			})
 		},
 		SignUp: { screen: SignUp },
 		Policy: { screen: Policy },
-	},{
+	}, {
 		navigationOptions: {
 			headerStyle: {
 				shadowRadius: 0,
@@ -75,7 +75,7 @@ const HomePrimaryNavigator = TabNavigator(
 		Hot: { screen: HotList },
 		Image: { screen: ImageList },
 		Text: { screen: TextList },
-	},{
+	}, {
 		tabBarComponent: TabBarTop,
 		tabBarPosition: 'top',
 		tabBarOptions: {
@@ -103,22 +103,22 @@ const HomePrimaryNavigator = TabNavigator(
 
 const HomeNavigator = StackNavigator(
 	{
-		Home: { 
+		Home: {
 			screen: HomePrimaryNavigator,
 			navigationOptions: {
 				header: null
 			}
 		},
-		AuthorProfile: { 
+		AuthorProfile: {
 			screen: Profile,
-			navigationOptions: ({ navigation }) => ({ 
-				headerRight: 
+			navigationOptions: ({ navigation }) => ({
+				headerRight:
 					<Text
 						style={{
 							backgroundColor: primaryColor,
 							color: whiteColor,
-							paddingTop:5,
-							paddingBottom:5,
+							paddingTop: 5,
+							paddingBottom: 5,
 							paddingRight: 10,
 							paddingLeft: 10,
 							marginRight: 20,
@@ -126,7 +126,7 @@ const HomeNavigator = StackNavigator(
 							alignItems: 'center'
 						}}
 					>
-					{string.Share}
+						{string.Share}
 					</Text>,
 				headerStyle: {
 					height: 40,
@@ -136,16 +136,16 @@ const HomeNavigator = StackNavigator(
 				}
 			})
 		},
-		Detail: { 
+		Detail: {
 			screen: Detail,
-			navigationOptions: ({ navigation }) => ({ 
-				headerRight: 
+			navigationOptions: ({ navigation }) => ({
+				headerRight:
 					<Text
 						style={{
 							backgroundColor: primaryColor,
 							color: whiteColor,
-							paddingTop:5,
-							paddingBottom:5,
+							paddingTop: 5,
+							paddingBottom: 5,
 							paddingRight: 10,
 							paddingLeft: 10,
 							marginRight: 20,
@@ -153,7 +153,7 @@ const HomeNavigator = StackNavigator(
 							alignItems: 'center'
 						}}
 					>
-					{string.Share}
+						{string.Share}
 					</Text>,
 				headerStyle: {
 					height: 40,
@@ -163,23 +163,23 @@ const HomeNavigator = StackNavigator(
 				}
 			})
 		},
-	},{
-		transitionConfig: getSlideFromRightTransition		
+	}, {
+		transitionConfig: getSlideFromRightTransition
 	}
 );
 
 const ProfileNavigator = StackNavigator(
 	{
-		Profile: { 
+		Profile: {
 			screen: Profile,
-			navigationOptions: ({ navigation }) => ({ 
-				headerRight: 
+			navigationOptions: ({ navigation }) => ({
+				headerRight:
 					<Text
 						style={{
 							backgroundColor: primaryColor,
 							color: whiteColor,
-							paddingTop:5,
-							paddingBottom:5,
+							paddingTop: 5,
+							paddingBottom: 5,
 							paddingRight: 10,
 							paddingLeft: 10,
 							marginRight: 20,
@@ -187,7 +187,7 @@ const ProfileNavigator = StackNavigator(
 							alignItems: 'center'
 						}}
 					>
-					{string.Share}
+						{string.Share}
 					</Text>,
 				headerStyle: {
 					height: 40,
@@ -197,9 +197,9 @@ const ProfileNavigator = StackNavigator(
 				}
 			})
 		},
-		Setting: { 
+		Setting: {
 			screen: Setting,
-			navigationOptions: ({ navigation }) => ({ 
+			navigationOptions: ({ navigation }) => ({
 				title: null,
 				headerStyle: {
 					height: 40,
@@ -207,20 +207,20 @@ const ProfileNavigator = StackNavigator(
 				headerTitleStyle: {
 					fontWeight: 'normal',
 				},
-				headerLeft: 
-					<Icon 
-						name="chevron-thin-left" 
-						size={20} 
-						style={{paddingLeft: 10}} 
-						onPress={ () => { navigation.goBack() }}
+				headerLeft:
+					<Icon
+						name="chevron-thin-left"
+						size={20}
+						style={{ paddingLeft: 10 }}
+						onPress={() => { navigation.goBack() }}
 					/>,
-				headerRight: <Text style={{marginRight:20}}>{string.Setting}</Text>
-				
+				headerRight: <Text style={{ marginRight: 20 }}>{string.Setting}</Text>
+
 			})
 		},
-		UserNameSetting: { 
+		UserNameSetting: {
 			screen: UserNameSetting,
-			navigationOptions: ({ navigation }) => ({ 
+			navigationOptions: ({ navigation }) => ({
 				title: null,
 				titleStyle: {
 				},
@@ -230,19 +230,19 @@ const ProfileNavigator = StackNavigator(
 				headerTitleStyle: {
 					fontWeight: 'normal',
 				},
-				headerLeft: <Icon 
-						name="chevron-thin-left" 
-						size={20} 
-						style={{paddingLeft: 10}} 
-						onPress={ () => { navigation.goBack() }}
-					/>,
-				headerRight: <Text style={{marginRight:20}}>{string.UserName}</Text>
+				headerLeft: <Icon
+					name="chevron-thin-left"
+					size={20}
+					style={{ paddingLeft: 10 }}
+					onPress={() => { navigation.goBack() }}
+				/>,
+				headerRight: <Text style={{ marginRight: 20 }}>{string.UserName}</Text>
 
 			})
 		},
-		TaglineSetting: { 
+		TaglineSetting: {
 			screen: TaglineSetting,
-			navigationOptions: ({ navigation }) => ({ 
+			navigationOptions: ({ navigation }) => ({
 				title: null,
 				titleStyle: {
 				},
@@ -252,19 +252,19 @@ const ProfileNavigator = StackNavigator(
 				headerTitleStyle: {
 					fontWeight: 'normal',
 				},
-				headerLeft: <Icon 
-						name="chevron-thin-left" 
-						size={20} 
-						style={{paddingLeft: 10}} 
-						onPress={ () => { navigation.goBack() }}
-					/>,
-				headerRight: <Text style={{marginRight:20}}>{string.Tagline}</Text>
+				headerLeft: <Icon
+					name="chevron-thin-left"
+					size={20}
+					style={{ paddingLeft: 10 }}
+					onPress={() => { navigation.goBack() }}
+				/>,
+				headerRight: <Text style={{ marginRight: 20 }}>{string.Tagline}</Text>
 
 			})
 		},
-		Help: { 
+		Help: {
 			screen: Help,
-			navigationOptions: ({ navigation }) => ({ 
+			navigationOptions: ({ navigation }) => ({
 				title: null,
 				titleStyle: {
 				},
@@ -274,16 +274,16 @@ const ProfileNavigator = StackNavigator(
 				headerTitleStyle: {
 					fontWeight: 'normal',
 				},
-				headerLeft: <Icon 
-						name="chevron-thin-left" 
-						size={20} 
-						style={{paddingLeft: 10}} 
-						onPress={ () => { navigation.goBack() }}
-					/>,
-				headerRight: <Text style={{marginRight:20}}>{string.Help}</Text>
+				headerLeft: <Icon
+					name="chevron-thin-left"
+					size={20}
+					style={{ paddingLeft: 10 }}
+					onPress={() => { navigation.goBack() }}
+				/>,
+				headerRight: <Text style={{ marginRight: 20 }}>{string.Help}</Text>
 			})
 		},
-	},{
+	}, {
 		headerMode: 'float',
 		transitionConfig: getSlideFromRightTransition
 	}
@@ -291,57 +291,57 @@ const ProfileNavigator = StackNavigator(
 
 const MainNavigator = TabNavigator(
 	{
-		Home: { 
+		Home: {
 			screen: HomeNavigator,
 			navigationOptions: {
 				title: string.Home,
 				tabBarIcon: ({ focused, tintColor }) => (
-					focused ? 
+					focused ?
 						<Icon name="home" size={30} color={primaryColor} /> :
-						<Icon name="home" size={30} color={tintColor} />						
+						<Icon name="home" size={30} color={tintColor} />
 				)
 			}
 		},
-		Search: { 
+		Search: {
 			screen: Search,
 			navigationOptions: {
 				title: string.Search,
 				tabBarIcon: ({ focused, tintColor }) => (
-					focused ? 
+					focused ?
 						<Icon name="magnifying-glass" size={30} color={primaryColor} /> :
-						<Icon name="magnifying-glass" size={30} color={tintColor} />						
+						<Icon name="magnifying-glass" size={30} color={tintColor} />
 				)
 			}
 		},
-		Post: { 
+		Post: {
 			screen: PostDrawNavigator,
 			navigationOptions: {
 				title: string.Post,
-				tabBarLabel: () => {null},
-				tabBarIcon: () => ( 
-					<Icon name="squared-plus" size={44} color={primaryColor} /> 				
+				tabBarLabel: () => { null },
+				tabBarIcon: () => (
+					<Icon name="squared-plus" size={44} color={primaryColor} />
 				),
 			}
 		},
-		Inbox: { 
+		Inbox: {
 			screen: Inbox,
 			navigationOptions: {
 				title: string.Inbox,
 				tabBarIcon: ({ focused, tintColor }) => (
-					focused ? 
+					focused ?
 						<Icon name="message" size={30} color={primaryColor} /> :
-						<Icon name="message" size={30} color={tintColor} />						
+						<Icon name="message" size={30} color={tintColor} />
 				)
 			}
 		},
-		Profile: { 
+		Profile: {
 			screen: ProfileNavigator,
 			navigationOptions: {
 				title: string.Profile,
 				tabBarIcon: ({ focused, tintColor }) => (
-					focused ? 
+					focused ?
 						<Icon name="user" size={25} color={primaryColor} /> :
-						<Icon name="user" size={25} color={tintColor} />						
+						<Icon name="user" size={25} color={tintColor} />
 				)
 			}
 		},
@@ -361,21 +361,56 @@ const MainNavigator = TabNavigator(
 );
 
 class App extends React.PureComponent {
-	componentDidMount(){
+	componentDidMount() {
 		SplashScreen.hide();
 	}
 
 	render() {
 		if (!!this.props.isSignedIn) {
-			return (<MainNavigator />);
+			return (
+				<View style={style.outterWrapper}>
+					<MainNavigator />
+					{this.props.isLoading && <View style={style.container}>
+						<ActivityIndicator size="large" color={primaryColor} />
+					</View>}
+				</View>
+			);
 		} else {
-			return (<AuthNavigator />);
+			return (
+				<View style={style.outterWrapper}>
+					<AuthNavigator/>
+					{this.props.isLoading && <View style={style.container}>
+						<ActivityIndicator size="large" color={primaryColor} />
+					</View>}
+				</View>
+			);
 		}
 	}
 };
 
+const style = StyleSheet.create({
+	outterWrapper:{
+		flex: 1,
+		width: Dimensions.get('window').width,	
+	},
+	container: {
+		flex: 1,		
+		width: Dimensions.get('window').width,
+		backgroundColor: 'rgba(255,255,255, 0.8)',
+		position: 'absolute',
+		left: 0,
+		right: 0,
+		top: 0,
+		bottom: 0,
+		flexDirection: 'row',
+		alignItems: 'center',
+		justifyContent: 'center',
+	}
+})
+
 const mapStateToProps = state => ({
 	isSignedIn: state.Auth.isSignedIn,
+	isLoading: state.Ui.isLoading
 });
 
 export default connect(mapStateToProps)(App);

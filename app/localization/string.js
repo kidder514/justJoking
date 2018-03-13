@@ -38,6 +38,7 @@ const string = new LocalizedStrings({
 		ServerUserDisabled: 'Oops, your account is disabled, contact us for more info',
 		ServerEmailExist: 'This email address already exists choose another one',
 		ServerWrongEmailOrPassword: 'Your e-mail or passsword is wrong, please check',
+		ServerDatabaseError: 'Databasee Error Occured',
 //Home 
 		Home: 'Home',
 		Followed: 'Followed',
