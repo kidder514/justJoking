@@ -3,10 +3,14 @@ import { connect } from "react-redux";
 import { StyleSheet, Text, TextInput, Button, Image, View } from 'react-native';
 import { NavigationActions } from 'react-navigation';
 import string from '../../localization/string';
-import { singInWithEmailCall } from '../../reducer/action/authAction';
+import { signInWithEmailCall, signInWithGoogle } from '../../reducer/action/authAction';
 import { primaryColor, greyColor, warningColor, whiteColor } from '../../asset/style/common';
 import Icon from 'react-native-vector-icons/Entypo';
 import validator from 'validator';
+import { GoogleSignin } from 'react-native-google-signin';
+import { toastAndroid } from '../../reducer/action/appAction';
+import firebase from 'react-native-firebase';
+
 const initState = {
 	email: "",
 	errorEmail: "",
@@ -48,13 +52,38 @@ class SignIn extends React.PureComponent {
 		}
 
 		if(isValid){
-			this.props.singInWithEmailCall(this.state.email, this.state.password);
+			this.props.signInWithEmailCall(this.state.email, this.state.password);
 		}
 	}
 
-	googleSignIn(){
+	async googleSignIn() {
+		// GoogleSignin.configure()
+		// .then(()=> {
+		// 	GoogleSignin.signIn()
+		// 	.then((res) => {
+		// 		console.log(res);
+		// 		// this.props.signInWithGoogle(res);
+		// 	})
+		// 	.catch((err) => toastAndroid(string.ServerGoogleSigninFailed))
+		// })
+		// .catch(() => toastAndroid(string.ServerGoogleConfigureFailed));
+		try {
+			// Add any configuration settings here:
+			await GoogleSignin.configure();
+		
+			const data = await GoogleSignin.signIn();
+		
+			// create a new firebase credential with the token
 
+			// login with credential
+
+		
+
+		  } catch (e) {
+			console.error(e);
+		  }
 	}
+
 
 	facebookSignIn(){
 		this.props.signIn();
@@ -197,7 +226,8 @@ const mapStateToProps = (state) => {
 
 const mapDispatchToProps = (dispatch) => {
 	return {
-		singInWithEmailCall: (email, password) => {dispatch(singInWithEmailCall(email, password))}
+		signInWithEmailCall: (email, password) => {dispatch(signInWithEmailCall(email, password))},
+		signInWithGoogle: (data) => {dispatch(signInWithGoogle(date))}
 	};
 };
 

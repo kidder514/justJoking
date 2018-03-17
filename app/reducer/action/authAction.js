@@ -65,7 +65,7 @@ export function signUpWithEmailCall(name, email, password){
 	}
 }
 
-export function singInWithEmailCall(email, password){
+export function signInWithEmailCall(email, password){
 	return dispatch => {
 		dispatch(loadOn());
 		
@@ -88,6 +88,23 @@ export function singInWithEmailCall(email, password){
 		.catch(err => {
 			dispatch(loadEnd());
 			toastAndroid(errorCodeTranslate(err.code));
+		});
+	}
+}
+
+export function signInWithGoogle(data) {
+	return dispatch => {
+		dispatch(loadOn());
+		// create a new firebase credential with the token
+		const credential = firebase.auth.GoogleAuthProvider.credential(data.idToken, data.accessToken)
+		firebase.auth().signInWithCredential(credential)
+		.then((currentUser) => {
+			dispatch(loadEnd());		
+			console.log(currentUser);
+		})
+		.catch(() => {
+			dispatch(loadEnd());					
+			toastAndroid(errorCodeTranslate(err.code))
 		});
 	}
 }

@@ -39,6 +39,8 @@ const string = new LocalizedStrings({
 		ServerEmailExist: 'This email address already exists choose another one',
 		ServerWrongEmailOrPassword: 'Your e-mail or passsword is wrong, please check',
 		ServerDatabaseError: 'Databasee Error Occured',
+		ServerGoogleConfigureFailed: 'Google Signin Configuration failed',
+		ServerGoogleSigninFailed: 'Google Signin Failed',
 //Home 
 		Home: 'Home',
 		Followed: 'Followed',
