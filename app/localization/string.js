@@ -28,6 +28,7 @@ const string = new LocalizedStrings({
 		EmailInvalid: "uhm, This e-mail doesn't look right.",
 		EnterName: 'Enter name or nick name ...',
 		NameEmpty: 'Please give us a name, any name will do',
+		InvalidNameLength: 'Name must be 2 - 20 characters long',
 		ConfirmPassword: 'Retype your password again ...',
 		ConfirmPasswordEmpty: 'please retype password here.',
 		PasswordNotMatch: 'two passwords entered does not match, please retype again.',
@@ -71,6 +72,7 @@ const string = new LocalizedStrings({
 		Avatar: 'Avatar',
 		UserName: 'User Name',
 		JokeBuddyId: 'Joke Buddy ID',
+		AddTagline: 'Add you tagline here',
 		Tagline: 'Tagline',
 		WhoCanSendMeMessages: 'Who can send me messages ?',
 		Anyone: 'Anyone',
@@ -85,7 +87,11 @@ const string = new LocalizedStrings({
 		TermsAndConditions: 'Terms and Conditions',
 		CheckAppUpdates: 'Check App Updates',
 		UserNameRules: 'User Name must be 2-20 characters long, and not contain any special characters',
-		TaglinePrompt: "Wanna be the champagne of jokes? why don't start writing something funny here to let people remember you?"
+		TaglinePrompt: "Wanna be the champagne of jokes? why don't start writing something funny here to let people remember you? Please make sure it is less that 100 characters",
+		InvalidTaglineLength: 'Please make sure it is less that 100 characters',
+		WordCount: 'word count:',
+		ServerNameUpdateSuccess: 'Successfully updated the name',
+		ServerTaglineUpdateSuccess: 'Successfully updated the tagline',		
 	}
 });
 

@@ -4,28 +4,37 @@ import { View, Text, StyleSheet, Dimensions} from 'react-native';
 import { FormValidationMessage, FormInput, Button} from 'react-native-elements'
 import { whiteColor, greyColor, primaryColor } from '../../asset/style/common';
 import string from '../../localization/string';
-
-const maxCharCount = 50;
+import { toastAndroid } from '../../reducer/action/appAction';
+import { updateNameCall } from '../../reducer/action/authAction';
 
 class UserNameSetting extends React.PureComponent {
 	constructor(props) {
 		super(props);
 		this.state = {
 			name: '',
+			errorName: '',
+			wordCount: 0,
 			isValid: false
 		}
 	}
 
 	componentDidMount(){
-		this.setState({name: this.props.auth.name});
+		const name = this.props.auth.name;
+		this.setState({name: name, wordCount: name.length });
 	}
 
 	onChangeText(txt) {
-		this.setState({name: txt});
+		this.setState({name: txt, wordCount: txt.length});
 	}
 
 	onSubmit(){
-		console.log('on submit');
+		const name = this.state.name;
+		if (name == '' || name.length > 20 || name.length < 2) {
+			this.setState({errorName: string.InvalidNameLength});
+		} else {
+			this.setState({errorName: ''});
+			this.props.updateNameCall(name);
+		}
 	}
 	
 	render() {
@@ -38,8 +47,10 @@ class UserNameSetting extends React.PureComponent {
 					placeholder={this.state.name} 
 					value={this.state.name}
 					onChangeText={(txt) => this.onChangeText(txt)}
+					maxLength = {50}
 				/>
-				<FormValidationMessage>{'Error Message'}</FormValidationMessage>
+				<Text style={style.wordCount}>{string.WordCount + this.state.wordCount}</Text>				
+				<FormValidationMessage>{this.state.errorName}</FormValidationMessage>
 				<Text style={style.rules}>{string.UserNameRules}</Text>
 				<Button
 					title={string.Submit}
@@ -55,6 +66,7 @@ class UserNameSetting extends React.PureComponent {
 
 const style = StyleSheet.create({
 	container: {
+		flex: 1,
 		backgroundColor: whiteColor,
 		paddingBottom: 30
 	}, 
@@ -72,6 +84,12 @@ const style = StyleSheet.create({
 		paddingTop: 20,
 		paddingBottom:30
 	},
+	wordCount: {
+		fontSize: 12,
+		paddingLeft: 20,
+		paddingRight: 20,
+		textAlign: 'right'
+	},
 	button: {
 		width: Dimensions.get('window').width * 0.3,
 		alignSelf: 'flex-end',
@@ -87,5 +105,11 @@ const mapStateToProps = (state) => {
 	}
 }
 
+const mapDispatchToProps = (dispatch) => {
+	return {
+		updateNameCall: (name) => {dispatch(updateNameCall(name))}
+	};
+};
 
-export default connect(mapStateToProps)(UserNameSetting);
+
+export default connect(mapStateToProps, mapDispatchToProps)(UserNameSetting);

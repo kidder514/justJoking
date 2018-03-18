@@ -4,28 +4,36 @@ import { View, Text, StyleSheet, Dimensions} from 'react-native';
 import { FormValidationMessage, FormInput, Button} from 'react-native-elements'
 import { whiteColor, greyColor, primaryColor } from '../../asset/style/common';
 import string from '../../localization/string';
-
-const maxCharCount = 50;
+import { updateTaglineCall } from '../../reducer/action/authAction';
 
 class TaglineSetting extends React.PureComponent {
 	constructor(props) {
 		super(props);
 		this.state = {
 			tagline: '',
+			errorTagline: '',
+			wordCount: 0,
 			isValid: false
 		}
 	}
 
 	componentDidMount(){
-		this.setState({tagline: this.props.auth.tagline});
+		const tagline = this.props.auth.tagline;
+		this.setState({tagline: tagline, wordCount: tagline.length });
 	}
 
 	onChangeText(txt) {
-		this.setState({tagline: txt});
+		this.setState({tagline: txt, wordCount: txt.length});
 	}
 
 	onSubmit(){
-		console.log('on submit');
+		const tagline = this.state.tagline;
+		if (tagline.length > 100) {
+			this.setState({errorTagline: string.InvalidTaglineLength});
+		} else {
+			this.setState({errorTagline: ''});
+			this.props.updateTaglineCall(tagline);
+		}
 	}
 	
 	render() {
@@ -39,9 +47,11 @@ class TaglineSetting extends React.PureComponent {
 					value={this.state.tagline}
 					multiline={true}
 					numberOfLines={4}
+					maxLength = {150}					
 					onChangeText={(txt) => this.onChangeText(txt)}
 				/>
-				<FormValidationMessage>{'Error Message'}</FormValidationMessage>
+				<Text style={style.wordCount}>{string.WordCount + this.state.wordCount}</Text>				
+				<FormValidationMessage>{this.state.errorTagline}</FormValidationMessage>
 				<Text style={style.rules}>{string.TaglinePrompt}</Text>
 				<Button
 					title={string.Submit}
@@ -57,6 +67,7 @@ class TaglineSetting extends React.PureComponent {
 
 const style = StyleSheet.create({
 	container: {
+		flex: 1,
 		backgroundColor: whiteColor,
 		paddingBottom: 30
 	}, 
@@ -74,6 +85,12 @@ const style = StyleSheet.create({
 		paddingTop: 20,
 		paddingBottom:30
 	},
+	wordCount: {
+		fontSize: 12,
+		paddingLeft: 20,
+		paddingRight: 20,
+		textAlign: 'right'
+	},
 	button: {
 		width: Dimensions.get('window').width * 0.3,
 		alignSelf: 'flex-end',
@@ -89,4 +106,10 @@ const mapStateToProps = (state) => {
 	}
 }
 
-export default connect(mapStateToProps)(TaglineSetting);
+const mapDispatchToProps = (dispatch) => {
+	return {
+		updateTaglineCall: (tagline) => {dispatch(updateTaglineCall(tagline))}
+	};
+};
+
+export default connect(mapStateToProps, mapDispatchToProps)(TaglineSetting);

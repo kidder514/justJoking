@@ -12,15 +12,8 @@ class Setting extends React.PureComponent {
 		super(props);
 	}
 
-
 	async copyToClipboard(){
 		Clipboard.setString(this.props.auth.id);
-	}
-
-	onCopy(){
-		this.copyToClipboard().then( () => {
-			console.log('successfully copied')
-		})
 	}
 
 	render() {
@@ -32,7 +25,14 @@ class Setting extends React.PureComponent {
 					<ListItem 
 						titleStyle={style.title}
 						rightTitle={string.Avatar}
-						avatar={<Avatar rounded large source={{ uri: user.photo }}/>}
+						avatar={
+							<Avatar 
+								rounded 
+								large 
+								source={user.photoURL == '' ? require('../../asset/image/avatar.png'): { uri: user.photoURL}}
+								activeOpacity={0.7}
+							/>
+						}
 					/>
 					<ListItem 
 						titleStyle={style.title}
@@ -41,20 +41,7 @@ class Setting extends React.PureComponent {
 						onPress={() => navigate('UserNameSetting')}
 					/>
 					<ListItem 
-						titleStyle={style.title}				
-						rightTitle={user.id}
-						hideChevron={true}
-						label={
-							<Text 
-								style={style.copyButton} 
-								onPress={() => this.onCopy()}
-							>
-								{string.Copy}
-							</Text>
-						}
-						title={string.JokeBuddyId}
-					/>
-					<ListItem 
+						rightTitle={!!user.tagline ? user.tagline : string.AddTagline}
 						titleStyle={style.title}
 						onPress={() => navigate('TaglineSetting')}						
 						title={string.Tagline}
@@ -72,6 +59,7 @@ class Setting extends React.PureComponent {
 					<View style={style.checkBoxItem}>
 						<Text>{string.AutoPlayGif}</Text>
 						<CheckBox 
+							checked={user.autoPlayGif}
 							containerStyle={style.checkbox}
 							checkedColor={primaryColor}
 						/>
@@ -80,13 +68,14 @@ class Setting extends React.PureComponent {
 						<Text>{string.AutoPlayVideos}</Text>
 						<CheckBox 
 							containerStyle={style.checkbox}
-							checked={true}
+							checked={user.autoPlayVideos}
 							checkedColor={primaryColor}
 						/>
 					</View>
 					<View style={style.checkBoxItem}>
 						<Text>{string.MakeYourGeolocationPublic}</Text>
 						<CheckBox 
+							checked={user.publicLocation}						
 							containerStyle={style.checkbox}
 							checkedColor={primaryColor}
 						/>

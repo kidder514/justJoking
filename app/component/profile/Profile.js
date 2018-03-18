@@ -29,9 +29,8 @@ class Profile extends React.PureComponent {
 						<Avatar
 							large
 							rounded
-							style={style.avatar}
 							title={user.name ? user.name.charAt(0).toUpperCase() : ''}
-							source={{ uri: user.photo }}
+							source={user.photoURL == '' ? require('../../asset/image/avatar.png'): { uri: user.photoURL}}
 							activeOpacity={0.7}
 						/>
 					</View>
@@ -41,14 +40,15 @@ class Profile extends React.PureComponent {
 								<Text style={style.hightlightText}>{user.postCount}</Text>
 								<Text style={style.hightlightText}>{string.Post}</Text>
 							</View>
-							<View>
+							{/* TODO: to be added when subscription feature is added */}
+							{/* <View>
 								<Text style={style.hightlightText}>{user.followers.length}</Text>
 								<Text style={style.hightlightText}>{string.Followers}</Text>
 							</View>
 							<View>
 								<Text style={style.hightlightText}>{user.following.length}</Text>
 								<Text style={style.hightlightText}>{string.Following}</Text>
-							</View>
+							</View> */}
 						</View>
 						<View>
 							<Button

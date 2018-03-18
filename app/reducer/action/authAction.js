@@ -23,6 +23,20 @@ export const signOut = () => {
 	};
 };
 
+export const updateName = (name) => {
+	return {
+		type: 'UPDATE_NAME',
+		payload: name
+	};
+}
+
+export const updateTagline = (tagline) => {
+	return {
+		type: 'UPDATE_TAGLINE',
+		payload: tagline
+	};
+}
+
 export function signUpWithEmailCall(name, email, password){
 	return dispatch => {
 		dispatch(loadOn());
@@ -38,6 +52,7 @@ export function signUpWithEmailCall(name, email, password){
 					creationTime: resUser.metadata.creationTime,
 					lastSignInTime: resUser.metadata.lastSignInTime,
 					photoURL: resUser.photoURL ? resUser.photoURL : "",
+					postCount: 0,
 					providerId: resUser.providerId,
 					uid: resUser.uid,
 					tagline: '',
@@ -112,6 +127,7 @@ export function signInWithSocialCall(credential) {
 						creationTime: resUser.metadata.creationTime,
 						lastSignInTime: resUser.metadata.lastSignInTime,
 						photoURL: resUser.photoURL ? resUser.photoURL : "",
+						postCount: 0,
 						providerId: resUser.providerId,
 						uid: resUser.uid,
 						tagline: '',
@@ -156,6 +172,42 @@ export function signOutCall() {
 			dispatch(loadEnd());
 			dispatch(signOut());
 			toastAndroid(string.ServerSignOutError);
+		});
+	}
+}
+
+export function updateNameCall(name) {
+	return (dispatch, getState) => {
+		dispatch(loadOn());
+		firebase.firestore().doc('users/' + getState().Auth.uid).update({
+			'name': name
+		})
+		.then(() => {
+			dispatch(loadEnd());
+			toastAndroid(string.ServerNameUpdateSuccess);			
+			dispatch(updateName(name));
+		})
+		.catch(err => {
+			dispatch(loadEnd());
+			toastAndroid(string.ServerDatabaseError);
+		});
+	}
+}
+
+export function updateTaglineCall(tagline) {
+	return (dispatch, getState) => {
+		dispatch(loadOn());
+		firebase.firestore().doc('users/' + getState().Auth.uid).update({
+			'tagline': tagline
+		})
+		.then(() => {
+			dispatch(loadEnd());
+			toastAndroid(string.ServerTaglineUpdateSuccess);			
+			dispatch(updateTagline(tagline));
+		})
+		.catch(err => {
+			dispatch(loadEnd());
+			toastAndroid(string.ServerDatabaseError);
 		});
 	}
 }

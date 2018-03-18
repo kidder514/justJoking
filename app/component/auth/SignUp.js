@@ -46,6 +46,9 @@ class SignUp extends React.PureComponent {
 		if(this.state.name === '') {
 			isValid = false;
 			this.setState({errorName: string.NameEmpty});
+		} else if (this.state.name.length < 2 || this.state.name.length > 20){
+			isValid = false;
+			this.setState({errorName: string.InvalidNameLength});
 		} else {
 			this.setState({errorName: ''});
 		}

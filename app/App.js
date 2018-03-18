@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 import SplashScreen from 'react-native-splash-screen';
 import { connect } from 'react-redux';
 import { Text } from 'react-native-elements'
-
+import { init } from './reducer/action/appAction';
 import {
 	NavigationActions,
 	TabNavigator,
@@ -363,6 +363,7 @@ const MainNavigator = TabNavigator(
 class App extends React.PureComponent {
 	componentDidMount() {
 		SplashScreen.hide();
+		this.props.init();
 	}
 
 	render() {
@@ -413,4 +414,10 @@ const mapStateToProps = state => ({
 	isLoading: state.Ui.isLoading
 });
 
-export default connect(mapStateToProps)(App);
+const mapDispatchToProps = (dispatch) => {
+	return {
+		init: () => {dispatch(init())}
+	};
+};
+
+export default connect(mapStateToProps, mapDispatchToProps)(App);
