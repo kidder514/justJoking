@@ -56,32 +56,17 @@ class SignIn extends React.PureComponent {
 		}
 	}
 
-	async googleSignIn() {
-		// GoogleSignin.configure()
-		// .then(()=> {
-		// 	GoogleSignin.signIn()
-		// 	.then((res) => {
-		// 		console.log(res);
-		// 		// this.props.signInWithGoogle(res);
-		// 	})
-		// 	.catch((err) => toastAndroid(string.ServerGoogleSigninFailed))
-		// })
-		// .catch(() => toastAndroid(string.ServerGoogleConfigureFailed));
-		try {
-			// Add any configuration settings here:
-			await GoogleSignin.configure();
-		
-			const data = await GoogleSignin.signIn();
-		
-			// create a new firebase credential with the token
-
-			// login with credential
-
-		
-
-		  } catch (e) {
-			console.error(e);
-		  }
+	googleSignIn() {
+		GoogleSignin.configure()
+		.then(()=> {
+			GoogleSignin.signIn()
+			.then((res) => {
+				const credential = firebase.auth.GoogleAuthProvider.credential(res.idToken, res.accessToken);
+				this.props.signInWithGoogle(credential);
+			})
+			.catch((err) => toastAndroid(string.ServerGoogleSigninFailed))
+		})
+		.catch(() => toastAndroid(string.ServerGoogleConfigureFailed));
 	}
 
 
@@ -227,7 +212,7 @@ const mapStateToProps = (state) => {
 const mapDispatchToProps = (dispatch) => {
 	return {
 		signInWithEmailCall: (email, password) => {dispatch(signInWithEmailCall(email, password))},
-		signInWithGoogle: (data) => {dispatch(signInWithGoogle(date))}
+		signInWithGoogle: (credential) => {dispatch(signInWithGoogle(credential))}
 	};
 };
 

@@ -68,7 +68,6 @@ export function signUpWithEmailCall(name, email, password){
 export function signInWithEmailCall(email, password){
 	return dispatch => {
 		dispatch(loadOn());
-		
 		// get user from firebase auth
 		firebase.auth().signInAndRetrieveDataWithEmailAndPassword(email, password)
 		.then(res => {
@@ -92,17 +91,53 @@ export function signInWithEmailCall(email, password){
 	}
 }
 
-export function signInWithGoogle(data) {
+export function signInWithGoogle(credential) {
 	return dispatch => {
 		dispatch(loadOn());
-		// create a new firebase credential with the token
-		const credential = firebase.auth.GoogleAuthProvider.credential(data.idToken, data.accessToken)
 		firebase.auth().signInWithCredential(credential)
-		.then((currentUser) => {
-			dispatch(loadEnd());		
-			console.log(currentUser);
+		.then((user) => {
+			const userDoc = firebase.firestore().doc('users/' + user._user.uid);
+			userDoc.get()
+			.then(doc => {
+				if (doc.exists) {
+					dispatch(loadEnd());					
+					dispatch(signIn(doc.data()));
+					toastAndroid(string.ServerSignUpSuccess);
+				} else {
+					const resUser = user._user;
+					const userData = {
+						email: resUser.email,
+						name: resUser.displayName,
+						emailVerified: resUser.emailVerified,
+						creationTime: resUser.metadata.creationTime,
+						lastSignInTime: resUser.metadata.lastSignInTime,
+						photoURL: resUser.photoURL ? resUser.photoURL : "",
+						providerId: resUser.providerId,
+						uid: resUser.uid,
+						tagline: '',
+						whoCanSendMeMessages: 'anyone',
+						autoPlayGif: false,
+						autoPlayVideos: false,
+						publicLocation: false
+					}
+					userDoc.set(userData)
+					.then((res) => {
+						dispatch(loadEnd());
+						dispatch(signIn(userData));
+						toastAndroid(string.ServerSignInSuccess);								
+					})	
+					.catch((err) => {
+						dispatch(loadEnd());
+						toastAndroid(string.ServerDatabaseError)
+					});
+				}
+			})
+			.catch((err) => {
+				dispatch(loadEnd());					
+				toastAndroid(string.ServerDatabaseError);
+			});
 		})
-		.catch(() => {
+		.catch((err) => {
 			dispatch(loadEnd());					
 			toastAndroid(errorCodeTranslate(err.code))
 		});
