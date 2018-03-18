@@ -91,7 +91,7 @@ export function signInWithEmailCall(email, password){
 	}
 }
 
-export function signInWithGoogle(credential) {
+export function signInWithSocialCall(credential) {
 	return dispatch => {
 		dispatch(loadOn());
 		firebase.auth().signInWithCredential(credential)
@@ -140,6 +140,22 @@ export function signInWithGoogle(credential) {
 		.catch((err) => {
 			dispatch(loadEnd());					
 			toastAndroid(errorCodeTranslate(err.code))
+		});
+	}
+}
+
+export function signOutCall() {
+	return dispatch => {
+		dispatch(loadOn());
+		firebase.auth().signOut()
+		.then(() => {
+			dispatch(loadEnd());			
+			dispatch(signOut());
+		})
+		.catch(err => {
+			dispatch(loadEnd());
+			dispatch(signOut());
+			toastAndroid(string.ServerSignOutError);
 		});
 	}
 }

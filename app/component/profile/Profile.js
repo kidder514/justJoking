@@ -15,10 +15,6 @@ class Profile extends React.PureComponent {
 		};
 	};
 
-	submit() {
-		this.props.signOut();
-	}
-
 	componentDidMount() {
 		this.props.navigation.setParams({titleParam: this.props.auth.name});
 	}

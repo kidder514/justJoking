@@ -3,13 +3,14 @@ import { connect } from "react-redux";
 import { StyleSheet, Text, TextInput, Button, Image, View } from 'react-native';
 import { NavigationActions } from 'react-navigation';
 import string from '../../localization/string';
-import { signInWithEmailCall, signInWithGoogle } from '../../reducer/action/authAction';
+import { signInWithEmailCall, signInWithSocialCall } from '../../reducer/action/authAction';
 import { primaryColor, greyColor, warningColor, whiteColor } from '../../asset/style/common';
 import Icon from 'react-native-vector-icons/Entypo';
 import validator from 'validator';
 import { GoogleSignin } from 'react-native-google-signin';
-import { toastAndroid } from '../../reducer/action/appAction';
+import { AccessToken, LoginManager } from 'react-native-fbsdk';
 import firebase from 'react-native-firebase';
+import { toastAndroid } from '../../reducer/action/appAction';
 
 const initState = {
 	email: "",
@@ -62,7 +63,7 @@ class SignIn extends React.PureComponent {
 			GoogleSignin.signIn()
 			.then((res) => {
 				const credential = firebase.auth.GoogleAuthProvider.credential(res.idToken, res.accessToken);
-				this.props.signInWithGoogle(credential);
+				this.props.signInWithSocialCall(credential);
 			})
 			.catch((err) => toastAndroid(string.ServerGoogleSigninFailed))
 		})
@@ -70,8 +71,25 @@ class SignIn extends React.PureComponent {
 	}
 
 
-	facebookSignIn(){
-		this.props.signIn();
+	async facebookSignIn(){
+		try {
+			const result = await LoginManager.logInWithReadPermissions(['public_profile', 'email']);
+			if (result.isCancelled) {
+				toastAndroid(string.ServerUserCancelledLogin);
+			}
+
+			// get the access token
+			const data = await AccessToken.getCurrentAccessToken();
+			if (!data) {
+				toastAndroid(string.ServerObtainTokenError);				
+			}
+		
+			// create a new firebase credential with the token
+			const credential = firebase.auth.FacebookAuthProvider.credential(data.accessToken);
+			this.props.signInWithSocialCall(credential);
+		  } catch (e) {
+			console.error(e);
+		  }
 	}
 
 	twitterSignIn(){
@@ -212,7 +230,7 @@ const mapStateToProps = (state) => {
 const mapDispatchToProps = (dispatch) => {
 	return {
 		signInWithEmailCall: (email, password) => {dispatch(signInWithEmailCall(email, password))},
-		signInWithGoogle: (credential) => {dispatch(signInWithGoogle(credential))}
+		signInWithSocialCall: (credential) => {dispatch(signInWithSocialCall(credential))}
 	};
 };
 

@@ -32,12 +32,4 @@ const mapStateToProps = (state) => {
 	}
 }
 
-const mapDispatchToProps = (dispatch) => {
-	return {
-		signOut: () => {
-			dispatch(signOut())
-		}
-	};
-};
-
-export default connect(mapStateToProps, mapDispatchToProps)(Help);
+export default connect(mapStateToProps)(Help);

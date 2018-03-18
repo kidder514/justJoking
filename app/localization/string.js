@@ -41,6 +41,9 @@ const string = new LocalizedStrings({
 		ServerDatabaseError: 'Databasee Error Occured',
 		ServerGoogleConfigureFailed: 'Google Signin Configuration failed',
 		ServerGoogleSigninFailed: 'Google Signin Failed',
+		ServerUserCancelledLogin: 'User has cancelled login.',
+		ServerObtainTokenError: 'Not able to obtain user token',
+		ServerSignOutError: 'Contact server failed, but you local sign-in status is removed.',
 //Home 
 		Home: 'Home',
 		Followed: 'Followed',

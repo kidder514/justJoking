@@ -4,7 +4,6 @@ import { View, Text, StyleSheet, Dimensions} from 'react-native';
 import { FormValidationMessage, FormInput, Button} from 'react-native-elements'
 import { whiteColor, greyColor, primaryColor } from '../../asset/style/common';
 import string from '../../localization/string';
-import { signOut } from '../../reducer/action/authAction';
 
 const maxCharCount = 50;
 
@@ -88,12 +87,5 @@ const mapStateToProps = (state) => {
 	}
 }
 
-const mapDispatchToProps = (dispatch) => {
-	return {
-		signOut: () => {
-			dispatch(signOut())
-		}
-	};
-};
 
-export default connect(mapStateToProps, mapDispatchToProps)(UserNameSetting);
+export default connect(mapStateToProps)(UserNameSetting);

@@ -3,7 +3,7 @@ import { connect } from "react-redux";
 import { View, Text, Button, StyleSheet, ScrollView, Clipboard} from 'react-native';
 import { whiteColor, primaryColor, greyColor } from '../../asset/style/common';
 import string from '../../localization/string';
-import { signOut } from '../../reducer/action/authAction';
+import { signOutCall } from '../../reducer/action/authAction';
 import { Avatar, List, ListItem, CheckBox } from 'react-native-elements';
 import Icon from 'react-native-vector-icons/Entypo';
 
@@ -120,7 +120,7 @@ class Setting extends React.PureComponent {
 						title={string.TermsAndConditions}
 					/>
 					<ListItem 
-						onPress={() => this.props.signOut()}						
+						onPress={() => this.props.signOutCall()}						
 						avatar={<Icon name="log-out" size={20} color={primaryColor} />}
 						titleStyle={style.title}				
 						title={string.SignOut}
@@ -169,9 +169,7 @@ const mapStateToProps = (state) => {
 
 const mapDispatchToProps = (dispatch) => {
 	return {
-		signOut: () => {
-			dispatch(signOut())
-		}
+		signOutCall: () => {dispatch(signOutCall())}
 	};
 };
 
