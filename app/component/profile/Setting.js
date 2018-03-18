@@ -12,10 +12,6 @@ class Setting extends React.PureComponent {
 		super(props);
 	}
 
-	async copyToClipboard(){
-		Clipboard.setString(this.props.auth.id);
-	}
-
 	render() {
 		const user = this.props.auth;
 		const { navigate } = this.props.navigation;
@@ -47,40 +43,62 @@ class Setting extends React.PureComponent {
 						title={string.Tagline}
 					/>
 				</List>
-				<List>
-					<View style={style.checkBoxItem}>
+				{/* <List> */}
+					{/* TODO: inbox feature to be implemted */}
+					{/* <View style={style.checkBoxGroup}>
 						<Text>{string.WhoCanSendMeMessages}</Text>
-						<CheckBox 
-							containerStyle={style.checkbox}
-							checked={true}
-							checkedColor={primaryColor}
-						/>
-					</View>
-					<View style={style.checkBoxItem}>
+						<View style={style.checkboxGroupContainer}>
+							<CheckBox 
+								containerStyle={style.checkbox}
+								checked={true}
+								checkedIcon='dot-circle-o'
+								uncheckedIcon='circle-o'
+								checkedColor={primaryColor}
+							/>
+							<CheckBox 
+								containerStyle={style.checkbox}
+								checked={false}
+								checkedIcon='dot-circle-o'
+								uncheckedIcon='circle-o'
+								checkedColor={primaryColor}
+							/>
+							<CheckBox 
+								containerStyle={style.checkbox}
+								checked={true}
+								checkedIcon='dot-circle-o'
+								uncheckedIcon='circle-o'
+								checkedColor={primaryColor}
+							/>
+						</View>
+					</View> */}
+					{/* TODO auto play gif option */}
+					{/* <View style={style.checkBoxItem}>
 						<Text>{string.AutoPlayGif}</Text>
 						<CheckBox 
 							checked={user.autoPlayGif}
 							containerStyle={style.checkbox}
 							checkedColor={primaryColor}
 						/>
-					</View>
-					<View style={style.checkBoxItem}>
+					</View> */}
+					{/* TODO Video support */}
+					{/* <View style={style.checkBoxItem}>
 						<Text>{string.AutoPlayVideos}</Text>
 						<CheckBox 
 							containerStyle={style.checkbox}
 							checked={user.autoPlayVideos}
 							checkedColor={primaryColor}
 						/>
-					</View>
-					<View style={style.checkBoxItem}>
+					</View> */}
+					{/* TODO Geolocation visibility */}
+					{/* <View style={style.checkBoxItem}>
 						<Text>{string.MakeYourGeolocationPublic}</Text>
 						<CheckBox 
 							checked={user.publicLocation}						
 							containerStyle={style.checkbox}
 							checkedColor={primaryColor}
 						/>
-					</View>
-				</List>
+					</View> */}
+				{/* </List> */}
 				<List>
 					<ListItem 
 						avatar={<Icon name="help-with-circle" size={20} color={primaryColor} />}
@@ -88,21 +106,24 @@ class Setting extends React.PureComponent {
 						title={string.Help}
 						onPress={() => navigate('Help')}
 					/>
-					<ListItem 
+					{/* TODO clean Cache */}
+					{/* <ListItem 
 						avatar={<Icon name="trash" size={20} color={primaryColor} />}
 						titleStyle={style.title}
 						title={string.CleanCache}
-					/>
-					<ListItem 
+					/> */}
+					{/* TODO contact us */}
+					{/* <ListItem 
 						avatar={<Icon name="phone" size={20} color={primaryColor} />}
 						titleStyle={style.title}				
 						title={string.ContactUs}
-					/>
-					<ListItem 
+					/> */}
+					{/* TODO check app update */}
+					{/* <ListItem 
 						avatar={<Icon name="ccw" size={20} color={primaryColor} />}
 						titleStyle={style.title}
 						title={string.CheckAppUpdates}
-					/>
+					/> */}
 					<ListItem 
 						avatar={<Icon name="open-book" size={20} color={primaryColor} />}
 						titleStyle={style.title}				
@@ -131,7 +152,19 @@ const style = StyleSheet.create({
 		paddingLeft: 20,
 		borderBottomWidth: 1,
 		borderBottomColor: greyColor
-	}, 
+	},
+	// TODO inbox feature to be implemented.
+	// checkBoxGroup: {
+	// 	justifyContent: 'center',
+	// 	flexDirection: 'column',
+	// 	alignItems: 'flex-start',
+	// 	paddingLeft: 20,
+	// 	borderBottomWidth: 1,
+	// 	borderBottomColor: greyColor
+	// },
+	// checkboxGroupContainer: {
+	// 	flexDirection: 'row'
+	// },
 	checkbox: {
 		backgroundColor: whiteColor,
 		width: 60,

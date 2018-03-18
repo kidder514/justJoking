@@ -1,37 +1,49 @@
 ## Main tasks
 
-Top priority: 
-The firebase database is limited so we dont have much options,
-and need to cut of some of the features.
-
-#### Auth
-- login
-- signup
-- Google Login
-- Facebook Login
-
-#### Features
+### Feature in release 1.0.0
 - Init
-- Navigation
-- Link to webview
 - compulsory update
 - add ads to app
 - Gif Support
-
-
-#### Pages
-- Auth page
-- Setting
-- profile
-- Posting page
-- Home
-1. All followed
-2. featured
-3. Image
-4. Text
-- Inbox
 - search Page.
+- edit all the text to make them appropriate 
+- changeName to just jokes maybe, before that check how name will affect you ranking
+- App store optimization 
 
+### Features in release 1.1.0
+- Inbox
+- second layer commet
+- comment order by likes
+
+### Features in release 1.2.0
+- push notification
+- geolocation public
+
+## Features in release 1.3.0
+- clean Cache
+- check update
+
+## Features in release 1.4.0
+- Video support
+
+## Features in release 1.5.0
+- App store optimization
+- subscription feature
+
+## Features in release 1.6.0
+- help page faq and contact us page
+- better avatar support
+
+## Features in release 1.7.0
+- share profile support
+
+## Features in release 1.8.0
+- add IOS target
+
+### Planned Features
+- Link to webview
+- online user management
+- online forum
 
 This project was bootstrapped with [Create React Native App](https://github.com/react-community/create-react-native-app).
 

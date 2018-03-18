@@ -37,7 +37,7 @@ class Profile extends React.PureComponent {
 					<View >
 						<View style={style.profileHightlight}>
 							<View >
-								<Text style={style.hightlightText}>{user.postCount}</Text>
+								<Text style={style.hightlightText}>{user.postCount ? user.postCount : '0'}</Text>
 								<Text style={style.hightlightText}>{string.Post}</Text>
 							</View>
 							{/* TODO: to be added when subscription feature is added */}

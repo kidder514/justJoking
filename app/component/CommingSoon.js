@@ -2,7 +2,6 @@ import React from 'react';
 import { View, Text, StyleSheet, Dimensions } from 'react-native';
 import string from '../localization/string';
 
-
 class CommingSoon extends React.PureComponent {
 
 	render(){
@@ -16,11 +15,11 @@ class CommingSoon extends React.PureComponent {
 	}
 }
 
-
 const style = StyleSheet.create({
 	container: {
-        width: Dimensions.get('window').width,
-        height: Dimensions.get('window').height,
+		flex: 1,
+		paddingLeft: 30,
+		paddingRight: 30,
         alignItems: 'center',
         justifyContent: 'center',
 	}

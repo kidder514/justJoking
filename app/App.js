@@ -112,22 +112,23 @@ const HomeNavigator = StackNavigator(
 		AuthorProfile: {
 			screen: Profile,
 			navigationOptions: ({ navigation }) => ({
-				headerRight:
-					<Text
-						style={{
-							backgroundColor: primaryColor,
-							color: whiteColor,
-							paddingTop: 5,
-							paddingBottom: 5,
-							paddingRight: 10,
-							paddingLeft: 10,
-							marginRight: 20,
-							justifyContent: 'center',
-							alignItems: 'center'
-						}}
-					>
-						{string.Share}
-					</Text>,
+				// TODO share authr profile
+				// headerRight:
+				// 	<Text
+				// 		style={{
+				// 			backgroundColor: primaryColor,
+				// 			color: whiteColor,
+				// 			paddingTop: 5,
+				// 			paddingBottom: 5,
+				// 			paddingRight: 10,
+				// 			paddingLeft: 10,
+				// 			marginRight: 20,
+				// 			justifyContent: 'center',
+				// 			alignItems: 'center'
+				// 		}}
+				// 	>
+				// 		{string.Share}
+				// 	</Text>,
 				headerStyle: {
 					height: 40,
 				},
@@ -173,22 +174,23 @@ const ProfileNavigator = StackNavigator(
 		Profile: {
 			screen: Profile,
 			navigationOptions: ({ navigation }) => ({
-				headerRight:
-					<Text
-						style={{
-							backgroundColor: primaryColor,
-							color: whiteColor,
-							paddingTop: 5,
-							paddingBottom: 5,
-							paddingRight: 10,
-							paddingLeft: 10,
-							marginRight: 20,
-							justifyContent: 'center',
-							alignItems: 'center'
-						}}
-					>
-						{string.Share}
-					</Text>,
+				// TODO share auther profile
+				// headerRight:
+				// 	<Text
+				// 		style={{
+				// 			backgroundColor: primaryColor,
+				// 			color: whiteColor,
+				// 			paddingTop: 5,
+				// 			paddingBottom: 5,
+				// 			paddingRight: 10,
+				// 			paddingLeft: 10,
+				// 			marginRight: 20,
+				// 			justifyContent: 'center',
+				// 			alignItems: 'center'
+				// 		}}
+				// 	>
+				// 		{string.Share}
+				// 	</Text>,
 				headerStyle: {
 					height: 40,
 				},
