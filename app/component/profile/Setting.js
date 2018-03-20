@@ -1,9 +1,9 @@
 import React from 'react';
 import { connect } from "react-redux";
-import { View, Text, Button, StyleSheet, ScrollView, Clipboard} from 'react-native';
+import { View, Text, Button, StyleSheet, ScrollView, Clipboard } from 'react-native';
 import { whiteColor, primaryColor, greyColor } from '../../asset/style/common';
 import string from '../../localization/string';
-import { signOutCall } from '../../reducer/action/authAction';
+import { signOutCall, updatePhotoCall } from '../../reducer/action/authAction';
 import { Avatar, List, ListItem, CheckBox } from 'react-native-elements';
 import Icon from 'react-native-vector-icons/Entypo';
 
@@ -18,34 +18,35 @@ class Setting extends React.PureComponent {
 		return (
 			<ScrollView>
 				<List containerStyle={style.listContainer}>
-					<ListItem 
+					<ListItem
 						titleStyle={style.title}
 						rightTitle={string.Avatar}
+						onPress={() => this.props.updatePhotoCall()}
 						avatar={
-							<Avatar 
-								rounded 
-								large 
-								source={user.photoURL == '' ? require('../../asset/image/avatar.png'): { uri: user.photoURL}}
+							<Avatar
+								rounded
+								large
+								source={user.photoURL == '' ? require('../../asset/image/avatar.png') : { uri: user.photoURL }}
 								activeOpacity={0.7}
 							/>
 						}
 					/>
-					<ListItem 
+					<ListItem
 						titleStyle={style.title}
 						rightTitle={user.name}
 						title={string.UserName}
 						onPress={() => navigate('UserNameSetting')}
 					/>
-					<ListItem 
+					<ListItem
 						rightTitle={!!user.tagline ? user.tagline : string.AddTagline}
 						titleStyle={style.title}
-						onPress={() => navigate('TaglineSetting')}						
+						onPress={() => navigate('TaglineSetting')}
 						title={string.Tagline}
 					/>
 				</List>
 				{/* <List> */}
-					{/* TODO: inbox feature to be implemted */}
-					{/* <View style={style.checkBoxGroup}>
+				{/* TODO: inbox feature to be implemted */}
+				{/* <View style={style.checkBoxGroup}>
 						<Text>{string.WhoCanSendMeMessages}</Text>
 						<View style={style.checkboxGroupContainer}>
 							<CheckBox 
@@ -71,8 +72,8 @@ class Setting extends React.PureComponent {
 							/>
 						</View>
 					</View> */}
-					{/* TODO auto play gif option */}
-					{/* <View style={style.checkBoxItem}>
+				{/* TODO auto play gif option */}
+				{/* <View style={style.checkBoxItem}>
 						<Text>{string.AutoPlayGif}</Text>
 						<CheckBox 
 							checked={user.autoPlayGif}
@@ -80,8 +81,8 @@ class Setting extends React.PureComponent {
 							checkedColor={primaryColor}
 						/>
 					</View> */}
-					{/* TODO Video support */}
-					{/* <View style={style.checkBoxItem}>
+				{/* TODO Video support */}
+				{/* <View style={style.checkBoxItem}>
 						<Text>{string.AutoPlayVideos}</Text>
 						<CheckBox 
 							containerStyle={style.checkbox}
@@ -89,8 +90,8 @@ class Setting extends React.PureComponent {
 							checkedColor={primaryColor}
 						/>
 					</View> */}
-					{/* TODO Geolocation visibility */}
-					{/* <View style={style.checkBoxItem}>
+				{/* TODO Geolocation visibility */}
+				{/* <View style={style.checkBoxItem}>
 						<Text>{string.MakeYourGeolocationPublic}</Text>
 						<CheckBox 
 							checked={user.publicLocation}						
@@ -100,9 +101,9 @@ class Setting extends React.PureComponent {
 					</View> */}
 				{/* </List> */}
 				<List>
-					<ListItem 
+					<ListItem
 						avatar={<Icon name="help-with-circle" size={20} color={primaryColor} />}
-						titleStyle={style.title}				
+						titleStyle={style.title}
 						title={string.Help}
 						onPress={() => navigate('Help')}
 					/>
@@ -124,15 +125,15 @@ class Setting extends React.PureComponent {
 						titleStyle={style.title}
 						title={string.CheckAppUpdates}
 					/> */}
-					<ListItem 
+					<ListItem
 						avatar={<Icon name="open-book" size={20} color={primaryColor} />}
-						titleStyle={style.title}				
+						titleStyle={style.title}
 						title={string.TermsAndConditions}
 					/>
-					<ListItem 
-						onPress={() => this.props.signOutCall()}						
+					<ListItem
+						onPress={() => this.props.signOutCall()}
 						avatar={<Icon name="log-out" size={20} color={primaryColor} />}
-						titleStyle={style.title}				
+						titleStyle={style.title}
 						title={string.SignOut}
 					/>
 				</List>
@@ -144,7 +145,7 @@ class Setting extends React.PureComponent {
 const style = StyleSheet.create({
 	listContainer: {
 		marginTop: 0
-	}, 
+	},
 	checkBoxItem: {
 		justifyContent: 'space-between',
 		flexDirection: 'row',
@@ -172,7 +173,7 @@ const style = StyleSheet.create({
 	},
 	title: {
 		fontSize: 14,
-	}, 
+	},
 	copyButton: {
 		backgroundColor: greyColor,
 		color: whiteColor,
@@ -191,7 +192,9 @@ const mapStateToProps = (state) => {
 
 const mapDispatchToProps = (dispatch) => {
 	return {
-		signOutCall: () => {dispatch(signOutCall())}
+		signOutCall: () => { dispatch(signOutCall())},
+		updatePhotoCall: () => { dispatch(updatePhotoCall())}
+		
 	};
 };
 

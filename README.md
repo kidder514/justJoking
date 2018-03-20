@@ -9,6 +9,9 @@
 - edit all the text to make them appropriate 
 - changeName to just jokes maybe, before that check how name will affect you ranking
 - App store optimization 
+- help page
+- terms and condition page
+- version number add to setting page.
 
 ### Features in release 1.1.0
 - Inbox

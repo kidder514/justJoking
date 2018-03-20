@@ -18,6 +18,8 @@ function Auth(state = initState, action) {
 			return { ...state, name: action.payload };
 		case 'UPDATE_TAGLINE':
 			return { ...state, tagline: action.payload };
+		case 'UPDATE_PHOTO':
+			return { ...state, photoURL: action.payload };
 		default:
 			return state;
 	}

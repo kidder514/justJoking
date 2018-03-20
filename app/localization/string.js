@@ -70,6 +70,7 @@ const string = new LocalizedStrings({
 //Setting
 		Setting: 'Setting',
 		Avatar: 'Avatar',
+		ChooseYourProfilePicture:'Choose your profile picture',
 		UserName: 'User Name',
 		JokeBuddyId: 'Joke Buddy ID',
 		AddTagline: 'Add you tagline here',
@@ -90,8 +91,13 @@ const string = new LocalizedStrings({
 		TaglinePrompt: "Wanna be the champagne of jokes? why don't start writing something funny here to let people remember you? Please make sure it is less that 100 characters",
 		InvalidTaglineLength: 'Please make sure it is less that 100 characters',
 		WordCount: 'word count:',
-		ServerNameUpdateSuccess: 'Successfully updated the name',
-		ServerTaglineUpdateSuccess: 'Successfully updated the tagline',		
+		ServerNameUpdateSuccess: 'Name has been updated',
+		ServerTaglineUpdateSuccess: 'Tagline has been updated',		
+		ServerPhotoUpdateSuccess: 'Photo has been updated',
+		ErrorSelectingPicture: 'Error occured while selecting picture.',
+		ErrorResizingImage: 'Error occured when resizing image',
+		ServerFailToUploadFile: 'Fail to upload the file',
+		ServerFileUploadSuccess: 'File has been uploaded successfully'
 	}
 });
 

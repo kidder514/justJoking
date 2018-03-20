@@ -4,10 +4,14 @@ import android.app.Application;
 
 import com.facebook.CallbackManager;
 import com.facebook.react.ReactApplication;
+import com.rnfs.RNFSPackage;
+import fr.bamlab.rnimageresizer.ImageResizerPackage;
+import com.imagepicker.ImagePickerPackage;
 import com.facebook.FacebookSdk;
 import com.facebook.reactnative.androidsdk.FBSDKPackage;
 import co.apptailor.googlesignin.RNGoogleSigninPackage;
 import io.invertase.firebase.RNFirebasePackage;
+import io.invertase.firebase.storage.RNFirebaseStoragePackage;
 import io.invertase.firebase.auth.RNFirebaseAuthPackage;
 import io.invertase.firebase.firestore.RNFirebaseFirestorePackage;
 import org.devio.rn.splashscreen.SplashScreenReactPackage;
@@ -39,6 +43,9 @@ public class MainApplication extends Application implements ReactApplication {
     protected List<ReactPackage> getPackages() {
       return Arrays.<ReactPackage>asList(
           new MainReactPackage(),
+            new RNFSPackage(),
+            new ImageResizerPackage(),
+            new ImagePickerPackage(),
             new FBSDKPackage(mCallbackManager),
             new RNGoogleSigninPackage(),
             new RNFirebasePackage(),
@@ -46,7 +53,8 @@ public class MainApplication extends Application implements ReactApplication {
             new VectorIconsPackage(),
             new ReactNativeLocalizationPackage(),
             new RNFirebaseAuthPackage(),
-            new RNFirebaseFirestorePackage()
+            new RNFirebaseFirestorePackage(),
+            new RNFirebaseStoragePackage()
       );
     }
 
