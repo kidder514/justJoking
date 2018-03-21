@@ -13,7 +13,7 @@ import {
 	DrawerNavigator,
 	HeaderBackButton,
 } from 'react-navigation';
-import { Button, View, ActivityIndicator, StyleSheet, Dimensions } from 'react-native';
+import { View, ActivityIndicator, StyleSheet, Dimensions } from 'react-native';
 import getSlideFromRightTransition from 'react-navigation-slide-from-right-transition';
 import string from './localization/string';
 import { primaryColor, greyColor, whiteColor, textColor, blackColor } from './asset/style/common';
@@ -37,6 +37,7 @@ import HotList from './component/home/HotList';
 import ImageList from './component/home/ImageList';
 import TextList from './component/home/TextList';
 import Post from './component/home/Post';
+import Publish from './component/home/Publish';
 import Detail from './component/home/Detail';
 
 const AuthNavigator = StackNavigator(
@@ -59,13 +60,11 @@ const AuthNavigator = StackNavigator(
 	}
 );
 
-const PostDrawNavigator = DrawerNavigator(
+const PostNavigator = StackNavigator(
 	{
-		Post: { screen: Post }
+		Post: { screen: Post },
 	}, {
 		headerMode: 'none',
-		drawerPosition: 'bottom',
-		animationEnabled: true
 	}
 );
 
@@ -316,7 +315,7 @@ const MainNavigator = TabNavigator(
 			}
 		},
 		Post: {
-			screen: PostDrawNavigator,
+			screen: PostNavigator,
 			navigationOptions: {
 				title: string.Post,
 				tabBarLabel: () => { null },

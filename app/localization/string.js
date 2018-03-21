@@ -59,6 +59,9 @@ const string = new LocalizedStrings({
 		TypeHere: 'Type here ...',
 //Post 
 		Post: 'Post',
+		PostSomethingFunny: 'Post something funny and make people laugh.',
+		Upload: 'Upload',
+		InvalidTextLength: 'Please make sure it is less that 300 characters',
 //Inbox
 		Inbox: 'Inbox',
 //Profile
