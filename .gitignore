@@ -6,14 +6,7 @@
 # dependencies
 /node_modules
 
-
-# ingore android but exclude app/src folder
-!/android
-/android/*
-!/android/app
-/android/app/*
-!/android/app/src
-# ingore android but exclude app/src folder - end
+# ===== IOS  ====
 
 /ios
 
@@ -26,3 +19,37 @@
 npm-debug.log*
 yarn-debug.log*
 yarn-error.log*
+
+# ===== android ====
+#built application files
+*.apk
+*.ap_
+
+# files for the dex VM
+*.dex
+
+# Java class files
+*.class
+
+# Local configuration file (sdk path, etc)
+android/local.properties
+
+# OSX files
+.DS_Store
+
+# Android Studio
+android/*.iml
+android/.idea
+#.idea/workspace.xml - remove # and delete .idea if it better suit your needs.
+android/.gradle
+android/build/
+android/.navigation
+android/captures/
+android/output.json 
+
+#NDK
+android/obj/
+android/.externalNativeBuild
+
+# androiod/app folder
+android/app/build

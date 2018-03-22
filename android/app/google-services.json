@@ -1,0 +1,63 @@
+{
+  "project_info": {
+    "project_number": "161742623113",
+    "firebase_url": "https://justjoking-60269.firebaseio.com",
+    "project_id": "justjoking-60269",
+    "storage_bucket": "justjoking-60269.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:161742623113:android:d1813d9a6b24c0d9",
+        "android_client_info": {
+          "package_name": "com.justjoking"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "161742623113-fsr8j56imatkmqn15868meu683133lr9.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.justjoking",
+            "certificate_hash": "102c524165cd429f81931e3a7ed3fabc409e4c66"
+          }
+        },
+        {
+          "client_id": "161742623113-33tugjkqmflcdma28p5lb6asqcoihqu1.apps.googleusercontent.com",
+          "client_type": 3
+        },
+        {
+          "client_id": "161742623113-rnak99ojilda0k1nafkp6aelut69sfco.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.justjoking",
+            "certificate_hash": "af870ad182d38281d2d0f1325d2d0faf6f6f4b7f"
+          }
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCNxd2G93fMWbNXiLmIbxj1IYybwjspfv4"
+        }
+      ],
+      "services": {
+        "analytics_service": {
+          "status": 1
+        },
+        "appinvite_service": {
+          "status": 2,
+          "other_platform_oauth_client": [
+            {
+              "client_id": "161742623113-33tugjkqmflcdma28p5lb6asqcoihqu1.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        },
+        "ads_service": {
+          "status": 2
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

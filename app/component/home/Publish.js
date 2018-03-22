@@ -2,7 +2,6 @@ import React from 'react';
 import { View, Text, StyleSheet, Button} from 'react-native';
 import { primaryColor, greyColor, whiteColor, textColor, blackColor } from '../../asset/style/common';
 import string from '../../localization/string';
-import ImagePicker from 'react-native-image-crop-picker';
 
 class Publish extends React.PureComponent {
 	render(){

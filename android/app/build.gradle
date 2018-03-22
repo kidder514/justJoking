@@ -137,11 +137,12 @@ android {
 }
 
 dependencies {
+    // please be very careful with react-native link
+    // make sure all the lines it has added does not duplicate other lines
     compile project(':react-native-fs')
     compile project(':react-native-image-resizer')
     compile project(':react-native-image-picker')
     compile project(':react-native-fbsdk')
-    compile project(':react-native-google-signin')
     compile(project(':react-native-firebase')) {
         transitive = false
     }
