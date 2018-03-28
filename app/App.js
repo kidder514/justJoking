@@ -303,17 +303,17 @@ const MainNavigator = TabNavigator(
 				)
 			}
 		},
-		Search: {
-			screen: Search,
-			navigationOptions: {
-				title: string.Search,
-				tabBarIcon: ({ focused, tintColor }) => (
-					focused ?
-						<Icon name="magnifying-glass" size={30} color={primaryColor} /> :
-						<Icon name="magnifying-glass" size={30} color={tintColor} />
-				)
-			}
-		},
+		// Search: {
+		// 	screen: Search,
+		// 	navigationOptions: {
+		// 		title: string.Search,
+		// 		tabBarIcon: ({ focused, tintColor }) => (
+		// 			focused ?
+		// 				<Icon name="magnifying-glass" size={30} color={primaryColor} /> :
+		// 				<Icon name="magnifying-glass" size={30} color={tintColor} />
+		// 		)
+		// 	}
+		// },
 		Post: {
 			screen: PostNavigator,
 			navigationOptions: {
@@ -324,17 +324,17 @@ const MainNavigator = TabNavigator(
 				),
 			}
 		},
-		Inbox: {
-			screen: Inbox,
-			navigationOptions: {
-				title: string.Inbox,
-				tabBarIcon: ({ focused, tintColor }) => (
-					focused ?
-						<Icon name="message" size={30} color={primaryColor} /> :
-						<Icon name="message" size={30} color={tintColor} />
-				)
-			}
-		},
+		// Inbox: {
+		// 	screen: Inbox,
+		// 	navigationOptions: {
+		// 		title: string.Inbox,
+		// 		tabBarIcon: ({ focused, tintColor }) => (
+		// 			focused ?
+		// 				<Icon name="message" size={30} color={primaryColor} /> :
+		// 				<Icon name="message" size={30} color={tintColor} />
+		// 		)
+		// 	}
+		// },
 		Profile: {
 			screen: ProfileNavigator,
 			navigationOptions: {

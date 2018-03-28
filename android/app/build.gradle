@@ -103,6 +103,8 @@ android {
         targetSdkVersion 26
         versionCode 1
         versionName "1.0"
+        multiDexEnabled true
+        vectorDrawables.useSupportLibrary = true
         ndk {
             abiFilters "armeabi-v7a", "x86"
         }
@@ -137,6 +139,7 @@ android {
 }
 
 dependencies {
+    compile project(':react-native-image-crop-picker')
     // please be very careful with react-native link
     // make sure all the lines it has added does not duplicate other lines
 

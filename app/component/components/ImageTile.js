@@ -53,6 +53,7 @@ class ImageTile extends React.PureComponent {
             return this.renderMoreImages();
         }
     }
+
     renderOneImage(imageUrl) {
         return (
             <TouchableHighlight 

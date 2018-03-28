@@ -6,7 +6,6 @@ import { whiteColor, primaryColor } from '../../asset/style/common';
 import string from '../../localization/string';
 import TileList from '../components/TileList';
 
-
 class Profile extends React.PureComponent {
 	static navigationOptions = ({ navigation, navigationOptions }) => {
 		const { params } = navigation.state;

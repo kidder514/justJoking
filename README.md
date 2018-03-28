@@ -5,7 +5,6 @@
 - compulsory update
 - add ads to app
 - Gif Support
-- search Page.
 - edit all the text to make them appropriate 
 - changeName to just jokes maybe, before that check how name will affect you ranking
 - App store optimization 
@@ -14,6 +13,7 @@
 - version number add to setting page.
 
 ### Features in release 1.1.0
+- search Page
 - Inbox
 - second layer commet
 - comment order by likes

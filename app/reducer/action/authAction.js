@@ -4,7 +4,6 @@ import { loadOn, loadEnd} from './uiAction';
 import string from '../../localization/string';
 import ImagePicker from 'react-native-image-picker';
 import ImageResizer from 'react-native-image-resizer';
-import RNFS from 'react-native-fs';
 
 export const signIn = (user) => {
 	return {
