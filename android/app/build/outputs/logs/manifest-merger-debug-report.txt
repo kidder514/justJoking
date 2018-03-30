@@ -4,7 +4,7 @@ ADDED from /Applications/MAMP/htdocs/JustJoking/android/app/src/main/AndroidMani
 INJECTED from /Applications/MAMP/htdocs/JustJoking/android/app/src/main/AndroidManifest.xml:1:1-50:12
 INJECTED from /Applications/MAMP/htdocs/JustJoking/android/app/src/main/AndroidManifest.xml:1:1-50:12
 INJECTED from /Applications/MAMP/htdocs/JustJoking/android/app/src/main/AndroidManifest.xml:1:1-50:12
-MERGED from [:react-native-image-crop-picker] /Applications/MAMP/htdocs/JustJoking/node_modules/react-native-image-crop-picker/android/build/intermediates/manifests/full/debug/AndroidManifest.xml:2:1-15:12
+MERGED from [:react-native-syan-image-picker] /Applications/MAMP/htdocs/JustJoking/node_modules/react-native-syan-image-picker/android/build/intermediates/manifests/full/debug/AndroidManifest.xml:2:1-27:12
 MERGED from [:react-native-fs] /Applications/MAMP/htdocs/JustJoking/node_modules/react-native-fs/android/build/intermediates/manifests/full/debug/AndroidManifest.xml:2:1-13:12
 MERGED from [:react-native-image-resizer] /Applications/MAMP/htdocs/JustJoking/node_modules/react-native-image-resizer/android/build/intermediates/manifests/full/debug/AndroidManifest.xml:2:1-11:12
 MERGED from [:react-native-image-picker] /Applications/MAMP/htdocs/JustJoking/node_modules/react-native-image-picker/android/build/intermediates/manifests/full/debug/AndroidManifest.xml:2:1-14:12
@@ -14,11 +14,12 @@ MERGED from [:react-native-splash-screen] /Applications/MAMP/htdocs/JustJoking/n
 MERGED from [:react-native-vector-icons] /Applications/MAMP/htdocs/JustJoking/node_modules/react-native-vector-icons/android/build/intermediates/manifests/full/debug/AndroidManifest.xml:2:1-11:12
 MERGED from [:react-native-localization] /Applications/MAMP/htdocs/JustJoking/node_modules/react-native-localization/android/build/intermediates/manifests/full/debug/AndroidManifest.xml:2:1-11:12
 MERGED from [:react-native-google-signin] /Applications/MAMP/htdocs/JustJoking/node_modules/react-native-google-signin/android/build/intermediates/manifests/full/debug/AndroidManifest.xml:2:1-11:12
-MERGED from [com.github.yalantis:ucrop:2.2.1-native] /Users/duo.lu/.gradle/caches/transforms-1/files-1.1/ucrop-2.2.1-native.aar/0530de28b884217c5d4abf36155c19e2/AndroidManifest.xml:2:1-12:12
+MERGED from [com.github.LuckSiege.PictureSelector:picture_library:v2.2.0] /Users/duo.lu/.gradle/caches/transforms-1/files-1.1/picture_library-v2.2.0.aar/8506d18c7890b3dcd2e6762a785a6873/AndroidManifest.xml:2:1-48:12
 MERGED from [com.facebook.android:facebook-android-sdk:4.31.0] /Users/duo.lu/.gradle/caches/transforms-1/files-1.1/facebook-android-sdk-4.31.0.aar/63c150a539ea4c0449a8a710f0f6c6c5/AndroidManifest.xml:21:1-31:12
 MERGED from [com.facebook.android:facebook-login:4.31.0] /Users/duo.lu/.gradle/caches/transforms-1/files-1.1/facebook-login-4.31.0.aar/8e5fa6ffff693cb164f767879e7532e2/AndroidManifest.xml:21:1-31:12
 MERGED from [com.facebook.android:facebook-share:4.31.0] /Users/duo.lu/.gradle/caches/transforms-1/files-1.1/facebook-share-4.31.0.aar/a8c0affcb9ec88e61a980d2aeae755c4/AndroidManifest.xml:21:1-31:12
 MERGED from [com.facebook.android:facebook-common:4.31.0] /Users/duo.lu/.gradle/caches/transforms-1/files-1.1/facebook-common-4.31.0.aar/d839ed182b766e8d19d7e82e22704162/AndroidManifest.xml:21:1-36:12
+MERGED from [com.github.LuckSiege.PictureSelector:ucrop:v2.2.0] /Users/duo.lu/.gradle/caches/transforms-1/files-1.1/ucrop-v2.2.0.aar/df3fb5b3e06230be728df6f133bf5424/AndroidManifest.xml:2:1-12:12
 MERGED from [com.facebook.react:react-native:0.52.0] /Users/duo.lu/.gradle/caches/transforms-1/files-1.1/react-native-0.52.0.aar/58119f957130d295e20464276aefd3fc/AndroidManifest.xml:2:1-15:12
 MERGED from [com.android.support:appcompat-v7:27.0.2] /Users/duo.lu/.gradle/caches/transforms-1/files-1.1/appcompat-v7-27.0.2.aar/e7bf042a4bb8b35f8cdff2397de66c0c/AndroidManifest.xml:17:1-22:12
 MERGED from [com.google.android.gms:play-services-auth:11.8.0] /Users/duo.lu/.gradle/caches/transforms-1/files-1.1/play-services-auth-11.8.0.aar/85ce613bcd0da07f3dcb92f34f911d6d/AndroidManifest.xml:17:1-39:12
@@ -30,7 +31,6 @@ MERGED from [com.google.firebase:firebase-core:11.8.0] /Users/duo.lu/.gradle/cac
 MERGED from [com.google.firebase:firebase-storage:11.8.0] /Users/duo.lu/.gradle/caches/transforms-1/files-1.1/firebase-storage-11.8.0.aar/f3ac7b1c194201b52dc2fba933d16ece/AndroidManifest.xml:2:1-8:12
 MERGED from [com.google.firebase:firebase-firestore:11.8.0] /Users/duo.lu/.gradle/caches/transforms-1/files-1.1/firebase-firestore-11.8.0.aar/c39ac2c1ad9fd839a065268ebaffa9bd/AndroidManifest.xml:2:1-8:12
 MERGED from [com.android.support:multidex:1.0.2] /Users/duo.lu/.gradle/caches/transforms-1/files-1.1/multidex-1.0.2.aar/607b4ca12e6457504e363e8a24095692/AndroidManifest.xml:17:1-22:12
-MERGED from [id.zelory:compressor:2.1.0] /Users/duo.lu/.gradle/caches/transforms-1/files-1.1/compressor-2.1.0.aar/b69c6fc402fba244232c005d8e819e66/AndroidManifest.xml:2:1-12:12
 MERGED from [com.google.firebase:firebase-analytics:11.8.0] /Users/duo.lu/.gradle/caches/transforms-1/files-1.1/firebase-analytics-11.8.0.aar/962ded9aab5ee4210cad4ce609aca0dd/AndroidManifest.xml:17:1-54:12
 MERGED from [com.google.firebase:firebase-analytics-impl:11.8.0] /Users/duo.lu/.gradle/caches/transforms-1/files-1.1/firebase-analytics-impl-11.8.0.aar/d108d210c9a6707d81da9696562388e7/AndroidManifest.xml:17:1-40:12
 MERGED from [com.google.firebase:firebase-iid:11.8.0] /Users/duo.lu/.gradle/caches/transforms-1/files-1.1/firebase-iid-11.8.0.aar/7fae7490d976b37feccf44ff4ce31879/AndroidManifest.xml:17:1-59:12
@@ -45,7 +45,9 @@ MERGED from [com.facebook.android:facebook-places:4.31.0] /Users/duo.lu/.gradle/
 MERGED from [com.facebook.android:facebook-applinks:4.31.0] /Users/duo.lu/.gradle/caches/transforms-1/files-1.1/facebook-applinks-4.31.0.aar/07a9c1887b7f5a2458a927aa5ac1ed86/AndroidManifest.xml:21:1-31:12
 MERGED from [com.facebook.android:facebook-messenger:4.31.0] /Users/duo.lu/.gradle/caches/transforms-1/files-1.1/facebook-messenger-4.31.0.aar/442baf8192f8f7a720de9fd9dbefe5da/AndroidManifest.xml:21:1-31:12
 MERGED from [com.facebook.android:facebook-core:4.31.0] /Users/duo.lu/.gradle/caches/transforms-1/files-1.1/facebook-core-4.31.0.aar/a21e9416f5b3dfea3ae2c504c403daf8/AndroidManifest.xml:21:1-45:12
-MERGED from [com.facebook.fresco:imagepipeline-okhttp3:1.3.0] /Users/duo.lu/.gradle/caches/transforms-1/files-1.1/imagepipeline-okhttp3-1.3.0.aar/009bea5881d3ae3aa2b177c0a84400b0/AndroidManifest.xml:2:1-9:12
+MERGED from [com.android.support:recyclerview-v7:27.0.2] /Users/duo.lu/.gradle/caches/transforms-1/files-1.1/recyclerview-v7-27.0.2.aar/893aa90a9b0d54951e70949f31adf8ff/AndroidManifest.xml:17:1-22:12
+MERGED from [com.github.bumptech.glide:glide:4.5.0] /Users/duo.lu/.gradle/caches/transforms-1/files-1.1/glide-4.5.0.aar/2a9f1489d18f231e6e26a885480cfca3/AndroidManifest.xml:2:1-13:12
+MERGED from [io.reactivex.rxjava2:rxandroid:2.0.1] /Users/duo.lu/.gradle/caches/transforms-1/files-1.1/rxandroid-2.0.1.aar/f7af2befaa8f0def6f119304718798a5/AndroidManifest.xml:15:1-21:12
 MERGED from [com.google.android.gms:play-services-auth-api-phone-license:11.8.0] /Users/duo.lu/.gradle/caches/transforms-1/files-1.1/play-services-auth-api-phone-license-11.8.0.aar/b911fff06e44540ebf5335d557a2e908/AndroidManifest.xml:2:1-6:12
 MERGED from [com.google.android.gms:play-services-auth-base-license:11.8.0] /Users/duo.lu/.gradle/caches/transforms-1/files-1.1/play-services-auth-base-license-11.8.0.aar/cc7dab3b7d51c2821d4bf488b96bf3ca/AndroidManifest.xml:2:1-6:12
 MERGED from [com.android.support:support-v4:27.0.2] /Users/duo.lu/.gradle/caches/transforms-1/files-1.1/support-v4-27.0.2.aar/b1080b1edfa416f835f1d829e75c52b6/AndroidManifest.xml:17:1-22:12
@@ -54,21 +56,23 @@ MERGED from [com.google.android.gms:play-services-tasks-license:11.8.0] /Users/d
 MERGED from [com.google.firebase:firebase-analytics-license:11.8.0] /Users/duo.lu/.gradle/caches/transforms-1/files-1.1/firebase-analytics-license-11.8.0.aar/9a41760cbd2505daa82d23ab0acb0fe5/AndroidManifest.xml:2:1-6:12
 MERGED from [com.google.firebase:firebase-common-license:11.8.0] /Users/duo.lu/.gradle/caches/transforms-1/files-1.1/firebase-common-license-11.8.0.aar/22b5dfdaeac02a17cd8c5a3deb62e101/AndroidManifest.xml:2:1-6:12
 MERGED from [com.google.firebase:firebase-storage-common-license:11.8.0] /Users/duo.lu/.gradle/caches/transforms-1/files-1.1/firebase-storage-common-license-11.8.0.aar/3ac8490614c2a0ac45009b5179afe4b4/AndroidManifest.xml:2:1-6:12
+MERGED from [com.facebook.fresco:imagepipeline-okhttp3:1.3.0] /Users/duo.lu/.gradle/caches/transforms-1/files-1.1/imagepipeline-okhttp3-1.3.0.aar/009bea5881d3ae3aa2b177c0a84400b0/AndroidManifest.xml:2:1-9:12
 MERGED from [com.android.support:support-fragment:27.0.2] /Users/duo.lu/.gradle/caches/transforms-1/files-1.1/support-fragment-27.0.2.aar/90540c179464c931dcd601233d533055/AndroidManifest.xml:17:1-22:12
 MERGED from [com.android.support:support-core-utils:27.0.2] /Users/duo.lu/.gradle/caches/transforms-1/files-1.1/support-core-utils-27.0.2.aar/36ea3c5feaf6d46d8a63882cb41ab75b/AndroidManifest.xml:17:1-22:12
 MERGED from [com.android.support:cardview-v7:27.0.2] /Users/duo.lu/.gradle/caches/transforms-1/files-1.1/cardview-v7-27.0.2.aar/36740299548873fe95f6276309e3511f/AndroidManifest.xml:17:1-22:12
 MERGED from [com.android.support:customtabs:27.0.2] /Users/duo.lu/.gradle/caches/transforms-1/files-1.1/customtabs-27.0.2.aar/baaf0ffdba33f817d5e8cbef38b7ada1/AndroidManifest.xml:17:1-22:12
 MERGED from [com.android.support:animated-vector-drawable:27.0.2] /Users/duo.lu/.gradle/caches/transforms-1/files-1.1/animated-vector-drawable-27.0.2.aar/ad3af1e3cdf463cde29ad9e83e8ad9b1/AndroidManifest.xml:17:1-22:12
-MERGED from [com.android.support:support-vector-drawable:27.0.2] /Users/duo.lu/.gradle/caches/transforms-1/files-1.1/support-vector-drawable-27.0.2.aar/287e80e4873d3c3fa6b39cd0550d9fd8/AndroidManifest.xml:17:1-22:12
 MERGED from [com.android.support:support-core-ui:27.0.2] /Users/duo.lu/.gradle/caches/transforms-1/files-1.1/support-core-ui-27.0.2.aar/f79d1400ddc1b7aa71b8b16f36e1dba5/AndroidManifest.xml:17:1-22:12
+MERGED from [com.android.support:support-vector-drawable:27.0.2] /Users/duo.lu/.gradle/caches/transforms-1/files-1.1/support-vector-drawable-27.0.2.aar/287e80e4873d3c3fa6b39cd0550d9fd8/AndroidManifest.xml:17:1-22:12
 MERGED from [com.android.support:support-media-compat:27.0.2] /Users/duo.lu/.gradle/caches/transforms-1/files-1.1/support-media-compat-27.0.2.aar/ebd56b4519a109e53e871d0d6b08f549/AndroidManifest.xml:17:1-22:12
 MERGED from [com.android.support:support-compat:27.0.2] /Users/duo.lu/.gradle/caches/transforms-1/files-1.1/support-compat-27.0.2.aar/b79485537a6775beb2de633080a9624f/AndroidManifest.xml:17:1-22:12
+MERGED from [com.github.bumptech.glide:gifdecoder:4.5.0] /Users/duo.lu/.gradle/caches/transforms-1/files-1.1/gifdecoder-4.5.0.aar/ed35011e01d25b4b6f45385b1f2e7d75/AndroidManifest.xml:2:1-11:12
 MERGED from [com.google.firebase:firebase-analytics-impl-license:11.8.0] /Users/duo.lu/.gradle/caches/transforms-1/files-1.1/firebase-analytics-impl-license-11.8.0.aar/18be0484536a238ad23b3ad60f484ff2/AndroidManifest.xml:2:1-6:12
 MERGED from [com.facebook.fresco:fresco:1.3.0] /Users/duo.lu/.gradle/caches/transforms-1/files-1.1/fresco-1.3.0.aar/b0bf0ad101564d08b65f9f0d3b865318/AndroidManifest.xml:2:1-9:12
 MERGED from [com.facebook.fresco:imagepipeline:1.3.0] /Users/duo.lu/.gradle/caches/transforms-1/files-1.1/imagepipeline-1.3.0.aar/678a3902e8488d1d159e932f63d62a15/AndroidManifest.xml:2:1-9:12
 MERGED from [com.facebook.fresco:imagepipeline-base:1.3.0] /Users/duo.lu/.gradle/caches/transforms-1/files-1.1/imagepipeline-base-1.3.0.aar/838fdb6cdbbffd70c0706964db7f3dec/AndroidManifest.xml:2:1-9:12
-MERGED from [com.google.firebase:firebase-iid-license:11.8.0] /Users/duo.lu/.gradle/caches/transforms-1/files-1.1/firebase-iid-license-11.8.0.aar/285aca0694432747ba07993f168b10fd/AndroidManifest.xml:2:1-6:12
 MERGED from [android.arch.lifecycle:runtime:1.0.3] /Users/duo.lu/.gradle/caches/transforms-1/files-1.1/runtime-1.0.3.aar/f5f3ea762577d2319002cfad8e378177/AndroidManifest.xml:17:1-24:12
+MERGED from [com.google.firebase:firebase-iid-license:11.8.0] /Users/duo.lu/.gradle/caches/transforms-1/files-1.1/firebase-iid-license-11.8.0.aar/285aca0694432747ba07993f168b10fd/AndroidManifest.xml:2:1-6:12
 MERGED from [com.facebook.fbui.textlayoutbuilder:textlayoutbuilder:1.0.0] /Users/duo.lu/.gradle/caches/transforms-1/files-1.1/textlayoutbuilder-1.0.0.aar/3f4c62b1a01af71b2d02310723df1697/AndroidManifest.xml:10:1-18:12
 MERGED from [com.facebook.soloader:soloader:0.1.0] /Users/duo.lu/.gradle/caches/transforms-1/files-1.1/soloader-0.1.0.aar/24bfaee7f5c61b15ee2caa28dc311dcf/AndroidManifest.xml:1:1-4:12
 MERGED from [org.webkit:android-jsc:r174650] /Users/duo.lu/.gradle/caches/transforms-1/files-1.1/android-jsc-r174650.aar/3d4f5116eb8b9e6828b2ba83b0bc7470/AndroidManifest.xml:1:1-3:12
@@ -111,26 +115,30 @@ MERGED from [com.facebook.react:react-native:0.52.0] /Users/duo.lu/.gradle/cache
 		ADDED from /Applications/MAMP/htdocs/JustJoking/android/app/src/main/AndroidManifest.xml:7:22-75
 uses-permission#android.permission.CAMERA
 ADDED from /Applications/MAMP/htdocs/JustJoking/android/app/src/main/AndroidManifest.xml:8:5-65
+MERGED from [:react-native-syan-image-picker] /Applications/MAMP/htdocs/JustJoking/node_modules/react-native-syan-image-picker/android/build/intermediates/manifests/full/debug/AndroidManifest.xml:13:5-65
+MERGED from [:react-native-syan-image-picker] /Applications/MAMP/htdocs/JustJoking/node_modules/react-native-syan-image-picker/android/build/intermediates/manifests/full/debug/AndroidManifest.xml:13:5-65
 	android:name
 		ADDED from /Applications/MAMP/htdocs/JustJoking/android/app/src/main/AndroidManifest.xml:8:22-62
 uses-permission#android.permission.WRITE_EXTERNAL_STORAGE
 ADDED from /Applications/MAMP/htdocs/JustJoking/android/app/src/main/AndroidManifest.xml:9:5-80
-MERGED from [:react-native-image-crop-picker] /Applications/MAMP/htdocs/JustJoking/node_modules/react-native-image-crop-picker/android/build/intermediates/manifests/full/debug/AndroidManifest.xml:10:5-81
-MERGED from [:react-native-image-crop-picker] /Applications/MAMP/htdocs/JustJoking/node_modules/react-native-image-crop-picker/android/build/intermediates/manifests/full/debug/AndroidManifest.xml:10:5-81
+MERGED from [:react-native-syan-image-picker] /Applications/MAMP/htdocs/JustJoking/node_modules/react-native-syan-image-picker/android/build/intermediates/manifests/full/debug/AndroidManifest.xml:12:5-81
+MERGED from [:react-native-syan-image-picker] /Applications/MAMP/htdocs/JustJoking/node_modules/react-native-syan-image-picker/android/build/intermediates/manifests/full/debug/AndroidManifest.xml:12:5-81
 MERGED from [:react-native-fs] /Applications/MAMP/htdocs/JustJoking/node_modules/react-native-fs/android/build/intermediates/manifests/full/debug/AndroidManifest.xml:11:5-81
 MERGED from [:react-native-fs] /Applications/MAMP/htdocs/JustJoking/node_modules/react-native-fs/android/build/intermediates/manifests/full/debug/AndroidManifest.xml:11:5-81
 	android:name
 		ADDED from /Applications/MAMP/htdocs/JustJoking/android/app/src/main/AndroidManifest.xml:9:22-78
 uses-permission#android.permission.READ_EXTERNAL_STORAGE
 ADDED from /Applications/MAMP/htdocs/JustJoking/android/app/src/main/AndroidManifest.xml:10:5-80
+MERGED from [:react-native-syan-image-picker] /Applications/MAMP/htdocs/JustJoking/node_modules/react-native-syan-image-picker/android/build/intermediates/manifests/full/debug/AndroidManifest.xml:11:5-80
+MERGED from [:react-native-syan-image-picker] /Applications/MAMP/htdocs/JustJoking/node_modules/react-native-syan-image-picker/android/build/intermediates/manifests/full/debug/AndroidManifest.xml:11:5-80
 	android:name
 		ADDED from /Applications/MAMP/htdocs/JustJoking/android/app/src/main/AndroidManifest.xml:10:22-77
 uses-sdk
 ADDED from /Applications/MAMP/htdocs/JustJoking/android/app/src/main/AndroidManifest.xml:12:5-14:41
 INJECTED from /Applications/MAMP/htdocs/JustJoking/android/app/src/main/AndroidManifest.xml:12:5-14:41
 INJECTED from /Applications/MAMP/htdocs/JustJoking/android/app/src/main/AndroidManifest.xml:12:5-14:41
-MERGED from [:react-native-image-crop-picker] /Applications/MAMP/htdocs/JustJoking/node_modules/react-native-image-crop-picker/android/build/intermediates/manifests/full/debug/AndroidManifest.xml:6:5-8:41
-MERGED from [:react-native-image-crop-picker] /Applications/MAMP/htdocs/JustJoking/node_modules/react-native-image-crop-picker/android/build/intermediates/manifests/full/debug/AndroidManifest.xml:6:5-8:41
+MERGED from [:react-native-syan-image-picker] /Applications/MAMP/htdocs/JustJoking/node_modules/react-native-syan-image-picker/android/build/intermediates/manifests/full/debug/AndroidManifest.xml:7:5-9:41
+MERGED from [:react-native-syan-image-picker] /Applications/MAMP/htdocs/JustJoking/node_modules/react-native-syan-image-picker/android/build/intermediates/manifests/full/debug/AndroidManifest.xml:7:5-9:41
 MERGED from [:react-native-fs] /Applications/MAMP/htdocs/JustJoking/node_modules/react-native-fs/android/build/intermediates/manifests/full/debug/AndroidManifest.xml:7:5-9:41
 MERGED from [:react-native-fs] /Applications/MAMP/htdocs/JustJoking/node_modules/react-native-fs/android/build/intermediates/manifests/full/debug/AndroidManifest.xml:7:5-9:41
 MERGED from [:react-native-image-resizer] /Applications/MAMP/htdocs/JustJoking/node_modules/react-native-image-resizer/android/build/intermediates/manifests/full/debug/AndroidManifest.xml:7:5-9:41
@@ -149,8 +157,8 @@ MERGED from [:react-native-localization] /Applications/MAMP/htdocs/JustJoking/no
 MERGED from [:react-native-localization] /Applications/MAMP/htdocs/JustJoking/node_modules/react-native-localization/android/build/intermediates/manifests/full/debug/AndroidManifest.xml:7:5-9:41
 MERGED from [:react-native-google-signin] /Applications/MAMP/htdocs/JustJoking/node_modules/react-native-google-signin/android/build/intermediates/manifests/full/debug/AndroidManifest.xml:7:5-9:41
 MERGED from [:react-native-google-signin] /Applications/MAMP/htdocs/JustJoking/node_modules/react-native-google-signin/android/build/intermediates/manifests/full/debug/AndroidManifest.xml:7:5-9:41
-MERGED from [com.github.yalantis:ucrop:2.2.1-native] /Users/duo.lu/.gradle/caches/transforms-1/files-1.1/ucrop-2.2.1-native.aar/0530de28b884217c5d4abf36155c19e2/AndroidManifest.xml:8:5-10:41
-MERGED from [com.github.yalantis:ucrop:2.2.1-native] /Users/duo.lu/.gradle/caches/transforms-1/files-1.1/ucrop-2.2.1-native.aar/0530de28b884217c5d4abf36155c19e2/AndroidManifest.xml:8:5-10:41
+MERGED from [com.github.LuckSiege.PictureSelector:picture_library:v2.2.0] /Users/duo.lu/.gradle/caches/transforms-1/files-1.1/picture_library-v2.2.0.aar/8506d18c7890b3dcd2e6762a785a6873/AndroidManifest.xml:7:5-9:41
+MERGED from [com.github.LuckSiege.PictureSelector:picture_library:v2.2.0] /Users/duo.lu/.gradle/caches/transforms-1/files-1.1/picture_library-v2.2.0.aar/8506d18c7890b3dcd2e6762a785a6873/AndroidManifest.xml:7:5-9:41
 MERGED from [com.facebook.android:facebook-android-sdk:4.31.0] /Users/duo.lu/.gradle/caches/transforms-1/files-1.1/facebook-android-sdk-4.31.0.aar/63c150a539ea4c0449a8a710f0f6c6c5/AndroidManifest.xml:24:5-26:41
 MERGED from [com.facebook.android:facebook-android-sdk:4.31.0] /Users/duo.lu/.gradle/caches/transforms-1/files-1.1/facebook-android-sdk-4.31.0.aar/63c150a539ea4c0449a8a710f0f6c6c5/AndroidManifest.xml:24:5-26:41
 MERGED from [com.facebook.android:facebook-login:4.31.0] /Users/duo.lu/.gradle/caches/transforms-1/files-1.1/facebook-login-4.31.0.aar/8e5fa6ffff693cb164f767879e7532e2/AndroidManifest.xml:24:5-26:41
@@ -159,6 +167,8 @@ MERGED from [com.facebook.android:facebook-share:4.31.0] /Users/duo.lu/.gradle/c
 MERGED from [com.facebook.android:facebook-share:4.31.0] /Users/duo.lu/.gradle/caches/transforms-1/files-1.1/facebook-share-4.31.0.aar/a8c0affcb9ec88e61a980d2aeae755c4/AndroidManifest.xml:24:5-26:41
 MERGED from [com.facebook.android:facebook-common:4.31.0] /Users/duo.lu/.gradle/caches/transforms-1/files-1.1/facebook-common-4.31.0.aar/d839ed182b766e8d19d7e82e22704162/AndroidManifest.xml:24:5-26:41
 MERGED from [com.facebook.android:facebook-common:4.31.0] /Users/duo.lu/.gradle/caches/transforms-1/files-1.1/facebook-common-4.31.0.aar/d839ed182b766e8d19d7e82e22704162/AndroidManifest.xml:24:5-26:41
+MERGED from [com.github.LuckSiege.PictureSelector:ucrop:v2.2.0] /Users/duo.lu/.gradle/caches/transforms-1/files-1.1/ucrop-v2.2.0.aar/df3fb5b3e06230be728df6f133bf5424/AndroidManifest.xml:8:5-10:41
+MERGED from [com.github.LuckSiege.PictureSelector:ucrop:v2.2.0] /Users/duo.lu/.gradle/caches/transforms-1/files-1.1/ucrop-v2.2.0.aar/df3fb5b3e06230be728df6f133bf5424/AndroidManifest.xml:8:5-10:41
 MERGED from [com.facebook.react:react-native:0.52.0] /Users/duo.lu/.gradle/caches/transforms-1/files-1.1/react-native-0.52.0.aar/58119f957130d295e20464276aefd3fc/AndroidManifest.xml:7:5-9:41
 MERGED from [com.facebook.react:react-native:0.52.0] /Users/duo.lu/.gradle/caches/transforms-1/files-1.1/react-native-0.52.0.aar/58119f957130d295e20464276aefd3fc/AndroidManifest.xml:7:5-9:41
 MERGED from [com.android.support:appcompat-v7:27.0.2] /Users/duo.lu/.gradle/caches/transforms-1/files-1.1/appcompat-v7-27.0.2.aar/e7bf042a4bb8b35f8cdff2397de66c0c/AndroidManifest.xml:20:5-44
@@ -181,8 +191,6 @@ MERGED from [com.google.firebase:firebase-firestore:11.8.0] /Users/duo.lu/.gradl
 MERGED from [com.google.firebase:firebase-firestore:11.8.0] /Users/duo.lu/.gradle/caches/transforms-1/files-1.1/firebase-firestore-11.8.0.aar/c39ac2c1ad9fd839a065268ebaffa9bd/AndroidManifest.xml:6:5-44
 MERGED from [com.android.support:multidex:1.0.2] /Users/duo.lu/.gradle/caches/transforms-1/files-1.1/multidex-1.0.2.aar/607b4ca12e6457504e363e8a24095692/AndroidManifest.xml:20:5-43
 MERGED from [com.android.support:multidex:1.0.2] /Users/duo.lu/.gradle/caches/transforms-1/files-1.1/multidex-1.0.2.aar/607b4ca12e6457504e363e8a24095692/AndroidManifest.xml:20:5-43
-MERGED from [id.zelory:compressor:2.1.0] /Users/duo.lu/.gradle/caches/transforms-1/files-1.1/compressor-2.1.0.aar/b69c6fc402fba244232c005d8e819e66/AndroidManifest.xml:8:5-10:41
-MERGED from [id.zelory:compressor:2.1.0] /Users/duo.lu/.gradle/caches/transforms-1/files-1.1/compressor-2.1.0.aar/b69c6fc402fba244232c005d8e819e66/AndroidManifest.xml:8:5-10:41
 MERGED from [com.google.firebase:firebase-analytics:11.8.0] /Users/duo.lu/.gradle/caches/transforms-1/files-1.1/firebase-analytics-11.8.0.aar/962ded9aab5ee4210cad4ce609aca0dd/AndroidManifest.xml:20:5-44
 MERGED from [com.google.firebase:firebase-analytics:11.8.0] /Users/duo.lu/.gradle/caches/transforms-1/files-1.1/firebase-analytics-11.8.0.aar/962ded9aab5ee4210cad4ce609aca0dd/AndroidManifest.xml:20:5-44
 MERGED from [com.google.firebase:firebase-analytics-impl:11.8.0] /Users/duo.lu/.gradle/caches/transforms-1/files-1.1/firebase-analytics-impl-11.8.0.aar/d108d210c9a6707d81da9696562388e7/AndroidManifest.xml:20:5-44
@@ -211,8 +219,12 @@ MERGED from [com.facebook.android:facebook-messenger:4.31.0] /Users/duo.lu/.grad
 MERGED from [com.facebook.android:facebook-messenger:4.31.0] /Users/duo.lu/.gradle/caches/transforms-1/files-1.1/facebook-messenger-4.31.0.aar/442baf8192f8f7a720de9fd9dbefe5da/AndroidManifest.xml:24:5-26:41
 MERGED from [com.facebook.android:facebook-core:4.31.0] /Users/duo.lu/.gradle/caches/transforms-1/files-1.1/facebook-core-4.31.0.aar/a21e9416f5b3dfea3ae2c504c403daf8/AndroidManifest.xml:24:5-26:41
 MERGED from [com.facebook.android:facebook-core:4.31.0] /Users/duo.lu/.gradle/caches/transforms-1/files-1.1/facebook-core-4.31.0.aar/a21e9416f5b3dfea3ae2c504c403daf8/AndroidManifest.xml:24:5-26:41
-MERGED from [com.facebook.fresco:imagepipeline-okhttp3:1.3.0] /Users/duo.lu/.gradle/caches/transforms-1/files-1.1/imagepipeline-okhttp3-1.3.0.aar/009bea5881d3ae3aa2b177c0a84400b0/AndroidManifest.xml:5:5-7:41
-MERGED from [com.facebook.fresco:imagepipeline-okhttp3:1.3.0] /Users/duo.lu/.gradle/caches/transforms-1/files-1.1/imagepipeline-okhttp3-1.3.0.aar/009bea5881d3ae3aa2b177c0a84400b0/AndroidManifest.xml:5:5-7:41
+MERGED from [com.android.support:recyclerview-v7:27.0.2] /Users/duo.lu/.gradle/caches/transforms-1/files-1.1/recyclerview-v7-27.0.2.aar/893aa90a9b0d54951e70949f31adf8ff/AndroidManifest.xml:20:5-44
+MERGED from [com.android.support:recyclerview-v7:27.0.2] /Users/duo.lu/.gradle/caches/transforms-1/files-1.1/recyclerview-v7-27.0.2.aar/893aa90a9b0d54951e70949f31adf8ff/AndroidManifest.xml:20:5-44
+MERGED from [com.github.bumptech.glide:glide:4.5.0] /Users/duo.lu/.gradle/caches/transforms-1/files-1.1/glide-4.5.0.aar/2a9f1489d18f231e6e26a885480cfca3/AndroidManifest.xml:7:5-9:41
+MERGED from [com.github.bumptech.glide:glide:4.5.0] /Users/duo.lu/.gradle/caches/transforms-1/files-1.1/glide-4.5.0.aar/2a9f1489d18f231e6e26a885480cfca3/AndroidManifest.xml:7:5-9:41
+MERGED from [io.reactivex.rxjava2:rxandroid:2.0.1] /Users/duo.lu/.gradle/caches/transforms-1/files-1.1/rxandroid-2.0.1.aar/f7af2befaa8f0def6f119304718798a5/AndroidManifest.xml:19:5-43
+MERGED from [io.reactivex.rxjava2:rxandroid:2.0.1] /Users/duo.lu/.gradle/caches/transforms-1/files-1.1/rxandroid-2.0.1.aar/f7af2befaa8f0def6f119304718798a5/AndroidManifest.xml:19:5-43
 MERGED from [com.google.android.gms:play-services-auth-api-phone-license:11.8.0] /Users/duo.lu/.gradle/caches/transforms-1/files-1.1/play-services-auth-api-phone-license-11.8.0.aar/b911fff06e44540ebf5335d557a2e908/AndroidManifest.xml:4:5-43
 MERGED from [com.google.android.gms:play-services-auth-api-phone-license:11.8.0] /Users/duo.lu/.gradle/caches/transforms-1/files-1.1/play-services-auth-api-phone-license-11.8.0.aar/b911fff06e44540ebf5335d557a2e908/AndroidManifest.xml:4:5-43
 MERGED from [com.google.android.gms:play-services-auth-base-license:11.8.0] /Users/duo.lu/.gradle/caches/transforms-1/files-1.1/play-services-auth-base-license-11.8.0.aar/cc7dab3b7d51c2821d4bf488b96bf3ca/AndroidManifest.xml:4:5-43
@@ -229,6 +241,8 @@ MERGED from [com.google.firebase:firebase-common-license:11.8.0] /Users/duo.lu/.
 MERGED from [com.google.firebase:firebase-common-license:11.8.0] /Users/duo.lu/.gradle/caches/transforms-1/files-1.1/firebase-common-license-11.8.0.aar/22b5dfdaeac02a17cd8c5a3deb62e101/AndroidManifest.xml:4:5-43
 MERGED from [com.google.firebase:firebase-storage-common-license:11.8.0] /Users/duo.lu/.gradle/caches/transforms-1/files-1.1/firebase-storage-common-license-11.8.0.aar/3ac8490614c2a0ac45009b5179afe4b4/AndroidManifest.xml:4:5-43
 MERGED from [com.google.firebase:firebase-storage-common-license:11.8.0] /Users/duo.lu/.gradle/caches/transforms-1/files-1.1/firebase-storage-common-license-11.8.0.aar/3ac8490614c2a0ac45009b5179afe4b4/AndroidManifest.xml:4:5-43
+MERGED from [com.facebook.fresco:imagepipeline-okhttp3:1.3.0] /Users/duo.lu/.gradle/caches/transforms-1/files-1.1/imagepipeline-okhttp3-1.3.0.aar/009bea5881d3ae3aa2b177c0a84400b0/AndroidManifest.xml:5:5-7:41
+MERGED from [com.facebook.fresco:imagepipeline-okhttp3:1.3.0] /Users/duo.lu/.gradle/caches/transforms-1/files-1.1/imagepipeline-okhttp3-1.3.0.aar/009bea5881d3ae3aa2b177c0a84400b0/AndroidManifest.xml:5:5-7:41
 MERGED from [com.android.support:support-fragment:27.0.2] /Users/duo.lu/.gradle/caches/transforms-1/files-1.1/support-fragment-27.0.2.aar/90540c179464c931dcd601233d533055/AndroidManifest.xml:20:5-44
 MERGED from [com.android.support:support-fragment:27.0.2] /Users/duo.lu/.gradle/caches/transforms-1/files-1.1/support-fragment-27.0.2.aar/90540c179464c931dcd601233d533055/AndroidManifest.xml:20:5-44
 MERGED from [com.android.support:support-core-utils:27.0.2] /Users/duo.lu/.gradle/caches/transforms-1/files-1.1/support-core-utils-27.0.2.aar/36ea3c5feaf6d46d8a63882cb41ab75b/AndroidManifest.xml:20:5-44
@@ -239,14 +253,16 @@ MERGED from [com.android.support:customtabs:27.0.2] /Users/duo.lu/.gradle/caches
 MERGED from [com.android.support:customtabs:27.0.2] /Users/duo.lu/.gradle/caches/transforms-1/files-1.1/customtabs-27.0.2.aar/baaf0ffdba33f817d5e8cbef38b7ada1/AndroidManifest.xml:20:5-44
 MERGED from [com.android.support:animated-vector-drawable:27.0.2] /Users/duo.lu/.gradle/caches/transforms-1/files-1.1/animated-vector-drawable-27.0.2.aar/ad3af1e3cdf463cde29ad9e83e8ad9b1/AndroidManifest.xml:20:5-44
 MERGED from [com.android.support:animated-vector-drawable:27.0.2] /Users/duo.lu/.gradle/caches/transforms-1/files-1.1/animated-vector-drawable-27.0.2.aar/ad3af1e3cdf463cde29ad9e83e8ad9b1/AndroidManifest.xml:20:5-44
-MERGED from [com.android.support:support-vector-drawable:27.0.2] /Users/duo.lu/.gradle/caches/transforms-1/files-1.1/support-vector-drawable-27.0.2.aar/287e80e4873d3c3fa6b39cd0550d9fd8/AndroidManifest.xml:20:5-44
-MERGED from [com.android.support:support-vector-drawable:27.0.2] /Users/duo.lu/.gradle/caches/transforms-1/files-1.1/support-vector-drawable-27.0.2.aar/287e80e4873d3c3fa6b39cd0550d9fd8/AndroidManifest.xml:20:5-44
 MERGED from [com.android.support:support-core-ui:27.0.2] /Users/duo.lu/.gradle/caches/transforms-1/files-1.1/support-core-ui-27.0.2.aar/f79d1400ddc1b7aa71b8b16f36e1dba5/AndroidManifest.xml:20:5-44
 MERGED from [com.android.support:support-core-ui:27.0.2] /Users/duo.lu/.gradle/caches/transforms-1/files-1.1/support-core-ui-27.0.2.aar/f79d1400ddc1b7aa71b8b16f36e1dba5/AndroidManifest.xml:20:5-44
+MERGED from [com.android.support:support-vector-drawable:27.0.2] /Users/duo.lu/.gradle/caches/transforms-1/files-1.1/support-vector-drawable-27.0.2.aar/287e80e4873d3c3fa6b39cd0550d9fd8/AndroidManifest.xml:20:5-44
+MERGED from [com.android.support:support-vector-drawable:27.0.2] /Users/duo.lu/.gradle/caches/transforms-1/files-1.1/support-vector-drawable-27.0.2.aar/287e80e4873d3c3fa6b39cd0550d9fd8/AndroidManifest.xml:20:5-44
 MERGED from [com.android.support:support-media-compat:27.0.2] /Users/duo.lu/.gradle/caches/transforms-1/files-1.1/support-media-compat-27.0.2.aar/ebd56b4519a109e53e871d0d6b08f549/AndroidManifest.xml:20:5-44
 MERGED from [com.android.support:support-media-compat:27.0.2] /Users/duo.lu/.gradle/caches/transforms-1/files-1.1/support-media-compat-27.0.2.aar/ebd56b4519a109e53e871d0d6b08f549/AndroidManifest.xml:20:5-44
 MERGED from [com.android.support:support-compat:27.0.2] /Users/duo.lu/.gradle/caches/transforms-1/files-1.1/support-compat-27.0.2.aar/b79485537a6775beb2de633080a9624f/AndroidManifest.xml:20:5-44
 MERGED from [com.android.support:support-compat:27.0.2] /Users/duo.lu/.gradle/caches/transforms-1/files-1.1/support-compat-27.0.2.aar/b79485537a6775beb2de633080a9624f/AndroidManifest.xml:20:5-44
+MERGED from [com.github.bumptech.glide:gifdecoder:4.5.0] /Users/duo.lu/.gradle/caches/transforms-1/files-1.1/gifdecoder-4.5.0.aar/ed35011e01d25b4b6f45385b1f2e7d75/AndroidManifest.xml:5:5-7:41
+MERGED from [com.github.bumptech.glide:gifdecoder:4.5.0] /Users/duo.lu/.gradle/caches/transforms-1/files-1.1/gifdecoder-4.5.0.aar/ed35011e01d25b4b6f45385b1f2e7d75/AndroidManifest.xml:5:5-7:41
 MERGED from [com.google.firebase:firebase-analytics-impl-license:11.8.0] /Users/duo.lu/.gradle/caches/transforms-1/files-1.1/firebase-analytics-impl-license-11.8.0.aar/18be0484536a238ad23b3ad60f484ff2/AndroidManifest.xml:4:5-43
 MERGED from [com.google.firebase:firebase-analytics-impl-license:11.8.0] /Users/duo.lu/.gradle/caches/transforms-1/files-1.1/firebase-analytics-impl-license-11.8.0.aar/18be0484536a238ad23b3ad60f484ff2/AndroidManifest.xml:4:5-43
 MERGED from [com.facebook.fresco:fresco:1.3.0] /Users/duo.lu/.gradle/caches/transforms-1/files-1.1/fresco-1.3.0.aar/b0bf0ad101564d08b65f9f0d3b865318/AndroidManifest.xml:5:5-7:41
@@ -255,10 +271,10 @@ MERGED from [com.facebook.fresco:imagepipeline:1.3.0] /Users/duo.lu/.gradle/cach
 MERGED from [com.facebook.fresco:imagepipeline:1.3.0] /Users/duo.lu/.gradle/caches/transforms-1/files-1.1/imagepipeline-1.3.0.aar/678a3902e8488d1d159e932f63d62a15/AndroidManifest.xml:5:5-7:41
 MERGED from [com.facebook.fresco:imagepipeline-base:1.3.0] /Users/duo.lu/.gradle/caches/transforms-1/files-1.1/imagepipeline-base-1.3.0.aar/838fdb6cdbbffd70c0706964db7f3dec/AndroidManifest.xml:5:5-7:41
 MERGED from [com.facebook.fresco:imagepipeline-base:1.3.0] /Users/duo.lu/.gradle/caches/transforms-1/files-1.1/imagepipeline-base-1.3.0.aar/838fdb6cdbbffd70c0706964db7f3dec/AndroidManifest.xml:5:5-7:41
-MERGED from [com.google.firebase:firebase-iid-license:11.8.0] /Users/duo.lu/.gradle/caches/transforms-1/files-1.1/firebase-iid-license-11.8.0.aar/285aca0694432747ba07993f168b10fd/AndroidManifest.xml:4:5-43
-MERGED from [com.google.firebase:firebase-iid-license:11.8.0] /Users/duo.lu/.gradle/caches/transforms-1/files-1.1/firebase-iid-license-11.8.0.aar/285aca0694432747ba07993f168b10fd/AndroidManifest.xml:4:5-43
 MERGED from [android.arch.lifecycle:runtime:1.0.3] /Users/duo.lu/.gradle/caches/transforms-1/files-1.1/runtime-1.0.3.aar/f5f3ea762577d2319002cfad8e378177/AndroidManifest.xml:20:5-22:41
 MERGED from [android.arch.lifecycle:runtime:1.0.3] /Users/duo.lu/.gradle/caches/transforms-1/files-1.1/runtime-1.0.3.aar/f5f3ea762577d2319002cfad8e378177/AndroidManifest.xml:20:5-22:41
+MERGED from [com.google.firebase:firebase-iid-license:11.8.0] /Users/duo.lu/.gradle/caches/transforms-1/files-1.1/firebase-iid-license-11.8.0.aar/285aca0694432747ba07993f168b10fd/AndroidManifest.xml:4:5-43
+MERGED from [com.google.firebase:firebase-iid-license:11.8.0] /Users/duo.lu/.gradle/caches/transforms-1/files-1.1/firebase-iid-license-11.8.0.aar/285aca0694432747ba07993f168b10fd/AndroidManifest.xml:4:5-43
 MERGED from [com.facebook.fbui.textlayoutbuilder:textlayoutbuilder:1.0.0] /Users/duo.lu/.gradle/caches/transforms-1/files-1.1/textlayoutbuilder-1.0.0.aar/3f4c62b1a01af71b2d02310723df1697/AndroidManifest.xml:14:5-16:41
 MERGED from [com.facebook.fbui.textlayoutbuilder:textlayoutbuilder:1.0.0] /Users/duo.lu/.gradle/caches/transforms-1/files-1.1/textlayoutbuilder-1.0.0.aar/3f4c62b1a01af71b2d02310723df1697/AndroidManifest.xml:14:5-16:41
 MERGED from [com.facebook.soloader:soloader:0.1.0] /Users/duo.lu/.gradle/caches/transforms-1/files-1.1/soloader-0.1.0.aar/24bfaee7f5c61b15ee2caa28dc311dcf/AndroidManifest.xml:2:3-70
@@ -279,14 +295,16 @@ INJECTED from /Applications/MAMP/htdocs/JustJoking/android/app/src/main/AndroidM
 		INJECTED from /Applications/MAMP/htdocs/JustJoking/android/app/src/main/AndroidManifest.xml
 application
 ADDED from /Applications/MAMP/htdocs/JustJoking/android/app/src/main/AndroidManifest.xml:16:5-48:19
-MERGED from [:react-native-image-crop-picker] /Applications/MAMP/htdocs/JustJoking/node_modules/react-native-image-crop-picker/android/build/intermediates/manifests/full/debug/AndroidManifest.xml:12:5-13:19
-MERGED from [:react-native-image-crop-picker] /Applications/MAMP/htdocs/JustJoking/node_modules/react-native-image-crop-picker/android/build/intermediates/manifests/full/debug/AndroidManifest.xml:12:5-13:19
+MERGED from [:react-native-syan-image-picker] /Applications/MAMP/htdocs/JustJoking/node_modules/react-native-syan-image-picker/android/build/intermediates/manifests/full/debug/AndroidManifest.xml:15:5-25:19
+MERGED from [:react-native-syan-image-picker] /Applications/MAMP/htdocs/JustJoking/node_modules/react-native-syan-image-picker/android/build/intermediates/manifests/full/debug/AndroidManifest.xml:15:5-25:19
 MERGED from [:react-native-image-picker] /Applications/MAMP/htdocs/JustJoking/node_modules/react-native-image-picker/android/build/intermediates/manifests/full/debug/AndroidManifest.xml:11:5-12:19
 MERGED from [:react-native-image-picker] /Applications/MAMP/htdocs/JustJoking/node_modules/react-native-image-picker/android/build/intermediates/manifests/full/debug/AndroidManifest.xml:11:5-12:19
 MERGED from [:react-native-fbsdk] /Applications/MAMP/htdocs/JustJoking/node_modules/react-native-fbsdk/android/build/intermediates/manifests/full/debug/AndroidManifest.xml:28:5-20
 MERGED from [:react-native-fbsdk] /Applications/MAMP/htdocs/JustJoking/node_modules/react-native-fbsdk/android/build/intermediates/manifests/full/debug/AndroidManifest.xml:28:5-20
 MERGED from [:react-native-splash-screen] /Applications/MAMP/htdocs/JustJoking/node_modules/react-native-splash-screen/android/build/intermediates/manifests/full/debug/AndroidManifest.xml:11:5-15:19
 MERGED from [:react-native-splash-screen] /Applications/MAMP/htdocs/JustJoking/node_modules/react-native-splash-screen/android/build/intermediates/manifests/full/debug/AndroidManifest.xml:11:5-15:19
+MERGED from [com.github.LuckSiege.PictureSelector:picture_library:v2.2.0] /Users/duo.lu/.gradle/caches/transforms-1/files-1.1/picture_library-v2.2.0.aar/8506d18c7890b3dcd2e6762a785a6873/AndroidManifest.xml:11:5-46:19
+MERGED from [com.github.LuckSiege.PictureSelector:picture_library:v2.2.0] /Users/duo.lu/.gradle/caches/transforms-1/files-1.1/picture_library-v2.2.0.aar/8506d18c7890b3dcd2e6762a785a6873/AndroidManifest.xml:11:5-46:19
 MERGED from [com.facebook.android:facebook-android-sdk:4.31.0] /Users/duo.lu/.gradle/caches/transforms-1/files-1.1/facebook-android-sdk-4.31.0.aar/63c150a539ea4c0449a8a710f0f6c6c5/AndroidManifest.xml:28:5-29:19
 MERGED from [com.facebook.android:facebook-android-sdk:4.31.0] /Users/duo.lu/.gradle/caches/transforms-1/files-1.1/facebook-android-sdk-4.31.0.aar/63c150a539ea4c0449a8a710f0f6c6c5/AndroidManifest.xml:28:5-29:19
 MERGED from [com.facebook.android:facebook-login:4.31.0] /Users/duo.lu/.gradle/caches/transforms-1/files-1.1/facebook-login-4.31.0.aar/8e5fa6ffff693cb164f767879e7532e2/AndroidManifest.xml:28:5-29:19
@@ -331,6 +349,8 @@ MERGED from [com.facebook.android:facebook-messenger:4.31.0] /Users/duo.lu/.grad
 MERGED from [com.facebook.android:facebook-messenger:4.31.0] /Users/duo.lu/.gradle/caches/transforms-1/files-1.1/facebook-messenger-4.31.0.aar/442baf8192f8f7a720de9fd9dbefe5da/AndroidManifest.xml:28:5-29:19
 MERGED from [com.facebook.android:facebook-core:4.31.0] /Users/duo.lu/.gradle/caches/transforms-1/files-1.1/facebook-core-4.31.0.aar/a21e9416f5b3dfea3ae2c504c403daf8/AndroidManifest.xml:28:5-43:19
 MERGED from [com.facebook.android:facebook-core:4.31.0] /Users/duo.lu/.gradle/caches/transforms-1/files-1.1/facebook-core-4.31.0.aar/a21e9416f5b3dfea3ae2c504c403daf8/AndroidManifest.xml:28:5-43:19
+MERGED from [com.github.bumptech.glide:glide:4.5.0] /Users/duo.lu/.gradle/caches/transforms-1/files-1.1/glide-4.5.0.aar/2a9f1489d18f231e6e26a885480cfca3/AndroidManifest.xml:11:5-20
+MERGED from [com.github.bumptech.glide:glide:4.5.0] /Users/duo.lu/.gradle/caches/transforms-1/files-1.1/glide-4.5.0.aar/2a9f1489d18f231e6e26a885480cfca3/AndroidManifest.xml:11:5-20
 MERGED from [com.google.android.gms:play-services-auth-api-phone-license:11.8.0] /Users/duo.lu/.gradle/caches/transforms-1/files-1.1/play-services-auth-api-phone-license-11.8.0.aar/b911fff06e44540ebf5335d557a2e908/AndroidManifest.xml:5:5-20
 MERGED from [com.google.android.gms:play-services-auth-api-phone-license:11.8.0] /Users/duo.lu/.gradle/caches/transforms-1/files-1.1/play-services-auth-api-phone-license-11.8.0.aar/b911fff06e44540ebf5335d557a2e908/AndroidManifest.xml:5:5-20
 MERGED from [com.google.android.gms:play-services-auth-base-license:11.8.0] /Users/duo.lu/.gradle/caches/transforms-1/files-1.1/play-services-auth-base-license-11.8.0.aar/cc7dab3b7d51c2821d4bf488b96bf3ca/AndroidManifest.xml:5:5-20
@@ -345,6 +365,8 @@ MERGED from [com.google.firebase:firebase-common-license:11.8.0] /Users/duo.lu/.
 MERGED from [com.google.firebase:firebase-common-license:11.8.0] /Users/duo.lu/.gradle/caches/transforms-1/files-1.1/firebase-common-license-11.8.0.aar/22b5dfdaeac02a17cd8c5a3deb62e101/AndroidManifest.xml:5:5-20
 MERGED from [com.google.firebase:firebase-storage-common-license:11.8.0] /Users/duo.lu/.gradle/caches/transforms-1/files-1.1/firebase-storage-common-license-11.8.0.aar/3ac8490614c2a0ac45009b5179afe4b4/AndroidManifest.xml:5:5-20
 MERGED from [com.google.firebase:firebase-storage-common-license:11.8.0] /Users/duo.lu/.gradle/caches/transforms-1/files-1.1/firebase-storage-common-license-11.8.0.aar/3ac8490614c2a0ac45009b5179afe4b4/AndroidManifest.xml:5:5-20
+MERGED from [com.github.bumptech.glide:gifdecoder:4.5.0] /Users/duo.lu/.gradle/caches/transforms-1/files-1.1/gifdecoder-4.5.0.aar/ed35011e01d25b4b6f45385b1f2e7d75/AndroidManifest.xml:9:5-20
+MERGED from [com.github.bumptech.glide:gifdecoder:4.5.0] /Users/duo.lu/.gradle/caches/transforms-1/files-1.1/gifdecoder-4.5.0.aar/ed35011e01d25b4b6f45385b1f2e7d75/AndroidManifest.xml:9:5-20
 MERGED from [com.google.firebase:firebase-analytics-impl-license:11.8.0] /Users/duo.lu/.gradle/caches/transforms-1/files-1.1/firebase-analytics-impl-license-11.8.0.aar/18be0484536a238ad23b3ad60f484ff2/AndroidManifest.xml:5:5-20
 MERGED from [com.google.firebase:firebase-analytics-impl-license:11.8.0] /Users/duo.lu/.gradle/caches/transforms-1/files-1.1/firebase-analytics-impl-license-11.8.0.aar/18be0484536a238ad23b3ad60f484ff2/AndroidManifest.xml:5:5-20
 MERGED from [com.google.firebase:firebase-iid-license:11.8.0] /Users/duo.lu/.gradle/caches/transforms-1/files-1.1/firebase-iid-license-11.8.0.aar/285aca0694432747ba07993f168b10fd/AndroidManifest.xml:5:5-20
@@ -433,6 +455,80 @@ data
 ADDED from /Applications/MAMP/htdocs/JustJoking/android/app/src/main/AndroidManifest.xml:45:13-71
 	android:scheme
 		ADDED from /Applications/MAMP/htdocs/JustJoking/android/app/src/main/AndroidManifest.xml:45:19-68
+provider#android.support.v4.content.FileProvider
+ADDED from [:react-native-syan-image-picker] /Applications/MAMP/htdocs/JustJoking/node_modules/react-native-syan-image-picker/android/build/intermediates/manifests/full/debug/AndroidManifest.xml:16:9-24:20
+	android:grantUriPermissions
+		ADDED from [:react-native-syan-image-picker] /Applications/MAMP/htdocs/JustJoking/node_modules/react-native-syan-image-picker/android/build/intermediates/manifests/full/debug/AndroidManifest.xml:20:13-47
+	android:authorities
+		ADDED from [:react-native-syan-image-picker] /Applications/MAMP/htdocs/JustJoking/node_modules/react-native-syan-image-picker/android/build/intermediates/manifests/full/debug/AndroidManifest.xml:18:13-60
+	android:exported
+		ADDED from [:react-native-syan-image-picker] /Applications/MAMP/htdocs/JustJoking/node_modules/react-native-syan-image-picker/android/build/intermediates/manifests/full/debug/AndroidManifest.xml:19:13-37
+	android:name
+		ADDED from [:react-native-syan-image-picker] /Applications/MAMP/htdocs/JustJoking/node_modules/react-native-syan-image-picker/android/build/intermediates/manifests/full/debug/AndroidManifest.xml:17:13-67
+meta-data#android.support.FILE_PROVIDER_PATHS
+ADDED from [:react-native-syan-image-picker] /Applications/MAMP/htdocs/JustJoking/node_modules/react-native-syan-image-picker/android/build/intermediates/manifests/full/debug/AndroidManifest.xml:21:13-23:54
+	android:resource
+		ADDED from [:react-native-syan-image-picker] /Applications/MAMP/htdocs/JustJoking/node_modules/react-native-syan-image-picker/android/build/intermediates/manifests/full/debug/AndroidManifest.xml:23:17-51
+	android:name
+		ADDED from [:react-native-syan-image-picker] /Applications/MAMP/htdocs/JustJoking/node_modules/react-native-syan-image-picker/android/build/intermediates/manifests/full/debug/AndroidManifest.xml:22:17-67
+provider#com.luck.picture.lib.PictureFileProvider
+ADDED from [com.github.LuckSiege.PictureSelector:picture_library:v2.2.0] /Users/duo.lu/.gradle/caches/transforms-1/files-1.1/picture_library-v2.2.0.aar/8506d18c7890b3dcd2e6762a785a6873/AndroidManifest.xml:12:9-20:20
+	android:grantUriPermissions
+		ADDED from [com.github.LuckSiege.PictureSelector:picture_library:v2.2.0] /Users/duo.lu/.gradle/caches/transforms-1/files-1.1/picture_library-v2.2.0.aar/8506d18c7890b3dcd2e6762a785a6873/AndroidManifest.xml:16:13-47
+	android:authorities
+		ADDED from [com.github.LuckSiege.PictureSelector:picture_library:v2.2.0] /Users/duo.lu/.gradle/caches/transforms-1/files-1.1/picture_library-v2.2.0.aar/8506d18c7890b3dcd2e6762a785a6873/AndroidManifest.xml:14:13-60
+	android:exported
+		ADDED from [com.github.LuckSiege.PictureSelector:picture_library:v2.2.0] /Users/duo.lu/.gradle/caches/transforms-1/files-1.1/picture_library-v2.2.0.aar/8506d18c7890b3dcd2e6762a785a6873/AndroidManifest.xml:15:13-37
+	android:name
+		ADDED from [com.github.LuckSiege.PictureSelector:picture_library:v2.2.0] /Users/duo.lu/.gradle/caches/transforms-1/files-1.1/picture_library-v2.2.0.aar/8506d18c7890b3dcd2e6762a785a6873/AndroidManifest.xml:13:13-68
+activity#com.luck.picture.lib.PictureSelectorActivity
+ADDED from [com.github.LuckSiege.PictureSelector:picture_library:v2.2.0] /Users/duo.lu/.gradle/caches/transforms-1/files-1.1/picture_library-v2.2.0.aar/8506d18c7890b3dcd2e6762a785a6873/AndroidManifest.xml:22:9-25:55
+	android:windowSoftInputMode
+		ADDED from [com.github.LuckSiege.PictureSelector:picture_library:v2.2.0] /Users/duo.lu/.gradle/caches/transforms-1/files-1.1/picture_library-v2.2.0.aar/8506d18c7890b3dcd2e6762a785a6873/AndroidManifest.xml:25:13-52
+	android:theme
+		ADDED from [com.github.LuckSiege.PictureSelector:picture_library:v2.2.0] /Users/duo.lu/.gradle/caches/transforms-1/files-1.1/picture_library-v2.2.0.aar/8506d18c7890b3dcd2e6762a785a6873/AndroidManifest.xml:24:13-50
+	android:name
+		ADDED from [com.github.LuckSiege.PictureSelector:picture_library:v2.2.0] /Users/duo.lu/.gradle/caches/transforms-1/files-1.1/picture_library-v2.2.0.aar/8506d18c7890b3dcd2e6762a785a6873/AndroidManifest.xml:23:13-72
+activity#com.luck.picture.lib.PicturePreviewActivity
+ADDED from [com.github.LuckSiege.PictureSelector:picture_library:v2.2.0] /Users/duo.lu/.gradle/caches/transforms-1/files-1.1/picture_library-v2.2.0.aar/8506d18c7890b3dcd2e6762a785a6873/AndroidManifest.xml:26:9-28:53
+	android:theme
+		ADDED from [com.github.LuckSiege.PictureSelector:picture_library:v2.2.0] /Users/duo.lu/.gradle/caches/transforms-1/files-1.1/picture_library-v2.2.0.aar/8506d18c7890b3dcd2e6762a785a6873/AndroidManifest.xml:28:13-50
+	android:name
+		ADDED from [com.github.LuckSiege.PictureSelector:picture_library:v2.2.0] /Users/duo.lu/.gradle/caches/transforms-1/files-1.1/picture_library-v2.2.0.aar/8506d18c7890b3dcd2e6762a785a6873/AndroidManifest.xml:27:13-71
+activity#com.luck.picture.lib.PictureVideoPlayActivity
+ADDED from [com.github.LuckSiege.PictureSelector:picture_library:v2.2.0] /Users/duo.lu/.gradle/caches/transforms-1/files-1.1/picture_library-v2.2.0.aar/8506d18c7890b3dcd2e6762a785a6873/AndroidManifest.xml:29:9-33:53
+	android:screenOrientation
+		ADDED from [com.github.LuckSiege.PictureSelector:picture_library:v2.2.0] /Users/duo.lu/.gradle/caches/transforms-1/files-1.1/picture_library-v2.2.0.aar/8506d18c7890b3dcd2e6762a785a6873/AndroidManifest.xml:32:13-47
+	android:configChanges
+		ADDED from [com.github.LuckSiege.PictureSelector:picture_library:v2.2.0] /Users/duo.lu/.gradle/caches/transforms-1/files-1.1/picture_library-v2.2.0.aar/8506d18c7890b3dcd2e6762a785a6873/AndroidManifest.xml:31:13-74
+	android:theme
+		ADDED from [com.github.LuckSiege.PictureSelector:picture_library:v2.2.0] /Users/duo.lu/.gradle/caches/transforms-1/files-1.1/picture_library-v2.2.0.aar/8506d18c7890b3dcd2e6762a785a6873/AndroidManifest.xml:33:13-50
+	android:name
+		ADDED from [com.github.LuckSiege.PictureSelector:picture_library:v2.2.0] /Users/duo.lu/.gradle/caches/transforms-1/files-1.1/picture_library-v2.2.0.aar/8506d18c7890b3dcd2e6762a785a6873/AndroidManifest.xml:30:13-73
+activity#com.luck.picture.lib.PictureExternalPreviewActivity
+ADDED from [com.github.LuckSiege.PictureSelector:picture_library:v2.2.0] /Users/duo.lu/.gradle/caches/transforms-1/files-1.1/picture_library-v2.2.0.aar/8506d18c7890b3dcd2e6762a785a6873/AndroidManifest.xml:34:9-36:53
+	android:theme
+		ADDED from [com.github.LuckSiege.PictureSelector:picture_library:v2.2.0] /Users/duo.lu/.gradle/caches/transforms-1/files-1.1/picture_library-v2.2.0.aar/8506d18c7890b3dcd2e6762a785a6873/AndroidManifest.xml:36:13-50
+	android:name
+		ADDED from [com.github.LuckSiege.PictureSelector:picture_library:v2.2.0] /Users/duo.lu/.gradle/caches/transforms-1/files-1.1/picture_library-v2.2.0.aar/8506d18c7890b3dcd2e6762a785a6873/AndroidManifest.xml:35:13-79
+activity#com.yalantis.ucrop.UCropActivity
+ADDED from [com.github.LuckSiege.PictureSelector:picture_library:v2.2.0] /Users/duo.lu/.gradle/caches/transforms-1/files-1.1/picture_library-v2.2.0.aar/8506d18c7890b3dcd2e6762a785a6873/AndroidManifest.xml:37:9-39:72
+	android:theme
+		ADDED from [com.github.LuckSiege.PictureSelector:picture_library:v2.2.0] /Users/duo.lu/.gradle/caches/transforms-1/files-1.1/picture_library-v2.2.0.aar/8506d18c7890b3dcd2e6762a785a6873/AndroidManifest.xml:39:13-69
+	android:name
+		ADDED from [com.github.LuckSiege.PictureSelector:picture_library:v2.2.0] /Users/duo.lu/.gradle/caches/transforms-1/files-1.1/picture_library-v2.2.0.aar/8506d18c7890b3dcd2e6762a785a6873/AndroidManifest.xml:38:13-60
+activity#com.yalantis.ucrop.PictureMultiCuttingActivity
+ADDED from [com.github.LuckSiege.PictureSelector:picture_library:v2.2.0] /Users/duo.lu/.gradle/caches/transforms-1/files-1.1/picture_library-v2.2.0.aar/8506d18c7890b3dcd2e6762a785a6873/AndroidManifest.xml:40:9-42:72
+	android:theme
+		ADDED from [com.github.LuckSiege.PictureSelector:picture_library:v2.2.0] /Users/duo.lu/.gradle/caches/transforms-1/files-1.1/picture_library-v2.2.0.aar/8506d18c7890b3dcd2e6762a785a6873/AndroidManifest.xml:42:13-69
+	android:name
+		ADDED from [com.github.LuckSiege.PictureSelector:picture_library:v2.2.0] /Users/duo.lu/.gradle/caches/transforms-1/files-1.1/picture_library-v2.2.0.aar/8506d18c7890b3dcd2e6762a785a6873/AndroidManifest.xml:41:13-74
+activity#com.luck.picture.lib.PicturePlayAudioActivity
+ADDED from [com.github.LuckSiege.PictureSelector:picture_library:v2.2.0] /Users/duo.lu/.gradle/caches/transforms-1/files-1.1/picture_library-v2.2.0.aar/8506d18c7890b3dcd2e6762a785a6873/AndroidManifest.xml:43:9-45:72
+	android:theme
+		ADDED from [com.github.LuckSiege.PictureSelector:picture_library:v2.2.0] /Users/duo.lu/.gradle/caches/transforms-1/files-1.1/picture_library-v2.2.0.aar/8506d18c7890b3dcd2e6762a785a6873/AndroidManifest.xml:45:13-69
+	android:name
+		ADDED from [com.github.LuckSiege.PictureSelector:picture_library:v2.2.0] /Users/duo.lu/.gradle/caches/transforms-1/files-1.1/picture_library-v2.2.0.aar/8506d18c7890b3dcd2e6762a785a6873/AndroidManifest.xml:44:13-73
 activity#com.facebook.CustomTabMainActivity
 ADDED from [com.facebook.android:facebook-common:4.31.0] /Users/duo.lu/.gradle/caches/transforms-1/files-1.1/facebook-common-4.31.0.aar/d839ed182b766e8d19d7e82e22704162/AndroidManifest.xml:33:9-71
 	android:name

@@ -139,7 +139,7 @@ android {
 }
 
 dependencies {
-    compile project(':react-native-image-crop-picker')
+    compile project(':react-native-syan-image-picker')
     // please be very careful with react-native link
     // make sure all the lines it has added does not duplicate other lines
 

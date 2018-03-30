@@ -3,6 +3,30 @@
     <attr format="reference" name="drawerArrowStyle"/>
     <attr format="dimension" name="height"/>
     <attr format="boolean" name="isLightTheme"/>
+    <attr format="reference|color" name="picture.ac_preview.bottom.bg"/>
+    <attr format="reference|color" name="picture.ac_preview.complete.textColor"/>
+    <attr format="reference|color" name="picture.ac_preview.title.bg"/>
+    <attr format="reference|color" name="picture.ac_preview.title.textColor"/>
+    <attr format="reference" name="picture.arrow_down.icon"/>
+    <attr format="reference" name="picture.arrow_up.icon"/>
+    <attr format="reference|color" name="picture.bottom.bg"/>
+    <attr format="reference" name="picture.checked.style"/>
+    <attr format="reference|color" name="picture.complete.textColor"/>
+    <attr format="reference|color" name="picture.crop.status.color"/>
+    <attr format="reference|color" name="picture.crop.title.color"/>
+    <attr format="reference|color" name="picture.crop.toolbar.bg"/>
+    <attr format="reference" name="picture.folder_checked_dot"/>
+    <attr format="reference" name="picture.leftBack.icon"/>
+    <attr format="reference" name="picture.num.style"/>
+    <attr format="reference" name="picture.preview.leftBack.icon"/>
+    <attr format="boolean" name="picture.preview.statusFontColor"/>
+    <attr format="reference|color" name="picture.preview.textColor"/>
+    <attr format="reference|color" name="picture.right.textColor"/>
+    <attr format="reference|color" name="picture.status.color"/>
+    <attr format="boolean" name="picture.statusFontColor"/>
+    <attr format="boolean" name="picture.style.checkNumMode"/>
+    <attr format="boolean" name="picture.style.numComplete"/>
+    <attr format="reference|color" name="picture.title.textColor"/>
     <attr format="string" name="title"/>
     <bool name="abc_action_bar_embed_tabs">true</bool>
     <bool name="abc_allow_stacked_button_bar">true</bool>
@@ -19,6 +43,10 @@
     <color name="background_floating_material_light">@android:color/white</color>
     <color name="background_material_dark">@color/material_grey_850</color>
     <color name="background_material_light">@color/material_grey_50</color>
+    <color name="bar_grey">#393a3e</color>
+    <color name="bar_grey_90">#dd393a3e</color>
+    <color name="black">#000000</color>
+    <color name="blue">#7D7DFF</color>
     <color name="bright_foreground_disabled_material_dark">#80ffffff</color>
     <color name="bright_foreground_disabled_material_light">#80000000</color>
     <color name="bright_foreground_inverse_material_dark">@color/bright_foreground_material_light</color>
@@ -32,6 +60,13 @@
     <color name="cardview_shadow_end_color">#03000000</color>
     <color name="cardview_shadow_start_color">#37000000</color>
     <color name="catalyst_redbox_background">#eecc0000</color>
+    <color name="color_4d">#4d4d4d</color>
+    <color name="color_53">#53575e</color>
+    <color name="color_69">#999999</color>
+    <color name="color_f0">#F0F0F0</color>
+    <color name="color_f2">#F2F2F2</color>
+    <color name="color_fa">#FAFAFA</color>
+    <color name="color_orange">#E0FF6100</color>
     <color name="com_facebook_blue">#3B5998</color>
     <color name="com_facebook_button_background_color">#415dae</color>
     <color name="com_facebook_button_background_color_disabled">#bdc1c9</color>
@@ -68,6 +103,9 @@
     <color name="foreground_material_light">@android:color/black</color>
     <color name="highlighted_text_material_dark">#6680cbc4</color>
     <color name="highlighted_text_material_light">#66009688</color>
+    <color name="image_overlay_false">#20000000</color>
+    <color name="image_overlay_true">#80000000</color>
+    <color name="line_color">#EEEEEE</color>
     <color name="material_blue_grey_800">#ff37474f</color>
     <color name="material_blue_grey_900">#ff263238</color>
     <color name="material_blue_grey_950">#ff21272b</color>
@@ -102,13 +140,19 @@
     <color name="switch_thumb_disabled_material_light">#ffbdbdbd</color>
     <color name="switch_thumb_normal_material_dark">#ffbdbdbd</color>
     <color name="switch_thumb_normal_material_light">#fff1f1f1</color>
+    <color name="tab_color_false">#9b9b9b</color>
+    <color name="tab_color_true">#FA632D</color>
     <color name="tooltip_background_dark">#e6616161</color>
     <color name="tooltip_background_light">#e6FFFFFF</color>
+    <color name="transparent">#00000000</color>
+    <color name="transparent_db">#E0DBDBDB</color>
+    <color name="transparent_white">#F0FFFFFF</color>
     <color name="ucrop_color_crop_background">#000</color>
     <color name="ucrop_color_default_crop_frame">#ffffff</color>
     <color name="ucrop_color_default_crop_grid">#80ffffff</color>
     <color name="ucrop_color_default_dimmed">#8c000000</color>
     <color name="ucrop_color_default_logo">#4f212121</color>
+    <color name="ucrop_color_grey">#999999</color>
     <color name="ucrop_color_progress_wheel_line">#808080</color>
     <color name="ucrop_color_statusbar">#CC5833</color>
     <color name="ucrop_color_toolbar">#FF6E40</color>
@@ -117,6 +161,7 @@
     <color name="ucrop_color_widget_active">#FF6E40</color>
     <color name="ucrop_color_widget_background">#fff</color>
     <color name="ucrop_color_widget_text">#000</color>
+    <color name="white">#FFFFFF</color>
     <declare-styleable name="ActionBar"><attr name="navigationMode">
             
             <enum name="normal" value="0"/>
@@ -319,6 +364,7 @@
     <declare-styleable name="PopupWindow"><attr format="boolean" name="overlapAnchor"/><attr name="android:popupBackground"/><attr name="android:popupAnimationStyle"/></declare-styleable>
     <declare-styleable name="PopupWindowBackgroundState"><attr format="boolean" name="state_above_anchor"/></declare-styleable>
     <declare-styleable name="RecycleListView"><attr format="dimension" name="paddingBottomNoButtons"/><attr format="dimension" name="paddingTopNoTitle"/></declare-styleable>
+    <declare-styleable name="RecyclerView"><attr format="string" name="layoutManager"/><attr name="android:orientation"/><attr name="android:descendantFocusability"/><attr format="integer" name="spanCount"/><attr format="boolean" name="reverseLayout"/><attr format="boolean" name="stackFromEnd"/><attr format="boolean" name="fastScrollEnabled"/><attr format="reference" name="fastScrollVerticalThumbDrawable"/><attr format="reference" name="fastScrollVerticalTrackDrawable"/><attr format="reference" name="fastScrollHorizontalThumbDrawable"/><attr format="reference" name="fastScrollHorizontalTrackDrawable"/></declare-styleable>
     <declare-styleable name="SearchView"><attr format="reference" name="layout"/><attr format="boolean" name="iconifiedByDefault"/><attr name="android:maxWidth"/><attr format="string" name="queryHint"/><attr format="string" name="defaultQueryHint"/><attr name="android:imeOptions"/><attr name="android:inputType"/><attr format="reference" name="closeIcon"/><attr format="reference" name="goIcon"/><attr format="reference" name="searchIcon"/><attr format="reference" name="searchHintIcon"/><attr format="reference" name="voiceIcon"/><attr format="reference" name="commitIcon"/><attr format="reference" name="suggestionRowLayout"/><attr format="reference" name="queryBackground"/><attr format="reference" name="submitBackground"/><attr name="android:focusable"/></declare-styleable>
     <declare-styleable name="SignInButton"><attr format="reference" name="buttonSize">
 <enum name="standard" value="0"/>
@@ -337,6 +383,7 @@
 </attr><attr format="reference|string" name="scopeUris"/></declare-styleable>
     <declare-styleable name="SimpleDraweeView"><attr format="string" name="actualImageUri"/><attr format="reference" name="actualImageResource"/></declare-styleable>
     <declare-styleable name="Spinner"><attr name="android:prompt"/><attr name="popupTheme"/><attr name="android:popupBackground"/><attr name="android:dropDownWidth"/><attr name="android:entries"/></declare-styleable>
+    <declare-styleable name="SubsamplingScaleImageView"><attr format="reference" name="src"/><attr format="string" name="assetName"/><attr format="boolean" name="panEnabled"/><attr format="boolean" name="zoomEnabled"/><attr format="boolean" name="quickScaleEnabled"/><attr format="color" name="tileBackgroundColor"/></declare-styleable>
     <declare-styleable name="SwitchCompat"><attr name="android:thumb"/><attr format="color" name="thumbTint"/><attr name="thumbTintMode">
             
             <enum name="src_over" value="3"/>
@@ -523,6 +570,9 @@
     <dimen name="compat_control_corner_material">2dp</dimen>
     <item format="float" name="disabled_alpha_material_dark" type="dimen">0.30</item>
     <item format="float" name="disabled_alpha_material_light" type="dimen">0.26</item>
+    <dimen name="fastscroll_default_thickness">8dp</dimen>
+    <dimen name="fastscroll_margin">0dp</dimen>
+    <dimen name="fastscroll_minimum_range">50dp</dimen>
     <item format="float" name="highlight_alpha_material_colored" type="dimen">0.26</item>
     <item format="float" name="highlight_alpha_material_dark" type="dimen">0.20</item>
     <item format="float" name="highlight_alpha_material_light" type="dimen">0.12</item>
@@ -530,6 +580,10 @@
     <item format="float" name="hint_alpha_material_light" type="dimen">0.38</item>
     <item format="float" name="hint_pressed_alpha_material_dark" type="dimen">0.70</item>
     <item format="float" name="hint_pressed_alpha_material_light" type="dimen">0.54</item>
+    <dimen name="item_touch_helper_max_drag_scroll_per_frame">20dp</dimen>
+    <dimen name="item_touch_helper_swipe_escape_max_velocity">800dp</dimen>
+    <dimen name="item_touch_helper_swipe_escape_velocity">120dp</dimen>
+    <dimen name="margin_top">8dp</dimen>
     <dimen name="notification_action_icon_size">32dp</dimen>
     <dimen name="notification_action_text_size">13sp</dimen>
     <dimen name="notification_big_circle_margin">12dp</dimen>
@@ -578,6 +632,7 @@
     <item name="action_menu_divider" type="id"/>
     <item name="action_menu_presenter" type="id"/>
     <item name="home" type="id"/>
+    <item name="item_touch_helper_previous_elevation" type="id"/>
     <item name="line1" type="id"/>
     <item name="line3" type="id"/>
     <item name="progress_circular" type="id"/>
@@ -697,11 +752,50 @@
     <string name="fb_login_protocol_scheme">fb1395919443845845</string>
     <string name="firebase_database_url" translatable="false">https://justjoking-60269.firebaseio.com</string>
     <string name="gcm_defaultSenderId" translatable="false">161742623113</string>
+    <string name="gif_tag">动图</string>
     <string name="google_api_key" translatable="false">AIzaSyCNxd2G93fMWbNXiLmIbxj1IYybwjspfv4</string>
     <string name="google_app_id" translatable="false">1:161742623113:android:d1813d9a6b24c0d9</string>
     <string name="google_crash_reporting_api_key" translatable="false">AIzaSyCNxd2G93fMWbNXiLmIbxj1IYybwjspfv4</string>
     <string name="google_storage_bucket" translatable="false">justjoking-60269.appspot.com</string>
     <string name="messenger_send_button_text">Send</string>
+    <string name="picture_all_audio">所有音频</string>
+    <string name="picture_audio">获取系统录音权限被拒绝</string>
+    <string name="picture_audio_empty">你可以使用系统录音录制音频</string>
+    <string name="picture_camera">获取系统相机权限被拒绝</string>
+    <string name="picture_camera_roll">相机胶卷</string>
+    <string name="picture_cancel">取消</string>
+    <string name="picture_completed">已完成</string>
+    <string name="picture_confirm">确定</string>
+    <string name="picture_done">完成</string>
+    <string name="picture_done_front_num">%1$d/%2$d 完成</string>
+    <string name="picture_empty">你可以使用相机拍摄照片或视频</string>
+    <string name="picture_empty_audio_title">无音频文件\n</string>
+    <string name="picture_empty_title">无视频或照片\n</string>
+    <string name="picture_error">图片已损坏</string>
+    <string name="picture_jurisdiction">读取内存卡权限被拒绝</string>
+    <string name="picture_long_chart">长图</string>
+    <string name="picture_message_max_num">你最多可以选择%1$s张图片</string>
+    <string name="picture_message_video_max_num">你最多可以选择%1$s个视频</string>
+    <string name="picture_min_img_num">图片最低选择不能少于%1$s张</string>
+    <string name="picture_min_video_num">视频最低选择不能少于%1$s个</string>
+    <string name="picture_pause_audio">暂停</string>
+    <string name="picture_photograph">拍照</string>
+    <string name="picture_play_audio">播放</string>
+    <string name="picture_please">请稍候...</string>
+    <string name="picture_please_select">请选择</string>
+    <string name="picture_preview">预览</string>
+    <string name="picture_prompt">提示</string>
+    <string name="picture_prompt_content">是否保存图片至手机？</string>
+    <string name="picture_quit_audio">退出</string>
+    <string name="picture_record_video">录视频</string>
+    <string name="picture_rule">不能同时选择图片或视频</string>
+    <string name="picture_save_error">图片保存失败</string>
+    <string name="picture_save_success">图片保存成功至</string>
+    <string name="picture_stop_audio">停止</string>
+    <string name="picture_take_picture">拍摄</string>
+    <string name="picture_tape">录音</string>
+    <string name="picture_video_toast">视频不可预览</string>
+    <string name="picture_warning">暂无媒体文件！</string>
     <string name="project_id" translatable="false">justjoking-60269</string>
     <string name="search_menu_title">Search</string>
     <string name="status_bar_notification_info_overflow">999+</string>
@@ -1797,6 +1891,14 @@
     <item name="android:windowEnterAnimation">@anim/catalyst_slide_up</item>
     <item name="android:windowExitAnimation">@anim/catalyst_slide_down</item>
   </style>
+    <style name="DialogWindowStyle">
+        <item name="android:windowEnterAnimation">@anim/modal_in</item>
+        <item name="android:windowExitAnimation">@anim/modal_out</item>
+    </style>
+    <style name="Dialog_Audio_StyleAnim">
+        <item name="android:windowEnterAnimation">@anim/a5</item>
+        <item name="android:windowExitAnimation">@anim/a3</item>
+    </style>
     <style name="MessengerButton">
     <item name="android:clickable">true</item>
   </style>
@@ -2174,6 +2276,23 @@
     <style name="ThemeOverlay.AppCompat.Dialog" parent="Base.ThemeOverlay.AppCompat.Dialog"/>
     <style name="ThemeOverlay.AppCompat.Dialog.Alert" parent="Base.ThemeOverlay.AppCompat.Dialog.Alert"/>
     <style name="ThemeOverlay.AppCompat.Light" parent="Base.ThemeOverlay.AppCompat.Light"/>
+    <style name="Theme_dialog" parent="@android:style/Theme.Dialog">
+
+        <!-- 边框 -->
+        <item name="android:windowFrame">@android:color/transparent</item>
+        <!-- 是否浮现在activity之上 -->
+        <item name="android:windowIsFloating">true</item>
+        <!-- 半透明 -->
+        <item name="android:windowIsTranslucent">false</item>
+        <!-- 无标题 -->
+        <item name="android:windowNoTitle">true</item>
+        <item name="android:windowContentOverlay">@null</item>
+        <item name="android:windowAnimationStyle">@android:style/Animation.Dialog</item>
+        <item name="android:windowSoftInputMode">stateUnspecified|adjustPan</item>
+
+        <!-- 自己想要的背景 -->
+        <item name="android:windowBackground">@android:color/transparent</item>
+    </style>
     <style name="Widget.AppCompat.ActionBar" parent="Base.Widget.AppCompat.ActionBar">
     </style>
     <style name="Widget.AppCompat.ActionBar.Solid" parent="Base.Widget.AppCompat.ActionBar.Solid">
@@ -2270,6 +2389,22 @@
     <style name="Widget.AppCompat.Toolbar.Button.Navigation" parent="Base.Widget.AppCompat.Toolbar.Button.Navigation"/>
     <style name="Widget.Compat.NotificationActionContainer" parent=""/>
     <style name="Widget.Compat.NotificationActionText" parent=""/>
+    <style name="WindowStyle">
+        <item name="android:windowEnterAnimation">@anim/fade_in</item>
+        <item name="android:windowExitAnimation">@anim/fade_out</item>
+    </style>
+    <style name="activity.Theme" parent="Theme.AppCompat.Light.DarkActionBar">
+        <item name="windowActionBar">true</item>
+        <item name="windowNoTitle">true</item>
+        <item name="android:windowIsTranslucent">true</item>
+        <item name="android:windowBackground">@android:color/white</item>
+    </style>
+    <style name="activity.Theme.Transparent" parent="Theme.AppCompat.Light.DarkActionBar">
+        <item name="windowActionBar">true</item>
+        <item name="windowNoTitle">true</item>
+        <item name="android:windowIsTranslucent">true</item>
+        <item name="android:windowBackground">@android:color/transparent</item>
+    </style>
     <style name="com_facebook_activity_theme" parent="@style/Theme.AppCompat.NoActionBar">
       <item name="android:windowIsTranslucent">true</item>
       <item name="android:windowBackground">@android:color/transparent</item>
@@ -2327,6 +2462,71 @@
         <item name="android:background">@drawable/com_facebook_button_login_silver_background</item>
         <item name="android:drawableLeft">@null</item>
         <item name="android:textColor">#4b5164</item>
+    </style>
+    <style name="picture.default.style" parent="Theme.AppCompat.Light.DarkActionBar">
+        <!-- Customize your theme here. -->
+        <!--标题栏背景色-->
+        <item name="colorPrimary">@color/bar_grey</item>
+        <!--状态栏背景色-->
+        <item name="colorPrimaryDark">@color/bar_grey</item>
+        <!--是否改变图片列表界面状态栏字体颜色为黑色-->
+        <item name="picture.statusFontColor">false</item>
+        <!--返回键图标-->
+        <item name="picture.leftBack.icon">@drawable/picture_back</item>
+        <!--标题下拉箭头-->
+        <item name="picture.arrow_down.icon">@drawable/arrow_down</item>
+        <!--标题上拉箭头-->
+        <item name="picture.arrow_up.icon">@drawable/arrow_up</item>
+        <!--标题文字颜色-->
+        <item name="picture.title.textColor">@color/white</item>
+        <!--标题栏右边文字-->
+        <item name="picture.right.textColor">@color/white</item>
+        <!--图片列表勾选样式-->
+        <item name="picture.checked.style">@drawable/picture_checkbox_selector</item>
+        <!--开启图片列表勾选数字模式-->
+        <item name="picture.style.checkNumMode">false</item>
+        <!--选择图片样式0/9-->
+        <item name="picture.style.numComplete">false</item>
+        <!--图片列表底部背景色-->
+        <item name="picture.bottom.bg">@color/color_fa</item>
+        <!--图片列表预览文字颜色-->
+        <item name="picture.preview.textColor">@color/picture_list_text_color</item>
+        <!--图片列表已完成文字颜色-->
+        <item name="picture.complete.textColor">@color/picture_list_text_color</item>
+        <!--图片已选数量圆点背景色-->
+        <item name="picture.num.style">@drawable/num_oval</item>
+        <!--预览界面标题文字颜色-->
+        <item name="picture.ac_preview.title.textColor">@color/white</item>
+        <!--预览界面已完成文字颜色-->
+        <item name="picture.ac_preview.complete.textColor">@color/picture_preview_text_color</item>
+        <!--预览界面标题栏背景色-->
+        <item name="picture.ac_preview.title.bg">@color/bar_grey</item>
+        <!--预览界面底部背景色-->
+        <item name="picture.ac_preview.bottom.bg">@color/bar_grey_90</item>
+        <!--预览界面状态栏颜色-->
+        <item name="picture.status.color">@color/bar_grey_90</item>
+        <!--预览界面返回箭头-->
+        <item name="picture.preview.leftBack.icon">@drawable/picture_back</item>
+        <!--是否改变预览界面状态栏字体颜色为黑色-->
+        <item name="picture.preview.statusFontColor">false</item>
+        <!--裁剪页面标题背景色-->
+        <item name="picture.crop.toolbar.bg">@color/bar_grey</item>
+        <!--裁剪页面状态栏颜色-->
+        <item name="picture.crop.status.color">@color/bar_grey</item>
+        <!--裁剪页面标题文字颜色-->
+        <item name="picture.crop.title.color">@color/white</item>
+        <!--相册文件夹列表选中图标-->
+        <item name="picture.folder_checked_dot">@drawable/orange_oval</item>
+    </style>
+    <style name="picture_alert_dialog" parent="android:Theme.Dialog">
+        <item name="android:windowIsFloating">true</item>
+        <item name="android:windowIsTranslucent">false</item>
+        <item name="android:windowNoTitle">true</item>
+        <item name="android:windowFullscreen">false</item>
+        <item name="android:windowBackground">@color/transparent</item>
+        <item name="android:windowAnimationStyle">@null</item>
+        <item name="android:backgroundDimEnabled">false</item>
+        <item name="android:backgroundDimAmount">0.4</item>
     </style>
     <style name="tooltip_bubble_text">
         <item name="android:textColor">@android:color/white</item>

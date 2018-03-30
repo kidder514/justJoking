@@ -10,7 +10,8 @@ import FitImage from 'react-native-fit-image';
 import { loadOn, loadEnd } from "../../reducer/action/uiAction";
 import { postCall } from '../../reducer/action/listAction';
 import ImageResizer from 'react-native-image-resizer';
-import ImagePicker from 'react-native-image-crop-picker';
+import SYImagePicker from 'react-native-syan-image-picker'
+
 
 class Post extends React.Component {
 	constructor(props) {
@@ -19,14 +20,14 @@ class Post extends React.Component {
 			text: '',
 			errorText: '',
 			wordCount: 0,
-			images:[]
+			images: []
 		}
 
 		this.removeImage = this.removeImage.bind(this);
 	}
 
-	shouldComponentUpdate(nextProps, nextState){
-		if (this.state.images.length >  nextState.images.length) {
+	shouldComponentUpdate(nextProps, nextState) {
+		if (this.state.images.length > nextState.images.length) {
 			return true;
 		}
 
@@ -38,37 +39,25 @@ class Post extends React.Component {
 	}
 
 	chooseImage() {
-		// const options = {
-		// 	imageCount: 9,           	// 最大选择图片数目，默认6
-		// 	isCamera: false,            // 是否允许用户在内部拍照，默认true
-		// 	isCrop: false,       	    // 是否允许裁剪，默认false
-		// 	isGif: true,              	// 是否允许选择GIF，默认false，暂无回调GIF数据
-		// };
+		const options = {
+			imageCount: 9,             // 最大选择图片数目，默认6
+			isCamera: true,            // 是否允许用户在内部拍照，默认true
+			isGif: false,              // 是否允许选择GIF，默认false，暂无回调GIF数据
+		};
 
-		ImagePicker.openPicker({
-			multiple: true
-		  }).then(images => {
-			console.log(images);
-		  });
-
-		// this.props.loadOnCall();
-		// SYImagePicker.asyncShowImagePicker(options)
-		// .then(imagesData => {
-		// 	let images = [];
-		// 	imagesData.map(image => {images.push(image.original_uri)});
-		// 	this.setState({images: images});
-		// 	this.props.loadEndCall();
-		// })
-		// .catch(err => {
-		// 	this.props.loadEndCall();			
-		// 	toastAndroid(string.ErrorSelectingImage);
-		// })
+		SYImagePicker.asyncShowImagePicker(options)
+		.then(photos => {
+			console.log(photos);
+		})
+		.catch(err => {
+			console.log(err);
+		})
 	}
 
-	removeImage(index){
+	removeImage(index) {
 		let images = this.state.images;
 		images.splice(index, 1)
-		this.setState({images: images});
+		this.setState({ images: images });
 	}
 
 	onSubmit() {
@@ -91,7 +80,7 @@ class Post extends React.Component {
 			// 	'data:image/jpeg;base64,' + pickerRes.data, 300, 300, 'PNG', 65, 0
 			// )
 			// .then((resizerRes) => {	
-	
+
 			// })
 			// .catch((err) => {
 			// 	dispatch(loadEnd());
@@ -108,7 +97,7 @@ class Post extends React.Component {
 			<View style={style.imageList}>
 				{imagesLength > 0 && this.renderImageList()}
 				{this.renderImageButton()}
-				{imagesLength > 0 && 
+				{imagesLength > 0 &&
 					<View className={style.removeImagePrompt}>
 						<Text>{string.ClickToRemoveImage}</Text>
 					</View>
@@ -227,9 +216,9 @@ const style = StyleSheet.create({
 
 const mapDispatchToProps = (dispatch) => {
 	return {
-		loadOnCall: () => { dispatch(loadOn())},
-		loadEndCall: () => { dispatch(loadEnd())},
-		postCall: () => { dispatch(postCall())}
+		loadOnCall: () => { dispatch(loadOn()) },
+		loadEndCall: () => { dispatch(loadEnd()) },
+		postCall: () => { dispatch(postCall()) }
 	};
 };
 

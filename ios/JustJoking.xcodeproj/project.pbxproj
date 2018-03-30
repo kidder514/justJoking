@@ -60,7 +60,7 @@
 		CF64DB68F66342A1BF7AC37F /* libRNImagePicker.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 2E87E7BF74CB4E04BA195828 /* libRNImagePicker.a */; };
 		1EC9B21540D84426A225B634 /* libRCTImageResizer.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 710D5A2391194D898FAC3A7A /* libRCTImageResizer.a */; };
 		E51436FBE6224725BE37E75D /* libRNFS.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 96BB2CC49D034E9DBA51BAF0 /* libRNFS.a */; };
-		3FA827F5C36C4EE39E5DAFDC /* libimageCropPicker.a in Frameworks */ = {isa = PBXBuildFile; fileRef = EA6AEC263EB049828821A1BC /* libimageCropPicker.a */; };
+		0D4ED10C9DCA49A5927B92AB /* libRNSyanImagePicker.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 019A2B733BB3452AAE87E194 /* libRNSyanImagePicker.a */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -343,8 +343,8 @@
 		710D5A2391194D898FAC3A7A /* libRCTImageResizer.a */ = {isa = PBXFileReference; name = "libRCTImageResizer.a"; path = "libRCTImageResizer.a"; sourceTree = "<group>"; fileEncoding = undefined; lastKnownFileType = archive.ar; explicitFileType = undefined; includeInIndex = 0; };
 		9DE1ECB97FCF4B11BB0C1A80 /* RNFS.xcodeproj */ = {isa = PBXFileReference; name = "RNFS.xcodeproj"; path = "../node_modules/react-native-fs/RNFS.xcodeproj"; sourceTree = "<group>"; fileEncoding = undefined; lastKnownFileType = wrapper.pb-project; explicitFileType = undefined; includeInIndex = 0; };
 		96BB2CC49D034E9DBA51BAF0 /* libRNFS.a */ = {isa = PBXFileReference; name = "libRNFS.a"; path = "libRNFS.a"; sourceTree = "<group>"; fileEncoding = undefined; lastKnownFileType = archive.ar; explicitFileType = undefined; includeInIndex = 0; };
-		95CF06CA985F45428EA18D9D /* imageCropPicker.xcodeproj */ = {isa = PBXFileReference; name = "imageCropPicker.xcodeproj"; path = "../node_modules/react-native-image-crop-picker/ios/imageCropPicker.xcodeproj"; sourceTree = "<group>"; fileEncoding = undefined; lastKnownFileType = wrapper.pb-project; explicitFileType = undefined; includeInIndex = 0; };
-		EA6AEC263EB049828821A1BC /* libimageCropPicker.a */ = {isa = PBXFileReference; name = "libimageCropPicker.a"; path = "libimageCropPicker.a"; sourceTree = "<group>"; fileEncoding = undefined; lastKnownFileType = archive.ar; explicitFileType = undefined; includeInIndex = 0; };
+		0902039F0F8446C68DC44D07 /* RNSyanImagePicker.xcodeproj */ = {isa = PBXFileReference; name = "RNSyanImagePicker.xcodeproj"; path = "../node_modules/react-native-syan-image-picker/ios/RNSyanImagePicker.xcodeproj"; sourceTree = "<group>"; fileEncoding = undefined; lastKnownFileType = wrapper.pb-project; explicitFileType = undefined; includeInIndex = 0; };
+		019A2B733BB3452AAE87E194 /* libRNSyanImagePicker.a */ = {isa = PBXFileReference; name = "libRNSyanImagePicker.a"; path = "libRNSyanImagePicker.a"; sourceTree = "<group>"; fileEncoding = undefined; lastKnownFileType = archive.ar; explicitFileType = undefined; includeInIndex = 0; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -386,7 +386,7 @@
 				CF64DB68F66342A1BF7AC37F /* libRNImagePicker.a in Frameworks */,
 				1EC9B21540D84426A225B634 /* libRCTImageResizer.a in Frameworks */,
 				E51436FBE6224725BE37E75D /* libRNFS.a in Frameworks */,
-				3FA827F5C36C4EE39E5DAFDC /* libimageCropPicker.a in Frameworks */,
+				0D4ED10C9DCA49A5927B92AB /* libRNSyanImagePicker.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -577,7 +577,7 @@
 				1E0EAEE71A5C48FDA0205D23 /* RNImagePicker.xcodeproj */,
 				061ACC44D91549D5B0035D0E /* RCTImageResizer.xcodeproj */,
 				9DE1ECB97FCF4B11BB0C1A80 /* RNFS.xcodeproj */,
-				95CF06CA985F45428EA18D9D /* imageCropPicker.xcodeproj */,
+				0902039F0F8446C68DC44D07 /* RNSyanImagePicker.xcodeproj */,
 			);
 			name = Libraries;
 			sourceTree = "<group>";
@@ -1179,6 +1179,7 @@
 				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/JustJoking.app/JustJoking";
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",
+					"\"$(SRCROOT)/$(TARGET_NAME)\"",
 				);
 				HEADER_SEARCH_PATHS = (
 					"$(inherited)",
@@ -1191,7 +1192,7 @@
 					"$(SRCROOT)/../node_modules/react-native-image-picker/ios",
 					"$(SRCROOT)/../node_modules/react-native-image-resizer/ios/RCTImageResizer",
 					"$(SRCROOT)/../node_modules/react-native-fs/**",
-					"$(SRCROOT)/../node_modules/react-native-image-crop-picker/ios/**",
+					"$(SRCROOT)/../node_modules/react-native-syan-image-picker/ios/**",
 				);
 			};
 			name = Debug;
@@ -1212,6 +1213,7 @@
 				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/JustJoking.app/JustJoking";
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",
+					"\"$(SRCROOT)/$(TARGET_NAME)\"",
 				);
 				HEADER_SEARCH_PATHS = (
 					"$(inherited)",
@@ -1224,7 +1226,7 @@
 					"$(SRCROOT)/../node_modules/react-native-image-picker/ios",
 					"$(SRCROOT)/../node_modules/react-native-image-resizer/ios/RCTImageResizer",
 					"$(SRCROOT)/../node_modules/react-native-fs/**",
-					"$(SRCROOT)/../node_modules/react-native-image-crop-picker/ios/**",
+					"$(SRCROOT)/../node_modules/react-native-syan-image-picker/ios/**",
 				);
 			};
 			name = Release;
@@ -1255,7 +1257,7 @@
 					"$(SRCROOT)/../node_modules/react-native-image-picker/ios",
 					"$(SRCROOT)/../node_modules/react-native-image-resizer/ios/RCTImageResizer",
 					"$(SRCROOT)/../node_modules/react-native-fs/**",
-					"$(SRCROOT)/../node_modules/react-native-image-crop-picker/ios/**",
+					"$(SRCROOT)/../node_modules/react-native-syan-image-picker/ios/**",
 				);
 			};
 			name = Debug;
@@ -1285,7 +1287,7 @@
 					"$(SRCROOT)/../node_modules/react-native-image-picker/ios",
 					"$(SRCROOT)/../node_modules/react-native-image-resizer/ios/RCTImageResizer",
 					"$(SRCROOT)/../node_modules/react-native-fs/**",
-					"$(SRCROOT)/../node_modules/react-native-image-crop-picker/ios/**",
+					"$(SRCROOT)/../node_modules/react-native-syan-image-picker/ios/**",
 				);
 			};
 			name = Release;
@@ -1315,6 +1317,7 @@
 				TVOS_DEPLOYMENT_TARGET = 9.2;
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",
+					"\"$(SRCROOT)/$(TARGET_NAME)\"",
 				);
 				HEADER_SEARCH_PATHS = (
 					"$(inherited)",
@@ -1327,7 +1330,7 @@
 					"$(SRCROOT)/../node_modules/react-native-image-picker/ios",
 					"$(SRCROOT)/../node_modules/react-native-image-resizer/ios/RCTImageResizer",
 					"$(SRCROOT)/../node_modules/react-native-fs/**",
-					"$(SRCROOT)/../node_modules/react-native-image-crop-picker/ios/**",
+					"$(SRCROOT)/../node_modules/react-native-syan-image-picker/ios/**",
 				);
 			};
 			name = Debug;
@@ -1357,6 +1360,7 @@
 				TVOS_DEPLOYMENT_TARGET = 9.2;
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",
+					"\"$(SRCROOT)/$(TARGET_NAME)\"",
 				);
 				HEADER_SEARCH_PATHS = (
 					"$(inherited)",
@@ -1369,7 +1373,7 @@
 					"$(SRCROOT)/../node_modules/react-native-image-picker/ios",
 					"$(SRCROOT)/../node_modules/react-native-image-resizer/ios/RCTImageResizer",
 					"$(SRCROOT)/../node_modules/react-native-fs/**",
-					"$(SRCROOT)/../node_modules/react-native-image-crop-picker/ios/**",
+					"$(SRCROOT)/../node_modules/react-native-syan-image-picker/ios/**",
 				);
 			};
 			name = Release;
@@ -1394,6 +1398,7 @@
 				TVOS_DEPLOYMENT_TARGET = 10.1;
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",
+					"\"$(SRCROOT)/$(TARGET_NAME)\"",
 				);
 			};
 			name = Debug;
@@ -1418,6 +1423,7 @@
 				TVOS_DEPLOYMENT_TARGET = 10.1;
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",
+					"\"$(SRCROOT)/$(TARGET_NAME)\"",
 				);
 			};
 			name = Release;
