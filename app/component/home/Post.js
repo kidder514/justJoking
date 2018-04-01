@@ -8,30 +8,42 @@ import Icon from 'react-native-vector-icons/Entypo';
 import { toastAndroid } from '../../reducer/action/appAction';
 import FitImage from 'react-native-fit-image';
 import { loadOn, loadEnd } from "../../reducer/action/uiAction";
-import { postCall } from '../../reducer/action/listAction';
-import ImageResizer from 'react-native-image-resizer';
+import { textPostCall, imagePostCall } from '../../reducer/action/listAction';
 import SYImagePicker from 'react-native-syan-image-picker'
 
+const initialState = {
+	text: '',
+	errorText: '',
+	wordCount: 0,
+	images: []
+};
 
 class Post extends React.Component {
 	constructor(props) {
 		super(props);
-		this.state = {
-			text: '',
-			errorText: '',
-			wordCount: 0,
-			images: []
-		}
+		this.state = initialState;
 
 		this.removeImage = this.removeImage.bind(this);
+		this.onSubmit = this.onSubmit.bind(this);
+		this.reset = this.reset.bind(this);
+	}
+
+	componentWillUpdate(nextProps) {
+		if (this.props.isPosting && !nextProps.isPosting) {
+			this.reset();
+		}
 	}
 
 	shouldComponentUpdate(nextProps, nextState) {
-		if (this.state.images.length > nextState.images.length) {
+		if (this.state.images.length != nextState.images.length) {
 			return true;
 		}
 
 		return true;
+	}
+
+	reset(){
+		this.setState(initialState);
 	}
 
 	onChangeText(txt) {
@@ -46,8 +58,13 @@ class Post extends React.Component {
 		};
 
 		SYImagePicker.asyncShowImagePicker(options)
-		.then(photos => {
-			console.log(photos);
+		.then(images => {
+			let imageList = [];
+
+			if (images.length > 0)
+				images.map(image => imageList.push(image.original_uri));
+
+			this.setState({images: imageList});
 		})
 		.catch(err => {
 			console.log(err);
@@ -62,48 +79,50 @@ class Post extends React.Component {
 
 	onSubmit() {
 		const { text, images } = this.state;
-		if (text.length > 300) {
-			this.setState({ errorText: string.InvalidTextLength });
+		if (images.length == 0) {
+			// text post
+			if (text.length == 0) {
+				this.setState({errorText: string.ErrorEmptyContent});
+			} else if (text.length < 20 && text.length > 300) {
+				this.setState({errorText: string.ErrorTextLengthInvalid});
+			} else {
+				this.setState({ errorText: '' });
+				this.props.textPostCall(text);
+			}
 		} else {
-			this.setState({ errorText: '' });
-			this.resizeImage();
+			//image post
+			if (text.length > 300) {
+				this.setState({ errorText: string.ErrorTextTooLong });
+			} else {
+				this.setState({ errorText: '' });
+				this.props.imagePostCall(text, images);
+			}
 		}
-	}
-
-	resizeImage() {
-		this.props.loadOnCall();
-		let imagesTemp = [];
-		this.state.images.map(image => {
-			console.log(resolveAssetSource(image).width, resolveAssetSource(image).height);
-
-			// ImageResizer.createResizedImage(
-			// 	'data:image/jpeg;base64,' + pickerRes.data, 300, 300, 'PNG', 65, 0
-			// )
-			// .then((resizerRes) => {	
-
-			// })
-			// .catch((err) => {
-			// 	dispatch(loadEnd());
-			// 	toastAndroid(string.ErrorResizingImage);				
-			// }); 
-		});
-		// this.props.postCall(text, images);
-
 	}
 
 	renderImages() {
 		const imagesLength = this.state.images.length;
-		return (
-			<View style={style.imageList}>
+		return [
+			<View style={style.imageList} key='image-list'>
 				{imagesLength > 0 && this.renderImageList()}
 				{this.renderImageButton()}
-				{imagesLength > 0 &&
-					<View className={style.removeImagePrompt}>
-						<Text>{string.ClickToRemoveImage}</Text>
-					</View>
-				}
+			</View>,
+			<View key='remove-image-prompt'>				
+				{this.renderRemoveImagePrompt()}
 			</View>
-		);
+		];
+	}
+
+	renderRemoveImagePrompt() {
+		if ( this.state.images.length > 0 ) {
+			return (
+				<View className={style.removeImagePrompt}>
+					<Text>{string.ClickToRemoveImage}</Text>
+				</View>
+			)
+		} else {
+			return false;
+		}
 	}
 
 	renderImageList() {
@@ -155,7 +174,7 @@ class Post extends React.Component {
 				<FormValidationMessage>{this.state.errorText}</FormValidationMessage>
 				<Button
 					style={style.button}
-					onPress={() => navigate('Publish')}
+					onPress={this.onSubmit}
 					title={string.Upload}
 					color={primaryColor}
 				/>
@@ -210,17 +229,24 @@ const style = StyleSheet.create({
 		flexWrap: 'wrap'
 	},
 	removeImagePrompt: {
-		width: width - width * 0.2
+		width: width - width * 0.2,
 	}
 });
 
+const mapStateToProps = (state) => {
+	return {
+		isPosting: state.List.isPosting
+	}
+}
+
 const mapDispatchToProps = (dispatch) => {
 	return {
-		loadOnCall: () => { dispatch(loadOn()) },
-		loadEndCall: () => { dispatch(loadEnd()) },
-		postCall: () => { dispatch(postCall()) }
+		loadOnCall: () => {dispatch(loadOn())},
+		loadEndCall: () => {dispatch(loadEnd())},
+		imagePostCall: (text, images) => {dispatch(imagePostCall(text, images))},
+		textPostCall: (text) => {dispatch(textPostCall(text))}
 	};
 };
 
-export default connect(null, mapDispatchToProps)(Post);
+export default connect(mapStateToProps, mapDispatchToProps)(Post);
 

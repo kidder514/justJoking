@@ -61,9 +61,13 @@ const string = new LocalizedStrings({
 		Post: 'Post',
 		PostSomethingFunny: 'Post something funny and make people laugh.',
 		Upload: 'Upload',
-		InvalidTextLength: 'Please make sure it is less that 300 characters',
+		ErrorEmptyContent: 'You cannot submit an empty content',
+		ErrorTextLengthInvalid: 'A text post should be at least 30 and at most 300 characters long, please make sure you are actually telling a joke',
+		ErrorTextTooLong: 'Please make sure it is less that 300 characters',
 		ErrorSelectingImage: 'Error ocurred while selecting images',
 		ClickToRemoveImage: 'Click to remove image from the list',
+		ErrorAddPost: 'Adding post has failed',
+		AddPostSuccess: 'Your joke has been added successfully',
 //Inbox
 		Inbox: 'Inbox',
 //Profile

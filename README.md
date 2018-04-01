@@ -11,6 +11,7 @@
 - help page
 - terms and condition page
 - version number add to setting page.
+- something might be wrong in post and user create time, we should use a global utc time.
 
 ### Features in release 1.1.0
 - search Page

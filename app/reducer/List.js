@@ -206,11 +206,19 @@ const initState = {
     ],
     hotList: [],
     imageList: [],
-    textList: []
+    textList: [],
+    myList:[],
+    isPosting: false
 }
 
 function List(state = initState, action) {
 	switch (action.type) {
+        case 'ADD_POST':
+            const tempMyList = state.myList;
+            tempMyList.unshift(action.payload);
+            return {...state, myList: tempMyList, isPosting: false};
+        case 'ADD_POST_START':
+            return {...state, isPosting: true}
 		default:
 			return state;
 	}

@@ -1,61 +1,87 @@
-import { ToastAndroid } from 'react-native';
+import { toastAndroid } from './appAction';
 import { loadOn, loadEnd } from './uiAction';
 import firebase from 'react-native-firebase';
 import string from '../../localization/string';
+import ImageResizer from 'react-native-image-resizer';
 
-
-export const post = (post) => {
+export const addPost = (post) => {
 	return {
-		type: 'POST',
+		type: 'ADD_POST',
 		payload: post
 	};
-};
+}
 
+export const addPostStart = () => {
+	return { type: 'ADD_POST_START' };
+}
 
-export function postCall(text, images){
+export function imagePostCall(text, images){
+	let imagesTemp = [];
+	
 	return dispatch => {
 		dispatch(loadOn());
-		dispatch(loadEnd());
-		// image picker options
-		// const options = {
-		// 	title: string.ChooseYourProfilePicture,
-		// 	quality: 0.7,
-		// 	storageOptions: {
-		// 		skipBackup: true,
-		// 		cameraRoll: true
-		// 	}
-		// };
+		// 1. make the postCall api call working
 
-		// dispatch(loadOn());
-		// let imagesTemp = [];
-		// images.map(image => {
-		// 	ImageResizer.createResizedImage(
-		// 		'data:image/jpeg;base64,' + pickerRes.data, 300, 300, 'PNG', 65, 0
-		// 	)
-		// 	.then((resizerRes) => {	
+		// 2. to test this
+		// 以1280为界限
+		// 宽高均 <= 1280，图片尺寸大小保持不变
+		// 宽高均 > 1280 && 宽高比 > 2，取较小值等于1280，较大值等比例压缩            
+		// 宽或高 > 1280 && 宽高比 <= 2，取较大值等于1280，较小值等比例压缩
+		// 宽或高 > 1280 && 宽高比 > 2 && 宽或高 < 1280，图片尺寸大小保持不变
+		
+		// 3. if works fine 
+		// fork the react-native-image-resizer and create your own version
+		if (images.length > 0 ){
+			images.map(image => {
+				ImageResizer.createResizedImage(image, 1280, 1280, 'PNG',50, 0)
+				.then((res) => {
+					imagesTemp.push(res.path);
+					if (imagesTemp.length === images.length) {
 	
-		// 	})
-		// 	.catch((err) => {
-		// 		dispatch(loadEnd());
-		// 		toastAndroid(string.ErrorResizingImage);				
-		// 	}); 
-		// });
+					}
+				})
+				.catch((err) => {
+					console.log(err);
+					dispatch(loadEnd());
+					toastAndroid(string.ErrorResizingImage);				
+				}); 
+			});
+		}
+	}
+}
 
-		// ImageResizer.createResizedImage(
-		// 	'data:image/jpeg;base64,' + pickerRes.data, 300, 300, 'PNG', 65, 0
-		// )
-		// .then((resizerRes) => {	
+export function textPostCall(text) {
+	return (dispatch, getState) =>  {
+		dispatch(loadOn());
+		dispatch(addPostStart());
+		const tempPost = {
+			creationTime: new Date().getTime(),			
+			author: getState().Auth.uid,
+			authorName: getState().Auth.name,
+			postType: 'text',
+			like:{},
+			unlike: {},
+			share: {},
+			comment: {},
+			text: text,
+		}
 
-		// })
-		// .catch((err) => {
-		// 	dispatch(loadEnd());
-		// 	toastAndroid(string.ErrorResizingImage);				
-		// }); 
-		// upload to firestorage
-		// then
-			// get image links
-			// upload to database /post and /user
-			// then
-		// catch
+		firebase.firestore().collection('posts').add(tempPost)
+		.then(ref =>{
+			console.log('successfull add post');
+			console.log(ref);
+			dispatch(loadEnd());
+			dispatch(addPost(tempPost));
+
+			// need to add reset button in the post page.
+			// neet to reset after a successful post.
+
+			toastAndroid(string.AddPostSuccess);
+		})
+		.catch(err => {
+			console.log(err);
+			dispatch(loadEnd());		
+			toastAndroid(string.ErrorAddPost);
+		});
 	}
 }
