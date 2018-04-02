@@ -61,6 +61,7 @@ const string = new LocalizedStrings({
 		Post: 'Post',
 		PostSomethingFunny: 'Post something funny and make people laugh.',
 		Upload: 'Upload',
+		Reset: 'Reset',
 		ErrorEmptyContent: 'You cannot submit an empty content',
 		ErrorTextLengthInvalid: 'A text post should be at least 30 and at most 300 characters long, please make sure you are actually telling a joke',
 		ErrorTextTooLong: 'Please make sure it is less that 300 characters',

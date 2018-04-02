@@ -172,12 +172,20 @@ class Post extends React.Component {
 				<Text style={style.wordCount}>{string.WordCount + this.state.wordCount + '/300'}</Text>
 				{this.renderImages()}
 				<FormValidationMessage>{this.state.errorText}</FormValidationMessage>
-				<Button
-					style={style.button}
-					onPress={this.onSubmit}
-					title={string.Upload}
-					color={primaryColor}
-				/>
+				<View style={style.button}>
+					<Button
+						onPress={this.onSubmit}
+						title={string.Upload}
+						color={primaryColor}
+					/>
+				</View>
+				<View style={style.resetButton}>
+					<Button
+						onPress={this.reset}
+						title={string.Reset}
+						color={greyColor}
+					/>
+				</View>
 			</View>
 		);
 	}
@@ -230,6 +238,9 @@ const style = StyleSheet.create({
 	},
 	removeImagePrompt: {
 		width: width - width * 0.2,
+	},
+	resetButton: {
+		marginTop: 20,
 	}
 });
 
