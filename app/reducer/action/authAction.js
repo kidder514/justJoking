@@ -48,7 +48,7 @@ export const updatePhoto = (photo) => {
 
 export function signUpWithEmailCall(name, email, password){
 	return dispatch => {
-		dispatch(loadOn());
+		dispatch(loadOn(string.LoadingSigningUp));
 		// create user in firebase auth
 		firebase.auth().createUserAndRetrieveDataWithEmailAndPassword(email, password)
 			.then(res => {
@@ -91,7 +91,7 @@ export function signUpWithEmailCall(name, email, password){
 
 export function signInWithEmailCall(email, password){
 	return dispatch => {
-		dispatch(loadOn());
+		dispatch(loadOn(string.LoadingSigningIn));
 		// get user from firebase auth
 		firebase.auth().signInAndRetrieveDataWithEmailAndPassword(email, password)
 		.then(res => {
@@ -117,7 +117,7 @@ export function signInWithEmailCall(email, password){
 
 export function signInWithSocialCall(credential) {
 	return dispatch => {
-		dispatch(loadOn());
+		dispatch(loadOn(string.LoadingSigningIn));
 
 		// sign in and get user data
 		firebase.auth().signInWithCredential(credential)
@@ -177,7 +177,7 @@ export function signInWithSocialCall(credential) {
 
 export function signOutCall() {
 	return dispatch => {
-		dispatch(loadOn());
+		dispatch(loadOn(string.LoadingSigningOut));
 		firebase.auth().signOut()
 		.then(() => {
 			dispatch(loadEnd());			
@@ -193,7 +193,7 @@ export function signOutCall() {
 
 export function updateNameCall(name) {
 	return (dispatch, getState) => {
-		dispatch(loadOn());
+		dispatch(loadOn(string.LoadingUpdatingProfile));
 		firebase.firestore().doc('users/' + getState().Auth.uid).update({
 			'name': name
 		})
@@ -211,7 +211,7 @@ export function updateNameCall(name) {
 
 export function updateTaglineCall(tagline) {
 	return (dispatch, getState) => {
-		dispatch(loadOn());
+		dispatch(loadOn(string.LoadingUpdatingProfile));
 		firebase.firestore().doc('users/' + getState().Auth.uid).update({
 			'tagline': tagline
 		})
@@ -242,7 +242,7 @@ export function updatePhotoCall() {
 
 		// pic img from photo or camera
 		ImagePicker.showImagePicker(options, (pickerRes) => {
-			dispatch(loadOn());
+			dispatch(loadOn(string.LoadingUpdatingProfile));
 			if (!pickerRes.didCancel && !pickerRes.error) {
 				
 				// resize image

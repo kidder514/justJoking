@@ -19,7 +19,7 @@ export function imagePostCall(text, images){
 	let imagesTemp = [];
 	
 	return dispatch => {
-		dispatch(loadOn());
+		dispatch(loadOn(string.LoadingCompressingImages));
 		// 1. make the postCall api call working
 
 		// 2. to test this
@@ -37,7 +37,8 @@ export function imagePostCall(text, images){
 				.then((res) => {
 					imagesTemp.push(res.path);
 					if (imagesTemp.length === images.length) {
-	
+						dispatch(loadOn(string.LoadingUploadingImages));
+						dispatch(loadEnd());
 					}
 				})
 				.catch((err) => {
@@ -52,7 +53,7 @@ export function imagePostCall(text, images){
 
 export function textPostCall(text) {
 	return (dispatch, getState) =>  {
-		dispatch(loadOn());
+		dispatch(loadOn(string.LoadingUploadingPost));
 		dispatch(addPostStart());
 		const tempPost = {
 			creationTime: new Date().getTime(),			
@@ -68,14 +69,8 @@ export function textPostCall(text) {
 
 		firebase.firestore().collection('posts').add(tempPost)
 		.then(ref =>{
-			console.log('successfull add post');
-			console.log(ref);
 			dispatch(loadEnd());
 			dispatch(addPost(tempPost));
-
-			// need to add reset button in the post page.
-			// neet to reset after a successful post.
-
 			toastAndroid(string.AddPostSuccess);
 		})
 		.catch(err => {

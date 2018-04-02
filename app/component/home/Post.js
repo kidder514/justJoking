@@ -7,7 +7,6 @@ import string from '../../localization/string';
 import Icon from 'react-native-vector-icons/Entypo';
 import { toastAndroid } from '../../reducer/action/appAction';
 import FitImage from 'react-native-fit-image';
-import { loadOn, loadEnd } from "../../reducer/action/uiAction";
 import { textPostCall, imagePostCall } from '../../reducer/action/listAction';
 import SYImagePicker from 'react-native-syan-image-picker'
 
@@ -252,8 +251,6 @@ const mapStateToProps = (state) => {
 
 const mapDispatchToProps = (dispatch) => {
 	return {
-		loadOnCall: () => {dispatch(loadOn())},
-		loadEndCall: () => {dispatch(loadEnd())},
 		imagePostCall: (text, images) => {dispatch(imagePostCall(text, images))},
 		textPostCall: (text) => {dispatch(textPostCall(text))}
 	};

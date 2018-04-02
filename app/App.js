@@ -374,6 +374,7 @@ class App extends React.PureComponent {
 					<MainNavigator />
 					{this.props.isLoading && <View style={style.container}>
 						<ActivityIndicator size="large" color={primaryColor} />
+						<Text>{this.props.loadingText}</Text>						
 					</View>}
 				</View>
 			);
@@ -383,6 +384,7 @@ class App extends React.PureComponent {
 					<AuthNavigator/>
 					{this.props.isLoading && <View style={style.container}>
 						<ActivityIndicator size="large" color={primaryColor} />
+						<Text>{this.props.loadingText}</Text>
 					</View>}
 				</View>
 			);
@@ -404,7 +406,7 @@ const style = StyleSheet.create({
 		right: 0,
 		top: 0,
 		bottom: 0,
-		flexDirection: 'row',
+		flexDirection: 'column',
 		alignItems: 'center',
 		justifyContent: 'center',
 	}
@@ -412,7 +414,8 @@ const style = StyleSheet.create({
 
 const mapStateToProps = state => ({
 	isSignedIn: state.Auth.isSignedIn,
-	isLoading: state.Ui.isLoading
+	isLoading: state.Ui.isLoading,
+	loadingText: state.Ui.loadingText
 });
 
 const mapDispatchToProps = (dispatch) => {
