@@ -409,6 +409,8 @@ const style = StyleSheet.create({
 		flexDirection: 'column',
 		alignItems: 'center',
 		justifyContent: 'center',
+		paddingLeft: 40,
+		paddingRight: 40
 	}
 })
 

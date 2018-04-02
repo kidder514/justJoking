@@ -12,7 +12,7 @@ const string = new LocalizedStrings({
 		Submit: 'Submit',
 		FeatureCommingSoon: 'This feature is comming soon. "Just joking" is my solo project, please be patient and allow some time for me to complete all the missing features.',
 		Error: 'Error',
-		LoadingUploadingImages: 'Uploading images',
+		LoadingUploadingImages: 'Uploading images, this might take a white, please be patient.',
 		LoadingCompressingImages: 'Compressing images',
 		LoadingSigningUp: 'Signing Up',
 		LoadingSigningIn: 'Signing In',

@@ -49,7 +49,7 @@ export const updatePhoto = (photo) => {
 export function signUpWithEmailCall(name, email, password){
 	return dispatch => {
 		dispatch(loadOn(string.LoadingSigningUp));
-		// create user in firebase auth
+		// 1. create user in firebase auth
 		firebase.auth().createUserAndRetrieveDataWithEmailAndPassword(email, password)
 			.then(res => {
 				// create user data
@@ -70,7 +70,7 @@ export function signUpWithEmailCall(name, email, password){
 					autoPlayVideos: false,
 					publicLocation: false
 				}
-				// set default user data into firebase firestore				
+				// 2. set default user data into firebase firestore				
 				firebase.firestore().doc('users/' + userData.uid).set(userData)
 					.then(() => {
 						dispatch(loadEnd());
@@ -92,11 +92,11 @@ export function signUpWithEmailCall(name, email, password){
 export function signInWithEmailCall(email, password){
 	return dispatch => {
 		dispatch(loadOn(string.LoadingSigningIn));
-		// get user from firebase auth
+		// 1. get user from firebase auth
 		firebase.auth().signInAndRetrieveDataWithEmailAndPassword(email, password)
 		.then(res => {
 			const uid = res.user._user.uid;
-			// load user data from firestore
+			// 2. load user data from firestore
 			firebase.firestore().doc('users/' + uid).get()
 				.then( doc => {
 					dispatch(loadEnd());					
@@ -119,21 +119,21 @@ export function signInWithSocialCall(credential) {
 	return dispatch => {
 		dispatch(loadOn(string.LoadingSigningIn));
 
-		// sign in and get user data
+		// 1. sign in and get user data
 		firebase.auth().signInWithCredential(credential)
 		.then((user) => {
 
-			// add social info into database or load it
+			// 2. add social info into database or load it
 			const userDoc = firebase.firestore().doc('users/' + user._user.uid);
 			userDoc.get()
 			.then(doc => {
-				// user exist, load user data and finish the call
+				// 3.1. user exist, load user data and finish the call
 				if (doc.exists) {
 					dispatch(loadEnd());					
 					dispatch(signIn(doc.data()));
 					toastAndroid(string.ServerSignUpSuccess);
 				} else {
-				// user does not exist, push user data to database
+				// 3.2. user does not exist, push user data to database
 					const resUser = user._user;
 					const userData = {
 						email: resUser.email,
@@ -240,23 +240,22 @@ export function updatePhotoCall() {
 			}
 		};
 
-		// pic img from photo or camera
+		// 1. pic img from photo or camera
 		ImagePicker.showImagePicker(options, (pickerRes) => {
 			dispatch(loadOn(string.LoadingUpdatingProfile));
 			if (!pickerRes.didCancel && !pickerRes.error) {
 				
-				// resize image
+				// 2. resize image
 				ImageResizer.createResizedImage(
 					'data:image/jpeg;base64,' + pickerRes.data, 300, 300, 'PNG', 65, 0
 				)
 				.then((resizerRes) => {
-
-					// upload to firebase storage and retrieve image url
+					// 3. upload to firebase storage and retrieve image url
 					var imageRef = firebase.storage().ref().child(getState().Auth.uid + '/avatar.png');
 					imageRef.putFile(resizerRes.uri)
 					.then(uploadRes => {
 
-						// update the user.photoUrl property in a database
+						// 4. update the user.photoUrl property in a database
 						firebase.firestore().doc('users/' + getState().Auth.uid).update({
 							'photoURL': uploadRes.downloadURL
 						})
