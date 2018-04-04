@@ -384,7 +384,7 @@ class App extends React.PureComponent {
 					<AuthNavigator/>
 					{this.props.isLoading && <View style={style.container}>
 						<ActivityIndicator size="large" color={primaryColor} />
-						<Text>{this.props.loadingText}</Text>
+						<Text style={style.spinnerText}>{this.props.loadingText}</Text>
 					</View>}
 				</View>
 			);
@@ -411,6 +411,9 @@ const style = StyleSheet.create({
 		justifyContent: 'center',
 		paddingLeft: 40,
 		paddingRight: 40
+	},
+	spinnerText: {
+		textAlign: 'center'
 	}
 })
 

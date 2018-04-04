@@ -2,7 +2,7 @@ import firebase from 'react-native-firebase';
 import { toastAndroid } from './appAction';
 import { loadOn, loadEnd} from './uiAction';
 import string from '../../localization/string';
-import ImagePicker from 'react-native-image-picker';
+import SYImagePicker from 'react-native-syan-image-picker'
 import ImageResizer from 'react-native-image-resizer';
 
 export const signIn = (user) => {
@@ -232,60 +232,55 @@ export function updatePhotoCall() {
 
 		// image picker options
 		const options = {
-			title: string.ChooseYourProfilePicture,
-			quality: 0.7,
-			storageOptions: {
-				skipBackup: true,
-				cameraRoll: true
-			}
+			imageCount: 1,             // 最大选择图片数目，默认6
+			isCamera: true,            // 是否允许用户在内部拍照，默认true
+			isGif: false,              // 是否允许选择GIF，默认false，暂无回调GIF数据
 		};
 
-		// 1. pic img from photo or camera
-		ImagePicker.showImagePicker(options, (pickerRes) => {
-			dispatch(loadOn(string.LoadingUpdatingProfile));
-			if (!pickerRes.didCancel && !pickerRes.error) {
-				
-				// 2. resize image
-				ImageResizer.createResizedImage(
-					'data:image/jpeg;base64,' + pickerRes.data, 300, 300, 'PNG', 65, 0
-				)
-				.then((resizerRes) => {
-					// 3. upload to firebase storage and retrieve image url
-					var imageRef = firebase.storage().ref().child(getState().Auth.uid + '/avatar.png');
-					imageRef.putFile(resizerRes.uri)
-					.then(uploadRes => {
+		// 1. pic img from photo or camera		
+		SYImagePicker.asyncShowImagePicker(options)
+		.then(images => {
+			// 2. resize image
+			dispatch(loadOn(string.LoadingUpdatingProfil));					
+			ImageResizer.createResizedImage(
+				images[0].original_uri, 300, 300, 'JPEG', 40, 0
+			)
+			.then((resizerRes) => {
+				// 3. upload to firebase storage and retrieve image url
+				var imageRef = firebase.storage().ref().child(getState().Auth.uid + '/avatar.png');
+				imageRef.putFile(resizerRes.uri)
+				.then(uploadRes => {
 
-						// 4. update the user.photoUrl property in a database
-						firebase.firestore().doc('users/' + getState().Auth.uid).update({
-							'photoURL': uploadRes.downloadURL
-						})
-						.then(() => {
-							dispatch(loadEnd());
-							toastAndroid(string.ServerPhotoUpdateSuccess);			
-							dispatch(updatePhoto(uploadRes.downloadURL));
-						})
-						.catch(err => {
-							dispatch(loadEnd());
-							toastAndroid(string.ServerDatabaseError);
-						});
-						
+					// 4. update the user.photoUrl property in a database
+					firebase.firestore().doc('users/' + getState().Auth.uid).update({
+						'photoURL': uploadRes.downloadURL
 					})
-					.catch((err) => {
+					.then(() => {
 						dispatch(loadEnd());
-						toastAndroid(string.ServerFailToUploadFile);
-					})			
+						toastAndroid(string.ServerPhotoUpdateSuccess);			
+						dispatch(updatePhoto(uploadRes.downloadURL));
+					})
+					.catch(err => {
+						dispatch(loadEnd());
+						toastAndroid(string.ServerDatabaseError);
+					});
+					
 				})
 				.catch((err) => {
 					dispatch(loadEnd());
-					toastAndroid(string.ErrorResizingImage);				
-				});  
-			} else if (pickerRes.err) {
+					toastAndroid(string.ServerFailToUploadFile);
+				})			
+			})
+			.catch((err) => {
 				dispatch(loadEnd());
-				toastAndroid(string.ErrorSelectingPicture);
-			} else {
-				dispatch(loadEnd());
-			}
-		});
+				toastAndroid(string.ErrorResizingImage);				
+			}); 
+		})
+		.catch(err => {
+			console.log(err);
+			dispatch(loadEnd());
+			toastAndroid(string.ErrorSelectingPicture);
+		}) 
 	}
 }
 
