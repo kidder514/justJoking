@@ -1,17 +1,17 @@
 import React from 'react';
 import { View, Text, StyleSheet } from 'react-native';
-import string from '../localization/string';
+import string from '../../localization/string';
 
-class CommingSoon extends React.PureComponent {
+class EmptyListPage extends React.PureComponent {
 
 	render(){
-		return (	
-			<View style={style.container}>
+        return (
+            <View className={style.container}>
                 <Text>
-                    {string.FeatureCommingSoon}
+                    {string.PostEmpty}
                 </Text>
-			</View>
-		);
+            </View>
+        )
 	}
 }
 
@@ -25,4 +25,4 @@ const style = StyleSheet.create({
 	}
 });
 
-export default CommingSoon;
+export default EmptyListPage;

@@ -100,7 +100,7 @@ const style = StyleSheet.create({
 const mapStateToProps = (state) => {
 	return {
 		auth: state.Auth,
-		data: state.List.followedList
+		data: state.List.myList
 	}
 }
 

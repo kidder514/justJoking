@@ -32,12 +32,11 @@ import UserNameSetting from './component/profile/UserNameSetting';
 import TaglineSetting from './component/profile/TaglineSetting';
 import Help from './component/profile/Help';
 
-import FollowedList from './component/home/FollowedList';
+// import FollowedList from './component/home/FollowedList';
 import HotList from './component/home/HotList';
 import ImageList from './component/home/ImageList';
 import TextList from './component/home/TextList';
 import Post from './component/home/Post';
-import Publish from './component/home/Publish';
 import Detail from './component/home/Detail';
 
 const AuthNavigator = StackNavigator(
@@ -70,7 +69,7 @@ const PostNavigator = StackNavigator(
 
 const HomePrimaryNavigator = TabNavigator(
 	{
-		Followed: { screen: FollowedList },
+		// Followed: { screen: FollowedList },
 		Hot: { screen: HotList },
 		Image: { screen: ImageList },
 		Text: { screen: TextList },

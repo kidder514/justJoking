@@ -9,7 +9,7 @@ import { SearchBar } from 'react-native-elements'
 class Search extends React.PureComponent {
 	static navigationOptions = () => ({
 		title: string.Search,
-		header: null,
+		header: undefined,
 	});
 
 	render(){

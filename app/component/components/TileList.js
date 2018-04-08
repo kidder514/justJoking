@@ -5,6 +5,12 @@ import ImageTile from '../components/ImageTile';
 import TextTile from '../components/TextTile';
 
 class TileList extends React.PureComponent {
+    constructor(props){
+        super(props);
+        this.state = {
+            isLoading: false
+        }
+    }
 
     renderItem({item}, navigator){
         switch (item.type) {
@@ -13,15 +19,20 @@ class TileList extends React.PureComponent {
             case 'text':
                 return <TextTile data={item} navigator={navigator}/>;
             case 'video':
-                return;
+                return null;
             default:
-                return;
+                return null;
         }
     }
 
 	render(){
+        const { isLoading, onRefresh, onEndReached } = this.props;
 		return (
             <SectionList
+                refreshing={isLoading}
+                onRefresh={onRefresh}
+                onEndReached={onEndReached}
+                initialNumToRender={3}
                 renderItem={({item}) => this.renderItem({item}, this.props.navigate)}
                 sections={[{key:'tileList', data :this.props.data}]}
                 keyExtractor={(item, index) => {

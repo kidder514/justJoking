@@ -25,7 +25,7 @@ class SignUp extends React.PureComponent {
 		this.state = initState;
 		this.submit = this.submit.bind(this);
 		this.navigateTo = this.navigateTo.bind(this);
-        this.backButtonListener = null;		
+        this.backButtonListener = undefined;		
 	}
 
 	componentWillMount() {

@@ -17,7 +17,7 @@ class ImageTile extends React.PureComponent {
             tileHeight: undefined,
             isLongImage: false,
             modalVisible: false,
-            imageIndex: null
+            imageIndex: undefined
         };
     }
 
@@ -61,7 +61,7 @@ class ImageTile extends React.PureComponent {
                 onPress={() => this.openModal(0)}
             >
                 <View>
-                    {this.state.isLongImage ? <Text style={style.longImageBanner}>{string.LongImage}</Text> : null}
+                    {this.state.isLongImage ? <Text style={style.longImageBanner}>{string.LongImage}</Text> : undefined}
                     <FitImage overflow='hidden' source={{ uri: imageUrl }} />
                 </View>
             </TouchableHighlight>
@@ -104,7 +104,7 @@ class ImageTile extends React.PureComponent {
     }
 
     renderGallery() {
-        if(this.state.imageIndex !== null) {
+        if(this.state.imageIndex !== undefined) {
             let images = [];
             this.props.data.imageUrls.map((imageUrl) => {
                 images.push({source: { uri: imageUrl }});
@@ -127,7 +127,7 @@ class ImageTile extends React.PureComponent {
     }
 
     closeModal() {
-        this.setState({ modalVisible: false, mageIndex: null });
+        this.setState({ modalVisible: false, mageIndex: undefined });
     }
 
     render() {

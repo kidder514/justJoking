@@ -6,16 +6,29 @@ import ImageResizer from 'react-native-image-resizer';
 import guid from '../../util/guid';
 
 export const addPost = (post) => {
-	return {
-		type: 'ADD_POST',
-		payload: post
-	};
+	return { type: 'ADD_POST', payload: post };
 }
 
 export const addPostStart = () => {
 	return { type: 'ADD_POST_START' };
 }
 
+export const addPostEnd = () => {
+	return { type: 'ADD_POST_END' };
+}
+
+export const loadList = (name, list) => {
+	return { type: 'LOAD_LIST', payload: {name,list}};
+}
+
+export const loadListStart = () => {
+	return { type: 'LOAD_LIST_START' };
+}
+
+export const loadListEnd = () => {
+	return { type: 'LOAD_LIST_END' };
+}
+ 
 export function imagePostCall(text, images){
 	let imagesTemp = [];
 	let imagesUploadTemp = [];
@@ -25,15 +38,10 @@ export function imagePostCall(text, images){
 		if (images.length > 0 ){
 			images.map(image => {
 				// 1. resize images
-				//
 				ImageResizer.createResizedImage(image, 1280, 1280, 'JPEG', 25, 0)
 				.then((resizeRes) => {
-					console.log('resize image');					
-					console.log(resizeRes.size);
-					
 					imagesTemp.push(resizeRes.uri);
 					if (imagesTemp.length === images.length) {
-						console.log('upload to fire storage');
 						// 2. upload all images to fire storage and retrieve their download URLS
 						dispatch(loadOn(string.LoadingUploadingImages));
 						imagesTemp.forEach((imageURI) => {
@@ -44,30 +52,22 @@ export function imagePostCall(text, images){
 								if (imagesUploadTemp.length === imagesTemp.length) {
 
 									// 3. upload new post data to database
-									let tempImageObject = {};
-
-									imagesUploadTemp.forEach((image) => {
-										tempImageObject[image] = true;
-									})
-
 									dispatch(loadOn(string.LoadingUploadingPost));
 									const tempPost = {
 										creationTime: new Date().getTime(),			
 										author: getState().Auth.uid,
 										authorName: getState().Auth.name,
-										postType: 'text',
-										like:{},
-										unlike: {},
-										share: {},
-										comment: {},
-										images:tempImageObject,
+										postType: 'image',
+										like:[],
+										unlike: [],
+										share: [],
+										comment: [],
+										images: imagesUploadTemp,
 										text: text
 									}
 							
 									firebase.firestore().collection('posts').add(tempPost)
-									.then(ref =>{
-										console.log('upload to server');
-								
+									.then(ref =>{								
 										dispatch(loadEnd());
 										dispatch(addPost(tempPost));
 										toastAndroid(string.AddPostSuccess);
@@ -120,8 +120,57 @@ export function textPostCall(text) {
 		})
 		.catch(err => {
 			console.log(err);
-			dispatch(loadEnd());		
+			dispatch(loadEnd());
+			dispatch(addPostEnd());
 			toastAndroid(string.ErrorAddPost);
 		});
+	}
+}
+
+export function loadListUpCall(listType = 'all', offsetTime) {
+	return dispatch => {
+		dispatch(loadListStart());
+		let listRef = firebase.firestore().collection('posts');
+		if (listType !== 'all') {	
+			listRef = listRef.where('postType', '==', listType);
+		}
+
+		if(offsetTime !== undefined) {
+			listRef = listRef.where('creationTime', '>', offsetTime);
+		}
+
+		listRef.limit(20).get()
+		.then(snapshot => {
+			let list = [];
+			snapshot.forEach(doc => {
+				list.push(doc.data());
+			});
+			dispatch(loadList(listType, list));
+		})
+		.catch(error => {
+			dispatch(loadListEnd());		
+		})
+	}
+}
+
+export function loadListDownCall(listType, offsetTime) {
+	return dispatch => {
+		dispatch(loadListStart());
+		let listRef = firebase.firestore().collection('posts')
+		if (listType !== undefined) {
+			listRef = listRef.where('postType', '==', listType);
+		}
+
+		if(offsetTime !== undefined) {
+			listRef = listRef.where('creationTime', '<', offsetTime);
+		}
+
+		const query = listRef.limit(20).get()
+		.then(res => {
+			console.log(res.data())
+		})
+		.catch(error => {
+
+		})
 	}
 }

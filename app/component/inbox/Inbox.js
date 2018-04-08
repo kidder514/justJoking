@@ -6,7 +6,7 @@ import CommingSoon from '../CommingSoon';
 class Inbox extends React.PureComponent {
 	static navigationOptions = () => ({
 		title: string.Inbox,
-		header: null,
+		header: undefined,
 	});
 
 	render(){
