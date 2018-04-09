@@ -22,7 +22,11 @@ class TextTile extends React.PureComponent {
                 </TouchableOpacity>
                 <View style={style.textSection}>
                     <Text style={style.text}>
-                        <Text style={style.tag}>{'#' + data.tag + "# "}</Text>
+                        {(data.tag && data.tag !== '')&& 
+                            <Text style={style.tag}>
+                                {'#' + data.tag + "# "}
+                            </Text>
+                        }
                         {data.textContent}
                     </Text>
                 </View>

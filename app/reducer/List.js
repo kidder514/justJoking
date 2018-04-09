@@ -27,11 +27,12 @@ function List(state = initState, action) {
 }
 
 function reduceAddPost(myList, newPost) {
-    return myList.unshift(newPost);
+    myList.unshift(newPost)
+    return myList;
 }
 
 function reduceList(listName = 'all', list){
-    if (list && list.length <= 0) return;
+    if (list && list.length <= 0) return {};
     switch (listName) {
         case 'all':
             return {hotList: list};

@@ -13,7 +13,7 @@ class TileList extends React.PureComponent {
     }
 
     renderItem({item}, navigator){
-        switch (item.type) {
+        switch (item.postType) {
             case 'image':
                 return <ImageTile data={item} navigator={navigator}/>;
             case 'text':
@@ -26,15 +26,15 @@ class TileList extends React.PureComponent {
     }
 
 	render(){
-        const { isLoading, onRefresh, onEndReached } = this.props;
+        const { isLoading, onRefresh, onEndReached, navigate, data } = this.props;
 		return (
             <SectionList
                 refreshing={isLoading}
                 onRefresh={onRefresh}
                 onEndReached={onEndReached}
-                initialNumToRender={3}
-                renderItem={({item}) => this.renderItem({item}, this.props.navigate)}
-                sections={[{key:'tileList', data :this.props.data}]}
+                initialNumToRender={10}
+                renderItem={({item}) => this.renderItem({item}, navigate)}
+                sections={[{key:'tileList', data:data}]}
                 keyExtractor={(item, index) => {
                     return 'item' + index
                 }}

@@ -19,7 +19,7 @@ class Profile extends React.PureComponent {
 	}
 
 	render() {
-		const user = this.props.auth;
+		const { auth, data } = this.props;
 		const { navigate } = this.props.navigation;
 		return (
 			<View style={style.container}>
@@ -28,24 +28,24 @@ class Profile extends React.PureComponent {
 						<Avatar
 							large
 							rounded
-							title={user.name ? user.name.charAt(0).toUpperCase() : ''}
-							source={user.photoURL == '' ? require('../../asset/image/avatar.png'): { uri: user.photoURL}}
+							title={auth.name ? auth.name.charAt(0).toUpperCase() : ''}
+							source={auth.photoURL == '' ? require('../../asset/image/avatar.png'): { uri: auth.photoURL}}
 							activeOpacity={0.7}
 						/>
 					</View>
 					<View >
 						<View style={style.profileHightlight}>
 							<View >
-								<Text style={style.hightlightText}>{user.postCount ? user.postCount : '0'}</Text>
+								<Text style={style.hightlightText}>{auth.postCount ? auth.postCount : '0'}</Text>
 								<Text style={style.hightlightText}>{string.Post}</Text>
 							</View>
 							{/* TODO: to be added when subscription feature is added */}
 							{/* <View>
-								<Text style={style.hightlightText}>{user.followers.length}</Text>
+								<Text style={style.hightlightText}>{auth.followers.length}</Text>
 								<Text style={style.hightlightText}>{string.Followers}</Text>
 							</View>
 							<View>
-								<Text style={style.hightlightText}>{user.following.length}</Text>
+								<Text style={style.hightlightText}>{auth.following.length}</Text>
 								<Text style={style.hightlightText}>{string.Following}</Text>
 							</View> */}
 						</View>
@@ -64,9 +64,11 @@ class Profile extends React.PureComponent {
 						</View>
 					</View>
 				</View>
-				<TileList
-					data={this.props.data}
-				/>
+				{(data && data.length > 0) &&
+					<TileList
+						data={data}
+					/>
+				}
 			</View>
 		);
 	}

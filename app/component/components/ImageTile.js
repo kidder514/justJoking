@@ -22,7 +22,7 @@ class ImageTile extends React.PureComponent {
     }
 
     componentWillMount() {
-        const images = this.props.data.imageUrls;
+        const { images } = this.props.data;
         if (images.length === 1) {
             Image.getSize(images[0], (width, height) => {
                 const windowWidth = Dimensions.get('window').width;
@@ -44,13 +44,13 @@ class ImageTile extends React.PureComponent {
     }
 
     renderImages() {
-        const images = this.props.data.imageUrls;
-        if (images.length <= 0) {
-            return undefined;
-        } else if (images.length === 1) {
+        const { images } = this.props.data;
+        if (images.length <= 0) return undefined;
+
+        if (images.length === 1) {
             return this.renderOneImage(images[0]);
         } else {
-            return this.renderMoreImages();
+            return this.renderMultiImages();
         }
     }
 
@@ -68,14 +68,14 @@ class ImageTile extends React.PureComponent {
         );
     }
 
-    renderMoreImages() {
+    renderMultiImages() {
         const containerWidth = Dimensions.get('window').width / 3;
-        const images = this.props.data.imageUrls;
+        const { images, id } = this.props.data;
         let imageList = [];
         images.map((image, index) => {
             imageList.push(
                 <TouchableHighlight
-                    key={this.props.data.id + 'image' + index}
+                    key={id + 'image' + index}
                     onPress={() => this.openModal(index)}
                 >
                     <FitImage
@@ -106,7 +106,7 @@ class ImageTile extends React.PureComponent {
     renderGallery() {
         if(this.state.imageIndex !== undefined) {
             let images = [];
-            this.props.data.imageUrls.map((imageUrl) => {
+            this.props.data.images.map((imageUrl) => {
                 images.push({source: { uri: imageUrl }});
             });
             return (
@@ -142,27 +142,29 @@ class ImageTile extends React.PureComponent {
                 </TouchableOpacity>
                 <View style={style.textSection}>
                     <Text style={style.text}>
-                        <Text style={style.tag}>{'#' + data.tag + "# "}</Text>
-                        {data.textContent}
+                        {(data.tag && data.tag !== '') && 
+                            <Text style={style.tag}>{'#' + data.tag + "# "}</Text>
+                        }
+                        {data.text}
                     </Text>
                 </View>
                 {this.renderImages()}
                 <View style={style.tileBanner}>
                     <View style={style.iconGroup} >
                         <Icon style={style.icon} name="thumbs-up" size={15} />
-                        <Text>{numberFormatter(data.likesCount)}</Text>
+                        <Text>{numberFormatter(data.like.length)}</Text>
                     </View>
                     <View style={style.iconGroup} >
                         <Icon style={style.icon} name="thumbs-down" size={15} />
-                        <Text>{numberFormatter(data.dislikesCount)}</Text>
+                        <Text>{numberFormatter(data.dislike.length)}</Text>
                     </View>
                     <View style={style.iconGroup} >
                         <Icon style={style.icon} name="typing" size={15} />
-                        <Text>{numberFormatter(data.commentCount)}</Text>
+                        <Text>{numberFormatter(data.comment.length)}</Text>
                     </View>
                     <View style={style.iconGroup} >
                         <Icon style={style.icon} name="share" size={15} />
-                        <Text>{numberFormatter(data.shareCount)}</Text>
+                        <Text>{numberFormatter(data.share.length)}</Text>
                     </View>
                 </View>
                 <Modal

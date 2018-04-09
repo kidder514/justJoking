@@ -1,6 +1,8 @@
 import string from '../localization/string';
 
 export const numberFormatter = (int) => {
+    if(int === undefined || isNaN(int)) return 0; 
+
     if (int < 1000) {
         return int;
     } else if (int >= 1000 && int < 1000000) {

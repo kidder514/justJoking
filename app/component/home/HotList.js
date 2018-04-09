@@ -13,12 +13,15 @@ class HotList extends React.PureComponent {
 	}
 
 	onRefresh() {
+		console.log("on refresh");
+		
 		if (data.length > 0) {
 			loadListUpCall('all', data[0].creationTime);
 		}
 	}
 
 	onEndReached() {
+		console.log("on end");
 		if (data.length > 0) {
 			loadListDownCall('all', data[data.length - 1].creationTime);		
 		}
@@ -35,8 +38,8 @@ class HotList extends React.PureComponent {
 					navigate={navigation.navigate}
 					data={data}
 					isLoading={isLoading}
-					onRefresh={this.onRefresh.bind(this)}
-					onEndReached={this.onEndReached.bind(this)}
+					onRefresh={() => this.onRefresh.bind(this)}
+					onEndReached={() => this.onEndReached.bind(this)}
 				/>
 			);
 		}
