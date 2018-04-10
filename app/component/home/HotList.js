@@ -3,6 +3,8 @@ import { connect } from "react-redux";
 import TileList from '../components/TileList';
 import EmptyListPage from '../components/EmptyListPage';
 import { loadListUpCall, loadListDownCall } from '../../reducer/action/listAction';
+import { ActivityIndicator } from 'react-native';
+import { primaryColor } from '../../asset/style/common';
 
 class HotList extends React.PureComponent {
 	componentDidMount(){
@@ -13,7 +15,7 @@ class HotList extends React.PureComponent {
 	}
 
 	onRefresh() {
-		console.log("on refresh");
+		const { data, loadListUpCall } = this.props;
 		
 		if (data.length > 0) {
 			loadListUpCall('all', data[0].creationTime);
@@ -21,25 +23,29 @@ class HotList extends React.PureComponent {
 	}
 
 	onEndReached() {
+		
 		console.log("on end");
-		if (data.length > 0) {
-			loadListDownCall('all', data[data.length - 1].creationTime);		
-		}
+		// if (data.length > 0) {
+			// loadListDownCall('all', data[data.length - 1].creationTime);		
+		// }
 	}
 
 	render(){
 		const { data, navigation, isLoading } = this.props;
 
 		if(data.length <= 0) {
-			return <EmptyListPage />
+			return [
+				<EmptyListPage key='empty-list-page'/>,
+				<ActivityIndicator key='spinner' size="large" color={primaryColor} />
+			];
 		} else {
 			return (
 				<TileList 
 					navigate={navigation.navigate}
 					data={data}
 					isLoading={isLoading}
-					onRefresh={() => this.onRefresh.bind(this)}
-					onEndReached={() => this.onEndReached.bind(this)}
+					onRefresh={this.onRefresh.bind(this)}
+					onEndReached={this.onEndReached.bind(this)}
 				/>
 			);
 		}

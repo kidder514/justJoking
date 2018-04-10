@@ -18,7 +18,11 @@ function List(state = initState, action) {
         case 'LOAD_LIST_START':
             return {...state, isLoading: true}
         case 'LOAD_LIST':
-            return Object.assign({}, state, {isLoading: false}, reduceList(action.payload.name, action.payload.list));
+            return Object.assign({}, 
+                state, 
+                { isLoading: false }, 
+                reduceList(action.payload, state.List)
+            );
         case 'LOAD_LIST_END':
             return { ...state, isLoading: false}
 		default:
@@ -31,19 +35,47 @@ function reduceAddPost(myList, newPost) {
     return myList;
 }
 
-function reduceList(listName = 'all', list){
+function reduceLoadList(payload, stateList){
+    const { list, name, isTop } = payload;
     if (list && list.length <= 0) return {};
-    switch (listName) {
+    switch (name) {
         case 'all':
-            return {hotList: list};
+            return { hotList: isTop ? handleListTop(list, stateList):handleListBottom(list, stateList)};
         case 'image':
-            return {imageList: list};
+            return { imageList: isTop ? handleListTop(list, stateList):handleListBottom(list, stateList) };
         case 'text':
-            return {textList: list};
+            return { textList: isTop ? handleListTop(list, stateList):handleListBottom(list, stateList) };
         case 'mylist':
-            return {myList: list};
+            return { myList: isTop ? handleListTop(list, stateList):handleListBottom(list, stateList) };
         default:
-            return {};
+            return { hotList: isTop ? handleListTop(list, stateList):handleListBottom(list, stateList) };
+    }
+}
+
+function handleListTop(newList, stateList) {
+    if (newList.length >= 20) {
+        // if length >= 20, replace the old list with new list
+        return newList;
+    } else {
+        // if length < 20, add to the list first
+        // then only keep at most 100 element in the list 
+        let list = newList.concat(stateList)
+        if (list.length <= 100) {
+            return list
+        } else {
+            list.splice(100);
+            return list
+        }
+    }
+}
+
+function handleListbutton(newList, stateList) {
+    let list = stateList.concat(newList)
+    if (list.length <= 100) {
+        return list
+    } else {
+        list.splice(0, months.length - 100)
+        return list
     }
 }
 

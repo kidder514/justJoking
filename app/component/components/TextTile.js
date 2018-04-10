@@ -27,7 +27,7 @@ class TextTile extends React.PureComponent {
                                 {'#' + data.tag + "# "}
                             </Text>
                         }
-                        {data.textContent}
+                        {data.text}
                     </Text>
                 </View>
                 <View style={style.tileBanner}>

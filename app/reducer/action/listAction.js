@@ -17,8 +17,8 @@ export const addPostEnd = () => {
 	return { type: 'ADD_POST_END' };
 }
 
-export const loadList = (name, list) => {
-	return { type: 'LOAD_LIST', payload: {name,list}};
+export const loadList = (name, list, isTop) => {
+	return { type: 'LOAD_LIST', payload: {name, list, isTop}};
 }
 
 export const loadListStart = () => {
@@ -142,13 +142,13 @@ export function loadListUpCall(listType = 'all', offsetTime) {
 			listRef = listRef.where('creationTime', '>', offsetTime);
 		}
 
-		listRef.limit(20).get()
+		listRef.orderBy('creationTime', 'desc').limit(20).get()
 		.then(snapshot => {
 			let list = [];
 			snapshot.forEach(doc => {
 				list.push(doc.data());
 			});
-			dispatch(loadList(listType, list));
+			dispatch(loadList(listType, list, true));
 		})
 		.catch(error => {
 			dispatch(loadListEnd());		
