@@ -17,8 +17,8 @@ export const addPostEnd = () => {
 	return { type: 'ADD_POST_END' };
 }
 
-export const loadList = (name, list, isTop) => {
-	return { type: 'LOAD_LIST', payload: {name, list, isTop}};
+export const loadList = (name, list, isUp) => {
+	return { type: 'LOAD_LIST', payload: {name, list, isUp}};
 }
 
 export const loadListStart = () => {
@@ -145,10 +145,16 @@ export function loadListUpCall(listType = 'all', offsetTime) {
 		listRef.orderBy('creationTime', 'desc').limit(20).get()
 		.then(snapshot => {
 			let list = [];
-			snapshot.forEach(doc => {
-				list.push(doc.data());
-			});
-			dispatch(loadList(listType, list, true));
+			if (snapshot.size <= 0) {
+				toastAndroid(string.ServerNoMorePost);
+			} else {
+				snapshot.forEach(doc => {
+					list.push(doc.data());
+				});
+				dispatch(loadList(listType, list, true));
+				toastAndroid(string.ServerListLoaded);
+			}
+			dispatch(loadListEnd());		
 		})
 		.catch(error => {
 			dispatch(loadListEnd());		
@@ -156,11 +162,10 @@ export function loadListUpCall(listType = 'all', offsetTime) {
 	}
 }
 
-export function loadListDownCall(listType, offsetTime) {
+export function loadListDownCall(listType = 'all', offsetTime) {
 	return dispatch => {
-		dispatch(loadListStart());
 		let listRef = firebase.firestore().collection('posts')
-		if (listType !== undefined) {
+		if (listType !== 'all') {
 			listRef = listRef.where('postType', '==', listType);
 		}
 
@@ -168,12 +173,21 @@ export function loadListDownCall(listType, offsetTime) {
 			listRef = listRef.where('creationTime', '<', offsetTime);
 		}
 
-		const query = listRef.limit(20).get()
-		.then(res => {
-			console.log(res.data())
+		listRef.orderBy('creationTime', 'desc').limit(20).get()
+		.then(snapshot => {
+			let list = [];
+			if (snapshot.size <= 0) {
+				toastAndroid(string.ServerNoMorePost);
+			} else {
+				snapshot.forEach(doc => {
+					list.push(doc.data());
+				});
+				dispatch(loadList(listType, list, false));
+				toastAndroid(string.ServerListLoaded);
+			}
 		})
 		.catch(error => {
-
+			dispatch(loadListEnd());		
 		})
 	}
 }

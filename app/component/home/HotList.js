@@ -23,11 +23,11 @@ class HotList extends React.PureComponent {
 	}
 
 	onEndReached() {
+		const { data, loadListDownCall } = this.props;
 		
-		console.log("on end");
-		// if (data.length > 0) {
-			// loadListDownCall('all', data[data.length - 1].creationTime);		
-		// }
+		if (data.length > 0) {
+			loadListDownCall('all', data[data.length - 1].creationTime);		
+		}
 	}
 
 	render(){

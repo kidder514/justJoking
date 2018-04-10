@@ -21,7 +21,7 @@ function List(state = initState, action) {
             return Object.assign({}, 
                 state, 
                 { isLoading: false }, 
-                reduceList(action.payload, state.List)
+                reduceLoadList(action.payload, state)
             );
         case 'LOAD_LIST_END':
             return { ...state, isLoading: false}
@@ -36,23 +36,23 @@ function reduceAddPost(myList, newPost) {
 }
 
 function reduceLoadList(payload, stateList){
-    const { list, name, isTop } = payload;
+    const { list, name, isUp } = payload;
     if (list && list.length <= 0) return {};
     switch (name) {
         case 'all':
-            return { hotList: isTop ? handleListTop(list, stateList):handleListBottom(list, stateList)};
+            return { hotList: isUp ? handleListUp(list, stateList.hotList):handleListDown(list, stateList.hotList)};
         case 'image':
-            return { imageList: isTop ? handleListTop(list, stateList):handleListBottom(list, stateList) };
+            return { imageList: isUp ? handleListUp(list, stateList.imageList):handleListDown(list, stateList.imageList) };
         case 'text':
-            return { textList: isTop ? handleListTop(list, stateList):handleListBottom(list, stateList) };
+            return { textList: isUp ? handleListUp(list, stateList.textList):handleListDown(list, stateList.textList) };
         case 'mylist':
-            return { myList: isTop ? handleListTop(list, stateList):handleListBottom(list, stateList) };
+            return { myList: isUp ? handleListUp(list, stateList.myList):handleListDown(list, stateList.myList) };
         default:
-            return { hotList: isTop ? handleListTop(list, stateList):handleListBottom(list, stateList) };
+            return { hotList: isUp ? handleListUp(list, stateList.hotList):handleListDown(list, stateList.hotList) };
     }
 }
 
-function handleListTop(newList, stateList) {
+function handleListUp(newList, stateList) {
     if (newList.length >= 20) {
         // if length >= 20, replace the old list with new list
         return newList;
@@ -69,7 +69,7 @@ function handleListTop(newList, stateList) {
     }
 }
 
-function handleListbutton(newList, stateList) {
+function handleListDown(newList, stateList) {
     let list = stateList.concat(newList)
     if (list.length <= 100) {
         return list

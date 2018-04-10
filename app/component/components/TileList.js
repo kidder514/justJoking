@@ -3,6 +3,8 @@ import { SectionList } from 'react-native';
 import { connect } from "react-redux";
 import ImageTile from '../components/ImageTile';
 import TextTile from '../components/TextTile';
+import { ActivityIndicator } from 'react-native';
+import { primaryColor } from '../../asset/style/common';
 
 class TileList extends React.PureComponent {
     constructor(props){
@@ -38,6 +40,8 @@ class TileList extends React.PureComponent {
                 keyExtractor={(item, index) => {
                     return 'item' + index
                 }}
+                ListFooterComponent={<ActivityIndicator size="large" color={primaryColor} />}
+                onEndReachedThreshold={0}
             />
 		);
 	}
