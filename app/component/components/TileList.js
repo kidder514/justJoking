@@ -7,14 +7,14 @@ import { ActivityIndicator } from 'react-native';
 import { primaryColor } from '../../asset/style/common';
 
 class TileList extends React.PureComponent {
-    constructor(props){
+    constructor(props) {
         super(props);
         this.state = {
             isLoading: false
         }
     }
 
-    renderItem({item}, navigator){
+    renderItem({item}, navigator) {
         switch (item.postType) {
             case 'image':
                 return <ImageTile data={item} navigator={navigator}/>;
@@ -27,8 +27,16 @@ class TileList extends React.PureComponent {
         }
     }
 
-	render(){
-        const { isLoading, onRefresh, onEndReached, navigate, data } = this.props;
+	render() {
+        const { 
+            isLoading, 
+            onRefresh, 
+            onEndReached, 
+            navigate, 
+            data, 
+            listHeaderComponent, 
+            listFooterComponent 
+        } = this.props;
 		return (
             <SectionList
                 refreshing={isLoading}
@@ -40,7 +48,8 @@ class TileList extends React.PureComponent {
                 keyExtractor={(item, index) => {
                     return 'item' + index
                 }}
-                ListFooterComponent={<ActivityIndicator size="large" color={primaryColor} />}
+                ListHeaderComponent={listHeaderComponent}
+                ListFooterComponent={listFooterComponent}
                 onEndReachedThreshold={0}
             />
 		);

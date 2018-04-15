@@ -17,16 +17,24 @@ export const addPostEnd = () => {
 	return { type: 'ADD_POST_END' };
 }
 
-export const loadList = (name, list, isUp) => {
-	return { type: 'LOAD_LIST', payload: {name, list, isUp}};
+export const loadList = (name, list, isUp, isMyList = false) => {
+	return { type: 'LOAD_LIST', payload: {name, list, isUp, isMyList}};
 }
 
 export const loadListStart = () => {
 	return { type: 'LOAD_LIST_START' };
 }
 
+export const loadListBottomStart = () => {
+	return { type: 'LOAD_LIST_BOTTOM_START' };
+}
+
 export const loadListEnd = () => {
 	return { type: 'LOAD_LIST_END' };
+}
+
+export const loadListBottomEnd = () => {
+	return { type: 'LOAD_LIST_BOTTOM_END' };
 }
  
 export function imagePostCall(text, images){
@@ -130,12 +138,16 @@ export function textPostCall(text) {
 	}
 }
 
-export function loadListUpCall(listType = 'all', offsetTime) {
-	return dispatch => {
+export function loadListUpCall(listType = 'all', offsetTime, isMyList = false) {
+	return (dispatch, getState) => {
 		dispatch(loadListStart());
 		let listRef = firebase.firestore().collection('posts');
 		if (listType !== 'all') {	
 			listRef = listRef.where('postType', '==', listType);
+		}
+
+		if (isMyList) {
+			listRef = listRef.where('author', '==', getState().Auth.uid);
 		}
 
 		if(offsetTime !== undefined) {
@@ -151,7 +163,7 @@ export function loadListUpCall(listType = 'all', offsetTime) {
 				snapshot.forEach(doc => {
 					list.push(doc.data());
 				});
-				dispatch(loadList(listType, list, true));
+				dispatch(loadList(listType, list, true, isMyList));
 				toastAndroid(string.ServerListLoaded);
 			}
 			dispatch(loadListEnd());		
@@ -162,11 +174,16 @@ export function loadListUpCall(listType = 'all', offsetTime) {
 	}
 }
 
-export function loadListDownCall(listType = 'all', offsetTime) {
-	return dispatch => {
+export function loadListDownCall(listType = 'all', offsetTime,  isMyList = false) {
+	return (dispatch, getState) => {
+		dispatch(loadListBottomStart());		
 		let listRef = firebase.firestore().collection('posts')
 		if (listType !== 'all') {
 			listRef = listRef.where('postType', '==', listType);
+		}
+
+		if (isMyList) {
+			listRef = listRef.where('author', '==', getState().Auth.name);
 		}
 
 		if(offsetTime !== undefined) {
@@ -182,12 +199,12 @@ export function loadListDownCall(listType = 'all', offsetTime) {
 				snapshot.forEach(doc => {
 					list.push(doc.data());
 				});
-				dispatch(loadList(listType, list, false));
+				dispatch(loadList(listType, list, false, isMyList));
 				toastAndroid(string.ServerListLoaded);
 			}
 		})
 		.catch(error => {
-			dispatch(loadListEnd());		
+			dispatch(loadListBottomEnd());		
 		})
 	}
 }

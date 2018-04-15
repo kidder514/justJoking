@@ -7,6 +7,10 @@ import { ActivityIndicator } from 'react-native';
 import { primaryColor } from '../../asset/style/common';
 
 class HotList extends React.PureComponent {
+	constructor(props, context) {
+		super(props, context)	
+	}
+	
 	componentDidMount(){
 		const { data, loadListUpCall } = this.props;
 		if(data.length <= 0) {
@@ -31,7 +35,7 @@ class HotList extends React.PureComponent {
 	}
 
 	render(){
-		const { data, navigation, isLoading } = this.props;
+		const { data, navigation, isLoading, isBottomLoading } = this.props;
 
 		if(data.length <= 0) {
 			return [
@@ -46,6 +50,7 @@ class HotList extends React.PureComponent {
 					isLoading={isLoading}
 					onRefresh={this.onRefresh.bind(this)}
 					onEndReached={this.onEndReached.bind(this)}
+					listFooterComponent={isBottomLoading ? <ActivityIndicator key='spinner' size="large" color={primaryColor} />: undefined }
 				/>
 			);
 		}
@@ -55,14 +60,15 @@ class HotList extends React.PureComponent {
 const mapStateToProps = (state) => {
 	return {
 		data: state.List.hotList,
-		isLoading: state.List.isLoading
+		isLoading: state.List.isLoading,
+		isBottomLoading: state.List.isBottomLoading
 	}
 }
 
 const mapDispatchToProps = (dispatch) => {
 	return {
-		loadListUpCall: (listType, offsetTime) => dispatch(loadListUpCall(listType, offsetTime)),
-		loadListDownCall: (listType, offsetTime) => dispatch(loadListDownCall(listType, offsetTime))		
+		loadListUpCall: (listType, offsetTime, isMyList) => dispatch(loadListUpCall(listType, offsetTime, isMyList)),
+		loadListDownCall: (listType, offsetTime, isMyList) => dispatch(loadListDownCall(listType, offsetTime, isMyList))		
 	}
 }
 

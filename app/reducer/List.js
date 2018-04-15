@@ -4,7 +4,8 @@ const initState = {
     textList: [],
     myList:[],
     isPosting: false,
-    isLoading: false 
+    isLoading: false,
+    isBottomLoading: false
 }
 
 function List(state = initState, action) {
@@ -16,15 +17,22 @@ function List(state = initState, action) {
         case 'ADD_POST_END':
             return {...state, isPosting: false};
         case 'LOAD_LIST_START':
-            return {...state, isLoading: true}
+            return {...state, isLoading: true};
+        case 'LOAD_LIST_BOTTOM_START':
+            return {...state, isBottomLoading: true};
         case 'LOAD_LIST':
-            return Object.assign({}, 
+            return Object.assign({},
                 state, 
-                { isLoading: false }, 
+                { 
+                    isLoading: false,
+                    isBottomLoading: false
+                }, 
                 reduceLoadList(action.payload, state)
             );
         case 'LOAD_LIST_END':
             return { ...state, isLoading: false}
+        case 'LOAD_LIST_BOTTOM_END':
+            return {...state, isBottomLoading: false};
 		default:
 			return state;
 	}
@@ -36,11 +44,15 @@ function reduceAddPost(myList, newPost) {
 }
 
 function reduceLoadList(payload, stateList){
-    const { list, name, isUp } = payload;
+    const { list, name, isUp, isMyList } = payload;
     if (list && list.length <= 0) return {};
     switch (name) {
         case 'all':
-            return { hotList: isUp ? handleListUp(list, stateList.hotList):handleListDown(list, stateList.hotList)};
+            if (isMyList) {
+                return { myList: isUp ? handleListUp(list, stateList.myList):handleListDown(list, stateList.myList)};
+            } else {
+                return { hotList: isUp ? handleListUp(list, stateList.hotList):handleListDown(list, stateList.hotList)};
+            }
         case 'image':
             return { imageList: isUp ? handleListUp(list, stateList.imageList):handleListDown(list, stateList.imageList) };
         case 'text':
