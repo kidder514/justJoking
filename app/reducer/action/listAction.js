@@ -37,6 +37,10 @@ export const loadListBottomEnd = () => {
 	return { type: 'LOAD_LIST_BOTTOM_END' };
 }
  
+export const cleanMyList = () => {
+	return { type: 'CLEAN_MY_LIST'};
+}
+
 export function imagePostCall(text, images){
 	let imagesTemp = [];
 	let imagesUploadTemp = [];

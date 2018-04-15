@@ -3,7 +3,7 @@ import { connect } from "react-redux";
 import { View, Text, StyleSheet, Dimensions, ScrollView, ActivityIndicator } from 'react-native';
 import { Avatar, Button } from 'react-native-elements'
 import { whiteColor, primaryColor } from '../../asset/style/common';
-import { loadListUpCall, loadListDownCall } from '../../reducer/action/listAction';
+import { loadListUpCall, loadListDownCall, cleanMyList } from '../../reducer/action/listAction';
 import string from '../../localization/string';
 import TileList from '../components/TileList';
 
@@ -16,16 +16,13 @@ class Profile extends React.PureComponent {
 	};
 
 	componentDidMount() {
-		const { navigation, loadListUpCall, data } = this.props;
-
+		const { navigation, loadListUpCall, cleanMyList, data } = this.props;
+		cleanMyList();
 		navigation.setParams({titleParam: this.props.auth.name});
-		if(data.length <= 0) {
-			loadListUpCall('all', undefined, true);
-		}
+		loadListUpCall('all', undefined, true);
 	}
 
 	onRefresh() {
-		console.log('onRefresh');
 		const { data, loadListUpCall } = this.props;
 		
 		if (data.length > 0) {
@@ -34,7 +31,6 @@ class Profile extends React.PureComponent {
 	}
 
 	onEndReached() {
-		console.log('onEndReached');
 		const { data, loadListDownCall } = this.props;
 		
 		if (data.length > 0) {
@@ -42,61 +38,72 @@ class Profile extends React.PureComponent {
 		}
 	}
 
-	render() {
-		const { auth, data, isLoading, isBottomLoading } = this.props;
+	renderUserInfo() {
+		const { auth } = this.props;
 		const { navigate } = this.props.navigation;
+
 		return (
-			<TileList
-				data={data}
-				listHeaderComponent={
-					<View style={style.headerContainer}>						
-						<View>
-							<Avatar
-								large
-								rounded
-								title={auth.name ? auth.name.charAt(0).toUpperCase() : ''}
-								source={auth.photoURL == '' ? require('../../asset/image/avatar.png'): { uri: auth.photoURL}}
-								activeOpacity={0.7}
-							/>
-						</View>
+			<View style={style.headerContainer}>						
+				<View>
+					<Avatar
+						large
+						rounded
+						title={auth.name ? auth.name.charAt(0).toUpperCase() : ''}
+						source={auth.photoURL == '' ? require('../../asset/image/avatar.png'): { uri: auth.photoURL}}
+						activeOpacity={0.7}
+					/>
+				</View>
+				<View >
+					<View style={style.profileHightlight}>
 						<View >
-							<View style={style.profileHightlight}>
-								<View >
-									<Text style={style.hightlightText}>{auth.postCount ? auth.postCount : '0'}</Text>
-									<Text style={style.hightlightText}>{string.Post}</Text>
-								</View>
-								{/* TODO: to be added when subscription feature is added */}
-								{/* <View>
-									<Text style={style.hightlightText}>{auth.followers.length}</Text>
-									<Text style={style.hightlightText}>{string.Followers}</Text>
-								</View>
-								<View>
-									<Text style={style.hightlightText}>{auth.following.length}</Text>
-									<Text style={style.hightlightText}>{string.Following}</Text>
-								</View> */}
-							</View>
-							<View>
-								<Button
-									title={string.Setting}
-									onPress={() => navigate("Setting")}
-									outline={true}
-									buttonStyle={{
-										height: 30,
-										backgroundColor: primaryColor,
-										width: Dimensions.get('window').width * 0.6,
-										alignSelf: 'center'
-									}}
-								/>
-							</View>
+							<Text style={style.hightlightText}>{auth.postCount ? auth.postCount : '0'}</Text>
+							<Text style={style.hightlightText}>{string.Post}</Text>
 						</View>
+						{/* TODO: to be added when subscription feature is added */}
+						{/* <View>
+							<Text style={style.hightlightText}>{auth.followers.length}</Text>
+							<Text style={style.hightlightText}>{string.Followers}</Text>
+						</View>
+						<View>
+							<Text style={style.hightlightText}>{auth.following.length}</Text>
+							<Text style={style.hightlightText}>{string.Following}</Text>
+						</View> */}
 					</View>
-				}
-				isLoading={isLoading}
-				onRefresh={this.onRefresh.bind(this)}
-				onEndReached={this.onEndReached.bind(this)}
-				listFooterComponent={isBottomLoading ? <ActivityIndicator key='spinner' size="large" color={primaryColor} />: undefined }				
-			/>
-		);
+					<View>
+						<Button
+							title={string.Setting}
+							onPress={() => navigate("Setting")}
+							outline={true}
+							buttonStyle={{
+								height: 30,
+								backgroundColor: primaryColor,
+								width: Dimensions.get('window').width * 0.6,
+								alignSelf: 'center'
+							}}
+						/>
+					</View>
+				</View>
+			</View>
+		)
+	}
+
+	render() {
+		const { data, isLoading, isBottomLoading } = this.props;
+
+		if( data.length > 0) {
+			return (
+				<TileList
+					data={data}
+					listHeaderComponent={this.renderUserInfo()}
+					isLoading={isLoading}
+					onRefresh={this.onRefresh.bind(this)}
+					onEndReached={this.onEndReached.bind(this)}
+					listFooterComponent={isBottomLoading ? <ActivityIndicator key='spinner' size="large" color={primaryColor} />: undefined }				
+				/>
+			);
+		} else {
+			return this.renderUserInfo();
+		}
 	}
 }
 
@@ -134,7 +141,8 @@ const mapStateToProps = (state) => {
 const mapDispatchToProps = (dispatch) => {
 	return {
 		loadListUpCall: (listType, offsetTime, isMyList) => dispatch(loadListUpCall(listType, offsetTime, isMyList)),
-		loadListDownCall: (listType, offsetTime, isMyList) => dispatch(loadListDownCall(listType, offsetTime, isMyList))	
+		loadListDownCall: (listType, offsetTime, isMyList) => dispatch(loadListDownCall(listType, offsetTime, isMyList)),
+		cleanMyList: () => dispatch(cleanMyList()),
 	}
 }
 

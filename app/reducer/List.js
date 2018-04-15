@@ -32,7 +32,9 @@ function List(state = initState, action) {
         case 'LOAD_LIST_END':
             return { ...state, isLoading: false}
         case 'LOAD_LIST_BOTTOM_END':
-            return {...state, isBottomLoading: false};
+            return { ...state, isBottomLoading: false};
+        case 'CLEAN_MY_LIST':
+            return { ...state, myList: []}
 		default:
 			return state;
 	}
