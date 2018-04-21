@@ -4,11 +4,40 @@ import { View, Text, StyleSheet, Image, TouchableOpacity} from 'react-native';
 import string from '../../localization/string';
 import { primaryColor, greyColor, whiteColor } from '../../asset/style/common';
 import Icon from 'react-native-vector-icons/Entypo';
+import { likeCall, dislikeCall } from "../../reducer/action/listAction";
 import { numberFormatter } from '../../util/numberFormatter';
 
 class TextTile extends React.PureComponent {
+    constructor(props) {
+        super(props);
 
-	render(){ 
+        this.onClickLike = this.onClickLike.bind(this);
+        this.onClickDislike = this.onClickDislike.bind(this);
+        this.onClickComment = this.onClickComment.bind(this);
+        this.onClickShare = this.onClickShare.bind(this);
+    }
+
+    onClickLike() {
+        const { data, likeCall, auth } = this.props;
+        if (data.dislike.indexOf(auth.uid) >= 0) return;
+        likeCall(data);
+    }
+
+    onClickDislike() {
+        const { data, dislikeCall, auth } = this.props;
+        if (data.like.indexOf(auth.uid) >= 0) return;
+        dislikeCall(data);
+    }
+
+    onClickComment() {
+        
+    }
+
+    onClickShare() {
+
+    }
+
+	render(){
         const { data, navigator } = this.props;
 		return (
             <View style={style.tileContainer}>
@@ -31,14 +60,8 @@ class TextTile extends React.PureComponent {
                     </Text>
                 </View>
                 <View style={style.tileBanner}>
-                    <View style={style.iconGroup} >
-                        <Icon style={style.icon} name="thumbs-up" size={15}/>
-                        <Text>{numberFormatter(data.likesCount)}</Text>
-                    </View>
-                    <View style={style.iconGroup} >
-                        <Icon style={style.icon} name="thumbs-down" size={15}/>
-                        <Text>{numberFormatter(data.dislikesCount)}</Text>
-                    </View>
+                    {this.renderLike()}
+                    {this.renderDislike()}                    
                     <View style={style.iconGroup} >
                         <Icon style={style.icon} name="typing" size={15}/>
                         <Text>{numberFormatter(data.commentCount)}</Text>
@@ -50,7 +73,49 @@ class TextTile extends React.PureComponent {
                 </View>
             </View>
 		);
-	}
+    }
+    
+    renderLike() {
+        const { data, auth } = this.props;
+        let icon;
+        let count;
+        const isLiked = data.like.indexOf(auth.uid) >= 0;
+        if (isLiked) {
+            icon = <Icon style={style.icon} name="thumbs-up" size={15} color={primaryColor}/>;
+            count = <Text style={style.textHighlight}>{numberFormatter(data.like.length)}</Text>;
+        } else {
+            icon = <Icon style={style.icon} name="thumbs-up" size={15}/>;
+            count = <Text>{numberFormatter(data.like.length)}</Text>;
+        }
+
+        return (                    
+            <TouchableOpacity onPress={this.onClickLike} style={style.iconGroup} >
+                {icon}
+                {count}
+            </TouchableOpacity>
+        );
+    }
+
+    renderDislike() {
+        const { data, auth } = this.props;
+        let icon;
+        let count;
+        const isDisliked = data.dislike.indexOf(auth.uid) >= 0;
+        if (isDisliked) {
+            icon = <Icon style={style.icon} name="thumbs-down" size={15} color={primaryColor}/>;
+            count = <Text style={style.textHighlight}>{numberFormatter(data.dislike.length)}</Text>;
+        } else {
+            icon = <Icon style={style.icon} name="thumbs-down" size={15}/>;
+            count = <Text>{numberFormatter(data.dislike.length)}</Text>;
+        }
+
+        return (                    
+            <TouchableOpacity onPress={this.onClickDislike} style={style.iconGroup} >
+                {icon}
+                {count}
+            </TouchableOpacity>
+        );
+    }
 }
 
 
@@ -82,12 +147,15 @@ const style = StyleSheet.create({
     text: {
         fontSize: 16
     },
+    textHighlight : {
+        fontSize: 16,
+        color: primaryColor
+    },
 	tag: {
         color: primaryColor,
     },
     icon: {
         marginRight: 5,
-        color: greyColor
     }, 
     iconGroup: {
         flexDirection: 'row',
@@ -108,4 +176,11 @@ const mapStateToProps = (state) => {
 	}
 }
 
-export default connect(mapStateToProps, undefined)(TextTile);
+const mapDispatchToProps = (dispatch) => {
+    return {
+		likeCall: (data) => dispatch(likeCall(data)),
+		dislikeCall: (data) => dispatch(dislikeCall(data))
+	}
+}
+
+export default connect(mapStateToProps, mapDispatchToProps)(TextTile);

@@ -21,7 +21,7 @@ class ImageTile extends React.PureComponent {
             modalVisible: false,
             imageIndex: undefined
         };
-
+        this.onClickLike = this.onClickLike.bind(this);
         this.onClickDislike = this.onClickDislike.bind(this);
         this.onClickComment = this.onClickComment.bind(this);
         this.onClickShare = this.onClickShare.bind(this);
@@ -57,13 +57,15 @@ class ImageTile extends React.PureComponent {
         this.setState({ modalVisible: false, mageIndex: undefined });
     }
 
-    onlikeClick() {
-        const { data, likeCall } = this.props;
+    onClickLike() {
+        const { data, likeCall, auth } = this.props;
+        if (data.dislike.indexOf(auth.uid) >= 0) return;
         likeCall(data);
     }
 
     onClickDislike() {
-        const { data, dislikeCall } = this.props;
+        const { data, dislikeCall, auth } = this.props;
+        if (data.like.indexOf(auth.uid) >= 0) return;
         dislikeCall(data);
     }
 
@@ -96,10 +98,7 @@ class ImageTile extends React.PureComponent {
                 {this.renderImages()}
                 <View style={style.tileBanner}>
                     {this.renderLike()}
-                    <TouchableOpacity onPress={() => this.onClickDislike()} style={style.iconGroup} >
-                        <Icon style={style.icon} name="thumbs-down" size={15} />
-                        <Text>{numberFormatter(data.dislike.length)}</Text>
-                    </TouchableOpacity>
+                    {this.renderDislike()}
                     <TouchableOpacity onPress={() => this.onClickComment()} style={style.iconGroup} >
                         <Icon style={style.icon} name="typing" size={15} />
                         <Text>{numberFormatter(data.comment.length)}</Text>
@@ -212,7 +211,28 @@ class ImageTile extends React.PureComponent {
         }
 
         return (                    
-            <TouchableOpacity onPress={isLiked ? undefined : this.onlikeClick.bind(this)} style={style.iconGroup} >
+            <TouchableOpacity onPress={this.onClickLike} style={style.iconGroup} >
+                {icon}
+                {count}
+            </TouchableOpacity>
+        );
+    }
+
+    renderDislike() {
+        const { data, auth } = this.props;
+        let icon;
+        let count;
+        const isDisliked = data.dislike.indexOf(auth.uid) >= 0;
+        if (isDisliked) {
+            icon = <Icon style={style.icon} name="thumbs-down" size={15} color={primaryColor}/>;
+            count = <Text style={style.textHighlight}>{numberFormatter(data.dislike.length)}</Text>;
+        } else {
+            icon = <Icon style={style.icon} name="thumbs-down" size={15}/>;
+            count = <Text>{numberFormatter(data.dislike.length)}</Text>;
+        }
+
+        return (                    
+            <TouchableOpacity onPress={this.onClickDislike} style={style.iconGroup} >
                 {icon}
                 {count}
             </TouchableOpacity>
@@ -282,6 +302,7 @@ const style = StyleSheet.create({
 
 const mapStateToProps = (state) => {
     return {
+		list: state.List,        
         auth: state.Auth,
     }
 }

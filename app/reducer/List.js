@@ -1,3 +1,5 @@
+import { likeArrayProcessor } from './action/listActionUtil';
+
 const initState = {
     hotList: [],
     imageList: [],
@@ -36,7 +38,8 @@ function List(state = initState, action) {
         case 'CLEAN_MY_LIST':
             return { ...state, myList: []};
         case 'UPDATE_LIKE':
-            return Object.assign({}, state, reduceUpdateLike(action.payload, state));
+        case 'UPDATE_DISLIKE':
+            return Object.assign({}, state, reduceUpdateLikeDislike(action.payload.post, state));
 		default:
 			return state;
 	}
@@ -74,12 +77,12 @@ function handleListUp(newList, stateList) {
         return newList;
     } else {
         // if length < 20, add to the list first
-        // then only keep at most 100 element in the list 
+        // then only keep at most 50 element in the list 
         let list = newList.concat(stateList)
-        if (list.length <= 100) {
+        if (list.length <= 50) {
             return list
         } else {
-            list.splice(100);
+            list.splice(50);
             return list
         }
     }
@@ -87,31 +90,32 @@ function handleListUp(newList, stateList) {
 
 function handleListDown(newList, stateList) {
     let list = stateList.concat(newList)
-    if (list.length <= 100) {
+    if (list.length <= 50) {
         return list
     } else {
-        list.splice(0, months.length - 100)
+        list.splice(0, months.length - 50)
         return list
     }
 }
 
 
-function reduceUpdateLike(payload, state) {
-    const hotList = updateListLike(payload, state.hotList);
-    const imageList = updateListLike(payload, state.imageList);
-    const textList = updateListLike(payload, state.textList);
+function reduceUpdateLikeDislike(post, state) {
+    const hotList = updateListLikeDislike(post, state.hotList);
+    const imageList = updateListLikeDislike(post, state.imageList);
+    const textList = updateListLikeDislike(post, state.textList);
 
     return {hotList, imageList, textList};
 }
 
-function updateListLike(payload, list) {
-    let newList = list;
-    list.forEach(post => {
-        let tempPost = post;
-        if (post.id === payload.postId) {
-            tempPost.like.push(payload.userId);
+function updateListLikeDislike(post, list) {
+    let newList = [];
+    list.forEach(item => {
+        let tempItem = item;
+        if (tempItem.id === post.id) {
+            newList.push(post);
+        } else {
+            newList.push(tempItem)
         }
-        newList.push(tempPost);
     });
 
     return newList;

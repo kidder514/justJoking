@@ -4,6 +4,7 @@ import firebase from 'react-native-firebase';
 import string from '../../localization/string';
 import ImageResizer from 'react-native-image-resizer';
 import uuidv4 from 'uuid/v4';
+import { likeArrayProcessor } from './listActionUtil';
 
 export const addPost = (post) => {
 	return { type: 'ADD_POST', payload: post };
@@ -41,8 +42,12 @@ export const cleanMyList = () => {
 	return { type: 'CLEAN_MY_LIST'};
 }
 
-export const updateLike = (postId, userId) => {
-	return { type: 'UPDATE_LIKE', payload: {postId, userId}}
+export const updateLike = (post) => {
+	return { type: 'UPDATE_LIKE', payload: {post}}
+}
+
+export const updateDislike = (post) => {
+	return { type: 'UPDATE_DISLIKE', payload: {post}}
 }
 
 export function imagePostCall(text, images){
@@ -188,7 +193,7 @@ export function loadListUpCall(listType = 'all', offsetTime, isMyList = false) {
 
 export function loadListDownCall(listType = 'all', offsetTime,  isMyList = false) {
 	return (dispatch, getState) => {
-		dispatch(loadListBottomStart());		
+		// dispatch(loadListBottomStart());		
 		let listRef = firebase.firestore().collection('posts')
 		if (listType !== 'all') {
 			listRef = listRef.where('postType', '==', listType);
@@ -206,7 +211,7 @@ export function loadListDownCall(listType = 'all', offsetTime,  isMyList = false
 		.then(snapshot => {
 			let list = [];
 			if (snapshot.size <= 0) {
-				toastAndroid(string.ServerNoMorePost);
+				toastAndroid(string.ServerNoMorePost);			
 			} else {
 				snapshot.forEach(doc => {
 					let docState = doc.data();
@@ -216,9 +221,10 @@ export function loadListDownCall(listType = 'all', offsetTime,  isMyList = false
 				dispatch(loadList(listType, list, false, isMyList));
 				toastAndroid(string.ServerListLoaded);
 			}
+			// dispatch(loadListBottomEnd());
 		})
 		.catch(error => {
-			dispatch(loadListBottomEnd());		
+			// dispatch(loadListBottomEnd());	
 		})
 	}
 }
@@ -229,11 +235,12 @@ export function likeCall(data){
 		docRef.get()
 		.then(snapshot => {
 			if (snapshot.exists) {
-				const post = snapshot.data();
-				post.like.push(getState().Auth.uid);
-				docRef.update({'like': post.like})
+				const like = likeArrayProcessor(snapshot.data().like, getState().Auth.uid);
+				docRef.update({'like': like})
 				.then(() => {
-					dispatch(updateLike(data.id, getState().Auth.uid));		
+					let post = snapshot.data();
+					post.like = like;
+					dispatch(updateLike(post));		
 				})
 				.catch((error) => {
 					console.log(error);
@@ -251,8 +258,29 @@ export function likeCall(data){
 }
 
 export function dislikeCall(data) {
-	return dispatch => {
+	return (dispatch, getState) => {
 		const docRef = firebase.firestore().collection('posts').doc(data.id);
-
+		docRef.get()
+		.then(snapshot => {
+			if (snapshot.exists) {
+				const dislike = likeArrayProcessor(snapshot.data().dislike, getState().Auth.uid);
+				docRef.update({'dislike': dislike})
+				.then(() => {
+					let post = snapshot.data();
+					post.dislike = dislike;
+					dispatch(updateDislike(post));		
+				})
+				.catch((error) => {
+					console.log(error);
+					toastAndroid(string.ServerNotAbleToUpdatePost);	
+				})
+			} else {
+				console.log(snapshot.data());
+				toastAndroid(string.ServerPostDoesNotExist);	
+			}
+		})
+		.catch(error => {
+			toastAndroid(string.ServerPostDoesNotExist);
+		})
 	}
 }
