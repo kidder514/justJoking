@@ -193,7 +193,7 @@ export function loadListUpCall(listType = 'all', offsetTime, isMyList = false) {
 
 export function loadListDownCall(listType = 'all', offsetTime,  isMyList = false) {
 	return (dispatch, getState) => {
-		// dispatch(loadListBottomStart());		
+		dispatch(loadListBottomStart());		
 		let listRef = firebase.firestore().collection('posts')
 		if (listType !== 'all') {
 			listRef = listRef.where('postType', '==', listType);
@@ -221,10 +221,10 @@ export function loadListDownCall(listType = 'all', offsetTime,  isMyList = false
 				dispatch(loadList(listType, list, false, isMyList));
 				toastAndroid(string.ServerListLoaded);
 			}
-			// dispatch(loadListBottomEnd());
+			dispatch(loadListBottomEnd());
 		})
 		.catch(error => {
-			// dispatch(loadListBottomEnd());	
+			dispatch(loadListBottomEnd());	
 		})
 	}
 }

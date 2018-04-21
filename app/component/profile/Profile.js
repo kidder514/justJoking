@@ -30,7 +30,7 @@ class Profile extends React.PureComponent {
 		}
 	}
 
-	onEndReached() {
+	loadMore() {
 		const { data, loadListDownCall } = this.props;
 		
 		if (data.length > 0) {
@@ -97,8 +97,7 @@ class Profile extends React.PureComponent {
 					listHeaderComponent={this.renderUserInfo()}
 					isLoading={isLoading}
 					onRefresh={this.onRefresh.bind(this)}
-					onEndReached={this.onEndReached.bind(this)}
-					listFooterComponent={isBottomLoading ? <ActivityIndicator key='spinner' size="large" color={primaryColor} />: undefined }				
+					loadMore={this.loadMore.bind(this)}
 				/>
 			);
 		} else {

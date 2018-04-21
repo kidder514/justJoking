@@ -3,8 +3,8 @@ import { connect } from "react-redux";
 import TileList from '../components/TileList';
 import EmptyListPage from '../components/EmptyListPage';
 import { loadListUpCall, loadListDownCall } from '../../reducer/action/listAction';
-import { ActivityIndicator } from 'react-native';
 import { primaryColor } from '../../asset/style/common';
+import { ActivityIndicator } from 'react-native';
 
 class ImageList extends React.PureComponent {
 	componentDidMount(){
@@ -22,7 +22,7 @@ class ImageList extends React.PureComponent {
 		}
 	}
 
-	onEndReached() {
+	loadMore() {
 		const { data, loadListDownCall } = this.props;
 		
 		if (data.length > 0) {
@@ -45,8 +45,7 @@ class ImageList extends React.PureComponent {
 					data={data}
 					isLoading={isLoading}
 					onRefresh={this.onRefresh.bind(this)}
-					onEndReached={this.onEndReached.bind(this)}
-					listFooterComponent={isBottomLoading ? <ActivityIndicator key='spinner' size="large" color={primaryColor} />: undefined }
+					loadMore={this.loadMore.bind(this)}
 				/>
 			);
 		}
@@ -57,7 +56,6 @@ const mapStateToProps = (state) => {
 	return {
 		data: state.List.imageList,
 		isLoading: state.List.isLoading,
-		isBottomLoading: state.List.isBottomLoading		
 	}
 }
 

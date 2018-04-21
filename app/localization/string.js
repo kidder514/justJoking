@@ -62,6 +62,7 @@ const string = new LocalizedStrings({
 		ServerNoMorePost: 'No more new post',
 		ServerListLoaded: 'New posts has been loaded.',
 		ServerNotAbleToUpdatePost: 'Not able to update post',
+		LoadMore: 'Load More ...',
 // Image Tile List
 		LongImage: 'Long Image ...',
 	

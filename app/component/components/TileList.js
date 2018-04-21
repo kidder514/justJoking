@@ -3,8 +3,9 @@ import { SectionList } from 'react-native';
 import { connect } from "react-redux";
 import ImageTile from '../components/ImageTile';
 import TextTile from '../components/TextTile';
-import { ActivityIndicator } from 'react-native';
+import { ActivityIndicator, Button} from 'react-native';
 import { primaryColor } from '../../asset/style/common';
+import string from '../../localization/string';
 
 class TileList extends React.PureComponent {
     constructor(props) {
@@ -35,7 +36,7 @@ class TileList extends React.PureComponent {
             navigate, 
             data, 
             listHeaderComponent, 
-            listFooterComponent 
+            isBottomLoading
         } = this.props;
 		return (
             <SectionList
@@ -49,12 +50,33 @@ class TileList extends React.PureComponent {
                     return 'item' + index
                 }}
                 ListHeaderComponent={listHeaderComponent}
-                ListFooterComponent={listFooterComponent}
+                ListFooterComponent={isBottomLoading ? this.renderSpinner() : this.renderLoadMoreButton()}
                 onEndReachedThreshold={0}
             />
 		);
+    }
+    
+	renderLoadMoreButton() {
+		return (
+			<Button
+				onPress={this.props.loadMore}
+				title={string.LoadMore}
+				accessibilityLabel={string.LoadMore}
+				color={primaryColor}
+			/>
+		)
+	}
+
+	renderSpinner() {
+        return <ActivityIndicator key='spinner' size="large" color={primaryColor} />;
 	}
 }
 
-export default TileList;
+const mapStateToProps = (state) => {
+	return {
+		isBottomLoading: state.List.isBottomLoading
+	}
+}
+
+export default connect(mapStateToProps, undefined)(TileList);
 
