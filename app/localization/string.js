@@ -61,6 +61,7 @@ const string = new LocalizedStrings({
 		PostEmpty: 'Oops, no funny things here at the moment, join us and share your best jokes',
 		ServerNoMorePost: 'No more new post',
 		ServerListLoaded: 'New posts has been loaded.',
+		ServerNotAbleToUpdatePost: 'Not able to update post',
 // Image Tile List
 		LongImage: 'Long Image ...',
 	
@@ -79,6 +80,7 @@ const string = new LocalizedStrings({
 		ClickToRemoveImage: 'Click to remove image from the list',
 		ErrorAddPost: 'Adding post has failed',
 		AddPostSuccess: 'Your joke has been added successfully',
+		ServerPostDoesNotExist: 'This joke does not exist, it must have been removed',
 //Inbox
 		Inbox: 'Inbox',
 //Profile

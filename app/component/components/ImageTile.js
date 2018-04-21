@@ -1,9 +1,11 @@
 import React from 'react';
 import { View, Text, Image, StyleSheet, Dimensions, Modal, Button, TouchableHighlight, TouchableOpacity } from 'react-native';
 import string from '../../localization/string';
+import { connect } from "react-redux";
 import Icon from 'react-native-vector-icons/Entypo';
 import { primaryColor, greyColor, whiteColor } from '../../asset/style/common';
 import { numberFormatter } from '../../util/numberFormatter';
+import { likeCall, dislikeCall } from "../../reducer/action/listAction";
 import FitImage from 'react-native-fit-image';
 import Gallery from 'react-native-image-gallery';
 
@@ -19,6 +21,10 @@ class ImageTile extends React.PureComponent {
             modalVisible: false,
             imageIndex: undefined
         };
+
+        this.onClickDislike = this.onClickDislike.bind(this);
+        this.onClickComment = this.onClickComment.bind(this);
+        this.onClickShare = this.onClickShare.bind(this);
     }
 
     componentWillMount() {
@@ -41,6 +47,77 @@ class ImageTile extends React.PureComponent {
             const containerHeight = Dimensions.get('window').width / 3 * layerCount + imageBorderWidth * layerCount;
             this.setState({ tileHeight: containerHeight });
         }
+    }
+
+    openModal(index) {
+        this.setState({ modalVisible: true, imageIndex: index});
+    }
+
+    closeModal() {
+        this.setState({ modalVisible: false, mageIndex: undefined });
+    }
+
+    onlikeClick() {
+        const { data, likeCall } = this.props;
+        likeCall(data);
+    }
+
+    onClickDislike() {
+        const { data, dislikeCall } = this.props;
+        dislikeCall(data);
+    }
+
+    onClickComment() {
+        
+    }
+
+    onClickShare() {
+
+    }
+
+    render() {
+        const { data, navigator } = this.props;
+        return (
+            <View style={style.tileContainer}>
+                <TouchableOpacity onPress={() => navigator('AuthorProfile')}>
+                    <View style={style.tileBanner}>
+                        <Image style={style.authorPhoto} source={{ uri: data.authorPhoto }} />
+                        <Text>{data.authorName}</Text>
+                    </View>
+                </TouchableOpacity>
+                <View style={style.textSection}>
+                    <Text style={style.text}>
+                        {(data.tag && data.tag !== '') && 
+                            <Text style={style.tag}>{'#' + data.tag + "# "}</Text>
+                        }
+                        {data.text}
+                    </Text>
+                </View>
+                {this.renderImages()}
+                <View style={style.tileBanner}>
+                    {this.renderLike()}
+                    <TouchableOpacity onPress={() => this.onClickDislike()} style={style.iconGroup} >
+                        <Icon style={style.icon} name="thumbs-down" size={15} />
+                        <Text>{numberFormatter(data.dislike.length)}</Text>
+                    </TouchableOpacity>
+                    <TouchableOpacity onPress={() => this.onClickComment()} style={style.iconGroup} >
+                        <Icon style={style.icon} name="typing" size={15} />
+                        <Text>{numberFormatter(data.comment.length)}</Text>
+                    </TouchableOpacity>
+                    <TouchableOpacity onPress={() => this.onClickShare()} style={style.iconGroup} >
+                        <Icon style={style.icon} name="share" size={15} />
+                        <Text>{numberFormatter(data.share.length)}</Text>
+                    </TouchableOpacity>
+                </View>
+                <Modal
+                    visible={this.state.modalVisible}
+                    animationType={'fade'}
+                    onRequestClose={() => this.closeModal()}
+                >
+                    {this.renderGallery()}
+                </Modal>
+            </View >
+		);
     }
 
     renderImages() {
@@ -119,63 +196,27 @@ class ImageTile extends React.PureComponent {
         } else {
             return undefined;
         }
-
     }
 
-    openModal(index) {
-        this.setState({ modalVisible: true, imageIndex: index});
-    }
+    renderLike() {
+        const { data, auth } = this.props;
+        let icon;
+        let count;
+        const isLiked = data.like.indexOf(auth.uid) >= 0;
+        if (isLiked) {
+            icon = <Icon style={style.icon} name="thumbs-up" size={15} color={primaryColor}/>;
+            count = <Text style={style.textHighlight}>{numberFormatter(data.like.length)}</Text>;
+        } else {
+            icon = <Icon style={style.icon} name="thumbs-up" size={15}/>;
+            count = <Text>{numberFormatter(data.like.length)}</Text>;
+        }
 
-    closeModal() {
-        this.setState({ modalVisible: false, mageIndex: undefined });
-    }
-
-    render() {
-        const { data, navigator } = this.props;
-        return (
-            <View style={style.tileContainer}>
-                <TouchableOpacity onPress={() => navigator('AuthorProfile')}>
-                    <View style={style.tileBanner}>
-                        <Image style={style.authorPhoto} source={{ uri: data.authorPhoto }} />
-                        <Text>{data.authorName}</Text>
-                    </View>
-                </TouchableOpacity>
-                <View style={style.textSection}>
-                    <Text style={style.text}>
-                        {(data.tag && data.tag !== '') && 
-                            <Text style={style.tag}>{'#' + data.tag + "# "}</Text>
-                        }
-                        {data.text}
-                    </Text>
-                </View>
-                {this.renderImages()}
-                <View style={style.tileBanner}>
-                    <View style={style.iconGroup} >
-                        <Icon style={style.icon} name="thumbs-up" size={15} />
-                        <Text>{numberFormatter(data.like.length)}</Text>
-                    </View>
-                    <View style={style.iconGroup} >
-                        <Icon style={style.icon} name="thumbs-down" size={15} />
-                        <Text>{numberFormatter(data.dislike.length)}</Text>
-                    </View>
-                    <View style={style.iconGroup} >
-                        <Icon style={style.icon} name="typing" size={15} />
-                        <Text>{numberFormatter(data.comment.length)}</Text>
-                    </View>
-                    <View style={style.iconGroup} >
-                        <Icon style={style.icon} name="share" size={15} />
-                        <Text>{numberFormatter(data.share.length)}</Text>
-                    </View>
-                </View>
-                <Modal
-                    visible={this.state.modalVisible}
-                    animationType={'fade'}
-                    onRequestClose={() => this.closeModal()}
-                >
-                    {this.renderGallery()}
-                </Modal>
-            </View >
-		);
+        return (                    
+            <TouchableOpacity onPress={isLiked ? undefined : this.onlikeClick.bind(this)} style={style.iconGroup} >
+                {icon}
+                {count}
+            </TouchableOpacity>
+        );
     }
 }
 
@@ -208,6 +249,10 @@ const style = StyleSheet.create({
     text: {
         fontSize: 16
     },
+    textHighlight: {
+        fontSize: 16,
+        color: primaryColor
+    },
     tag: {
         color: primaryColor,
     },
@@ -221,12 +266,11 @@ const style = StyleSheet.create({
     },
     icon: {
         marginRight: 5,
-        color: greyColor
     },
     iconGroup: {
         flexDirection: 'row',
         alignItems: 'center',
-        marginRight: 10
+        marginRight: 20
     },
     shareGroup: {
         flexDirection: 'row',
@@ -236,4 +280,18 @@ const style = StyleSheet.create({
     }
 });
 
-export default ImageTile;
+const mapStateToProps = (state) => {
+    return {
+        auth: state.Auth,
+    }
+}
+
+const mapDispatchToProps = (dispatch) => {
+	return {
+		likeCall: (data) => dispatch(likeCall(data)),
+		dislikeCall: (data) => dispatch(dislikeCall(data))
+	}
+}
+
+export default connect(mapStateToProps, mapDispatchToProps)(ImageTile);
+

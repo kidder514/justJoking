@@ -3,7 +3,7 @@ import { loadOn, loadEnd } from './uiAction';
 import firebase from 'react-native-firebase';
 import string from '../../localization/string';
 import ImageResizer from 'react-native-image-resizer';
-import guid from '../../util/guid';
+import uuidv4 from 'uuid/v4';
 
 export const addPost = (post) => {
 	return { type: 'ADD_POST', payload: post };
@@ -41,6 +41,10 @@ export const cleanMyList = () => {
 	return { type: 'CLEAN_MY_LIST'};
 }
 
+export const updateLike = (postId, userId) => {
+	return { type: 'UPDATE_LIKE', payload: {postId, userId}}
+}
+
 export function imagePostCall(text, images){
 	let imagesTemp = [];
 	let imagesUploadTemp = [];
@@ -57,7 +61,7 @@ export function imagePostCall(text, images){
 						// 2. upload all images to fire storage and retrieve their download URLS
 						dispatch(loadOn(string.LoadingUploadingImages));
 						imagesTemp.forEach((imageURI) => {
-							firebase.storage().ref().child(getState().Auth.uid + '/'+ guid() +'.png').putFile(imageURI)
+							firebase.storage().ref().child(getState().Auth.uid + '/'+ uuidv4() +'.png').putFile(imageURI)
 							.then(uploadRes => {
 								imagesUploadTemp.push(uploadRes.downloadURL);
 
@@ -66,6 +70,7 @@ export function imagePostCall(text, images){
 									// 3. upload new post data to database
 									dispatch(loadOn(string.LoadingUploadingPost));
 									const tempPost = {
+										id: uuidv4(),
 										creationTime: new Date().getTime(),			
 										author: getState().Auth.uid,
 										authorName: getState().Auth.name,
@@ -79,7 +84,7 @@ export function imagePostCall(text, images){
 										text: text
 									}
 							
-									firebase.firestore().collection('posts').add(tempPost)
+									firebase.firestore().collection('posts').doc(tempPost.id).set(tempPost)
 									.then(ref =>{								
 										dispatch(loadEnd());
 										dispatch(addPost(tempPost));
@@ -114,6 +119,7 @@ export function textPostCall(text) {
 		dispatch(loadOn(string.LoadingUploadingPost));
 		dispatch(addPostStart());
 		const tempPost = {
+			id: uuidv4(),
 			creationTime: new Date().getTime(),			
 			author: getState().Auth.uid,
 			authorName: getState().Auth.name,
@@ -127,7 +133,7 @@ export function textPostCall(text) {
 			text: text,
 		}
 
-		firebase.firestore().collection('posts').add(tempPost)
+		firebase.firestore().collection('posts').doc(tempPost.id).set(tempPost)
 		.then(ref =>{
 			dispatch(loadEnd());
 			dispatch(addPost(tempPost));
@@ -165,7 +171,9 @@ export function loadListUpCall(listType = 'all', offsetTime, isMyList = false) {
 				toastAndroid(string.ServerNoMorePost);
 			} else {
 				snapshot.forEach(doc => {
-					list.push(doc.data());
+					let docState = doc.data();
+					docState.id = doc.id;
+					list.push(docState);
 				});
 				dispatch(loadList(listType, list, true, isMyList));
 				toastAndroid(string.ServerListLoaded);
@@ -201,7 +209,9 @@ export function loadListDownCall(listType = 'all', offsetTime,  isMyList = false
 				toastAndroid(string.ServerNoMorePost);
 			} else {
 				snapshot.forEach(doc => {
-					list.push(doc.data());
+					let docState = doc.data();
+					docState.id = doc.id;
+					list.push(docState);
 				});
 				dispatch(loadList(listType, list, false, isMyList));
 				toastAndroid(string.ServerListLoaded);
@@ -210,5 +220,39 @@ export function loadListDownCall(listType = 'all', offsetTime,  isMyList = false
 		.catch(error => {
 			dispatch(loadListBottomEnd());		
 		})
+	}
+}
+
+export function likeCall(data){
+	return (dispatch, getState) => {
+		const docRef = firebase.firestore().collection('posts').doc(data.id);
+		docRef.get()
+		.then(snapshot => {
+			if (snapshot.exists) {
+				const post = snapshot.data();
+				post.like.push(getState().Auth.uid);
+				docRef.update({'like': post.like})
+				.then(() => {
+					dispatch(updateLike(data.id, getState().Auth.uid));		
+				})
+				.catch((error) => {
+					console.log(error);
+					toastAndroid(string.ServerNotAbleToUpdatePost);	
+				})
+			} else {
+				console.log(snapshot.data());
+				toastAndroid(string.ServerPostDoesNotExist);	
+			}
+		})
+		.catch(error => {
+			toastAndroid(string.ServerPostDoesNotExist);
+		})
+	}
+}
+
+export function dislikeCall(data) {
+	return dispatch => {
+		const docRef = firebase.firestore().collection('posts').doc(data.id);
+
 	}
 }

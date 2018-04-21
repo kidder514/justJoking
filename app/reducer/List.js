@@ -34,7 +34,9 @@ function List(state = initState, action) {
         case 'LOAD_LIST_BOTTOM_END':
             return { ...state, isBottomLoading: false};
         case 'CLEAN_MY_LIST':
-            return { ...state, myList: []}
+            return { ...state, myList: []};
+        case 'UPDATE_LIKE':
+            return Object.assign({}, state, reduceUpdateLike(action.payload, state));
 		default:
 			return state;
 	}
@@ -94,5 +96,25 @@ function handleListDown(newList, stateList) {
 }
 
 
+function reduceUpdateLike(payload, state) {
+    const hotList = updateListLike(payload, state.hotList);
+    const imageList = updateListLike(payload, state.imageList);
+    const textList = updateListLike(payload, state.textList);
+
+    return {hotList, imageList, textList};
+}
+
+function updateListLike(payload, list) {
+    let newList = list;
+    list.forEach(post => {
+        let tempPost = post;
+        if (post.id === payload.postId) {
+            tempPost.like.push(payload.userId);
+        }
+        newList.push(tempPost);
+    });
+
+    return newList;
+}
 
 export default List;
