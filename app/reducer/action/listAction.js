@@ -18,8 +18,8 @@ export const addPostEnd = () => {
 	return { type: 'ADD_POST_END' };
 }
 
-export const loadList = (name, list, isUp, isMyList = false) => {
-	return { type: 'LOAD_LIST', payload: {name, list, isUp, isMyList}};
+export const loadList = (name, list, isUp, isMyList = false, uid) => {
+	return { type: 'LOAD_LIST', payload: {name, list, isUp, isMyList, uid}};
 }
 
 export const loadListStart = () => {
@@ -40,6 +40,10 @@ export const loadListBottomEnd = () => {
  
 export const cleanMyList = () => {
 	return { type: 'CLEAN_MY_LIST'};
+}
+
+export const cleanAuthorList = () => {
+	return { type: 'CLEAN_AUTHOR_LIST'};
 }
 
 export const updateLike = (post) => {
@@ -80,6 +84,7 @@ export function imagePostCall(text, images){
 										author: getState().Auth.uid,
 										authorName: getState().Auth.name,
 										authorPhoto: getState().Auth.photoURL,
+										authorTagline: getState().Auth.tagline,
 										postType: 'image',
 										like:[],
 										dislike: [],
@@ -129,6 +134,7 @@ export function textPostCall(text) {
 			author: getState().Auth.uid,
 			authorName: getState().Auth.name,
 			authorPhoto: getState().Auth.photoURL,
+			authorTagline: getState().Auth.tagline,
 			postType: 'text',
 			like:[],
 			dislike: [],
@@ -153,7 +159,9 @@ export function textPostCall(text) {
 	}
 }
 
-export function loadListUpCall(listType = 'all', offsetTime, isMyList = false) {
+// if isMyList is passed in as true, that mean this will update mylist
+// if there is a uid pass in, that mean this will update author list
+export function loadListUpCall(listType = 'all', offsetTime, isMyList = false, uid) {
 	return (dispatch, getState) => {
 		dispatch(loadListStart());
 		let listRef = firebase.firestore().collection('posts');
@@ -162,7 +170,11 @@ export function loadListUpCall(listType = 'all', offsetTime, isMyList = false) {
 		}
 
 		if (isMyList) {
+			dispatch(cleanMyList());
 			listRef = listRef.where('author', '==', getState().Auth.uid);
+		} else if (uid !== undefined && uid !== ''){
+			dispatch(cleanAuthorList());			
+			listRef = listRef.where('author', '==', uid);
 		}
 
 		if(offsetTime !== undefined) {
@@ -174,13 +186,14 @@ export function loadListUpCall(listType = 'all', offsetTime, isMyList = false) {
 			let list = [];
 			if (snapshot.size <= 0) {
 				toastAndroid(string.ServerNoMorePost);
+				dispatch(loadListEnd());					
 			} else {
 				snapshot.forEach(doc => {
 					let docState = doc.data();
 					docState.id = doc.id;
 					list.push(docState);
 				});
-				dispatch(loadList(listType, list, true, isMyList));
+				dispatch(loadList(listType, list, true, isMyList, uid));
 				toastAndroid(string.ServerListLoaded);
 			}
 			dispatch(loadListEnd());		
@@ -191,7 +204,9 @@ export function loadListUpCall(listType = 'all', offsetTime, isMyList = false) {
 	}
 }
 
-export function loadListDownCall(listType = 'all', offsetTime,  isMyList = false) {
+// if isMyList is passed in as true, that mean this will update mylist
+// if there is a uid pass in, that mean this will update author list
+export function loadListDownCall(listType = 'all', offsetTime,  isMyList = false, uid) {
 	return (dispatch, getState) => {
 		dispatch(loadListBottomStart());		
 		let listRef = firebase.firestore().collection('posts')
@@ -200,7 +215,9 @@ export function loadListDownCall(listType = 'all', offsetTime,  isMyList = false
 		}
 
 		if (isMyList) {
-			listRef = listRef.where('author', '==', getState().Auth.name);
+			listRef = listRef.where('author', '==', getState().Auth.uid);
+		} else if (uid !== undefined && uid !== ''){		
+			listRef = listRef.where('author', '==', uid);
 		}
 
 		if(offsetTime !== undefined) {
@@ -211,7 +228,8 @@ export function loadListDownCall(listType = 'all', offsetTime,  isMyList = false
 		.then(snapshot => {
 			let list = [];
 			if (snapshot.size <= 0) {
-				toastAndroid(string.ServerNoMorePost);			
+				toastAndroid(string.ServerNoMorePost);
+				dispatch(loadListBottomEnd());						
 			} else {
 				snapshot.forEach(doc => {
 					let docState = doc.data();

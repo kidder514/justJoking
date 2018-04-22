@@ -16,11 +16,13 @@ class TileList extends React.PureComponent {
     }
 
     renderItem({item}, navigator) {
+        const { isProfilePage } = this.props;
+
         switch (item.postType) {
             case 'image':
-                return <ImageTile data={item} navigator={navigator}/>;
+                return <ImageTile data={item} navigator={navigator} isProfilePage={isProfilePage}/>;
             case 'text':
-                return <TextTile data={item} navigator={navigator}/>;
+                return <TextTile data={item} navigator={navigator} isProfilePage={isProfilePage}/>;
             case 'video':
                 return null;
             default:

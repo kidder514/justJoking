@@ -115,7 +115,7 @@ class Post extends React.Component {
 	renderRemoveImagePrompt() {
 		if ( this.state.images.length > 0 ) {
 			return (
-				<View className={style.removeImagePrompt}>
+				<View style={style.removeImagePrompt}>
 					<Text>{string.ClickToRemoveImage}</Text>
 				</View>
 			)

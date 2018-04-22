@@ -7,7 +7,7 @@ import { loadListUpCall, loadListDownCall } from '../../reducer/action/listActio
 import string from '../../localization/string';
 import TileList from '../components/TileList';
 
-class Profile extends React.PureComponent {
+class AuthorProfile extends React.PureComponent {
 	static navigationOptions = ({ navigation, navigationOptions }) => {
 		const { params } = navigation.state;
 		return {
@@ -16,23 +16,24 @@ class Profile extends React.PureComponent {
 	};
 
 	componentDidMount() {
-		const { navigation, loadListUpCall, cleanMyList, data } = this.props;
-		navigation.setParams({titleParam: this.props.auth.name});
-		loadListUpCall('all', undefined, true);
+		const { navigation, loadListUpCall, data } = this.props;
+		const params = navigation.state.params;
+		navigation.setParams({titleParam: params.name});
+		loadListUpCall('all', undefined, false, params.uid);
 	}
 
 	onRefresh() {
-		const { loadListUpCall} = this.props;
-		loadListUpCall('all', undefined, true);		
+		const { loadListUpCall, navigation } = this.props;
+		loadListUpCall('all', undefined, false, navigation.state.params.uid);
 	}
 
 	loadMore() {
-		const { data, loadListDownCall } = this.props;
-		loadListDownCall('all', data[data.length - 1].creationTime, true);
+		const { data, navigation, loadListDownCall } = this.props;
+		loadListDownCall('all', data[data.length - 1].creationTime, false, navigation.state.params.uid);
 	}
 
 	renderUserInfo() {
-		const { navigation, auth } = this.props;
+		const auth = this.props.navigation.state.params;
 
 		return (
 			<View style={style.headerContainer}>						
@@ -59,7 +60,6 @@ class Profile extends React.PureComponent {
 							<Text style={style.hightlightText}>{string.Following}</Text>
 						</View> */}
 					{/* </View> */}
-					{this.renderSettingButton()}
 					<View style={style.taglineContainer}>
 						<Text style={style.tagline}>{auth.tagline}</Text>					
 					</View>
@@ -68,30 +68,10 @@ class Profile extends React.PureComponent {
 		)
 	}
 
-	renderSettingButton() {
-		const { navigation } = this.props;
-
-		return (
-			<View>
-				<Button
-					title={string.Setting}
-					onPress={() => navigation.navigate("Setting")}
-					outline={true}
-					buttonStyle={{
-						height: 30,
-						backgroundColor: primaryColor,
-						width: Dimensions.get('window').width * 0.4,
-						alignSelf: 'center'
-					}}
-				/>
-			</View>
-		)
-	}
-
 	render() {
 		const { data, isLoading, isBottomLoading, navigation } = this.props;
 
-		if( data.length > 0) {
+		if( data && data.length > 0) {
 			return (
 				<TileList
 					data={data}
@@ -158,7 +138,7 @@ const style = StyleSheet.create({
 const mapStateToProps = (state) => {
 	return {
 		auth: state.Auth,
-		data: state.List.myList,
+		data: state.List.authorList,
 		isLoading: state.List.isLoading,
 		isBottomLoading: state.List.isBottomLoading
 	}
@@ -168,7 +148,8 @@ const mapDispatchToProps = (dispatch) => {
 	return {
 		loadListUpCall: (listType, offsetTime, isMyList, uid) => dispatch(loadListUpCall(listType, offsetTime, isMyList, uid)),
 		loadListDownCall: (listType, offsetTime, isMyList, uid) => dispatch(loadListDownCall(listType, offsetTime, isMyList, uid)),
+		cleanMyList: () => dispatch(cleanMyList()),
 	}
 }
 
-export default connect(mapStateToProps, mapDispatchToProps)(Profile);
+export default connect(mapStateToProps, mapDispatchToProps)(AuthorProfile);

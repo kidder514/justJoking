@@ -6,5 +6,6 @@
         "transform-react-jsx-source"
       ]
     }
-  }
+  },
+  "sourceMaps": "inline"
 }

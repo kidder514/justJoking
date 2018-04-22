@@ -27,6 +27,7 @@ import Search from './component/search/Search';
 import Inbox from './component/inbox/Inbox';
 
 import Profile from './component/profile/Profile';
+import AuthorProfile from './component/profile/AuthorProfile';
 import Setting from './component/profile/Setting';
 import UserNameSetting from './component/profile/UserNameSetting';
 import TaglineSetting from './component/profile/TaglineSetting';
@@ -108,7 +109,7 @@ const HomeNavigator = StackNavigator(
 			}
 		},
 		AuthorProfile: {
-			screen: Profile,
+			screen: AuthorProfile,
 			navigationOptions: ({ navigation }) => ({
 				// TODO share authr profile
 				// headerRight:

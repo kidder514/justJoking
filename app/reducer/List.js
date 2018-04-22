@@ -5,6 +5,7 @@ const initState = {
     imageList: [],
     textList: [],
     myList:[],
+    authorList: [],
     isPosting: false,
     isLoading: false,
     isBottomLoading: false
@@ -37,6 +38,8 @@ function List(state = initState, action) {
             return { ...state, isBottomLoading: false};
         case 'CLEAN_MY_LIST':
             return { ...state, myList: []};
+        case 'CLEAN_AUTHOR_LIST':
+            return { ...state, authorList: []};    
         case 'UPDATE_LIKE':
         case 'UPDATE_DISLIKE':
             return Object.assign({}, state, reduceUpdateLikeDislike(action.payload.post, state));
@@ -51,12 +54,14 @@ function reduceAddPost(myList, newPost) {
 }
 
 function reduceLoadList(payload, stateList){
-    const { list, name, isUp, isMyList } = payload;
+    const { list, name, isUp, isMyList, uid } = payload;
     if (list && list.length <= 0) return {};
     switch (name) {
         case 'all':
             if (isMyList) {
                 return { myList: isUp ? handleListUp(list, stateList.myList):handleListDown(list, stateList.myList)};
+            } else if (uid !== undefined && uid !== ''){
+                return { authorList: isUp ? handleListUp(list, stateList.authorList):handleListDown(list, stateList.authorList)};
             } else {
                 return { hotList: isUp ? handleListUp(list, stateList.hotList):handleListDown(list, stateList.hotList)};
             }
@@ -103,8 +108,9 @@ function reduceUpdateLikeDislike(post, state) {
     const hotList = updateListLikeDislike(post, state.hotList);
     const imageList = updateListLikeDislike(post, state.imageList);
     const textList = updateListLikeDislike(post, state.textList);
-
-    return {hotList, imageList, textList};
+    const myList = updateListLikeDislike(post, state.myList);
+    const authorList = updateListLikeDislike(post, state.authorList);
+    return {hotList, imageList, textList, myList, authorList};
 }
 
 function updateListLikeDislike(post, list) {

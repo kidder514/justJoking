@@ -78,15 +78,10 @@ class ImageTile extends React.PureComponent {
     }
 
     render() {
-        const { data, navigator } = this.props;
+        const { data } = this.props;
         return (
             <View style={style.tileContainer}>
-                <TouchableOpacity onPress={() => navigator('AuthorProfile')}>
-                    <View style={style.tileBanner}>
-                        <Image style={style.authorPhoto} source={{ uri: data.authorPhoto }} />
-                        <Text>{data.authorName}</Text>
-                    </View>
-                </TouchableOpacity>
+                {this.renderHeader()}
                 <View style={style.textSection}>
                     <Text style={style.text}>
                         {(data.tag && data.tag !== '') && 
@@ -117,6 +112,34 @@ class ImageTile extends React.PureComponent {
                 </Modal>
             </View >
 		);
+    }
+
+    renderHeader() {
+        const { isProfilePage, data, auth,  navigator } = this.props;
+        let action = undefined;
+        if (data.author !== auth.uid) {
+            action = () => navigator({
+                routeName: 'AuthorProfile',
+                params: {
+                    isAuthor: true,
+                    uid: data.author,
+                    name: data.authorName,
+                    photoURL: data.authorPhoto,
+                    tagline: data.authorTagline
+                }
+            });
+        }
+
+        const navigationAction = isProfilePage? undefined : action;
+
+        return (
+            <TouchableOpacity onPress={navigationAction}>
+                <View style={style.tileBanner}>
+                    <Image style={style.authorPhoto} source={{ uri: data.authorPhoto }} />
+                    <Text>{data.authorName}</Text>
+                </View>
+            </TouchableOpacity>
+        )
     }
 
     renderImages() {

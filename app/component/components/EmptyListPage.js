@@ -6,7 +6,7 @@ class EmptyListPage extends React.PureComponent {
 
 	render(){
         return (
-            <View className={style.container}>
+            <View style={style.container}>
                 <Text>
                     {string.PostEmpty}
                 </Text>
