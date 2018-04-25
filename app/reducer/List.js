@@ -6,9 +6,12 @@ const initState = {
     textList: [],
     myList:[],
     authorList: [],
+    commentList:[],
     isPosting: false,
     isLoading: false,
-    isBottomLoading: false
+    isBottomLoading: false,
+    isCommentLoading: false,
+    isCommentBottomLoading: false,
 }
 
 function List(state = initState, action) {
@@ -43,6 +46,23 @@ function List(state = initState, action) {
         case 'UPDATE_LIKE':
         case 'UPDATE_DISLIKE':
             return Object.assign({}, state, reduceUpdateLikeDislike(action.payload.post, state));
+        case "LOAD_COMMENT_UP_START":
+            return { ...state, isCommentLoading: true};
+        case "LOAD_COMMENT_UP":
+            return { ...state, isCommentLoading: false, commentList: action.payload};
+        case "LOAD_COMMENT_UP_END":
+            return { ...state, isCommentLoading: false};
+        case "LOAD_COMMENT_BOTTOM_START":
+            return { ...state, isCommentBottomLoading: true};
+        case "LOAD_COMMENT_BOTTOM":
+            return { ...state, isCommentBottomLoading: false, commentList: action.payload};
+        case "LOAD_COMMENT_BOTTOM_END":
+            return { ...state, isCommentBottomLoading: false};
+        case "CLEAN_COMMENT_LIST":
+            return { ...state, commentList: []};
+        case "COMMENT_UPDATE_LIKE":
+        case "COMMENT_UPDATE_DISLIKE":
+            return { ...state, commentList: updateListLikeDislike(action.payload, state.commentList)};
 		default:
 			return state;
 	}
@@ -102,7 +122,6 @@ function handleListDown(newList, stateList) {
         return list
     }
 }
-
 
 function reduceUpdateLikeDislike(post, state) {
     const hotList = updateListLikeDislike(post, state.hotList);

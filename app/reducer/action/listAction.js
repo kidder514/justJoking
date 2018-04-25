@@ -54,6 +54,42 @@ export const updateDislike = (post) => {
 	return { type: 'UPDATE_DISLIKE', payload: {post}}
 }
 
+export const loadCommentUpStart = () => {
+	return { type: 'LOAD_COMMENT_UP_START' };
+}
+
+export const loadCommentUp = (comment) => {
+	return { type: 'LOAD_COMMENT_UP', payload: comment };
+}
+
+export const loadCommentUpEnd = () => {
+	return { type: 'LOAD_COMMENT_UP_END' };
+}
+
+export const loadCommentBottomStart = () => {
+	return { type: 'LOAD_COMMENT_BOTTOM_START' };
+}
+
+export const loadCommentBottom = (comment) => {
+	return { type: 'LOAD_COMMENT_BOTTOM', payload: comment };
+}
+
+export const loadCommentBottomEnd = () => {
+	return { type: 'LOAD_COMMENT_BOTTOM_END' };
+}
+
+export const cleanComment = () => {
+	return { type: 'CLEAN_COMMENT_LIST'};
+}
+
+export const commentUpdateLike = (post) => {
+	return { type: 'COMMENT_UPDATE_LIKE', payload: post}
+}
+
+export const commentUpdateDislike = (post) => {
+	return { type: 'COMMENT_UPDATE_DISLIKE', payload: post}
+}
+
 export function imagePostCall(text, images){
 	let imagesTemp = [];
 	let imagesUploadTemp = [];
@@ -189,9 +225,7 @@ export function loadListUpCall(listType = 'all', offsetTime, isMyList = false, u
 				dispatch(loadListEnd());					
 			} else {
 				snapshot.forEach(doc => {
-					let docState = doc.data();
-					docState.id = doc.id;
-					list.push(docState);
+					list.push(doc.data());
 				});
 				dispatch(loadList(listType, list, true, isMyList, uid));
 				toastAndroid(string.ServerListLoaded);
@@ -232,9 +266,7 @@ export function loadListDownCall(listType = 'all', offsetTime,  isMyList = false
 				dispatch(loadListBottomEnd());						
 			} else {
 				snapshot.forEach(doc => {
-					let docState = doc.data();
-					docState.id = doc.id;
-					list.push(docState);
+					list.push(doc.data());
 				});
 				dispatch(loadList(listType, list, false, isMyList));
 				toastAndroid(string.ServerListLoaded);
@@ -265,7 +297,6 @@ export function likeCall(data){
 					toastAndroid(string.ServerNotAbleToUpdatePost);	
 				})
 			} else {
-				console.log(snapshot.data());
 				toastAndroid(string.ServerPostDoesNotExist);	
 			}
 		})
@@ -293,7 +324,116 @@ export function dislikeCall(data) {
 					toastAndroid(string.ServerNotAbleToUpdatePost);	
 				})
 			} else {
-				console.log(snapshot.data());
+				toastAndroid(string.ServerPostDoesNotExist);	
+			}
+		})
+		.catch(error => {
+			toastAndroid(string.ServerPostDoesNotExist);
+		})
+	}
+}
+
+export function loadCommentUpCall(id) {
+	return (dispatch, getState) => {
+		dispatch(cleanComment());
+		dispatch(loadCommentUpStart());
+		let listRef = firebase.firestore().collection('comments');
+		listRef.orderBy('creationTime', 'desc').limit(10).get()
+		.then(snapshot => {
+			if (snapshot.size <= 0) {
+				toastAndroid(string.ServerNoMoreComment);
+				dispatch(loadCommentUpEnd());					
+			} else {
+				let list = [];
+				snapshot.forEach(doc => {
+					list.push(doc.data());
+				});
+				dispatch(loadCommentUp(list));
+				toastAndroid(string.ServerCommentLoaded);
+			}
+			dispatch(loadCommentUpEnd());		
+		})
+		.catch(error => {
+			dispatch(loadCommentUpEnd());		
+		})
+	}
+}
+
+export function loadCommentBottomCall(id, offsetTime) {
+	return (dispatch, getState) => {
+		dispatch(loadCommentBottomStart());
+		let listRef = firebase.firestore().collection('comments');
+
+		if(offsetTime !== undefined) {
+			listRef = listRef.where('creationTime', '<', offsetTime);
+		}
+
+		listRef.orderBy('creationTime', 'desc').limit(10).get()
+		.then(snapshot => {
+			if (snapshot.size <= 0) {
+				toastAndroid(string.ServerNoMoreComment);
+				dispatch(loadCommentBottomEnd());					
+			} else {
+				let list = [];
+				snapshot.forEach(doc => {
+					list.push(doc.data());
+				});
+				dispatch(loadCommentBottom(list));
+				toastAndroid(string.ServerCommentLoaded);
+			}
+			dispatch(loadCommentBottomEnd());		
+		})
+		.catch(error => {
+			dispatch(loadCommentBottomEnd());		
+		})
+	}
+}
+
+export function commentLikeCall(data){
+	return (dispatch, getState) => {
+		const docRef = firebase.firestore().collection('comments').doc(data.id);
+		docRef.get()
+		.then(snapshot => {
+			if (snapshot.exists) {
+				const like = likeArrayProcessor(snapshot.data().like, getState().Auth.uid);
+				docRef.update({'like': like})
+				.then(() => {
+					let post = snapshot.data();
+					post.like = like;
+					dispatch(commentUpdateLike(post));		
+				})
+				.catch((error) => {
+					console.log(error);
+					toastAndroid(string.ServerNotAbleToUpdatePost);	
+				})
+			} else {
+				toastAndroid(string.ServerPostDoesNotExist);	
+			}
+		})
+		.catch(error => {
+			toastAndroid(string.ServerPostDoesNotExist);
+		})
+	}
+}
+
+export function commentDislikeCall(data) {
+	return (dispatch, getState) => {
+		const docRef = firebase.firestore().collection('comments').doc(data.id);
+		docRef.get()
+		.then(snapshot => {
+			if (snapshot.exists) {
+				const dislike = likeArrayProcessor(snapshot.data().dislike, getState().Auth.uid);
+				docRef.update({'dislike': dislike})
+				.then(() => {
+					let post = snapshot.data();
+					post.dislike = dislike;
+					dispatch(commentUpdateDislike(post));		
+				})
+				.catch((error) => {
+					console.log(error);
+					toastAndroid(string.ServerNotAbleToUpdatePost);	
+				})
+			} else {
 				toastAndroid(string.ServerPostDoesNotExist);	
 			}
 		})

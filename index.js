@@ -21,6 +21,9 @@ const store = createStore(
 );
 const persistor = persistStore(store);
 
+// uncomment this line if you need to purge your store
+// persistor.purge();
+
 // disable the SetTimeInterval Yellow Box
 console.disableYellowBox = true;
 

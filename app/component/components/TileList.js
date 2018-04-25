@@ -8,13 +8,6 @@ import { primaryColor } from '../../asset/style/common';
 import string from '../../localization/string';
 
 class TileList extends React.PureComponent {
-    constructor(props) {
-        super(props);
-        this.state = {
-            isLoading: false
-        }
-    }
-
     renderItem({item}, navigator) {
         const { isProfilePage } = this.props;
 

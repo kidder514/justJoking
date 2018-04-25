@@ -60,7 +60,9 @@ const string = new LocalizedStrings({
 		Text: 'Text',
 		PostEmpty: 'Oops, no funny things here at the moment, join us and share your best jokes',
 		ServerNoMorePost: 'No more new post',
+		ServerNoMoreComment: 'No more new comment',
 		ServerListLoaded: 'New posts has been loaded.',
+		ServerCommentLoaded: 'New comment has been loaded.',		
 		ServerNotAbleToUpdatePost: 'Not able to update post',
 		LoadMore: 'Load More ...',
 // Image Tile List
