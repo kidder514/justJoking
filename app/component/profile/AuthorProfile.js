@@ -74,6 +74,7 @@ class AuthorProfile extends React.PureComponent {
 		if( data && data.length > 0) {
 			return (
 				<TileList
+					navigate={navigation.navigate}
 					data={data}
 					isProfilePage={true}
 					listHeaderComponent={this.renderUserInfo()}

@@ -64,7 +64,7 @@ const string = new LocalizedStrings({
 		ServerNotAbleToUpdatePost: 'Not able to update post',
 		LoadMore: 'Load More ...',
 // Image Tile List
-		LongImage: 'Long Image ...',
+		LongImage: 'click to see more ...',
 	
 //Search
 		Search: 'Search',

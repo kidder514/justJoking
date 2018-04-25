@@ -30,7 +30,21 @@ class TextTile extends React.PureComponent {
     }
 
     onClickComment() {
-        
+        const { navigation, isOnDetailPage } = this.props;
+
+        if (navigation && navigation.state.params && navigation.state.params.isFromList) return;
+        if (isOnDetailPage) return ;
+
+        const { data, navigator, isProfilePage } = this.props;
+        navigator({
+            routeName: 'Detail',
+            params: {
+                isFromList: true,
+                navigator,
+                data,
+                isProfilePage
+            }
+        });
     }
 
     onClickShare() {
@@ -55,10 +69,10 @@ class TextTile extends React.PureComponent {
                 <View style={style.tileBanner}>
                     {this.renderLike()}
                     {this.renderDislike()}                    
-                    <View style={style.iconGroup} >
+                    <TouchableOpacity style={style.iconGroup} onPress={() => this.onClickComment()}>
                         <Icon style={style.icon} name="typing" size={15}/>
                         <Text>{numberFormatter(data.commentCount)}</Text>
-                    </View>
+                    </TouchableOpacity>
                     <View style={style.iconGroup} >
                         <Icon style={style.icon} name="share" size={15}/>
                         <Text>{numberFormatter(data.shareCount)}</Text>

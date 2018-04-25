@@ -27,26 +27,29 @@ class ImageTile extends React.PureComponent {
         this.onClickShare = this.onClickShare.bind(this);
     }
 
-    componentWillMount() {
+    componentDidMount() {
         const { images } = this.props.data;
-        if (images.length === 1) {
-            Image.getSize(images[0], (width, height) => {
-                const windowWidth = Dimensions.get('window').width;
-                const windowHeight = Dimensions.get('window').height;
-                const scaledImageHeight = height / (width / windowWidth);
-                const isLongImage = scaledImageHeight > windowWidth * 0.8;
-                if (isLongImage) {
-                    this.setState({
-                        tileHeight: windowHeight * 0.4,
-                        isLongImage: true
-                    });
-                }
-            });
-        } else if (images.length > 1) {
+        if (images.length > 1) {
             let layerCount = Math.floor(images.length / 3 + (images.length % 3 > 0 ? 1 : 0));
             const containerHeight = Dimensions.get('window').width / 3 * layerCount + imageBorderWidth * layerCount;
             this.setState({ tileHeight: containerHeight });
         }
+    }
+
+    checkSingleImageSize() {
+        const { images } = this.props.data;
+        Image.getSize(images[0], (width, height) => {
+            const windowWidth = Dimensions.get('window').width;
+            const windowHeight = Dimensions.get('window').height;
+            const scaledImageHeight = height / (width / windowWidth);
+            const isLongImage = scaledImageHeight > windowWidth * 0.8;
+            if (isLongImage) {
+                this.setState({
+                    tileHeight: windowHeight * 0.4,
+                    isLongImage: true
+                });
+            }
+        });
     }
 
     openModal(index) {
@@ -70,7 +73,21 @@ class ImageTile extends React.PureComponent {
     }
 
     onClickComment() {
+        const { navigation, isOnDetailPage } = this.props;
+
+        if (navigation && navigation.state.params && navigation.state.params.isFromList) return;
+        if (isOnDetailPage) return ;
         
+        const { data, navigator, isProfilePage } = this.props;
+        navigator({
+            routeName: 'Detail',
+            params: {
+                isFromList: true,
+                navigator,
+                data,
+                isProfilePage
+            }
+        });
     }
 
     onClickShare() {
@@ -78,7 +95,7 @@ class ImageTile extends React.PureComponent {
     }
 
     render() {
-        const { data } = this.props;
+        const { data } = this.props;    
         return (
             <View style={style.tileContainer}>
                 {this.renderHeader()}
@@ -161,7 +178,7 @@ class ImageTile extends React.PureComponent {
             >
                 <View>
                     {this.state.isLongImage ? <Text style={style.longImageBanner}>{string.LongImage}</Text> : undefined}
-                    <FitImage overflow='hidden' source={{ uri: imageUrl }} />
+                    <FitImage onLoad={this.checkSingleImageSize.bind(this)} overflow='hidden' source={{ uri: imageUrl }} />
                 </View>
             </TouchableHighlight>
         );
@@ -193,7 +210,6 @@ class ImageTile extends React.PureComponent {
         return (
             <View style={{
                 height: this.state.tileHeight,
-                flex: 1,
                 flexDirection: 'row',
                 flexWrap: 'wrap'
             }}>
@@ -324,8 +340,7 @@ const style = StyleSheet.create({
 });
 
 const mapStateToProps = (state) => {
-    return {
-		list: state.List,        
+    return {    
         auth: state.Auth,
     }
 }
