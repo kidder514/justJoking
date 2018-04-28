@@ -340,7 +340,7 @@ const MainNavigator = TabNavigator(
 	}, {
 		tabBarComponent: TabBarBottom,
 		tabBarPosition: 'bottom',
-		animationEnabled: true,
+		animationEnabled: false,
 		swipeEnabled: false,
 		tabBarOptions: {
 			activeTintColor: primaryColor,
