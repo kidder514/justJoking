@@ -49,6 +49,7 @@ class TaglineSetting extends React.PureComponent {
 					numberOfLines={4}
 					maxLength = {150}					
 					onChangeText={(txt) => this.onChangeText(txt)}
+					underlineColorAndroid='transparent'	
 				/>
 				<Text style={style.wordCount}>{string.WordCount + this.state.wordCount}</Text>				
 				<FormValidationMessage>{this.state.errorTagline}</FormValidationMessage>

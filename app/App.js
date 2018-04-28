@@ -128,6 +128,7 @@ const HomeNavigator = StackNavigator(
 				// 	>
 				// 		{string.Share}
 				// 	</Text>,
+				tabBarVisible: false,
 				headerStyle: {
 					height: 40,
 				},
@@ -139,6 +140,7 @@ const HomeNavigator = StackNavigator(
 		Detail: {
 			screen: Detail,
 			navigationOptions: ({ navigation }) => ({
+				tabBarVisible: false,
 				headerStyle: {
 					height: 40,
 				},
@@ -186,6 +188,7 @@ const ProfileNavigator = StackNavigator(
 			screen: Setting,
 			navigationOptions: ({ navigation }) => ({
 				title: null,
+				tabBarVisible: false ,
 				headerStyle: {
 					height: 40,
 				},
@@ -207,6 +210,7 @@ const ProfileNavigator = StackNavigator(
 			screen: UserNameSetting,
 			navigationOptions: ({ navigation }) => ({
 				title: null,
+				tabBarVisible: false,
 				titleStyle: {
 				},
 				headerStyle: {
@@ -229,6 +233,7 @@ const ProfileNavigator = StackNavigator(
 			screen: TaglineSetting,
 			navigationOptions: ({ navigation }) => ({
 				title: null,
+				tabBarVisible: false,
 				titleStyle: {
 				},
 				headerStyle: {
@@ -251,6 +256,7 @@ const ProfileNavigator = StackNavigator(
 			screen: Help,
 			navigationOptions: ({ navigation }) => ({
 				title: null,
+				tabBarVisible: false,
 				titleStyle: {
 				},
 				headerStyle: {
@@ -301,6 +307,7 @@ const MainNavigator = TabNavigator(
 		Post: {
 			screen: PostNavigator,
 			navigationOptions: {
+				tabBarVisible: false,
 				title: string.Post,
 				tabBarLabel: () => { null },
 				tabBarIcon: () => (

@@ -9,6 +9,7 @@ import string from '../../localization/string';
 class CommentList extends React.PureComponent {
 
     renderItem({item}, navigator) {
+        const { isProfilePage } = this.props;
         return <CommentTile data={item} navigator={navigator} isProfilePage={isProfilePage}/>;
     }
 

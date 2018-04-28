@@ -78,6 +78,18 @@ export const loadCommentBottomEnd = () => {
 	return { type: 'LOAD_COMMENT_BOTTOM_END' };
 }
 
+export const addCommentStart = () => {
+	return { type: 'ADD_COMMENT_START'};
+}
+
+export const addComment = (comment) => {
+	return { type: 'ADD_COMMENT', payload: comment};
+}
+
+export const addCommentEnd = () => {
+	return { type: 'ADD_COMMENT_END'};
+}
+
 export const cleanComment = () => {
 	return { type: 'CLEAN_COMMENT_LIST'};
 }
@@ -124,8 +136,8 @@ export function imagePostCall(text, images){
 										postType: 'image',
 										like:[],
 										dislike: [],
-										share: [],
-										comment: [],
+										share: 0,
+										commentCount: 0,
 										images: imagesUploadTemp,
 										text: text
 									}
@@ -337,7 +349,7 @@ export function loadCommentUpCall(id) {
 	return (dispatch, getState) => {
 		dispatch(cleanComment());
 		dispatch(loadCommentUpStart());
-		let listRef = firebase.firestore().collection('comments');
+		let listRef = firebase.firestore().collection('comments').doc(id).collection('comments');
 		listRef.orderBy('creationTime', 'desc').limit(10).get()
 		.then(snapshot => {
 			if (snapshot.size <= 0) {
@@ -362,7 +374,7 @@ export function loadCommentUpCall(id) {
 export function loadCommentBottomCall(id, offsetTime) {
 	return (dispatch, getState) => {
 		dispatch(loadCommentBottomStart());
-		let listRef = firebase.firestore().collection('comments');
+		let listRef = firebase.firestore().collection('comments').doc(id).collection('comments');
 
 		if(offsetTime !== undefined) {
 			listRef = listRef.where('creationTime', '<', offsetTime);
@@ -440,5 +452,41 @@ export function commentDislikeCall(data) {
 		.catch(error => {
 			toastAndroid(string.ServerPostDoesNotExist);
 		})
+	}
+}
+
+export function addCommentCall(data, comment) {
+	return (dispatch, getState) => {
+		dispatch(addCommentStart());		
+		const docRef = firebase.firestore().collection('comments').doc(data.id).collection('comments');
+		const commentData = {
+			id: uuidv4(),
+			postId: data.id,
+			author: getState().Auth.uid,
+			authorName: getState().Auth.name,
+			authorPhoto: getState().Auth.photoURL,
+			comment,
+			like:[],
+			dislike:[],
+		}
+
+		docRef.doc(commentData.id).set(commentData)
+		.then(ref =>{
+			firebase.firestore().collection('posts').doc(data.id).update({'comment': data.comment + 1})
+			.then(() => {
+				dispatch(addComment(commentData));
+				toastAndroid(string.ServerAddCommentSuccess);
+			})
+			.catch((err) => {
+				console.log(err);
+				dispatch(addCommentEnd());
+				toastAndroid(string.ServerAddCommentFail);
+			})
+		})
+		.catch(err => {
+			console.log(err);
+			dispatch(addCommentEnd());
+			toastAndroid(string.ServerAddCommentFail);
+		});
 	}
 }

@@ -167,6 +167,7 @@ class Post extends React.Component {
 					numberOfLines={6}
 					maxLength={300}
 					onChangeText={(txt) => this.onChangeText(txt)}
+					underlineColorAndroid='transparent'					
 				/>
 				<Text style={style.wordCount}>{string.WordCount + this.state.wordCount + '/300'}</Text>
 				{this.renderImages()}

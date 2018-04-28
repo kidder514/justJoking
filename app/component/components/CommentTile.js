@@ -32,6 +32,9 @@ class CommentTile extends React.PureComponent {
 		return (
             <View style={style.tileContainer}>
                 {this.renderHeader()}
+                <Text style={style.text}>
+                    {data.comment}
+                </Text>
                 <View style={style.tileBanner}>
                     {this.renderLike()}
                     {this.renderDislike()}                 

@@ -11,6 +11,7 @@ const initState = {
     isLoading: false,
     isBottomLoading: false,
     isCommentLoading: false,
+    isCommentAdding: false,
     isCommentBottomLoading: false,
 }
 
@@ -58,6 +59,17 @@ function List(state = initState, action) {
             return { ...state, isCommentBottomLoading: false, commentList: action.payload};
         case "LOAD_COMMENT_BOTTOM_END":
             return { ...state, isCommentBottomLoading: false};
+        case "ADD_COMMENT_START":
+            return { ...state, isCommentAdding: true};
+        case "ADD_COMMENT":
+            return Object.assign({}, 
+                state, 
+                reduceAddComment(state.commentList, action.payload), 
+                reduceUpdateComment(action.payload.postId, state),
+                { isCommentAdding: false }
+            )
+        case "ADD_COMMENT_END":
+            return { ...state, isCommentAdding: false}
         case "CLEAN_COMMENT_LIST":
             return { ...state, commentList: []};
         case "COMMENT_UPDATE_LIKE":
@@ -66,6 +78,12 @@ function List(state = initState, action) {
 		default:
 			return state;
 	}
+}
+
+function reduceAddComment(commentList, commentItem) {
+    const commentListTemp = commentList;
+    commentListTemp.push(commentItem);
+    return {commentList: commentListTemp};
 }
 
 function reduceAddPost(myList, newPost) {
@@ -144,6 +162,26 @@ function updateListLikeDislike(post, list) {
     });
 
     return newList;
+}
+
+function reduceUpdateComment(postId, state) {
+    const hotList = upateListComment(postId, state.hotList);
+    const imageList = upateListComment(postId, state.imageList);
+    const textList = upateListComment(postId, state.textList);
+    const myList = upateListComment(postId, state.myList);
+    const authorList = upateListComment(postId, state.authorList);
+    return {hotList, imageList, textList, myList, authorList};
+}
+
+function upateListComment(postId, list) {
+    let newList = list;
+    list.forEach(item => {
+        let tempItem = item;
+        if (item.id === postId) {
+            temItem.comment++;
+        }
+        newList.push(tempItem);
+    });
 }
 
 export default List;

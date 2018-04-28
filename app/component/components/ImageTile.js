@@ -113,11 +113,11 @@ class ImageTile extends React.PureComponent {
                     {this.renderDislike()}
                     <TouchableOpacity onPress={() => this.onClickComment()} style={style.iconGroup} >
                         <Icon style={style.icon} name="typing" size={15} />
-                        <Text>{numberFormatter(data.comment.length)}</Text>
+                        <Text>{numberFormatter(data.comment)}</Text>
                     </TouchableOpacity>
                     <TouchableOpacity onPress={() => this.onClickShare()} style={style.iconGroup} >
                         <Icon style={style.icon} name="share" size={15} />
-                        <Text>{numberFormatter(data.share.length)}</Text>
+                        <Text>{numberFormatter(data.share)}</Text>
                     </TouchableOpacity>
                 </View>
                 <Modal

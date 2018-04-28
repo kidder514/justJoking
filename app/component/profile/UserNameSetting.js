@@ -48,6 +48,7 @@ class UserNameSetting extends React.PureComponent {
 					value={this.state.name}
 					onChangeText={(txt) => this.onChangeText(txt)}
 					maxLength = {50}
+					underlineColorAndroid='transparent'					
 				/>
 				<Text style={style.wordCount}>{string.WordCount + this.state.wordCount}</Text>				
 				<FormValidationMessage>{this.state.errorName}</FormValidationMessage>
