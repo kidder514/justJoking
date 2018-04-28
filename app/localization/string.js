@@ -96,6 +96,7 @@ const string = new LocalizedStrings({
 		Followers: 'Followers',
 		Following: 'Following',
 		Post: 'Post',
+		NoTagline: "He doesn't have anything to say...",
 //Setting
 		Setting: 'Setting',
 		Avatar: 'Avatar',

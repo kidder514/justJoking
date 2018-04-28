@@ -34,7 +34,7 @@ class AuthorProfile extends React.PureComponent {
 
 	renderUserInfo() {
 		const auth = this.props.navigation.state.params;
-
+		const tagline = auth.tagline.length > 0 ? auth.tagline.length : string.NoTagline;
 		return (
 			<View style={style.headerContainer}>						
 				<View style={style.avatarWrapper}>
@@ -61,7 +61,7 @@ class AuthorProfile extends React.PureComponent {
 						</View> */}
 					{/* </View> */}
 					<View style={style.taglineContainer}>
-						<Text style={style.tagline}>{auth.tagline}</Text>					
+						<Text style={style.tagline}>{tagline}</Text>					
 					</View>
 				</View>
 			</View>
@@ -70,22 +70,17 @@ class AuthorProfile extends React.PureComponent {
 
 	render() {
 		const { data, isLoading, isBottomLoading, navigation } = this.props;
-
-		if( data && data.length > 0) {
-			return (
-				<TileList
-					navigate={navigation.navigate}
-					data={data}
-					isProfilePage={true}
-					listHeaderComponent={this.renderUserInfo()}
-					isLoading={isLoading}
-					onRefresh={this.onRefresh.bind(this)}
-					loadMore={this.loadMore.bind(this)}
-				/>
-			);
-		} else {
-			return this.renderUserInfo();
-		}
+		return (
+			<TileList
+				navigate={navigation.navigate}
+				data={data}
+				isProfilePage={true}
+				listHeaderComponent={this.renderUserInfo()}
+				isLoading={isLoading}
+				onRefresh={this.onRefresh.bind(this)}
+				loadMore={this.loadMore.bind(this)}
+			/>
+		);
 	}
 }
 

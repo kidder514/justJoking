@@ -31,8 +31,24 @@ class Profile extends React.PureComponent {
 		loadListDownCall('all', data[data.length - 1].creationTime, true);
 	}
 
+	render() {
+		const { data, isLoading, isBottomLoading, navigation } = this.props;
+		return (
+			<TileList
+				navigate={navigation.navigate}
+				data={data}
+				isProfilePage={true}
+				listHeaderComponent={this.renderUserInfo()}
+				isLoading={isLoading}
+				onRefresh={this.onRefresh.bind(this)}
+				loadMore={this.loadMore.bind(this)}
+			/>
+		);
+	}
+
 	renderUserInfo() {
 		const { navigation, auth } = this.props;
+		const tagline = auth.tagline.length > 0 ? auth.tagline.length : string.NoTagline;
 
 		return (
 			<View style={style.headerContainer}>						
@@ -61,7 +77,7 @@ class Profile extends React.PureComponent {
 					{/* </View> */}
 					{this.renderSettingButton()}
 					<View style={style.taglineContainer}>
-						<Text style={style.tagline}>{auth.tagline}</Text>					
+						<Text style={style.tagline}>{tagline}</Text>					
 					</View>
 				</View>
 			</View>
@@ -86,26 +102,6 @@ class Profile extends React.PureComponent {
 				/>
 			</View>
 		)
-	}
-
-	render() {
-		const { data, isLoading, isBottomLoading, navigation } = this.props;
-
-		if( data.length > 0) {
-			return (
-				<TileList
-					navigate={navigation.navigate}
-					data={data}
-					isProfilePage={true}
-					listHeaderComponent={this.renderUserInfo()}
-					isLoading={isLoading}
-					onRefresh={this.onRefresh.bind(this)}
-					loadMore={this.loadMore.bind(this)}
-				/>
-			);
-		} else {
-			return this.renderUserInfo();
-		}
 	}
 }
 

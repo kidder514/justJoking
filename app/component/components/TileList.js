@@ -1,11 +1,12 @@
 import React from 'react';
-import { SectionList } from 'react-native';
+import { SectionList, StyleSheet, View, Dimensions } from 'react-native';
 import { connect } from "react-redux";
 import ImageTile from '../components/ImageTile';
 import TextTile from '../components/TextTile';
 import { ActivityIndicator, Button} from 'react-native';
 import { primaryColor } from '../../asset/style/common';
 import string from '../../localization/string';
+import EmptyListPage from '../components/EmptyListPage';
 
 class TileList extends React.PureComponent {
     renderItem({item}, navigator) {
@@ -30,8 +31,7 @@ class TileList extends React.PureComponent {
             onEndReached, 
             navigate, 
             data, 
-            listHeaderComponent, 
-            isBottomLoading
+            listHeaderComponent
         } = this.props;
 		return (
             <SectionList
@@ -45,12 +45,30 @@ class TileList extends React.PureComponent {
                     return 'item' + index
                 }}
                 ListHeaderComponent={listHeaderComponent}
-                ListFooterComponent={isBottomLoading ? this.renderSpinner() : this.renderLoadMoreButton()}
+                ListFooterComponent={this.renderFooter()}
                 onEndReachedThreshold={0}
             />
 		);
     }
     
+    renderFooter() {
+        const { isLoading, isBottomLoading, data } = this.props;
+        if (isLoading || isBottomLoading) {
+            return <ActivityIndicator size="large" color={primaryColor} />
+        }
+
+        if (data.length <= 0) {
+            return (
+                <View style={style.emptyPage}>
+                    <EmptyListPage/>
+                </View>
+            );
+        } else {
+            return this.renderLoadMoreButton();
+        }
+    }
+    
+
 	renderLoadMoreButton() {
 		return (
 			<Button
@@ -61,14 +79,17 @@ class TileList extends React.PureComponent {
 			/>
 		)
 	}
-
-	renderSpinner() {
-        return <ActivityIndicator key='spinner' size="large" color={primaryColor} />;
-	}
 }
+
+const style = StyleSheet.create({
+	emptyPage: {
+        paddingTop: Dimensions.get('window').width * 0.3,
+	}
+});
 
 const mapStateToProps = (state) => {
 	return {
+        isLoading: state.List.isLoading,
 		isBottomLoading: state.List.isBottomLoading
 	}
 }

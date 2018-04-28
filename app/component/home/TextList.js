@@ -1,10 +1,7 @@
 import React from 'react';
 import { connect } from "react-redux";
 import TileList from '../components/TileList';
-import EmptyListPage from '../components/EmptyListPage';
 import { loadListUpCall, loadListDownCall } from '../../reducer/action/listAction';
-import { primaryColor } from '../../asset/style/common';
-import { ActivityIndicator } from 'react-native';
 
 class TextList extends React.PureComponent {
 	componentDidMount(){
@@ -16,9 +13,10 @@ class TextList extends React.PureComponent {
 
 	onRefresh() {
 		const { data, loadListUpCall } = this.props;
-		
 		if (data.length > 0) {
 			loadListUpCall('text', data[0].creationTime);
+		} else {
+			loadListUpCall('text');			
 		}
 	}
 
@@ -31,31 +29,21 @@ class TextList extends React.PureComponent {
 	}
 
 	render(){
-		const { data, navigation, isLoading, isBottomLoading } = this.props;
-
-		if(data.length <= 0) {
-			return [
-				<EmptyListPage key='empty-list-page'/>,
-				<ActivityIndicator key='spinner' size="large" color={primaryColor} />
-			];
-		} else {
-			return (
-				<TileList 
-					navigate={navigation.navigate}
-					data={data}
-					isLoading={isLoading}
-					onRefresh={this.onRefresh.bind(this)}
-					loadMore={this.loadMore.bind(this)}
-				/>
-			);
-		}
+		const { data, navigation } = this.props;
+		return (
+			<TileList 
+				navigate={navigation.navigate}
+				data={data}
+				onRefresh={this.onRefresh.bind(this)}
+				loadMore={this.loadMore.bind(this)}
+			/>
+		);
 	}
 }
 
 const mapStateToProps = (state) => {
 	return {
-		data: state.List.textList,
-		isLoading: state.List.isLoading,
+		data: state.List.textList
 	}
 }
 
