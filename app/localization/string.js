@@ -3,6 +3,12 @@ import LocalizedStrings from 'react-native-localization';
 
 const string = new LocalizedStrings({
 	en:{
+// app 
+		LaunchingApp: 'Launching app',
+		ServerCannotLoadSystemConfig: 'Cannot load system configuration, please check your internet or try again later',
+		NeedToUpdateTitle: 'Update is required',
+		NeedToUpdateMessage: 'I am afraid the version of your JustJoking is too low, please update.',
+		GoToAppStore: 'Take me to App Store',
 // common
 		Back: "Back",
 		Thousand: 'K',

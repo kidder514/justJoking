@@ -11,7 +11,8 @@ import App from './app/App';
 
 const persistConfig = {
     key: 'root',
-    storage: AsyncStorage
+    storage: AsyncStorage,
+    blacklist : ['navigation', 'App']
 }
 const persistedReducer = persistReducer(persistConfig, rootReducer);
 const store = createStore(

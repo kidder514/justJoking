@@ -19,6 +19,8 @@ import string from './localization/string';
 import { primaryColor, greyColor, whiteColor, textColor, blackColor } from './asset/style/common';
 import Icon from 'react-native-vector-icons/Entypo';
 
+import UpdateReminderPage from './component/components/UpdateReminderPage';
+
 import SignIn from './component/auth/SignIn';
 import SignUp from './component/auth/SignUp';
 import Policy from './component/auth/Policy';
@@ -354,18 +356,33 @@ const MainNavigator = TabNavigator(
 
 class App extends React.PureComponent {
 	componentDidMount() {
+		const { init } = this.props;
 		SplashScreen.hide();
-		this.props.init();
+		init();
 	}
 
 	render() {
-		if (!!this.props.isSignedIn) {
+		const { config, isSignedIn, isLoading, loadingText } = this.props;
+	
+		if (config.isCheckingVersion) {
+			return (
+				<View style={style.loadingPage}>
+					<ActivityIndicator size="large" color={primaryColor} />				
+				</View>
+			)
+		}
+
+		if (config.isForceUpdateNeeded) {
+			return <UpdateReminderPage />
+		}
+		
+		if (!!isSignedIn) {
 			return (
 				<View style={style.outterWrapper}>
 					<MainNavigator />
-					{this.props.isLoading && <View style={style.container}>
+					{isLoading && <View style={style.container}>
 						<ActivityIndicator size="large" color={primaryColor} />
-						<Text>{this.props.loadingText}</Text>						
+						<Text>{loadingText}</Text>						
 					</View>}
 				</View>
 			);
@@ -373,9 +390,9 @@ class App extends React.PureComponent {
 			return (
 				<View style={style.outterWrapper}>
 					<AuthNavigator/>
-					{this.props.isLoading && <View style={style.container}>
+					{isLoading && <View style={style.container}>
 						<ActivityIndicator size="large" color={primaryColor} />
-						<Text style={style.spinnerText}>{this.props.loadingText}</Text>
+						<Text style={style.spinnerText}>{loadingText}</Text>
 					</View>}
 				</View>
 			);
@@ -384,6 +401,11 @@ class App extends React.PureComponent {
 };
 
 const style = StyleSheet.create({
+	loadingPage: {
+		flex: 1,
+		justifyContent: 'center',
+		alignItems: 'center'
+	},
 	outterWrapper:{
 		flex: 1,
 		width: Dimensions.get('window').width,	
@@ -411,7 +433,8 @@ const style = StyleSheet.create({
 const mapStateToProps = state => ({
 	isSignedIn: state.Auth.isSignedIn,
 	isLoading: state.Ui.isLoading,
-	loadingText: state.Ui.loadingText
+	loadingText: state.Ui.loadingText,
+	config: state.App
 });
 
 const mapDispatchToProps = (dispatch) => {
