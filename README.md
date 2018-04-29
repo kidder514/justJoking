@@ -1,8 +1,6 @@
 ## Main tasks
 
 ### Feature in release 1.0.0
-- Init
-- compulsory update
 - add ads to app
 - Gif Support
 - edit all the text to make them appropriate 
@@ -10,14 +8,14 @@
 - App store optimization 
 - help page
 - terms and condition page
-- version number add to setting page.
 - something might be wrong in post and user create time, we should use a global utc time.
+- comment order by likes 
+- check version feature in setting page
 
 ### Features in release 1.1.0
 - search Page
 - Inbox
 - second layer commet
-- comment order by likes
 
 ### Features in release 1.2.0
 - push notification

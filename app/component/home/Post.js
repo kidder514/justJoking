@@ -9,6 +9,7 @@ import { toastAndroid } from '../../reducer/action/appAction';
 import FitImage from 'react-native-fit-image';
 import { textPostCall, imagePostCall } from '../../reducer/action/listAction';
 import SYImagePicker from 'react-native-syan-image-picker'
+import { clone } from '../../util/util';
 
 const initialState = {
 	text: '',
@@ -20,9 +21,10 @@ const initialState = {
 class Post extends React.Component {
 	constructor(props) {
 		super(props);
-		this.state = initialState;
+		this.state = clone(initialState);
 
 		this.removeImage = this.removeImage.bind(this);
+		this.chooseImage = this.chooseImage.bind(this);
 		this.onSubmit = this.onSubmit.bind(this);
 		this.reset = this.reset.bind(this);
 	}
@@ -42,7 +44,7 @@ class Post extends React.Component {
 	}
 
 	reset(){
-		this.setState(initialState);
+		this.setState(clone(initialState));
 	}
 
 	onChangeText(txt) {
@@ -50,18 +52,23 @@ class Post extends React.Component {
 	}
 
 	chooseImage() {
+		const { images } = this.state;
+		if (images.length === 9) {
+			toastAndroid(string.ImageLimitReached);
+			return;
+		}
 		const options = {
-			imageCount: 9,             // 最大选择图片数目，默认6
-			isCamera: true,            // 是否允许用户在内部拍照，默认true
-			isGif: false,              // 是否允许选择GIF，默认false，暂无回调GIF数据
+			imageCount: 9 - images.length,  // 最大选择图片数目，默认6
+			isCamera: true,             	// 是否允许用户在内部拍照，默认true
+			isGif: false,              		// 是否允许选择GIF，默认false，暂无回调GIF数据
 		};
 
 		SYImagePicker.asyncShowImagePicker(options)
-		.then(images => {
-			let imageList = [];
+		.then(imagePicked => {
+			let imageList = images;
 
-			if (images.length > 0)
-				images.map(image => imageList.push(image.original_uri));
+			if (imagePicked.length > 0)
+			imagePicked.map(image => imageList.push(image.original_uri));
 
 			this.setState({images: imageList});
 		})
@@ -174,14 +181,14 @@ class Post extends React.Component {
 				<FormValidationMessage>{this.state.errorText}</FormValidationMessage>
 				<View style={style.button}>
 					<Button
-						onPress={this.onSubmit}
+						onPress={() => this.onSubmit()}
 						title={string.Upload}
 						color={primaryColor}
 					/>
 				</View>
 				<View style={style.resetButton}>
 					<Button
-						onPress={this.reset}
+						onPress={() => this.reset()}
 						title={string.Reset}
 						color={greyColor}
 					/>
