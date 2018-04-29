@@ -186,10 +186,10 @@ class ImageTile extends React.PureComponent {
 
     renderMultiImages() {
         const containerWidth = Dimensions.get('window').width / 3;
-        const { images, id } = this.props.data;
-        let imageList = [];
-        images.map((image, index) => {
-            imageList.push(
+        const { thumbnails, id } = this.props.data;
+        let thumbnailList = [];
+        thumbnails.map((thumbnail, index) => {
+            thumbnailList.push(
                 <TouchableHighlight
                     key={id + 'image' + index}
                     onPress={() => this.openModal(index)}
@@ -202,7 +202,7 @@ class ImageTile extends React.PureComponent {
                             borderColor: whiteColor,
                         }}
                         resizeMode={Image.resizeMode.cover}
-                        source={{ uri: image }}
+                        source={{ uri: thumbnail }}
                     />
                 </TouchableHighlight>
             );
@@ -213,7 +213,7 @@ class ImageTile extends React.PureComponent {
                 flexDirection: 'row',
                 flexWrap: 'wrap'
             }}>
-                {imageList}
+                {thumbnailList}
             </View>
         );
     }

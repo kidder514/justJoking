@@ -103,63 +103,34 @@ export const commentUpdateDislike = (post) => {
 }
 
 export function imagePostCall(text, images){
-	let imagesTemp = [];
-	let imagesUploadTemp = [];
+	let imagesTemp = {};
+	let thumbnailsTemp = {};
 	return (dispatch, getState) => {
 		dispatch(loadOn(string.LoadingCompressingImages));
-
 		if (images.length > 0 ){
-			images.map(image => {
+			images.map((image, index) => {
 				// 1. resize images
 				ImageResizer.createResizedImage(image, 1280, 1280, 'JPEG', 25, 0)
-				.then((resizeRes) => {
-					imagesTemp.push(resizeRes.uri);
-					if (imagesTemp.length === images.length) {
-						// 2. upload all images to fire storage and retrieve their download URLS
-						dispatch(loadOn(string.LoadingUploadingImages));
-						imagesTemp.forEach((imageURI) => {
-							firebase.storage().ref().child(getState().Auth.uid + '/'+ uuidv4() +'.png').putFile(imageURI)
-							.then(uploadRes => {
-								imagesUploadTemp.push(uploadRes.downloadURL);
+				.then((resizedImage) => {
+					imagesTemp['image' + index] = resizedImage.uri
+					if (Object.keys(imagesTemp).length === images.length && 
+						Object.keys(thumbnailsTemp).length === images.length) {
+						uploadImage(dispatch, getState(), imagesTemp, thumbnailsTemp, text);
+					}
+				})
+				.catch((err) => {
+					console.log(err);
+					dispatch(loadEnd());
+					toastAndroid(string.ErrorResizingImage);				
+				}); 
 
-								if (imagesUploadTemp.length === imagesTemp.length) {
-
-									// 3. upload new post data to database
-									dispatch(loadOn(string.LoadingUploadingPost));
-									const tempPost = {
-										id: uuidv4(),
-										creationTime: new Date().getTime(),			
-										author: getState().Auth.uid,
-										authorName: getState().Auth.name,
-										authorPhoto: getState().Auth.photoURL,
-										authorTagline: getState().Auth.tagline,
-										postType: 'image',
-										like:[],
-										dislike: [],
-										share: 0,
-										commentCount: 0,
-										images: imagesUploadTemp,
-										text: text
-									}
-							
-									firebase.firestore().collection('posts').doc(tempPost.id).set(tempPost)
-									.then(ref =>{								
-										dispatch(loadEnd());
-										dispatch(addPost(tempPost));
-										toastAndroid(string.AddPostSuccess);
-									})
-									.catch(err => {
-										console.log(err);
-										dispatch(loadEnd());		
-										toastAndroid(string.ErrorAddPost);
-									});
-								}
-							})
-							.catch((err) => {
-								dispatch(loadEnd());
-								toastAndroid(string.ServerFailToUploadFile);
-							});
-						});
+				// 2. resize image for thumbnails
+				ImageResizer.createResizedImage(image, 300, 300, 'JPEG', 25, 0)
+				.then((resizedThumbs) => {
+					thumbnailsTemp['image' + index] = resizedThumbs.uri
+					if (Object.keys(imagesTemp).length === images.length && 
+						Object.keys(thumbnailsTemp).length === images.length) {
+						uploadImage(dispatch, getState(), imagesTemp, thumbnailsTemp, text);				
 					}
 				})
 				.catch((err) => {
@@ -170,6 +141,76 @@ export function imagePostCall(text, images){
 			});
 		}
 	}
+}
+
+function uploadImage(dispatch, state, images, thumbnails, text ) {
+	let imagesUploadTemp = {};
+	let thumbnailsUploadTemp = {};
+	dispatch(loadOn(string.LoadingUploadingImages));
+	
+	for (let image in images) {
+		firebase.storage().ref().child(state.Auth.uid + '/'+ uuidv4() +'.png').putFile(images[image])
+		.then(uploadRes => {
+			console.log('done image');
+			imagesUploadTemp[image] = uploadRes.downloadURL;
+			if (Object.keys(imagesUploadTemp).length === Object.keys(images).length && 
+			Object.keys(thumbnailsUploadTemp).length === Object.keys(images).length) {
+				uploadPost(dispatch, state, imagesUploadTemp, thumbnailsUploadTemp, text);
+			}
+		})
+		.catch((err) => {
+			dispatch(loadEnd());
+			toastAndroid(string.ServerFailToUploadFile);
+		});
+	}
+
+	for (let thumbnail in thumbnails) {
+		firebase.storage().ref().child(state.Auth.uid + '/'+ uuidv4() +'.png').putFile(thumbnails[thumbnail])
+		.then(uploadRes => {
+			console.log('done thumbnail');			
+			thumbnailsUploadTemp[thumbnail] = uploadRes.downloadURL;
+			if (Object.keys(imagesUploadTemp).length === Object.keys(images).length && 
+			Object.keys(thumbnailsUploadTemp).length === Object.keys(images).length) {
+				uploadPost(dispatch, state, imagesUploadTemp, thumbnailsUploadTemp, text);
+			}
+		})
+		.catch((err) => {
+			dispatch(loadEnd());
+			toastAndroid(string.ServerFailToUploadFile);
+		});
+	}
+}
+
+function uploadPost(dispatch, state, images, thumbnails, text) {
+	dispatch(loadOn(string.LoadingUploadingPost));
+	const tempPost = {
+		id: uuidv4(),
+		creationTime: new Date().getTime(),			
+		author: state.Auth.uid,
+		authorName: state.Auth.name,
+		authorPhoto: state.Auth.photoURL,
+		authorTagline: state.Auth.tagline,
+		postType: 'image',
+		like:[],
+		dislike: [],
+		share: 0,
+		commentCount: 0,
+		images,
+		thumbnails,
+		text
+	}
+
+	firebase.firestore().collection('posts').doc(tempPost.id).set(tempPost)
+	.then(ref =>{								
+		dispatch(loadEnd());
+		dispatch(addPost(tempPost));
+		toastAndroid(string.AddPostSuccess);
+	})
+	.catch(err => {
+		console.log(err);
+		dispatch(loadEnd());		
+		toastAndroid(string.ErrorAddPost);
+	});
 }
 
 export function textPostCall(text) {

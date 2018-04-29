@@ -1,4 +1,5 @@
 import { likeArrayProcessor } from './action/listActionUtil';
+import { clone } from '../util/util';
 
 const initState = {
     hotList: [],
@@ -87,30 +88,35 @@ function reduceAddComment(commentList, commentItem) {
 }
 
 function reduceAddPost(myList, newPost) {
-    myList.unshift(newPost)
+    const postTemp = sortImage(clone(newPost));
+    
+    myList.unshift(postTemp)
     return myList;
 }
 
 function reduceLoadList(payload, stateList){
     const { list, name, isUp, isMyList, uid } = payload;
     if (list && list.length <= 0) return {};
+
+    const imageSortedList = sortImageList(list);
+
     switch (name) {
         case 'all':
             if (isMyList) {
-                return { myList: isUp ? handleListUp(list, stateList.myList):handleListDown(list, stateList.myList)};
+                return { myList: isUp ? handleListUp(imageSortedList, stateList.myList):handleListDown(imageSortedList, stateList.myList)};
             } else if (uid !== undefined && uid !== ''){
-                return { authorList: isUp ? handleListUp(list, stateList.authorList):handleListDown(list, stateList.authorList)};
+                return { authorList: isUp ? handleListUp(imageSortedList, stateList.authorList):handleListDown(imageSortedList, stateList.authorList)};
             } else {
-                return { hotList: isUp ? handleListUp(list, stateList.hotList):handleListDown(list, stateList.hotList)};
+                return { hotList: isUp ? handleListUp(imageSortedList, stateList.hotList):handleListDown(imageSortedList, stateList.hotList)};
             }
         case 'image':
-            return { imageList: isUp ? handleListUp(list, stateList.imageList):handleListDown(list, stateList.imageList) };
+            return { imageList: isUp ? handleListUp(imageSortedList, stateList.imageList):handleListDown(imageSortedList, stateList.imageList) };
         case 'text':
-            return { textList: isUp ? handleListUp(list, stateList.textList):handleListDown(list, stateList.textList) };
+            return { textList: isUp ? handleListUp(imageSortedList, stateList.textList):handleListDown(imageSortedList, stateList.textList) };
         case 'mylist':
-            return { myList: isUp ? handleListUp(list, stateList.myList):handleListDown(list, stateList.myList) };
+            return { myList: isUp ? handleListUp(imageSortedList, stateList.myList):handleListDown(imageSortedList, stateList.myList) };
         default:
-            return { hotList: isUp ? handleListUp(list, stateList.hotList):handleListDown(list, stateList.hotList) };
+            return { hotList: isUp ? handleListUp(imageSortedList, stateList.hotList):handleListDown(imageSortedList, stateList.hotList) };
     }
 }
 
@@ -182,6 +188,38 @@ function upateListComment(postId, list) {
         }
         newList.push(tempItem);
     });
+}
+
+function sortImageList(list) {
+    let newList = [];
+    list.forEach(item => {
+        if (item.postType !== 'image'){
+            newList.push(item)
+        } else {
+            newList.push(sortImage(item));
+        }
+    })
+
+    return newList;
+}
+
+function sortImage(post) {
+    let postTemp = clone(post);
+    let images = [];
+    let thumbnails = [];
+    
+    for (let i = 0; i < 9; i++) {
+        if(postTemp.images['image' + i] !== undefined && postTemp.thumbnails['image' + i] !== undefined ) {
+            images.push(postTemp.images['image' + i]);
+            thumbnails.push(postTemp.thumbnails['image' + i]);
+        } else {
+            break;
+        }
+    }
+    postTemp.images = images;
+    postTemp.thumbnails = thumbnails;
+    
+    return postTemp;
 }
 
 export default List;

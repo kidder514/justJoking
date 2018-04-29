@@ -84,6 +84,7 @@ class Post extends React.Component {
 	}
 
 	onSubmit() {
+		const { imagePostCall, textPostCall } = this.props;
 		const { text, images } = this.state;
 		if (images.length == 0) {
 			// text post
@@ -93,7 +94,7 @@ class Post extends React.Component {
 				this.setState({errorText: string.ErrorTextLengthInvalid});
 			} else {
 				this.setState({ errorText: '' });
-				this.props.textPostCall(text);
+				textPostCall(text);
 			}
 		} else {
 			//image post
@@ -101,7 +102,7 @@ class Post extends React.Component {
 				this.setState({ errorText: string.ErrorTextTooLong });
 			} else {
 				this.setState({ errorText: '' });
-				this.props.imagePostCall(text, images);
+				imagePostCall(text, images);
 			}
 		}
 	}
