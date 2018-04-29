@@ -1,5 +1,5 @@
 import React from 'react';
-import { View, Text, StyleSheet, Alert, Button } from 'react-native';
+import { View, Text, StyleSheet, Alert, Button, Image } from 'react-native';
 import string from '../../localization/string';
 import { primaryColor } from '../../asset/style/common';
 
@@ -23,6 +23,7 @@ class UpdateReminderPage extends React.PureComponent {
 	render(){
         return (
             <View style={style.container}>
+				<Image source={require('../../asset/logo.png')} style={style.logo} />            
                 <Text>
                     {string.NeedToUpdateMessage}
                 </Text>
@@ -39,6 +40,11 @@ class UpdateReminderPage extends React.PureComponent {
 }
 
 const style = StyleSheet.create({
+    logo: {
+		width: 100,
+		height: 100,
+		marginBottom: 60,
+	},
 	container: {
 		flex: 1,
 		paddingLeft: 30,
