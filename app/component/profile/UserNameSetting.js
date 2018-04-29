@@ -1,7 +1,7 @@
 import React from 'react';
 import { connect } from "react-redux";
-import { View, Text, StyleSheet, Dimensions} from 'react-native';
-import { FormValidationMessage, FormInput, Button} from 'react-native-elements'
+import { View, Text, StyleSheet, Dimensions, Button} from 'react-native';
+import { FormValidationMessage, FormInput} from 'react-native-elements'
 import { whiteColor, greyColor, primaryColor } from '../../asset/style/common';
 import string from '../../localization/string';
 import { toastAndroid } from '../../reducer/action/appAction';
@@ -53,13 +53,13 @@ class UserNameSetting extends React.PureComponent {
 				<Text style={style.wordCount}>{string.WordCount + this.state.wordCount}</Text>				
 				<FormValidationMessage>{this.state.errorName}</FormValidationMessage>
 				<Text style={style.rules}>{string.UserNameRules}</Text>
-				<Button
-					title={string.Submit}
-					onPress={() => this.onSubmit()}
-					backgroundColor={primaryColor}
-					containerViewStyle={style.button}
-					textStyle={style.buttonText}
-				/>
+				<View style={style.button}>
+					<Button
+						title={string.Submit}
+						onPress={() => this.onSubmit()}
+						color={primaryColor}
+					/>
+				</View>
 			</View>
 		);
 	}
@@ -92,7 +92,7 @@ const style = StyleSheet.create({
 		textAlign: 'right'
 	},
 	button: {
-		width: Dimensions.get('window').width * 0.3,
+		paddingRight: 20,
 		alignSelf: 'flex-end',
 	},
 	buttonText: {
