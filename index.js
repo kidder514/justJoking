@@ -12,7 +12,7 @@ import App from './app/App';
 const persistConfig = {
     key: 'root',
     storage: AsyncStorage,
-    blacklist : ['navigation', 'App']
+    blacklist : ['navigation', 'App', 'List', 'Ui']
 }
 const persistedReducer = persistReducer(persistConfig, rootReducer);
 const store = createStore(
@@ -23,7 +23,7 @@ const store = createStore(
 const persistor = persistStore(store);
 
 // uncomment this line if you need to purge your store
-// persistor.purge();
+persistor.purge();
 
 // disable the SetTimeInterval Yellow Box
 console.disableYellowBox = true;

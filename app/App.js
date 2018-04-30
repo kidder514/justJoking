@@ -363,8 +363,8 @@ class App extends React.PureComponent {
 
 	render() {
 		const { config, isSignedIn, isLoading, loadingText } = this.props;
-	
-		if (config.isCheckingVersion) {
+
+		if (config.isInitiating) {
 			return (
 				<View style={style.loadingPage}>
 					<ActivityIndicator size="large" color={primaryColor} />				

@@ -48,7 +48,7 @@ class Profile extends React.PureComponent {
 
 	renderUserInfo() {
 		const { navigation, auth } = this.props;
-		const tagline = auth.tagline.length > 0 ? auth.tagline.length : string.NoTagline;
+		const tagline = auth.tagline.length > 0 ? auth.tagline : string.NoTagline;
 
 		return (
 			<View style={style.headerContainer}>						
