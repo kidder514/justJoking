@@ -16,7 +16,7 @@ const string = new LocalizedStrings({
 		HasNewerVersion: 'Update is available',
 // common
 		Back: "Back",
-		Cancel: 'Cance;',
+		Cancel: 'Cancel',
 		OK: 'OK',
 		Thousand: 'K',
 		Million: 'M',

@@ -29,6 +29,7 @@ class Setting extends React.PureComponent {
 					string.GoToAppStoreMessage,
 					[
 						{text: string.GoToAppStore, onPress: () => this.onUpdatePress.bind(this)},
+						{text: string.Cancel}
 					]
 				)
 			} else {

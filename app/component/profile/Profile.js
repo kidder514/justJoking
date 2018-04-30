@@ -145,10 +145,12 @@ const style = StyleSheet.create({
 		flex: 1,
 		paddingLeft: 20,
 		paddingRight: 20,
-		paddingTop: 10
+		paddingTop: 10,
+		alignItems: 'center',
+		justifyContent: 'center'
 	},
 	tagline: {
-		
+		textAlign: 'center'
 	}
 });
 
