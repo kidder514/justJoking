@@ -18,13 +18,15 @@ class ImageTile extends React.PureComponent {
             tileWidth: undefined,
             tileHeight: undefined,
             isLongImage: false,
-            modalVisible: false,
+            isModalVisible: false,
             imageIndex: undefined
         };
         this.onClickLike = this.onClickLike.bind(this);
         this.onClickDislike = this.onClickDislike.bind(this);
         this.onClickComment = this.onClickComment.bind(this);
         this.onClickShare = this.onClickShare.bind(this);
+        this.openModal = this.openModal.bind(this);
+        this.closeModal = this.closeModal.bind(this);
     }
 
     componentDidMount() {
@@ -37,11 +39,11 @@ class ImageTile extends React.PureComponent {
     }
 
     openModal(index) {
-        this.setState({ modalVisible: true, imageIndex: index});
+        this.setState({ isModalVisible: true, imageIndex: index});
     }
 
     closeModal() {
-        this.setState({ modalVisible: false, mageIndex: undefined });
+        this.setState({ isModalVisible: false, mageIndex: undefined });
     }
 
     onClickLike() {
@@ -79,15 +81,16 @@ class ImageTile extends React.PureComponent {
     }
 
     render() {
-        const { data } = this.props;    
+        const { data } = this.props;   
+        const { isModalVisible } = this.state;
         return (
             <View style={style.tileContainer}>
                 {this.renderHeader()}
                 <View style={style.textSection}>
                     <Text style={style.text}>
-                        {(data.tag && data.tag !== '') && 
+                        {/* {(data.tag && data.tag !== '') && 
                             <Text style={style.tag}>{'#' + data.tag + "# "}</Text>
-                        }
+                        } */}
                         {data.text}
                     </Text>
                 </View>
@@ -104,13 +107,15 @@ class ImageTile extends React.PureComponent {
                         <Text>{numberFormatter(data.share)}</Text>
                     </TouchableOpacity>
                 </View>
-                <Modal
-                    visible={this.state.modalVisible}
-                    animationType={'fade'}
-                    onRequestClose={() => this.closeModal()}
-                >
-                    {this.renderGallery()}
-                </Modal>
+                {isModalVisible && 
+                    <Modal
+                        // visible={true}
+                        animationType={'fade'}
+                        onRequestClose={() => this.closeModal()}
+                    >
+                        {this.renderGallery()}
+                    </Modal>
+                }  
             </View >
 		);
     }
@@ -156,16 +161,16 @@ class ImageTile extends React.PureComponent {
 
     renderOneImage(imageUrl) {
         const { isLongImage } = this.state;
-        const singleImageHeight = Dimensions.get('window').height * 0.4;
+        const height = Dimensions.get('window').height * 0.4;
         return (
             <TouchableHighlight 
-                style={{height: singleImageHeight}}
+                style={{height}}
                 onPress={() => this.openModal(0)}
             >
                 <View>
                     {isLongImage ? <Text style={style.longImageBanner}>{string.LongImage}</Text> : undefined}
                     <Image 
-                        style={{height: singleImageHeight}}
+                        style={{height}}
                         overflow='hidden'
                         resizeMode={Image.resizeMode.cover}
                         source={{ uri: imageUrl }} />

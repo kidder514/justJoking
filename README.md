@@ -11,11 +11,10 @@
 - something might be wrong in post and user create time, we should use a global utc time.
 - comment order by likes 
 - check version feature in setting page
-- fix image selection page text in the plugin 
 - add all image lazy loading
-- some times image is 太长了，是竖条状，看看是不是光发生在发新post的时候
-- 新post发完，post页面没有reset.
 - 选图片的时候有时候只是用户cancel， 却报警
+- rechecking all firestore config
+- image gallery slider is too slow, change to another one
 
 ### Features in release 1.1.0
 - search Page
