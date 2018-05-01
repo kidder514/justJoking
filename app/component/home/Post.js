@@ -36,10 +36,6 @@ class Post extends React.Component {
 	}
 
 	shouldComponentUpdate(nextProps, nextState) {
-		if (this.state.images.length != nextState.images.length) {
-			return true;
-		}
-
 		return true;
 	}
 

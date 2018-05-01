@@ -171,14 +171,20 @@ class ImageTile extends React.PureComponent {
     }
 
     renderOneImage(imageUrl) {
+        const { tileHeight, isLongImage } = this.state;
         return (
             <TouchableHighlight 
-                style={{height: this.state.tileHeight}}
+                style={{height: tileHeight}}
                 onPress={() => this.openModal(0)}
             >
                 <View>
-                    {this.state.isLongImage ? <Text style={style.longImageBanner}>{string.LongImage}</Text> : undefined}
-                    <FitImage onLoad={this.checkSingleImageSize.bind(this)} overflow='hidden' source={{ uri: imageUrl }} />
+                    {isLongImage ? <Text style={style.longImageBanner}>{string.LongImage}</Text> : undefined}
+                    <Image 
+                        style={{height: tileHeight}}
+                        onLoad={this.checkSingleImageSize.bind(this)} 
+                        overflow='hidden'
+                        resizeMode={Image.resizeMode.cover}
+                        source={{ uri: imageUrl }} />
                 </View>
             </TouchableHighlight>
         );

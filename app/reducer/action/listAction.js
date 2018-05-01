@@ -151,7 +151,6 @@ function uploadImage(dispatch, state, images, thumbnails, text ) {
 	for (let image in images) {
 		firebase.storage().ref().child(state.Auth.uid + '/'+ uuidv4() +'.png').putFile(images[image])
 		.then(uploadRes => {
-			console.log('done image');
 			imagesUploadTemp[image] = uploadRes.downloadURL;
 			if (Object.keys(imagesUploadTemp).length === Object.keys(images).length && 
 			Object.keys(thumbnailsUploadTemp).length === Object.keys(images).length) {
@@ -166,8 +165,7 @@ function uploadImage(dispatch, state, images, thumbnails, text ) {
 
 	for (let thumbnail in thumbnails) {
 		firebase.storage().ref().child(state.Auth.uid + '/'+ uuidv4() +'.png').putFile(thumbnails[thumbnail])
-		.then(uploadRes => {
-			console.log('done thumbnail');			
+		.then(uploadRes => {		
 			thumbnailsUploadTemp[thumbnail] = uploadRes.downloadURL;
 			if (Object.keys(imagesUploadTemp).length === Object.keys(images).length && 
 			Object.keys(thumbnailsUploadTemp).length === Object.keys(images).length) {
@@ -182,6 +180,7 @@ function uploadImage(dispatch, state, images, thumbnails, text ) {
 }
 
 function uploadPost(dispatch, state, images, thumbnails, text) {
+	dispatch(addPostStart());
 	dispatch(loadOn(string.LoadingUploadingPost));
 	const tempPost = {
 		id: uuidv4(),
@@ -203,12 +202,14 @@ function uploadPost(dispatch, state, images, thumbnails, text) {
 	firebase.firestore().collection('posts').doc(tempPost.id).set(tempPost)
 	.then(ref =>{								
 		dispatch(loadEnd());
+		dispatch(addPostEnd());
 		dispatch(addPost(tempPost));
 		toastAndroid(string.AddPostSuccess);
 	})
 	.catch(err => {
 		console.log(err);
-		dispatch(loadEnd());		
+		dispatch(loadEnd());
+		dispatch(addPostEnd());
 		toastAndroid(string.ErrorAddPost);
 	});
 }
