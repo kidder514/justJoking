@@ -88,7 +88,7 @@ function reduceAddComment(commentList, commentItem) {
 }
 
 function reduceAddPost(myList, newPost) {
-    const postTemp = sortImage(clone(newPost));
+    const postTemp = newPost.postType === 'image' ? sortImage(clone(newPost)) : clone(newPost);
     
     myList.unshift(postTemp)
     return myList;

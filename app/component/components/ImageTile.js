@@ -32,24 +32,8 @@ class ImageTile extends React.PureComponent {
         if (images.length > 1) {
             let layerCount = Math.floor(images.length / 3 + (images.length % 3 > 0 ? 1 : 0));
             const containerHeight = Dimensions.get('window').width / 3 * layerCount + imageBorderWidth * layerCount;
-            this.setState({ tileHeight: containerHeight });
+            this.setState({ tileHeight: containerHeight/layerCount});
         }
-    }
-
-    checkSingleImageSize() {
-        const { images } = this.props.data;
-        Image.getSize(images[0], (width, height) => {
-            const windowWidth = Dimensions.get('window').width;
-            const windowHeight = Dimensions.get('window').height;
-            const scaledImageHeight = height / (width / windowWidth);
-            const isLongImage = scaledImageHeight > windowWidth * 0.8;
-            if (isLongImage) {
-                this.setState({
-                    tileHeight: windowHeight * 0.4,
-                    isLongImage: true
-                });
-            }
-        });
     }
 
     openModal(index) {
@@ -171,17 +155,17 @@ class ImageTile extends React.PureComponent {
     }
 
     renderOneImage(imageUrl) {
-        const { tileHeight, isLongImage } = this.state;
+        const { isLongImage } = this.state;
+        const singleImageHeight = Dimensions.get('window').height * 0.4;
         return (
             <TouchableHighlight 
-                style={{height: tileHeight}}
+                style={{height: singleImageHeight}}
                 onPress={() => this.openModal(0)}
             >
                 <View>
                     {isLongImage ? <Text style={style.longImageBanner}>{string.LongImage}</Text> : undefined}
                     <Image 
-                        style={{height: tileHeight}}
-                        onLoad={this.checkSingleImageSize.bind(this)} 
+                        style={{height: singleImageHeight}}
                         overflow='hidden'
                         resizeMode={Image.resizeMode.cover}
                         source={{ uri: imageUrl }} />
