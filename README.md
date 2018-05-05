@@ -10,7 +10,6 @@
 - terms and condition page
 - something might be wrong in post and user create time, we should use a global utc time.
 - comment order by likes 
-- check version feature in setting page
 - add all image lazy loading
 - 选图片的时候有时候只是用户cancel， 却报警
 - rechecking all firestore config

@@ -1,15 +1,27 @@
 import React from 'react';
-import { View, Text, Image, StyleSheet, Dimensions, Modal, Button, TouchableHighlight, TouchableOpacity } from 'react-native';
+import { 
+    View, 
+    Text, 
+    Image, 
+    StyleSheet, 
+    Dimensions, 
+    Modal, 
+    Button, 
+    TouchableHighlight, 
+    TouchableOpacity 
+} from 'react-native';
 import string from '../../localization/string';
 import { connect } from "react-redux";
 import Icon from 'react-native-vector-icons/Entypo';
 import { primaryColor, greyColor, whiteColor } from '../../asset/style/common';
 import { numberFormatter } from '../../util/numberFormatter';
 import { likeCall, dislikeCall } from "../../reducer/action/listAction";
-import FitImage from 'react-native-fit-image';
 import Gallery from 'react-native-image-gallery';
+import LazyImage from './LazyImage';
 
 const imageBorderWidth = 1;
+const screenWidth = Dimensions.get('window').width
+const screenHeight = Dimensions.get('window').height
 
 class ImageTile extends React.PureComponent {
     constructor(props) {
@@ -19,7 +31,9 @@ class ImageTile extends React.PureComponent {
             tileHeight: undefined,
             isLongImage: false,
             isModalVisible: false,
-            imageIndex: undefined
+            imageIndex: undefined,
+            shouldLoad: false,
+            offset: undefined
         };
         this.onClickLike = this.onClickLike.bind(this);
         this.onClickDislike = this.onClickDislike.bind(this);
@@ -27,14 +41,26 @@ class ImageTile extends React.PureComponent {
         this.onClickShare = this.onClickShare.bind(this);
         this.openModal = this.openModal.bind(this);
         this.closeModal = this.closeModal.bind(this);
+        this.onLayout = this.onLayout.bind(this);
     }
 
     componentDidMount() {
         const { images } = this.props.data;
         if (images.length > 1) {
             let layerCount = Math.floor(images.length / 3 + (images.length % 3 > 0 ? 1 : 0));
-            const containerHeight = Dimensions.get('window').width / 3 * layerCount + imageBorderWidth * layerCount;
-            this.setState({ tileHeight: containerHeight/layerCount});
+            const containerHeight = screenWidth / 3 * layerCount + imageBorderWidth * layerCount;
+            this.setState({ tileHeight: containerHeight});
+        }
+    }
+
+    componentWillUpdate(nextProps) {
+        const { viewOffsetY } = this.props;
+        const { shouldLoad, offset } = this.state;
+        
+        if (!shouldLoad && viewOffsetY !== nextProps.viewOffsetY) {
+            if (offset && nextProps.viewOffsetY > (offset - screenHeight)) {
+                this.setState({shouldLoad : true});
+            }
         }
     }
 
@@ -76,6 +102,13 @@ class ImageTile extends React.PureComponent {
         });
     }
 
+    onLayout(event) {
+        if (event.nativeEvent.layout.y < screenHeight) {
+            this.setState({shouldLoad : true});                
+        }
+        this.setState({offset: event.nativeEvent.layout.y});
+    }
+
     onClickShare() {
 
     }
@@ -84,7 +117,7 @@ class ImageTile extends React.PureComponent {
         const { data } = this.props;   
         const { isModalVisible } = this.state;
         return (
-            <View style={style.tileContainer}>
+            <View style={style.tileContainer} onLayout={(e) => this.onLayout(e)} >
                 {this.renderHeader()}
                 <View style={style.textSection}>
                     <Text style={style.text}>
@@ -160,44 +193,52 @@ class ImageTile extends React.PureComponent {
     }
 
     renderOneImage(imageUrl) {
-        const { isLongImage } = this.state;
-        const height = Dimensions.get('window').height * 0.4;
+        const { isLongImage, shouldLoad } = this.state;
+        const height = screenHeight * 0.4;
         return (
             <TouchableHighlight 
-                style={{height}}
+                style={{
+                    height,
+                    width: screenWidth
+                }}
                 onPress={() => this.openModal(0)}
             >
                 <View>
                     {isLongImage ? <Text style={style.longImageBanner}>{string.LongImage}</Text> : undefined}
-                    <Image 
-                        style={{height}}
-                        overflow='hidden'
-                        resizeMode={Image.resizeMode.cover}
-                        source={{ uri: imageUrl }} />
+                    <LazyImage 
+                        height={height} 
+                        imageUrl={imageUrl} 
+                        isSingleImage={true} 
+                        shouldLoad={shouldLoad}
+                    />
                 </View>
             </TouchableHighlight>
         );
     }
 
     renderMultiImages() {
-        const containerWidth = Dimensions.get('window').width / 3;
+        const containerWidth = screenWidth / 3;
         const { thumbnails, id } = this.props.data;
+        const { shouldLoad } = this.state;
         let thumbnailList = [];
         thumbnails.map((thumbnail, index) => {
             thumbnailList.push(
                 <TouchableHighlight
                     key={id + 'image' + index}
                     onPress={() => this.openModal(index)}
+                    style={{
+                        width: containerWidth,
+                        height: containerWidth,
+                        borderWidth: imageBorderWidth,
+                        borderColor: whiteColor,
+                    }}
                 >
-                    <FitImage
-                        style={{
-                            width: containerWidth,
-                            height: containerWidth,
-                            borderWidth: imageBorderWidth,
-                            borderColor: whiteColor,
-                        }}
-                        resizeMode={Image.resizeMode.cover}
-                        source={{ uri: thumbnail }}
+                    <LazyImage 
+                        width={containerWidth} 
+                        height={containerWidth} 
+                        imageUrl={thumbnail} 
+                        isSingleImage={false} 
+                        shouldLoad={shouldLoad}
                     />
                 </TouchableHighlight>
             );
@@ -277,7 +318,7 @@ class ImageTile extends React.PureComponent {
 const style = StyleSheet.create({
     tileContainer: {
         backgroundColor: whiteColor,
-        marginBottom: 10,
+        marginBottom: 5,
     },
     tileBanner: {
         height: 40,
@@ -316,7 +357,7 @@ const style = StyleSheet.create({
         textAlign: 'center',
         backgroundColor: 'rgba(42, 44, 44, 0.7)',
         color: whiteColor,
-        width: Dimensions.get('window').width,
+        width: screenWidth,
     },
     icon: {
         marginRight: 5,

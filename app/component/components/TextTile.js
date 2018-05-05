@@ -157,7 +157,7 @@ class TextTile extends React.PureComponent {
 const style = StyleSheet.create({
 	tileContainer: {
         backgroundColor: whiteColor,
-        marginBottom: 10
+        marginBottom: 5
 	},
 	tileBanner: {
         height: 50,

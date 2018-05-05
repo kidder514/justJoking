@@ -6,7 +6,6 @@ import { primaryColor, greyColor, whiteColor, textColor, blackColor } from '../.
 import string from '../../localization/string';
 import Icon from 'react-native-vector-icons/Entypo';
 import { toastAndroid } from '../../reducer/action/appAction';
-import FitImage from 'react-native-fit-image';
 import { textPostCall, imagePostCall } from '../../reducer/action/listAction';
 import SYImagePicker from 'react-native-syan-image-picker'
 import { clone } from '../../util/util';
@@ -137,7 +136,7 @@ class Post extends React.Component {
 					onPress={(index) => this.removeImage(index)}
 					style={style.imageButton}
 				>
-					<FitImage
+					<Image
 						style={style.imageButton}
 						resizeMode={Image.resizeMode.cover}
 						source={{ uri: image }}
