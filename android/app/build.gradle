@@ -144,7 +144,6 @@ dependencies {
     // make sure all the lines it has added does not duplicate other lines
 
     // SO please try to do the link yourself mannually !!!!!!!!
-    compile project(':react-native-fs')
     compile project(':react-native-image-resizer')
     compile project(':react-native-image-picker')
     compile project(':react-native-fbsdk')

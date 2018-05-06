@@ -5,7 +5,6 @@ import android.app.Application;
 import com.facebook.CallbackManager;
 import com.facebook.react.ReactApplication;
 import com.reactlibrary.RNSyanImagePickerPackage;
-import com.rnfs.RNFSPackage;
 import fr.bamlab.rnimageresizer.ImageResizerPackage;
 import com.imagepicker.ImagePickerPackage;
 import com.facebook.FacebookSdk;
@@ -45,7 +44,6 @@ public class MainApplication extends Application implements ReactApplication {
       return Arrays.<ReactPackage>asList(
           new MainReactPackage(),
             new RNSyanImagePickerPackage(),
-            new RNFSPackage(),
             new ImageResizerPackage(),
             new ImagePickerPackage(),
             new FBSDKPackage(mCallbackManager),
