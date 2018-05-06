@@ -9,6 +9,7 @@ import { toastAndroid } from '../../reducer/action/appAction';
 import { textPostCall, imagePostCall } from '../../reducer/action/listAction';
 import SYImagePicker from 'react-native-syan-image-picker'
 import { clone } from '../../util/util';
+import RNFetchBlob from 'react-native-fetch-blob'
 
 const initialState = {
 	text: '',
@@ -16,6 +17,8 @@ const initialState = {
 	wordCount: 0,
 	images: []
 };
+
+const MAX_GIF_SIZE = 2500000;
 
 class Post extends React.Component {
 	constructor(props) {
@@ -55,21 +58,60 @@ class Post extends React.Component {
 		const options = {
 			imageCount: 9 - images.length,  // 最大选择图片数目，默认6
 			isCamera: true,             	// 是否允许用户在内部拍照，默认true
-			isGif: false,              		// 是否允许选择GIF，默认false，暂无回调GIF数据
+			isGif: true,              		// 是否允许选择GIF，默认false，暂无回调GIF数据
 		};
 
 		SYImagePicker.asyncShowImagePicker(options)
 		.then(imagePicked => {
 			let imageList = images;
+			let imageCount = 0;
+			if (imagePicked.length > 0) {
+				imagePicked.map(image => {
+					if (this.isValidImageType(image.original_uri)) {
+						if (image.original_uri.indexOf('.gif') !== -1) {
+							RNFetchBlob.fs.stat(image.original_uri)
+							.then((status) => {
+								imageCount++;
+								if (status.size < MAX_GIF_SIZE) {
+									imageList.push(image.original_uri);
+								} else {
+									toastAndroid(string.MaxGifLimit);
+								}
 
-			if (imagePicked.length > 0)
-			imagePicked.map(image => imageList.push(image.original_uri));
+								if (imageCount === imagePicked.length) {
+									this.setState({images: imageList});
+								}
+							})
+							.catch(err => {
+								imageCount++;
+								toastAndroid(string.LoadGifError);						
+							});
+	
+						} else {
+							imageCount++;
+							imageList.push(image.original_uri)
+						}
+					} else {
+						imageCount++;
+						toastAndroid(string.ImageTypeInvalid);					
+					}
 
-			this.setState({images: imageList});
+					if (imageCount === imagePicked.length) {
+						this.setState({images: imageList});
+					}
+				});
+			}
 		})
-		.catch(err => {
-			console.log(err);
+		.catch(() => {
+			console.log("user has cancelled the image picking.");
 		})
+	}
+
+	isValidImageType(imageUrl){
+		return imageUrl.indexOf('.gif') !== -1|| 
+		imageUrl.indexOf('.png') !== -1 || 
+		imageUrl.indexOf('.jpg') !== -1 ||
+		imageUrl.indexOf('.jpeg') !== -1;
 	}
 
 	removeImage(index) {

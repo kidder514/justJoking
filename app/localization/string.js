@@ -102,6 +102,9 @@ const string = new LocalizedStrings({
 		ErrorAddPost: 'Adding post has failed',
 		AddPostSuccess: 'Your joke has been added successfully',
 		ServerPostDoesNotExist: 'This joke does not exist, it must have been removed',
+		ImageTypeInvalid: 'Only png, jpeg, jpe and gif types of image are supported, invalid types are ingnored automatically',
+		MaxGifLimit: 'Gif image file must not be larger that 2.5MB, larger size image are ignored',
+		LoadGifError: 'Unable to load this gif',
 //Inbox
 		Inbox: 'Inbox',
 //Profile
