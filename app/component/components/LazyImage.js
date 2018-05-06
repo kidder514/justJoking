@@ -1,5 +1,8 @@
 import React from 'react';
-import { Image, Dimensions, View } from 'react-native'
+import { Dimensions, View } from 'react-native'
+import Image from 'react-native-image-progress';
+import ProgressCircle from 'react-native-progress/Circle';
+import { primaryColor } from '../../asset/style/common';
 
 const screenWidth = Dimensions.get('window').width
 const screenHeight = Dimensions.get('window').height
@@ -16,7 +19,7 @@ class LazyImage extends React.PureComponent {
                     source={isSingleImage? placeholderSmallPath : placeholderLargePath}
                     style={{height, width}}
                     overflow='hidden'
-                    resizeMode={Image.resizeMode.cover}
+                    resizeMode={'cover'}
                 />
             </View>
         )
@@ -28,7 +31,13 @@ class LazyImage extends React.PureComponent {
                 source={{uri: imageUrl}}
                 style={{height, width}}
                 overflow='hidden'                
-                resizeMode={Image.resizeMode.cover}
+                resizeMode={'cover'}
+                indicator={ProgressCircle}
+                indicatorProps={{
+                  size: 40,
+                  borderWidth: 0,
+                  color: primaryColor
+                }}
             />
         }
         return this.renderPlaceholder()
