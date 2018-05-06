@@ -59,8 +59,8 @@
 		0D4C88B9A57E44E5A57F386C /* libRCTFBSDK.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 75804789B7634552B4E3878C /* libRCTFBSDK.a */; };
 		CF64DB68F66342A1BF7AC37F /* libRNImagePicker.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 2E87E7BF74CB4E04BA195828 /* libRNImagePicker.a */; };
 		1EC9B21540D84426A225B634 /* libRCTImageResizer.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 710D5A2391194D898FAC3A7A /* libRCTImageResizer.a */; };
-		E51436FBE6224725BE37E75D /* libRNFS.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 96BB2CC49D034E9DBA51BAF0 /* libRNFS.a */; };
 		0D4ED10C9DCA49A5927B92AB /* libRNSyanImagePicker.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 019A2B733BB3452AAE87E194 /* libRNSyanImagePicker.a */; };
+		177224889065468F80DE25F2 /* libRNFetchBlob.a in Frameworks */ = {isa = PBXBuildFile; fileRef = ED31C3C9395F4AA98C0AF318 /* libRNFetchBlob.a */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -341,10 +341,10 @@
 		2E87E7BF74CB4E04BA195828 /* libRNImagePicker.a */ = {isa = PBXFileReference; name = "libRNImagePicker.a"; path = "libRNImagePicker.a"; sourceTree = "<group>"; fileEncoding = undefined; lastKnownFileType = archive.ar; explicitFileType = undefined; includeInIndex = 0; };
 		061ACC44D91549D5B0035D0E /* RCTImageResizer.xcodeproj */ = {isa = PBXFileReference; name = "RCTImageResizer.xcodeproj"; path = "../node_modules/react-native-image-resizer/ios/RCTImageResizer.xcodeproj"; sourceTree = "<group>"; fileEncoding = undefined; lastKnownFileType = wrapper.pb-project; explicitFileType = undefined; includeInIndex = 0; };
 		710D5A2391194D898FAC3A7A /* libRCTImageResizer.a */ = {isa = PBXFileReference; name = "libRCTImageResizer.a"; path = "libRCTImageResizer.a"; sourceTree = "<group>"; fileEncoding = undefined; lastKnownFileType = archive.ar; explicitFileType = undefined; includeInIndex = 0; };
-		9DE1ECB97FCF4B11BB0C1A80 /* RNFS.xcodeproj */ = {isa = PBXFileReference; name = "RNFS.xcodeproj"; path = "../node_modules/react-native-fs/RNFS.xcodeproj"; sourceTree = "<group>"; fileEncoding = undefined; lastKnownFileType = wrapper.pb-project; explicitFileType = undefined; includeInIndex = 0; };
-		96BB2CC49D034E9DBA51BAF0 /* libRNFS.a */ = {isa = PBXFileReference; name = "libRNFS.a"; path = "libRNFS.a"; sourceTree = "<group>"; fileEncoding = undefined; lastKnownFileType = archive.ar; explicitFileType = undefined; includeInIndex = 0; };
 		0902039F0F8446C68DC44D07 /* RNSyanImagePicker.xcodeproj */ = {isa = PBXFileReference; name = "RNSyanImagePicker.xcodeproj"; path = "../node_modules/react-native-syan-image-picker/ios/RNSyanImagePicker.xcodeproj"; sourceTree = "<group>"; fileEncoding = undefined; lastKnownFileType = wrapper.pb-project; explicitFileType = undefined; includeInIndex = 0; };
 		019A2B733BB3452AAE87E194 /* libRNSyanImagePicker.a */ = {isa = PBXFileReference; name = "libRNSyanImagePicker.a"; path = "libRNSyanImagePicker.a"; sourceTree = "<group>"; fileEncoding = undefined; lastKnownFileType = archive.ar; explicitFileType = undefined; includeInIndex = 0; };
+		AC81656B7AF54AF8A0450292 /* RNFetchBlob.xcodeproj */ = {isa = PBXFileReference; name = "RNFetchBlob.xcodeproj"; path = "../node_modules/react-native-fetch-blob/ios/RNFetchBlob.xcodeproj"; sourceTree = "<group>"; fileEncoding = undefined; lastKnownFileType = wrapper.pb-project; explicitFileType = undefined; includeInIndex = 0; };
+		ED31C3C9395F4AA98C0AF318 /* libRNFetchBlob.a */ = {isa = PBXFileReference; name = "libRNFetchBlob.a"; path = "libRNFetchBlob.a"; sourceTree = "<group>"; fileEncoding = undefined; lastKnownFileType = archive.ar; explicitFileType = undefined; includeInIndex = 0; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -385,8 +385,8 @@
 				0D4C88B9A57E44E5A57F386C /* libRCTFBSDK.a in Frameworks */,
 				CF64DB68F66342A1BF7AC37F /* libRNImagePicker.a in Frameworks */,
 				1EC9B21540D84426A225B634 /* libRCTImageResizer.a in Frameworks */,
-				E51436FBE6224725BE37E75D /* libRNFS.a in Frameworks */,
 				0D4ED10C9DCA49A5927B92AB /* libRNSyanImagePicker.a in Frameworks */,
+				177224889065468F80DE25F2 /* libRNFetchBlob.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -576,8 +576,8 @@
 				9819CDDE87A6488EA347C594 /* RCTFBSDK.xcodeproj */,
 				1E0EAEE71A5C48FDA0205D23 /* RNImagePicker.xcodeproj */,
 				061ACC44D91549D5B0035D0E /* RCTImageResizer.xcodeproj */,
-				9DE1ECB97FCF4B11BB0C1A80 /* RNFS.xcodeproj */,
 				0902039F0F8446C68DC44D07 /* RNSyanImagePicker.xcodeproj */,
+				AC81656B7AF54AF8A0450292 /* RNFetchBlob.xcodeproj */,
 			);
 			name = Libraries;
 			sourceTree = "<group>";
@@ -1191,8 +1191,8 @@
 					"$(SRCROOT)/../node_modules/react-native-fbsdk/ios/RCTFBSDK/**",
 					"$(SRCROOT)/../node_modules/react-native-image-picker/ios",
 					"$(SRCROOT)/../node_modules/react-native-image-resizer/ios/RCTImageResizer",
-					"$(SRCROOT)/../node_modules/react-native-fs/**",
 					"$(SRCROOT)/../node_modules/react-native-syan-image-picker/ios/**",
+					"$(SRCROOT)/../node_modules/react-native-fetch-blob/ios/**",
 				);
 			};
 			name = Debug;
@@ -1225,8 +1225,8 @@
 					"$(SRCROOT)/../node_modules/react-native-fbsdk/ios/RCTFBSDK/**",
 					"$(SRCROOT)/../node_modules/react-native-image-picker/ios",
 					"$(SRCROOT)/../node_modules/react-native-image-resizer/ios/RCTImageResizer",
-					"$(SRCROOT)/../node_modules/react-native-fs/**",
 					"$(SRCROOT)/../node_modules/react-native-syan-image-picker/ios/**",
+					"$(SRCROOT)/../node_modules/react-native-fetch-blob/ios/**",
 				);
 			};
 			name = Release;
@@ -1256,8 +1256,8 @@
 					"$(SRCROOT)/../node_modules/react-native-fbsdk/ios/RCTFBSDK/**",
 					"$(SRCROOT)/../node_modules/react-native-image-picker/ios",
 					"$(SRCROOT)/../node_modules/react-native-image-resizer/ios/RCTImageResizer",
-					"$(SRCROOT)/../node_modules/react-native-fs/**",
 					"$(SRCROOT)/../node_modules/react-native-syan-image-picker/ios/**",
+					"$(SRCROOT)/../node_modules/react-native-fetch-blob/ios/**",
 				);
 			};
 			name = Debug;
@@ -1286,8 +1286,8 @@
 					"$(SRCROOT)/../node_modules/react-native-fbsdk/ios/RCTFBSDK/**",
 					"$(SRCROOT)/../node_modules/react-native-image-picker/ios",
 					"$(SRCROOT)/../node_modules/react-native-image-resizer/ios/RCTImageResizer",
-					"$(SRCROOT)/../node_modules/react-native-fs/**",
 					"$(SRCROOT)/../node_modules/react-native-syan-image-picker/ios/**",
+					"$(SRCROOT)/../node_modules/react-native-fetch-blob/ios/**",
 				);
 			};
 			name = Release;
@@ -1329,8 +1329,8 @@
 					"$(SRCROOT)/../node_modules/react-native-fbsdk/ios/RCTFBSDK/**",
 					"$(SRCROOT)/../node_modules/react-native-image-picker/ios",
 					"$(SRCROOT)/../node_modules/react-native-image-resizer/ios/RCTImageResizer",
-					"$(SRCROOT)/../node_modules/react-native-fs/**",
 					"$(SRCROOT)/../node_modules/react-native-syan-image-picker/ios/**",
+					"$(SRCROOT)/../node_modules/react-native-fetch-blob/ios/**",
 				);
 			};
 			name = Debug;
@@ -1372,8 +1372,8 @@
 					"$(SRCROOT)/../node_modules/react-native-fbsdk/ios/RCTFBSDK/**",
 					"$(SRCROOT)/../node_modules/react-native-image-picker/ios",
 					"$(SRCROOT)/../node_modules/react-native-image-resizer/ios/RCTImageResizer",
-					"$(SRCROOT)/../node_modules/react-native-fs/**",
 					"$(SRCROOT)/../node_modules/react-native-syan-image-picker/ios/**",
+					"$(SRCROOT)/../node_modules/react-native-fetch-blob/ios/**",
 				);
 			};
 			name = Release;

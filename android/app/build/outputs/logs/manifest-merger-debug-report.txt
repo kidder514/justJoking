@@ -4,6 +4,7 @@ ADDED from /Applications/MAMP/htdocs/JustJoking/android/app/src/main/AndroidMani
 INJECTED from /Applications/MAMP/htdocs/JustJoking/android/app/src/main/AndroidManifest.xml:1:1-50:12
 INJECTED from /Applications/MAMP/htdocs/JustJoking/android/app/src/main/AndroidManifest.xml:1:1-50:12
 INJECTED from /Applications/MAMP/htdocs/JustJoking/android/app/src/main/AndroidManifest.xml:1:1-50:12
+MERGED from [:react-native-fetch-blob] /Applications/MAMP/htdocs/JustJoking/node_modules/react-native-fetch-blob/android/build/intermediates/manifests/full/debug/AndroidManifest.xml:2:1-14:12
 MERGED from [:react-native-syan-image-picker] /Applications/MAMP/htdocs/JustJoking/node_modules/react-native-syan-image-picker/android/build/intermediates/manifests/full/debug/AndroidManifest.xml:2:1-27:12
 MERGED from [:react-native-image-resizer] /Applications/MAMP/htdocs/JustJoking/node_modules/react-native-image-resizer/android/build/intermediates/manifests/full/debug/AndroidManifest.xml:2:1-11:12
 MERGED from [:react-native-image-picker] /Applications/MAMP/htdocs/JustJoking/node_modules/react-native-image-picker/android/build/intermediates/manifests/full/debug/AndroidManifest.xml:2:1-14:12
@@ -134,6 +135,8 @@ uses-sdk
 ADDED from /Applications/MAMP/htdocs/JustJoking/android/app/src/main/AndroidManifest.xml:12:5-14:41
 INJECTED from /Applications/MAMP/htdocs/JustJoking/android/app/src/main/AndroidManifest.xml:12:5-14:41
 INJECTED from /Applications/MAMP/htdocs/JustJoking/android/app/src/main/AndroidManifest.xml:12:5-14:41
+MERGED from [:react-native-fetch-blob] /Applications/MAMP/htdocs/JustJoking/node_modules/react-native-fetch-blob/android/build/intermediates/manifests/full/debug/AndroidManifest.xml:7:5-9:41
+MERGED from [:react-native-fetch-blob] /Applications/MAMP/htdocs/JustJoking/node_modules/react-native-fetch-blob/android/build/intermediates/manifests/full/debug/AndroidManifest.xml:7:5-9:41
 MERGED from [:react-native-syan-image-picker] /Applications/MAMP/htdocs/JustJoking/node_modules/react-native-syan-image-picker/android/build/intermediates/manifests/full/debug/AndroidManifest.xml:7:5-9:41
 MERGED from [:react-native-syan-image-picker] /Applications/MAMP/htdocs/JustJoking/node_modules/react-native-syan-image-picker/android/build/intermediates/manifests/full/debug/AndroidManifest.xml:7:5-9:41
 MERGED from [:react-native-image-resizer] /Applications/MAMP/htdocs/JustJoking/node_modules/react-native-image-resizer/android/build/intermediates/manifests/full/debug/AndroidManifest.xml:7:5-9:41
@@ -290,6 +293,8 @@ INJECTED from /Applications/MAMP/htdocs/JustJoking/android/app/src/main/AndroidM
 		INJECTED from /Applications/MAMP/htdocs/JustJoking/android/app/src/main/AndroidManifest.xml
 application
 ADDED from /Applications/MAMP/htdocs/JustJoking/android/app/src/main/AndroidManifest.xml:16:5-48:19
+MERGED from [:react-native-fetch-blob] /Applications/MAMP/htdocs/JustJoking/node_modules/react-native-fetch-blob/android/build/intermediates/manifests/full/debug/AndroidManifest.xml:11:5-12:19
+MERGED from [:react-native-fetch-blob] /Applications/MAMP/htdocs/JustJoking/node_modules/react-native-fetch-blob/android/build/intermediates/manifests/full/debug/AndroidManifest.xml:11:5-12:19
 MERGED from [:react-native-syan-image-picker] /Applications/MAMP/htdocs/JustJoking/node_modules/react-native-syan-image-picker/android/build/intermediates/manifests/full/debug/AndroidManifest.xml:15:5-25:19
 MERGED from [:react-native-syan-image-picker] /Applications/MAMP/htdocs/JustJoking/node_modules/react-native-syan-image-picker/android/build/intermediates/manifests/full/debug/AndroidManifest.xml:15:5-25:19
 MERGED from [:react-native-image-picker] /Applications/MAMP/htdocs/JustJoking/node_modules/react-native-image-picker/android/build/intermediates/manifests/full/debug/AndroidManifest.xml:11:5-12:19
