@@ -65,7 +65,6 @@ class SignIn extends React.PureComponent {
 				const credential = firebase.auth.GoogleAuthProvider.credential(res.idToken, res.accessToken);
 				this.props.signInWithSocialCall(credential);
 			})
-			.catch((err) => toastAndroid(string.ServerGoogleSigninFailed))
 		})
 		.catch(() => toastAndroid(string.ServerGoogleConfigureFailed));
 	}

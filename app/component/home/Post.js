@@ -43,6 +43,8 @@ class Post extends React.Component {
 
 	reset(){
 		this.setState(clone(initialState));
+		STImagePicke.removeAllPhoto() // remove photo so they can be selected again
+		SYImagePicker.deleteCache(); 
 	}
 
 	onChangeText(txt) {

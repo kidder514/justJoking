@@ -2,7 +2,6 @@
 
 ### Feature in release 1.0.0
 - add ads to app
-- Gif Support
 - edit all the text to make them appropriate 
 - changeName to just jokes maybe, before that check how name will affect you ranking
 - App store optimization 
@@ -10,8 +9,6 @@
 - terms and condition page
 - something might be wrong in post and user create time, we should use a global utc time.
 - comment order by likes 
-- add all image lazy loading
-- 选图片的时候有时候只是用户cancel， 却报警
 - rechecking all firestore config
 - image gallery slider is too slow, change to another one
 - 查看syan image picker 的 移除选中图片 section并且调整

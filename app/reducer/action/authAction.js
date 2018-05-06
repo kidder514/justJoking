@@ -275,11 +275,15 @@ export function updatePhotoCall() {
 				dispatch(loadEnd());
 				toastAndroid(string.ErrorResizingImage);				
 			}); 
+			STImagePicke.removeAllPhoto() // remove photo so they can be selected again
+			SYImagePicker.deleteCache(); 
 		})
 		.catch(err => {
 			console.log(err);
 			dispatch(loadEnd());
 			toastAndroid(string.ErrorSelectingPicture);
+			STImagePicke.removeAllPhoto() // remove photo so they can be selected again
+			SYImagePicker.deleteCache(); 
 		}) 
 	}
 }
