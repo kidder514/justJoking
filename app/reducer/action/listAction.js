@@ -110,19 +110,28 @@ export function imagePostCall(text, images){
 		if (images.length > 0 ){
 			images.map((image, index) => {
 				// 1. resize images
-				ImageResizer.createResizedImage(image, 1280, 1280, 'JPEG', 25, 0)
-				.then((resizedImage) => {
-					imagesTemp['image' + index] = resizedImage.uri
+				if (image.indexOf('.gif') !== -1) {
+					// skip gif compressing, because I dont know how to do it XD.
+					imagesTemp['image' + index] = image;
 					if (Object.keys(imagesTemp).length === images.length && 
 						Object.keys(thumbnailsTemp).length === images.length) {
 						uploadImage(dispatch, getState(), imagesTemp, thumbnailsTemp, text);
 					}
-				})
-				.catch((err) => {
-					console.log(err);
-					dispatch(loadEnd());
-					toastAndroid(string.ErrorResizingImage);				
-				}); 
+				} else {
+					ImageResizer.createResizedImage(image, 1280, 1280, 'JPEG', 25, 0)
+					.then((resizedImage) => {
+						imagesTemp['image' + index] = resizedImage.uri
+						if (Object.keys(imagesTemp).length === images.length && 
+							Object.keys(thumbnailsTemp).length === images.length) {
+							uploadImage(dispatch, getState(), imagesTemp, thumbnailsTemp, text);
+						}
+					})
+					.catch((err) => {
+						console.log(err);
+						dispatch(loadEnd());
+						toastAndroid(string.ErrorResizingImage);				
+					}); 
+				}
 
 				// 2. resize image for thumbnails
 				ImageResizer.createResizedImage(image, 300, 300, 'JPEG', 25, 0)
@@ -149,7 +158,8 @@ function uploadImage(dispatch, state, images, thumbnails, text ) {
 	dispatch(loadOn(string.LoadingUploadingImages));
 	
 	for (let image in images) {
-		firebase.storage().ref().child(state.Auth.uid + '/'+ uuidv4() +'.png').putFile(images[image])
+		const imageFormat = images[image].indexOf('.gif') !== -1 ? '.gif' : '.jpeg';
+		firebase.storage().ref().child(state.Auth.uid + '/'+ uuidv4() + imageFormat).putFile(images[image])
 		.then(uploadRes => {
 			imagesUploadTemp[image] = uploadRes.downloadURL;
 			if (Object.keys(imagesUploadTemp).length === Object.keys(images).length && 
@@ -164,7 +174,7 @@ function uploadImage(dispatch, state, images, thumbnails, text ) {
 	}
 
 	for (let thumbnail in thumbnails) {
-		firebase.storage().ref().child(state.Auth.uid + '/'+ uuidv4() +'.png').putFile(thumbnails[thumbnail])
+		firebase.storage().ref().child(state.Auth.uid + '/'+ uuidv4() +'.jpeg').putFile(thumbnails[thumbnail])
 		.then(uploadRes => {		
 			thumbnailsUploadTemp[thumbnail] = uploadRes.downloadURL;
 			if (Object.keys(imagesUploadTemp).length === Object.keys(images).length && 

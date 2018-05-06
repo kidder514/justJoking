@@ -14,6 +14,8 @@
 - 选图片的时候有时候只是用户cancel， 却报警
 - rechecking all firestore config
 - image gallery slider is too slow, change to another one
+- 查看syan image picker 的 移除选中图片 section并且调整
+- upload以后清除所有图片缓存
 
 ### Features in release 1.1.0
 - search Page
