@@ -1,18 +1,16 @@
 ## Main tasks
 
 ### Feature in release 1.0.0
+- help page
+- image gallery slider is too slow, change to another one
+- share button
+- comment order by likes 
 - add ads to app
+- 无法读取到版本信息的情况下可以login
 - edit all the text to make them appropriate 
 - changeName to just jokes maybe, before that check how name will affect you ranking
 - App store optimization 
-- help page
-- terms and condition page
-- something might be wrong in post and user create time, we should use a global utc time.
-- comment order by likes 
 - rechecking all firestore config
-- image gallery slider is too slow, change to another one
-- 查看syan image picker 的 移除选中图片 section并且调整
-- upload以后清除所有图片缓存
 
 ### Features in release 1.1.0
 - search Page

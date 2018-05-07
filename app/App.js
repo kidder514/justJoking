@@ -34,6 +34,7 @@ import Setting from './component/profile/Setting';
 import UserNameSetting from './component/profile/UserNameSetting';
 import TaglineSetting from './component/profile/TaglineSetting';
 import Help from './component/profile/Help';
+import TermCondition from './component/profile/TermCondition';
 
 // import FollowedList from './component/home/FollowedList';
 import HotList from './component/home/HotList';
@@ -274,6 +275,28 @@ const ProfileNavigator = StackNavigator(
 					onPress={() => { navigation.goBack() }}
 				/>,
 				headerRight: <Text style={{ marginRight: 20 }}>{string.Help}</Text>
+			})
+		},
+		TermCondition: {
+			screen: TermCondition,
+			navigationOptions: ({ navigation }) => ({
+				title: null,
+				tabBarVisible: false,
+				titleStyle: {
+				},
+				headerStyle: {
+					height: 40,
+				},
+				headerTitleStyle: {
+					fontWeight: 'normal',
+				},
+				headerLeft: <Icon
+					name="chevron-thin-left"
+					size={20}
+					style={{ paddingLeft: 10 }}
+					onPress={() => { navigation.goBack() }}
+				/>,
+				headerRight: <Text style={{ marginRight: 20 }}>{string.TermCondition}</Text>
 			})
 		},
 	}, {

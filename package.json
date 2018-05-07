@@ -33,6 +33,7 @@
     "react-native-image-resizer": "git+https://github.com/kidder514/react-native-image-resizer.git",
     "react-native-localization": "^0.2.3",
     "react-native-progress": "^3.4.0",
+    "react-native-simple-markdown": "^1.1.0",
     "react-native-splash-screen": "^3.0.6",
     "react-native-syan-image-picker": "git+https://github.com/kidder514/react-native-syan-image-picker.git",
     "react-native-vector-icons": "^4.5.0",

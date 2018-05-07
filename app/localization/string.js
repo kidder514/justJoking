@@ -130,6 +130,7 @@ const string = new LocalizedStrings({
 		AutoPlayVideos: 'Autoplay videos',
 		MakeYourGeolocationPublic: 'Make you geolocation public',
 		Help: 'Help',
+		TermCondition: 'Terms and Conditions',
 		CleanCache: 'Clean Cache',
 		ContactUs: 'Contact us',
 		TermsAndConditions: 'Terms and Conditions',

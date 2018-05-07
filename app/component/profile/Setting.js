@@ -167,6 +167,7 @@ class Setting extends React.PureComponent {
 						avatar={<Icon name="open-book" size={20} color={primaryColor} />}
 						titleStyle={style.title}
 						title={string.TermsAndConditions}
+						onPress={() => navigate('TermCondition')}						
 					/>
 					<ListItem
 						onPress={() => this.props.signOutCall()}
