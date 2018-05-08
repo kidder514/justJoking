@@ -23,6 +23,8 @@ const string = new LocalizedStrings({
 		Billion: 'B',
 		Copy: 'Copy',
 		Submit: 'Submit',
+		Download: 'Download',
+		Comment: 'Comment',
 		FeatureCommingSoon: 'This feature is comming soon. "Just joking" is my solo project, please be patient and allow some time for me to complete all the missing features.',
 		Error: 'Error',
 		LoadingUploadingImages: 'Uploading images, this might take a white, please be patient.',
@@ -84,7 +86,7 @@ const string = new LocalizedStrings({
 		LoadMore: 'Load More ...',
 // Image Tile List
 		LongImage: 'click to see more ...',
-	
+		ImageHasBeenSaved: 'Image has been saved',
 //Search
 		Search: 'Search',
 		TypeHere: 'Type here ...',
@@ -145,7 +147,10 @@ const string = new LocalizedStrings({
 		ErrorSelectingPicture: 'Error occured while selecting picture.',
 		ErrorResizingImage: 'Error occured when resizing image',
 		ServerFailToUploadFile: 'Fail to upload the file',
-		ServerFileUploadSuccess: 'File has been uploaded successfully'
+		ServerFileUploadSuccess: 'File has been uploaded successfully',
+// others
+		PermissionRequired: 'Permission required',
+		PermissionWriteExternalStorageRequired: 'Please grant this app write permission to storage',
 	}
 });
 

@@ -19,6 +19,7 @@ const initialState = {
 };
 
 const MAX_GIF_SIZE = 2500000;
+const MAX_IMAGE_NUMBER = 1;
 
 class Post extends React.Component {
 	constructor(props) {
@@ -53,12 +54,12 @@ class Post extends React.Component {
 
 	chooseImage() {
 		const { images } = this.state;
-		if (images.length === 9) {
+		if (images.length === MAX_IMAGE_NUMBER) {
 			toastAndroid(string.ImageLimitReached);
 			return;
 		}
 		const options = {
-			imageCount: 9 - images.length,  // 最大选择图片数目，默认6
+			imageCount: MAX_IMAGE_NUMBER - images.length,  // 最大选择图片数目，默认6
 			isCamera: true,             	// 是否允许用户在内部拍照，默认true
 			isGif: true,              		// 是否允许选择GIF，默认false，暂无回调GIF数据
 		};
@@ -193,6 +194,8 @@ class Post extends React.Component {
 	}
 
 	renderImageButton() {
+		const { images } = this.state;
+		if (images.length >= MAX_IMAGE_NUMBER) return 
 		return (
 			<TouchableOpacity onPress={() => this.chooseImage()} style={style.imageButton}>
 				<Icon name="plus" size={40} color={greyColor} />
