@@ -286,11 +286,11 @@ class ImageTile extends React.PureComponent {
             return (
                 <ImageViewer
                     imageUrls={images}
-                    enableImageZoom={true}
                     index={this.state.imageIndex}
                     failImageSource={{ uri: require('../../asset/image/placeholdersmall.jpg') }}
-                    loadingRender={() => <ActivityIndicator size="large" color={primaryColor} />}
+                    loadingRender={() => <ActivityIndicator style={style.galleryLoadingSpinner} size={30} color={primaryColor} />}
                     onClick={() => this.closeModal()}
+                    renderImage={(props) => <Image {...props} resizeMode={'contain'} />}
                     renderIndicator={() => { }}
                     renderFooter={() => this.renderFooter()}
                 />
@@ -303,26 +303,24 @@ class ImageTile extends React.PureComponent {
     renderFooter() {
         return (
             <View style={style.galleryFooter}>
-                <TouchableOpacity
+                {/* <TouchableOpacity
                     onPress={() => this.onClickDownload()}
                     style={style.galleryButtonLeft}
                 >
                     <Icon name="download" size={25} color={whiteColor} />
+                </TouchableOpacity> */}
+                {/* <TouchableOpacity
+                    onPress={() => this.onClickShare()}
+                    style={style.galleryButton}
+                >
+                    <Icon name="share" size={25} color={whiteColor} />
+                </TouchableOpacity> */}
+                <TouchableOpacity
+                    onPress={() => this.onClickComment()}
+                    style={style.galleryButton}
+                >
+                    <Icon name="typing" size={25} color={whiteColor} />
                 </TouchableOpacity>
-                <View style={style.gallerRightFooter}>
-                    <TouchableOpacity
-                        onPress={() => this.onClickShare()}
-                        style={style.galleryButton}
-                    >
-                        <Icon name="share" size={25} color={whiteColor} />
-                    </TouchableOpacity>
-                    <TouchableOpacity
-                        onPress={() => this.onClickComment()}
-                        style={style.galleryButton}
-                    >
-                        <Icon name="typing" size={25} color={whiteColor} />
-                    </TouchableOpacity>
-                </View>
             </View>
         )
     }
@@ -431,7 +429,7 @@ const style = StyleSheet.create({
     galleryFooter: {
         flexDirection: 'row',
         alignItems: 'center',
-        justifyContent: 'space-between',
+        justifyContent: 'flex-end',
         height: 40,
         paddingLeft: 30,
         paddingRight: 30,
@@ -443,6 +441,11 @@ const style = StyleSheet.create({
     },
     gallerRightFooter: {
         flexDirection: 'row'
+    },
+    galleryLoadingSpinner: {
+        position: 'absolute',
+        left: screenWidth / 2 - 15,
+        top: screenHeight / 2 - 30
     }
 });
 
@@ -460,4 +463,3 @@ const mapDispatchToProps = (dispatch) => {
 }
 
 export default connect(mapStateToProps, mapDispatchToProps)(ImageTile);
-

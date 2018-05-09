@@ -1,22 +1,20 @@
 ## Main tasks
 
 ### Feature in release 1.0.0
-
 - help page
-- allow only one image per post
-- image gallery slider is too slow, change to another one
-- share button
-- dowload button 
-- comment order by likes 
 - add ads to app
 - 无法读取到版本信息的情况下可以login
-- edit all the text to make them appropriate 
 - changeName to just jokes maybe, before that check how name will affect you ranking
+- edit all the text to make them appropriate 
 - App store optimization 
 - rechecking all firestore config
 - setup dev and production environment, and user different google, firebase and other account
 
 ### Features in release 1.1.0
+- 
+- comment order by likes 
+- share button
+- dowload button 
 - search Page
 - Inbox
 - second layer commet
