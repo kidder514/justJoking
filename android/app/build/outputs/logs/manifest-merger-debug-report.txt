@@ -4,6 +4,7 @@ ADDED from /Applications/MAMP/htdocs/JustJoking/android/app/src/main/AndroidMani
 INJECTED from /Applications/MAMP/htdocs/JustJoking/android/app/src/main/AndroidManifest.xml:1:1-50:12
 INJECTED from /Applications/MAMP/htdocs/JustJoking/android/app/src/main/AndroidManifest.xml:1:1-50:12
 INJECTED from /Applications/MAMP/htdocs/JustJoking/android/app/src/main/AndroidManifest.xml:1:1-50:12
+MERGED from [:react-native-admob] /Applications/MAMP/htdocs/JustJoking/node_modules/react-native-admob/android/build/intermediates/manifests/full/debug/AndroidManifest.xml:2:1-9:12
 MERGED from [com.facebook.fresco:animated-base-support:1.3.0] /Users/duo.lu/.gradle/caches/transforms-1/files-1.1/animated-base-support-1.3.0.aar/dd1dcf7f13fbf1cbc6f7b3a93384e6df/AndroidManifest.xml:2:1-9:12
 MERGED from [com.facebook.fresco:animated-gif:1.3.0] /Users/duo.lu/.gradle/caches/transforms-1/files-1.1/animated-gif-1.3.0.aar/dc38efd5dfc41ac2300599292e43f0b2/AndroidManifest.xml:2:1-9:12
 MERGED from [:react-native-fetch-blob] /Applications/MAMP/htdocs/JustJoking/node_modules/react-native-fetch-blob/android/build/intermediates/manifests/full/debug/AndroidManifest.xml:2:1-14:12
@@ -29,6 +30,7 @@ MERGED from [com.google.firebase:firebase-auth:11.8.0] /Users/duo.lu/.gradle/cac
 MERGED from [com.google.android.gms:play-services-auth-api-phone:11.8.0] /Users/duo.lu/.gradle/caches/transforms-1/files-1.1/play-services-auth-api-phone-11.8.0.aar/5bf71bef42c2c85fb5066ba1e6169de9/AndroidManifest.xml:2:1-7:12
 MERGED from [com.google.android.gms:play-services-auth-base:11.8.0] /Users/duo.lu/.gradle/caches/transforms-1/files-1.1/play-services-auth-base-11.8.0.aar/7dc35fc2f15c671d62be80c78ced0c5b/AndroidManifest.xml:2:1-7:12
 MERGED from [com.google.android.gms:play-services-base:11.8.0] /Users/duo.lu/.gradle/caches/transforms-1/files-1.1/play-services-base-11.8.0.aar/ce786a51bfc1d4b325d3a7e75cf2d6ab/AndroidManifest.xml:17:1-29:12
+MERGED from [com.google.android.gms:play-services-ads:11.8.0] /Users/duo.lu/.gradle/caches/transforms-1/files-1.1/play-services-ads-11.8.0.aar/28b80aedca935bbf099d8c92dea200ca/AndroidManifest.xml:17:1-25:12
 MERGED from [com.google.firebase:firebase-core:11.8.0] /Users/duo.lu/.gradle/caches/transforms-1/files-1.1/firebase-core-11.8.0.aar/fb258ff1640e94496f1876ab900c52d2/AndroidManifest.xml:2:1-6:12
 MERGED from [com.google.firebase:firebase-storage:11.8.0] /Users/duo.lu/.gradle/caches/transforms-1/files-1.1/firebase-storage-11.8.0.aar/f3ac7b1c194201b52dc2fba933d16ece/AndroidManifest.xml:2:1-8:12
 MERGED from [com.google.firebase:firebase-firestore:11.8.0] /Users/duo.lu/.gradle/caches/transforms-1/files-1.1/firebase-firestore-11.8.0.aar/c39ac2c1ad9fd839a065268ebaffa9bd/AndroidManifest.xml:2:1-8:12
@@ -49,9 +51,12 @@ MERGED from [com.google.firebase:firebase-analytics-impl:11.8.0] /Users/duo.lu/.
 MERGED from [com.google.firebase:firebase-iid:11.8.0] /Users/duo.lu/.gradle/caches/transforms-1/files-1.1/firebase-iid-11.8.0.aar/7fae7490d976b37feccf44ff4ce31879/AndroidManifest.xml:17:1-59:12
 MERGED from [com.google.firebase:firebase-common:11.8.0] /Users/duo.lu/.gradle/caches/transforms-1/files-1.1/firebase-common-11.8.0.aar/5e428421a7e653f8086d38b0225ca677/AndroidManifest.xml:2:1-15:12
 MERGED from [com.google.android.gms:play-services-tasks:11.8.0] /Users/duo.lu/.gradle/caches/transforms-1/files-1.1/play-services-tasks-11.8.0.aar/b25d315b31f42f2322b06f047c19a4d0/AndroidManifest.xml:2:1-9:12
+MERGED from [com.google.android.gms:play-services-ads-lite:11.8.0] /Users/duo.lu/.gradle/caches/transforms-1/files-1.1/play-services-ads-lite-11.8.0.aar/0d161a95ef022354ea17bd41ff959aaa/AndroidManifest.xml:17:1-36:12
+MERGED from [com.google.android.gms:play-services-gass:11.8.0] /Users/duo.lu/.gradle/caches/transforms-1/files-1.1/play-services-gass-11.8.0.aar/923ebbcd8ba0aa45dbe159afa0f30a11/AndroidManifest.xml:2:1-9:12
 MERGED from [com.google.firebase:firebase-storage-common:11.8.0] /Users/duo.lu/.gradle/caches/transforms-1/files-1.1/firebase-storage-common-11.8.0.aar/85db51240453caf06ec575597aad18ea/AndroidManifest.xml:2:1-8:12
 MERGED from [com.google.android.gms:play-services-basement:11.8.0] /Users/duo.lu/.gradle/caches/transforms-1/files-1.1/play-services-basement-11.8.0.aar/b1397e26d6b7deb164bc74ad42acd51d/AndroidManifest.xml:17:1-28:12
 MERGED from [com.google.android.gms:play-services-base-license:11.8.0] /Users/duo.lu/.gradle/caches/transforms-1/files-1.1/play-services-base-license-11.8.0.aar/7db2026ec4a0d2fdac5f5be435485429/AndroidManifest.xml:2:1-6:12
+MERGED from [com.google.android.gms:play-services-ads-license:11.8.0] /Users/duo.lu/.gradle/caches/transforms-1/files-1.1/play-services-ads-license-11.8.0.aar/c606d0676494a459b415b954ce2a2feb/AndroidManifest.xml:2:1-6:12
 MERGED from [com.google.firebase:firebase-auth-license:11.8.0] /Users/duo.lu/.gradle/caches/transforms-1/files-1.1/firebase-auth-license-11.8.0.aar/02013bf9324b2c8f4ca783e375891ba0/AndroidManifest.xml:2:1-6:12
 MERGED from [com.google.firebase:firebase-storage-license:11.8.0] /Users/duo.lu/.gradle/caches/transforms-1/files-1.1/firebase-storage-license-11.8.0.aar/5c0542c9b6db8245ae0c1295efac8661/AndroidManifest.xml:2:1-6:12
 MERGED from [com.android.support:recyclerview-v7:27.0.2] /Users/duo.lu/.gradle/caches/transforms-1/files-1.1/recyclerview-v7-27.0.2.aar/893aa90a9b0d54951e70949f31adf8ff/AndroidManifest.xml:17:1-22:12
@@ -62,6 +67,8 @@ MERGED from [com.google.android.gms:play-services-auth-base-license:11.8.0] /Use
 MERGED from [com.android.support:support-v4:27.0.2] /Users/duo.lu/.gradle/caches/transforms-1/files-1.1/support-v4-27.0.2.aar/b1080b1edfa416f835f1d829e75c52b6/AndroidManifest.xml:17:1-22:12
 MERGED from [com.google.android.gms:play-services-basement-license:11.8.0] /Users/duo.lu/.gradle/caches/transforms-1/files-1.1/play-services-basement-license-11.8.0.aar/d6bcd4ce97a3d794770fc37bbeda372b/AndroidManifest.xml:2:1-6:12
 MERGED from [com.google.android.gms:play-services-tasks-license:11.8.0] /Users/duo.lu/.gradle/caches/transforms-1/files-1.1/play-services-tasks-license-11.8.0.aar/271d50d108ada8d732ef015890d1c5f6/AndroidManifest.xml:2:1-6:12
+MERGED from [com.google.android.gms:play-services-ads-lite-license:11.8.0] /Users/duo.lu/.gradle/caches/transforms-1/files-1.1/play-services-ads-lite-license-11.8.0.aar/aa03a6b75185016236a823dada5666bd/AndroidManifest.xml:2:1-6:12
+MERGED from [com.google.android.gms:play-services-gass-license:11.8.0] /Users/duo.lu/.gradle/caches/transforms-1/files-1.1/play-services-gass-license-11.8.0.aar/df7a8459b1a9ac2528fe6791348b197d/AndroidManifest.xml:2:1-6:12
 MERGED from [com.google.firebase:firebase-analytics-license:11.8.0] /Users/duo.lu/.gradle/caches/transforms-1/files-1.1/firebase-analytics-license-11.8.0.aar/9a41760cbd2505daa82d23ab0acb0fe5/AndroidManifest.xml:2:1-6:12
 MERGED from [com.google.firebase:firebase-common-license:11.8.0] /Users/duo.lu/.gradle/caches/transforms-1/files-1.1/firebase-common-license-11.8.0.aar/22b5dfdaeac02a17cd8c5a3deb62e101/AndroidManifest.xml:2:1-6:12
 MERGED from [com.google.firebase:firebase-storage-common-license:11.8.0] /Users/duo.lu/.gradle/caches/transforms-1/files-1.1/firebase-storage-common-license-11.8.0.aar/3ac8490614c2a0ac45009b5179afe4b4/AndroidManifest.xml:2:1-6:12
@@ -108,6 +115,8 @@ MERGED from [com.google.firebase:firebase-analytics-impl:11.8.0] /Users/duo.lu/.
 MERGED from [com.google.firebase:firebase-analytics-impl:11.8.0] /Users/duo.lu/.gradle/caches/transforms-1/files-1.1/firebase-analytics-impl-11.8.0.aar/d108d210c9a6707d81da9696562388e7/AndroidManifest.xml:23:5-67
 MERGED from [com.google.firebase:firebase-iid:11.8.0] /Users/duo.lu/.gradle/caches/transforms-1/files-1.1/firebase-iid-11.8.0.aar/7fae7490d976b37feccf44ff4ce31879/AndroidManifest.xml:23:5-67
 MERGED from [com.google.firebase:firebase-iid:11.8.0] /Users/duo.lu/.gradle/caches/transforms-1/files-1.1/firebase-iid-11.8.0.aar/7fae7490d976b37feccf44ff4ce31879/AndroidManifest.xml:23:5-67
+MERGED from [com.google.android.gms:play-services-ads-lite:11.8.0] /Users/duo.lu/.gradle/caches/transforms-1/files-1.1/play-services-ads-lite-11.8.0.aar/0d161a95ef022354ea17bd41ff959aaa/AndroidManifest.xml:23:5-67
+MERGED from [com.google.android.gms:play-services-ads-lite:11.8.0] /Users/duo.lu/.gradle/caches/transforms-1/files-1.1/play-services-ads-lite-11.8.0.aar/0d161a95ef022354ea17bd41ff959aaa/AndroidManifest.xml:23:5-67
 	android:name
 		ADDED from /Applications/MAMP/htdocs/JustJoking/android/app/src/main/AndroidManifest.xml:6:22-64
 uses-permission#android.permission.SYSTEM_ALERT_WINDOW
@@ -138,6 +147,8 @@ uses-sdk
 ADDED from /Applications/MAMP/htdocs/JustJoking/android/app/src/main/AndroidManifest.xml:12:5-14:41
 INJECTED from /Applications/MAMP/htdocs/JustJoking/android/app/src/main/AndroidManifest.xml:12:5-14:41
 INJECTED from /Applications/MAMP/htdocs/JustJoking/android/app/src/main/AndroidManifest.xml:12:5-14:41
+MERGED from [:react-native-admob] /Applications/MAMP/htdocs/JustJoking/node_modules/react-native-admob/android/build/intermediates/manifests/full/debug/AndroidManifest.xml:5:5-7:41
+MERGED from [:react-native-admob] /Applications/MAMP/htdocs/JustJoking/node_modules/react-native-admob/android/build/intermediates/manifests/full/debug/AndroidManifest.xml:5:5-7:41
 MERGED from [com.facebook.fresco:animated-base-support:1.3.0] /Users/duo.lu/.gradle/caches/transforms-1/files-1.1/animated-base-support-1.3.0.aar/dd1dcf7f13fbf1cbc6f7b3a93384e6df/AndroidManifest.xml:5:5-7:41
 MERGED from [com.facebook.fresco:animated-base-support:1.3.0] /Users/duo.lu/.gradle/caches/transforms-1/files-1.1/animated-base-support-1.3.0.aar/dd1dcf7f13fbf1cbc6f7b3a93384e6df/AndroidManifest.xml:5:5-7:41
 MERGED from [com.facebook.fresco:animated-gif:1.3.0] /Users/duo.lu/.gradle/caches/transforms-1/files-1.1/animated-gif-1.3.0.aar/dc38efd5dfc41ac2300599292e43f0b2/AndroidManifest.xml:5:5-7:41
@@ -188,6 +199,8 @@ MERGED from [com.google.android.gms:play-services-auth-base:11.8.0] /Users/duo.l
 MERGED from [com.google.android.gms:play-services-auth-base:11.8.0] /Users/duo.lu/.gradle/caches/transforms-1/files-1.1/play-services-auth-base-11.8.0.aar/7dc35fc2f15c671d62be80c78ced0c5b/AndroidManifest.xml:5:5-44
 MERGED from [com.google.android.gms:play-services-base:11.8.0] /Users/duo.lu/.gradle/caches/transforms-1/files-1.1/play-services-base-11.8.0.aar/ce786a51bfc1d4b325d3a7e75cf2d6ab/AndroidManifest.xml:20:5-44
 MERGED from [com.google.android.gms:play-services-base:11.8.0] /Users/duo.lu/.gradle/caches/transforms-1/files-1.1/play-services-base-11.8.0.aar/ce786a51bfc1d4b325d3a7e75cf2d6ab/AndroidManifest.xml:20:5-44
+MERGED from [com.google.android.gms:play-services-ads:11.8.0] /Users/duo.lu/.gradle/caches/transforms-1/files-1.1/play-services-ads-11.8.0.aar/28b80aedca935bbf099d8c92dea200ca/AndroidManifest.xml:21:5-23:62
+MERGED from [com.google.android.gms:play-services-ads:11.8.0] /Users/duo.lu/.gradle/caches/transforms-1/files-1.1/play-services-ads-11.8.0.aar/28b80aedca935bbf099d8c92dea200ca/AndroidManifest.xml:21:5-23:62
 MERGED from [com.google.firebase:firebase-core:11.8.0] /Users/duo.lu/.gradle/caches/transforms-1/files-1.1/firebase-core-11.8.0.aar/fb258ff1640e94496f1876ab900c52d2/AndroidManifest.xml:4:5-43
 MERGED from [com.google.firebase:firebase-core:11.8.0] /Users/duo.lu/.gradle/caches/transforms-1/files-1.1/firebase-core-11.8.0.aar/fb258ff1640e94496f1876ab900c52d2/AndroidManifest.xml:4:5-43
 MERGED from [com.google.firebase:firebase-storage:11.8.0] /Users/duo.lu/.gradle/caches/transforms-1/files-1.1/firebase-storage-11.8.0.aar/f3ac7b1c194201b52dc2fba933d16ece/AndroidManifest.xml:6:5-44
@@ -228,12 +241,18 @@ MERGED from [com.google.firebase:firebase-common:11.8.0] /Users/duo.lu/.gradle/c
 MERGED from [com.google.firebase:firebase-common:11.8.0] /Users/duo.lu/.gradle/caches/transforms-1/files-1.1/firebase-common-11.8.0.aar/5e428421a7e653f8086d38b0225ca677/AndroidManifest.xml:5:5-44
 MERGED from [com.google.android.gms:play-services-tasks:11.8.0] /Users/duo.lu/.gradle/caches/transforms-1/files-1.1/play-services-tasks-11.8.0.aar/b25d315b31f42f2322b06f047c19a4d0/AndroidManifest.xml:5:5-44
 MERGED from [com.google.android.gms:play-services-tasks:11.8.0] /Users/duo.lu/.gradle/caches/transforms-1/files-1.1/play-services-tasks-11.8.0.aar/b25d315b31f42f2322b06f047c19a4d0/AndroidManifest.xml:5:5-44
+MERGED from [com.google.android.gms:play-services-ads-lite:11.8.0] /Users/duo.lu/.gradle/caches/transforms-1/files-1.1/play-services-ads-lite-11.8.0.aar/0d161a95ef022354ea17bd41ff959aaa/AndroidManifest.xml:20:5-44
+MERGED from [com.google.android.gms:play-services-ads-lite:11.8.0] /Users/duo.lu/.gradle/caches/transforms-1/files-1.1/play-services-ads-lite-11.8.0.aar/0d161a95ef022354ea17bd41ff959aaa/AndroidManifest.xml:20:5-44
+MERGED from [com.google.android.gms:play-services-gass:11.8.0] /Users/duo.lu/.gradle/caches/transforms-1/files-1.1/play-services-gass-11.8.0.aar/923ebbcd8ba0aa45dbe159afa0f30a11/AndroidManifest.xml:5:5-44
+MERGED from [com.google.android.gms:play-services-gass:11.8.0] /Users/duo.lu/.gradle/caches/transforms-1/files-1.1/play-services-gass-11.8.0.aar/923ebbcd8ba0aa45dbe159afa0f30a11/AndroidManifest.xml:5:5-44
 MERGED from [com.google.firebase:firebase-storage-common:11.8.0] /Users/duo.lu/.gradle/caches/transforms-1/files-1.1/firebase-storage-common-11.8.0.aar/85db51240453caf06ec575597aad18ea/AndroidManifest.xml:6:5-44
 MERGED from [com.google.firebase:firebase-storage-common:11.8.0] /Users/duo.lu/.gradle/caches/transforms-1/files-1.1/firebase-storage-common-11.8.0.aar/85db51240453caf06ec575597aad18ea/AndroidManifest.xml:6:5-44
 MERGED from [com.google.android.gms:play-services-basement:11.8.0] /Users/duo.lu/.gradle/caches/transforms-1/files-1.1/play-services-basement-11.8.0.aar/b1397e26d6b7deb164bc74ad42acd51d/AndroidManifest.xml:20:5-44
 MERGED from [com.google.android.gms:play-services-basement:11.8.0] /Users/duo.lu/.gradle/caches/transforms-1/files-1.1/play-services-basement-11.8.0.aar/b1397e26d6b7deb164bc74ad42acd51d/AndroidManifest.xml:20:5-44
 MERGED from [com.google.android.gms:play-services-base-license:11.8.0] /Users/duo.lu/.gradle/caches/transforms-1/files-1.1/play-services-base-license-11.8.0.aar/7db2026ec4a0d2fdac5f5be435485429/AndroidManifest.xml:4:5-43
 MERGED from [com.google.android.gms:play-services-base-license:11.8.0] /Users/duo.lu/.gradle/caches/transforms-1/files-1.1/play-services-base-license-11.8.0.aar/7db2026ec4a0d2fdac5f5be435485429/AndroidManifest.xml:4:5-43
+MERGED from [com.google.android.gms:play-services-ads-license:11.8.0] /Users/duo.lu/.gradle/caches/transforms-1/files-1.1/play-services-ads-license-11.8.0.aar/c606d0676494a459b415b954ce2a2feb/AndroidManifest.xml:4:5-43
+MERGED from [com.google.android.gms:play-services-ads-license:11.8.0] /Users/duo.lu/.gradle/caches/transforms-1/files-1.1/play-services-ads-license-11.8.0.aar/c606d0676494a459b415b954ce2a2feb/AndroidManifest.xml:4:5-43
 MERGED from [com.google.firebase:firebase-auth-license:11.8.0] /Users/duo.lu/.gradle/caches/transforms-1/files-1.1/firebase-auth-license-11.8.0.aar/02013bf9324b2c8f4ca783e375891ba0/AndroidManifest.xml:4:5-43
 MERGED from [com.google.firebase:firebase-auth-license:11.8.0] /Users/duo.lu/.gradle/caches/transforms-1/files-1.1/firebase-auth-license-11.8.0.aar/02013bf9324b2c8f4ca783e375891ba0/AndroidManifest.xml:4:5-43
 MERGED from [com.google.firebase:firebase-storage-license:11.8.0] /Users/duo.lu/.gradle/caches/transforms-1/files-1.1/firebase-storage-license-11.8.0.aar/5c0542c9b6db8245ae0c1295efac8661/AndroidManifest.xml:4:5-43
@@ -254,6 +273,10 @@ MERGED from [com.google.android.gms:play-services-basement-license:11.8.0] /User
 MERGED from [com.google.android.gms:play-services-basement-license:11.8.0] /Users/duo.lu/.gradle/caches/transforms-1/files-1.1/play-services-basement-license-11.8.0.aar/d6bcd4ce97a3d794770fc37bbeda372b/AndroidManifest.xml:4:5-43
 MERGED from [com.google.android.gms:play-services-tasks-license:11.8.0] /Users/duo.lu/.gradle/caches/transforms-1/files-1.1/play-services-tasks-license-11.8.0.aar/271d50d108ada8d732ef015890d1c5f6/AndroidManifest.xml:4:5-43
 MERGED from [com.google.android.gms:play-services-tasks-license:11.8.0] /Users/duo.lu/.gradle/caches/transforms-1/files-1.1/play-services-tasks-license-11.8.0.aar/271d50d108ada8d732ef015890d1c5f6/AndroidManifest.xml:4:5-43
+MERGED from [com.google.android.gms:play-services-ads-lite-license:11.8.0] /Users/duo.lu/.gradle/caches/transforms-1/files-1.1/play-services-ads-lite-license-11.8.0.aar/aa03a6b75185016236a823dada5666bd/AndroidManifest.xml:4:5-43
+MERGED from [com.google.android.gms:play-services-ads-lite-license:11.8.0] /Users/duo.lu/.gradle/caches/transforms-1/files-1.1/play-services-ads-lite-license-11.8.0.aar/aa03a6b75185016236a823dada5666bd/AndroidManifest.xml:4:5-43
+MERGED from [com.google.android.gms:play-services-gass-license:11.8.0] /Users/duo.lu/.gradle/caches/transforms-1/files-1.1/play-services-gass-license-11.8.0.aar/df7a8459b1a9ac2528fe6791348b197d/AndroidManifest.xml:4:5-43
+MERGED from [com.google.android.gms:play-services-gass-license:11.8.0] /Users/duo.lu/.gradle/caches/transforms-1/files-1.1/play-services-gass-license-11.8.0.aar/df7a8459b1a9ac2528fe6791348b197d/AndroidManifest.xml:4:5-43
 MERGED from [com.google.firebase:firebase-analytics-license:11.8.0] /Users/duo.lu/.gradle/caches/transforms-1/files-1.1/firebase-analytics-license-11.8.0.aar/9a41760cbd2505daa82d23ab0acb0fe5/AndroidManifest.xml:4:5-43
 MERGED from [com.google.firebase:firebase-analytics-license:11.8.0] /Users/duo.lu/.gradle/caches/transforms-1/files-1.1/firebase-analytics-license-11.8.0.aar/9a41760cbd2505daa82d23ab0acb0fe5/AndroidManifest.xml:4:5-43
 MERGED from [com.google.firebase:firebase-common-license:11.8.0] /Users/duo.lu/.gradle/caches/transforms-1/files-1.1/firebase-common-license-11.8.0.aar/22b5dfdaeac02a17cd8c5a3deb62e101/AndroidManifest.xml:4:5-43
@@ -292,6 +315,8 @@ MERGED from [com.facebook.soloader:soloader:0.1.0] /Users/duo.lu/.gradle/caches/
 MERGED from [com.facebook.soloader:soloader:0.1.0] /Users/duo.lu/.gradle/caches/transforms-1/files-1.1/soloader-0.1.0.aar/24bfaee7f5c61b15ee2caa28dc311dcf/AndroidManifest.xml:2:3-70
 INJECTED from /Applications/MAMP/htdocs/JustJoking/android/app/src/main/AndroidManifest.xml:12:5-14:41
 INJECTED from /Applications/MAMP/htdocs/JustJoking/android/app/src/main/AndroidManifest.xml:12:5-14:41
+	tools:overrideLibrary
+		ADDED from [com.google.android.gms:play-services-ads:11.8.0] /Users/duo.lu/.gradle/caches/transforms-1/files-1.1/play-services-ads-11.8.0.aar/28b80aedca935bbf099d8c92dea200ca/AndroidManifest.xml:23:9-59
 	android:targetSdkVersion
 		ADDED from /Applications/MAMP/htdocs/JustJoking/android/app/src/main/AndroidManifest.xml:14:9-38
 		INJECTED from /Applications/MAMP/htdocs/JustJoking/android/app/src/main/AndroidManifest.xml
@@ -350,10 +375,16 @@ MERGED from [com.google.firebase:firebase-common:11.8.0] /Users/duo.lu/.gradle/c
 MERGED from [com.google.firebase:firebase-common:11.8.0] /Users/duo.lu/.gradle/caches/transforms-1/files-1.1/firebase-common-11.8.0.aar/5e428421a7e653f8086d38b0225ca677/AndroidManifest.xml:7:5-13:19
 MERGED from [com.google.android.gms:play-services-tasks:11.8.0] /Users/duo.lu/.gradle/caches/transforms-1/files-1.1/play-services-tasks-11.8.0.aar/b25d315b31f42f2322b06f047c19a4d0/AndroidManifest.xml:7:5-20
 MERGED from [com.google.android.gms:play-services-tasks:11.8.0] /Users/duo.lu/.gradle/caches/transforms-1/files-1.1/play-services-tasks-11.8.0.aar/b25d315b31f42f2322b06f047c19a4d0/AndroidManifest.xml:7:5-20
+MERGED from [com.google.android.gms:play-services-ads-lite:11.8.0] /Users/duo.lu/.gradle/caches/transforms-1/files-1.1/play-services-ads-lite-11.8.0.aar/0d161a95ef022354ea17bd41ff959aaa/AndroidManifest.xml:26:5-34:19
+MERGED from [com.google.android.gms:play-services-ads-lite:11.8.0] /Users/duo.lu/.gradle/caches/transforms-1/files-1.1/play-services-ads-lite-11.8.0.aar/0d161a95ef022354ea17bd41ff959aaa/AndroidManifest.xml:26:5-34:19
+MERGED from [com.google.android.gms:play-services-gass:11.8.0] /Users/duo.lu/.gradle/caches/transforms-1/files-1.1/play-services-gass-11.8.0.aar/923ebbcd8ba0aa45dbe159afa0f30a11/AndroidManifest.xml:7:5-20
+MERGED from [com.google.android.gms:play-services-gass:11.8.0] /Users/duo.lu/.gradle/caches/transforms-1/files-1.1/play-services-gass-11.8.0.aar/923ebbcd8ba0aa45dbe159afa0f30a11/AndroidManifest.xml:7:5-20
 MERGED from [com.google.android.gms:play-services-basement:11.8.0] /Users/duo.lu/.gradle/caches/transforms-1/files-1.1/play-services-basement-11.8.0.aar/b1397e26d6b7deb164bc74ad42acd51d/AndroidManifest.xml:22:5-26:19
 MERGED from [com.google.android.gms:play-services-basement:11.8.0] /Users/duo.lu/.gradle/caches/transforms-1/files-1.1/play-services-basement-11.8.0.aar/b1397e26d6b7deb164bc74ad42acd51d/AndroidManifest.xml:22:5-26:19
 MERGED from [com.google.android.gms:play-services-base-license:11.8.0] /Users/duo.lu/.gradle/caches/transforms-1/files-1.1/play-services-base-license-11.8.0.aar/7db2026ec4a0d2fdac5f5be435485429/AndroidManifest.xml:5:5-20
 MERGED from [com.google.android.gms:play-services-base-license:11.8.0] /Users/duo.lu/.gradle/caches/transforms-1/files-1.1/play-services-base-license-11.8.0.aar/7db2026ec4a0d2fdac5f5be435485429/AndroidManifest.xml:5:5-20
+MERGED from [com.google.android.gms:play-services-ads-license:11.8.0] /Users/duo.lu/.gradle/caches/transforms-1/files-1.1/play-services-ads-license-11.8.0.aar/c606d0676494a459b415b954ce2a2feb/AndroidManifest.xml:5:5-20
+MERGED from [com.google.android.gms:play-services-ads-license:11.8.0] /Users/duo.lu/.gradle/caches/transforms-1/files-1.1/play-services-ads-license-11.8.0.aar/c606d0676494a459b415b954ce2a2feb/AndroidManifest.xml:5:5-20
 MERGED from [com.google.firebase:firebase-auth-license:11.8.0] /Users/duo.lu/.gradle/caches/transforms-1/files-1.1/firebase-auth-license-11.8.0.aar/02013bf9324b2c8f4ca783e375891ba0/AndroidManifest.xml:5:5-20
 MERGED from [com.google.firebase:firebase-auth-license:11.8.0] /Users/duo.lu/.gradle/caches/transforms-1/files-1.1/firebase-auth-license-11.8.0.aar/02013bf9324b2c8f4ca783e375891ba0/AndroidManifest.xml:5:5-20
 MERGED from [com.google.firebase:firebase-storage-license:11.8.0] /Users/duo.lu/.gradle/caches/transforms-1/files-1.1/firebase-storage-license-11.8.0.aar/5c0542c9b6db8245ae0c1295efac8661/AndroidManifest.xml:5:5-20
@@ -368,6 +399,10 @@ MERGED from [com.google.android.gms:play-services-basement-license:11.8.0] /User
 MERGED from [com.google.android.gms:play-services-basement-license:11.8.0] /Users/duo.lu/.gradle/caches/transforms-1/files-1.1/play-services-basement-license-11.8.0.aar/d6bcd4ce97a3d794770fc37bbeda372b/AndroidManifest.xml:5:5-20
 MERGED from [com.google.android.gms:play-services-tasks-license:11.8.0] /Users/duo.lu/.gradle/caches/transforms-1/files-1.1/play-services-tasks-license-11.8.0.aar/271d50d108ada8d732ef015890d1c5f6/AndroidManifest.xml:5:5-20
 MERGED from [com.google.android.gms:play-services-tasks-license:11.8.0] /Users/duo.lu/.gradle/caches/transforms-1/files-1.1/play-services-tasks-license-11.8.0.aar/271d50d108ada8d732ef015890d1c5f6/AndroidManifest.xml:5:5-20
+MERGED from [com.google.android.gms:play-services-ads-lite-license:11.8.0] /Users/duo.lu/.gradle/caches/transforms-1/files-1.1/play-services-ads-lite-license-11.8.0.aar/aa03a6b75185016236a823dada5666bd/AndroidManifest.xml:5:5-20
+MERGED from [com.google.android.gms:play-services-ads-lite-license:11.8.0] /Users/duo.lu/.gradle/caches/transforms-1/files-1.1/play-services-ads-lite-license-11.8.0.aar/aa03a6b75185016236a823dada5666bd/AndroidManifest.xml:5:5-20
+MERGED from [com.google.android.gms:play-services-gass-license:11.8.0] /Users/duo.lu/.gradle/caches/transforms-1/files-1.1/play-services-gass-license-11.8.0.aar/df7a8459b1a9ac2528fe6791348b197d/AndroidManifest.xml:5:5-20
+MERGED from [com.google.android.gms:play-services-gass-license:11.8.0] /Users/duo.lu/.gradle/caches/transforms-1/files-1.1/play-services-gass-license-11.8.0.aar/df7a8459b1a9ac2528fe6791348b197d/AndroidManifest.xml:5:5-20
 MERGED from [com.google.firebase:firebase-analytics-license:11.8.0] /Users/duo.lu/.gradle/caches/transforms-1/files-1.1/firebase-analytics-license-11.8.0.aar/9a41760cbd2505daa82d23ab0acb0fe5/AndroidManifest.xml:5:5-20
 MERGED from [com.google.firebase:firebase-analytics-license:11.8.0] /Users/duo.lu/.gradle/caches/transforms-1/files-1.1/firebase-analytics-license-11.8.0.aar/9a41760cbd2505daa82d23ab0acb0fe5/AndroidManifest.xml:5:5-20
 MERGED from [com.google.firebase:firebase-common-license:11.8.0] /Users/duo.lu/.gradle/caches/transforms-1/files-1.1/firebase-common-license-11.8.0.aar/22b5dfdaeac02a17cd8c5a3deb62e101/AndroidManifest.xml:5:5-20
@@ -596,6 +631,8 @@ MERGED from [com.google.firebase:firebase-analytics-impl:11.8.0] /Users/duo.lu/.
 MERGED from [com.google.firebase:firebase-analytics-impl:11.8.0] /Users/duo.lu/.gradle/caches/transforms-1/files-1.1/firebase-analytics-impl-11.8.0.aar/d108d210c9a6707d81da9696562388e7/AndroidManifest.xml:24:5-79
 MERGED from [com.google.firebase:firebase-iid:11.8.0] /Users/duo.lu/.gradle/caches/transforms-1/files-1.1/firebase-iid-11.8.0.aar/7fae7490d976b37feccf44ff4ce31879/AndroidManifest.xml:22:5-79
 MERGED from [com.google.firebase:firebase-iid:11.8.0] /Users/duo.lu/.gradle/caches/transforms-1/files-1.1/firebase-iid-11.8.0.aar/7fae7490d976b37feccf44ff4ce31879/AndroidManifest.xml:22:5-79
+MERGED from [com.google.android.gms:play-services-ads-lite:11.8.0] /Users/duo.lu/.gradle/caches/transforms-1/files-1.1/play-services-ads-lite-11.8.0.aar/0d161a95ef022354ea17bd41ff959aaa/AndroidManifest.xml:24:5-79
+MERGED from [com.google.android.gms:play-services-ads-lite:11.8.0] /Users/duo.lu/.gradle/caches/transforms-1/files-1.1/play-services-ads-lite-11.8.0.aar/0d161a95ef022354ea17bd41ff959aaa/AndroidManifest.xml:24:5-79
 	android:name
 		ADDED from [com.google.firebase:firebase-analytics:11.8.0] /Users/duo.lu/.gradle/caches/transforms-1/files-1.1/firebase-analytics-11.8.0.aar/962ded9aab5ee4210cad4ce609aca0dd/AndroidManifest.xml:24:22-76
 uses-permission#android.permission.WAKE_LOCK
@@ -724,6 +761,16 @@ ADDED from [com.google.firebase:firebase-common:11.8.0] /Users/duo.lu/.gradle/ca
 		ADDED from [com.google.firebase:firebase-common:11.8.0] /Users/duo.lu/.gradle/caches/transforms-1/files-1.1/firebase-common-11.8.0.aar/5e428421a7e653f8086d38b0225ca677/AndroidManifest.xml:12:13-36
 	android:name
 		ADDED from [com.google.firebase:firebase-common:11.8.0] /Users/duo.lu/.gradle/caches/transforms-1/files-1.1/firebase-common-11.8.0.aar/5e428421a7e653f8086d38b0225ca677/AndroidManifest.xml:9:13-77
+activity#com.google.android.gms.ads.AdActivity
+ADDED from [com.google.android.gms:play-services-ads-lite:11.8.0] /Users/duo.lu/.gradle/caches/transforms-1/files-1.1/play-services-ads-lite-11.8.0.aar/0d161a95ef022354ea17bd41ff959aaa/AndroidManifest.xml:29:9-33:64
+	android:exported
+		ADDED from [com.google.android.gms:play-services-ads-lite:11.8.0] /Users/duo.lu/.gradle/caches/transforms-1/files-1.1/play-services-ads-lite-11.8.0.aar/0d161a95ef022354ea17bd41ff959aaa/AndroidManifest.xml:32:13-37
+	android:configChanges
+		ADDED from [com.google.android.gms:play-services-ads-lite:11.8.0] /Users/duo.lu/.gradle/caches/transforms-1/files-1.1/play-services-ads-lite-11.8.0.aar/0d161a95ef022354ea17bd41ff959aaa/AndroidManifest.xml:31:13-122
+	android:theme
+		ADDED from [com.google.android.gms:play-services-ads-lite:11.8.0] /Users/duo.lu/.gradle/caches/transforms-1/files-1.1/play-services-ads-lite-11.8.0.aar/0d161a95ef022354ea17bd41ff959aaa/AndroidManifest.xml:33:13-61
+	android:name
+		ADDED from [com.google.android.gms:play-services-ads-lite:11.8.0] /Users/duo.lu/.gradle/caches/transforms-1/files-1.1/play-services-ads-lite-11.8.0.aar/0d161a95ef022354ea17bd41ff959aaa/AndroidManifest.xml:30:13-65
 meta-data#com.google.android.gms.version
 ADDED from [com.google.android.gms:play-services-basement:11.8.0] /Users/duo.lu/.gradle/caches/transforms-1/files-1.1/play-services-basement-11.8.0.aar/b1397e26d6b7deb164bc74ad42acd51d/AndroidManifest.xml:23:9-25:69
 	android:value

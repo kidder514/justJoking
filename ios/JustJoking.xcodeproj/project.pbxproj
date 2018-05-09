@@ -61,6 +61,7 @@
 		1EC9B21540D84426A225B634 /* libRCTImageResizer.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 710D5A2391194D898FAC3A7A /* libRCTImageResizer.a */; };
 		0D4ED10C9DCA49A5927B92AB /* libRNSyanImagePicker.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 019A2B733BB3452AAE87E194 /* libRNSyanImagePicker.a */; };
 		177224889065468F80DE25F2 /* libRNFetchBlob.a in Frameworks */ = {isa = PBXBuildFile; fileRef = ED31C3C9395F4AA98C0AF318 /* libRNFetchBlob.a */; };
+		BBEE2E583B5D4C79AA743A21 /* libRNAdMobManager.a in Frameworks */ = {isa = PBXBuildFile; fileRef = AD09FF510EB045C08F73155C /* libRNAdMobManager.a */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -345,6 +346,8 @@
 		019A2B733BB3452AAE87E194 /* libRNSyanImagePicker.a */ = {isa = PBXFileReference; name = "libRNSyanImagePicker.a"; path = "libRNSyanImagePicker.a"; sourceTree = "<group>"; fileEncoding = undefined; lastKnownFileType = archive.ar; explicitFileType = undefined; includeInIndex = 0; };
 		AC81656B7AF54AF8A0450292 /* RNFetchBlob.xcodeproj */ = {isa = PBXFileReference; name = "RNFetchBlob.xcodeproj"; path = "../node_modules/react-native-fetch-blob/ios/RNFetchBlob.xcodeproj"; sourceTree = "<group>"; fileEncoding = undefined; lastKnownFileType = wrapper.pb-project; explicitFileType = undefined; includeInIndex = 0; };
 		ED31C3C9395F4AA98C0AF318 /* libRNFetchBlob.a */ = {isa = PBXFileReference; name = "libRNFetchBlob.a"; path = "libRNFetchBlob.a"; sourceTree = "<group>"; fileEncoding = undefined; lastKnownFileType = archive.ar; explicitFileType = undefined; includeInIndex = 0; };
+		D3F62CE91E3B4944A237B785 /* RNAdMobManager.xcodeproj */ = {isa = PBXFileReference; name = "RNAdMobManager.xcodeproj"; path = "../node_modules/react-native-admob/ios/RNAdMobManager.xcodeproj"; sourceTree = "<group>"; fileEncoding = undefined; lastKnownFileType = wrapper.pb-project; explicitFileType = undefined; includeInIndex = 0; };
+		AD09FF510EB045C08F73155C /* libRNAdMobManager.a */ = {isa = PBXFileReference; name = "libRNAdMobManager.a"; path = "libRNAdMobManager.a"; sourceTree = "<group>"; fileEncoding = undefined; lastKnownFileType = archive.ar; explicitFileType = undefined; includeInIndex = 0; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -387,6 +390,7 @@
 				1EC9B21540D84426A225B634 /* libRCTImageResizer.a in Frameworks */,
 				0D4ED10C9DCA49A5927B92AB /* libRNSyanImagePicker.a in Frameworks */,
 				177224889065468F80DE25F2 /* libRNFetchBlob.a in Frameworks */,
+				BBEE2E583B5D4C79AA743A21 /* libRNAdMobManager.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -578,6 +582,7 @@
 				061ACC44D91549D5B0035D0E /* RCTImageResizer.xcodeproj */,
 				0902039F0F8446C68DC44D07 /* RNSyanImagePicker.xcodeproj */,
 				AC81656B7AF54AF8A0450292 /* RNFetchBlob.xcodeproj */,
+				D3F62CE91E3B4944A237B785 /* RNAdMobManager.xcodeproj */,
 			);
 			name = Libraries;
 			sourceTree = "<group>";
@@ -1180,6 +1185,7 @@
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",
 					"\"$(SRCROOT)/$(TARGET_NAME)\"",
+					"\"$(SRCROOT)/$(TARGET_NAME)\"",
 				);
 				HEADER_SEARCH_PATHS = (
 					"$(inherited)",
@@ -1193,6 +1199,7 @@
 					"$(SRCROOT)/../node_modules/react-native-image-resizer/ios/RCTImageResizer",
 					"$(SRCROOT)/../node_modules/react-native-syan-image-picker/ios/**",
 					"$(SRCROOT)/../node_modules/react-native-fetch-blob/ios/**",
+					"$(SRCROOT)/../node_modules/react-native-admob/ios",
 				);
 			};
 			name = Debug;
@@ -1214,6 +1221,7 @@
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",
 					"\"$(SRCROOT)/$(TARGET_NAME)\"",
+					"\"$(SRCROOT)/$(TARGET_NAME)\"",
 				);
 				HEADER_SEARCH_PATHS = (
 					"$(inherited)",
@@ -1227,6 +1235,7 @@
 					"$(SRCROOT)/../node_modules/react-native-image-resizer/ios/RCTImageResizer",
 					"$(SRCROOT)/../node_modules/react-native-syan-image-picker/ios/**",
 					"$(SRCROOT)/../node_modules/react-native-fetch-blob/ios/**",
+					"$(SRCROOT)/../node_modules/react-native-admob/ios",
 				);
 			};
 			name = Release;
@@ -1258,6 +1267,7 @@
 					"$(SRCROOT)/../node_modules/react-native-image-resizer/ios/RCTImageResizer",
 					"$(SRCROOT)/../node_modules/react-native-syan-image-picker/ios/**",
 					"$(SRCROOT)/../node_modules/react-native-fetch-blob/ios/**",
+					"$(SRCROOT)/../node_modules/react-native-admob/ios",
 				);
 			};
 			name = Debug;
@@ -1288,6 +1298,7 @@
 					"$(SRCROOT)/../node_modules/react-native-image-resizer/ios/RCTImageResizer",
 					"$(SRCROOT)/../node_modules/react-native-syan-image-picker/ios/**",
 					"$(SRCROOT)/../node_modules/react-native-fetch-blob/ios/**",
+					"$(SRCROOT)/../node_modules/react-native-admob/ios",
 				);
 			};
 			name = Release;
@@ -1318,6 +1329,7 @@
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",
 					"\"$(SRCROOT)/$(TARGET_NAME)\"",
+					"\"$(SRCROOT)/$(TARGET_NAME)\"",
 				);
 				HEADER_SEARCH_PATHS = (
 					"$(inherited)",
@@ -1331,6 +1343,7 @@
 					"$(SRCROOT)/../node_modules/react-native-image-resizer/ios/RCTImageResizer",
 					"$(SRCROOT)/../node_modules/react-native-syan-image-picker/ios/**",
 					"$(SRCROOT)/../node_modules/react-native-fetch-blob/ios/**",
+					"$(SRCROOT)/../node_modules/react-native-admob/ios",
 				);
 			};
 			name = Debug;
@@ -1361,6 +1374,7 @@
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",
 					"\"$(SRCROOT)/$(TARGET_NAME)\"",
+					"\"$(SRCROOT)/$(TARGET_NAME)\"",
 				);
 				HEADER_SEARCH_PATHS = (
 					"$(inherited)",
@@ -1374,6 +1388,7 @@
 					"$(SRCROOT)/../node_modules/react-native-image-resizer/ios/RCTImageResizer",
 					"$(SRCROOT)/../node_modules/react-native-syan-image-picker/ios/**",
 					"$(SRCROOT)/../node_modules/react-native-fetch-blob/ios/**",
+					"$(SRCROOT)/../node_modules/react-native-admob/ios",
 				);
 			};
 			name = Release;
@@ -1399,6 +1414,7 @@
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",
 					"\"$(SRCROOT)/$(TARGET_NAME)\"",
+					"\"$(SRCROOT)/$(TARGET_NAME)\"",
 				);
 			};
 			name = Debug;
@@ -1423,6 +1439,7 @@
 				TVOS_DEPLOYMENT_TARGET = 10.1;
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",
+					"\"$(SRCROOT)/$(TARGET_NAME)\"",
 					"\"$(SRCROOT)/$(TARGET_NAME)\"",
 				);
 			};

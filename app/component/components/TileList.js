@@ -6,6 +6,10 @@ import TextTile from '../components/TextTile';
 import { primaryColor } from '../../asset/style/common';
 import string from '../../localization/string';
 import EmptyListPage from '../components/EmptyListPage';
+import { AdMobBanner } from 'react-native-admob'
+import config from '../../config';
+
+const AD_GAP = 2;
 
 class TileList extends React.PureComponent {
     constructor(props) {
@@ -62,7 +66,24 @@ class TileList extends React.PureComponent {
 
     renderList() {
         const { data } = this.props;
-        return data.map((item, index) => this.renderItem(item, index));
+        let dataAds = [];
+        data.forEach((item, index) => {
+            dataAds.push(this.renderItem(item, index));
+            if (index % AD_GAP === 0) {
+                console.log("we are here")
+                dataAds.push(
+                    <AdMobBanner
+                    key={'admob-' + index}
+                    adSize="fullBanner"
+                    adUnitID={config.admobUnitId}
+                    testDevices={['test']}
+                    onAdFailedToLoad={error => console.error(error)}
+                    />
+                );
+            }
+        });
+
+        return dataAds;
     }
     
     renderItem(item, index) {
