@@ -4,6 +4,7 @@ import android.app.Application;
 
 import com.facebook.CallbackManager;
 import com.facebook.react.ReactApplication;
+import io.callstack.react.fbads.FBAdsPackage;
 import com.RNFetchBlob.RNFetchBlobPackage;
 import com.reactlibrary.RNSyanImagePickerPackage;
 import fr.bamlab.rnimageresizer.ImageResizerPackage;
@@ -44,6 +45,7 @@ public class MainApplication extends Application implements ReactApplication {
     protected List<ReactPackage> getPackages() {
       return Arrays.<ReactPackage>asList(
           new MainReactPackage(),
+            new FBAdsPackage(),
             new RNFetchBlobPackage(),
             new RNSyanImagePickerPackage(),
             new ImageResizerPackage(),

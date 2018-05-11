@@ -1,42 +1,46 @@
 import React from 'react';
-import { FlatList, StyleSheet, View, Button, Dimensions, RefreshControl,ScrollView, ActivityIndicator } from 'react-native';
+import { FlatList, StyleSheet, View, Button, Dimensions, RefreshControl, ScrollView, ActivityIndicator } from 'react-native';
 import { connect } from "react-redux";
 import ImageTile from '../components/ImageTile';
 import TextTile from '../components/TextTile';
 import { primaryColor } from '../../asset/style/common';
 import string from '../../localization/string';
 import EmptyListPage from '../components/EmptyListPage';
+import { BannerView } from 'react-native-fbads';
+import config from '../../config';
+
+const AD_GAP = 2;
 
 class TileList extends React.PureComponent {
     constructor(props) {
         super(props);
         this.handleScroll = this.handleScroll.bind(this)
-        this.state = { 
+        this.state = {
             offsetY: 0
         }
     }
 
     handleScroll(event, node) {
-        this.setState({offsetY: event.nativeEvent.contentOffset.y});
+        this.setState({ offsetY: event.nativeEvent.contentOffset.y });
     }
 
-	render() {
-        const { 
-            isLoading, 
-            onRefresh, 
-            navigate, 
+    render() {
+        const {
+            isLoading,
+            onRefresh,
+            navigate,
             listHeaderComponent
         } = this.props;
-		return (
+        return (
             <ScrollView
                 onScrollEndDrag={(e) => this.handleScroll(e)}
                 onMomentumScrollEnd={(e) => this.handleScroll(e)}
                 onRefresh={onRefresh}
                 refreshControl={
                     <RefreshControl
-                      refreshing={isLoading}
-                      onRefresh={onRefresh}
-                      tintColor={primaryColor}
+                        refreshing={isLoading}
+                        onRefresh={onRefresh}
+                        tintColor={primaryColor}
                     />
                 }
             >
@@ -50,11 +54,11 @@ class TileList extends React.PureComponent {
     renderContent() {
         const { isLoading, data } = this.props;
         if (data.length > 0) {
-            return this.renderList();            
+            return this.renderList();
         } else {
             return (
                 <View style={style.emptyPage}>
-                    <EmptyListPage/>
+                    <EmptyListPage />
                 </View>
             );
         }
@@ -62,24 +66,42 @@ class TileList extends React.PureComponent {
 
     renderList() {
         const { data } = this.props;
-        return data.map((item, index) => this.renderItem(item, index));
+
+        let dataAds = [];
+        data.forEach((item, index) => {
+            dataAds.push(this.renderItem(item, index));
+            if (index % AD_GAP === 0) {
+                dataAds.push(
+                    <View style={style.adBanner} key={'ad' + index}>
+                        <BannerView
+                            placementId={config.fbPlacementId}
+                            type="standard"
+                            onPress={() => console.log('click')}
+                            onError={(err) => console.log('error', err.nativeEvent)}
+                        />
+                    </View>
+                );
+            }
+        });
+
+        return dataAds;
     }
-    
+
     renderItem(item, index) {
         const { isProfilePage, navigate } = this.props;
         const { offsetY } = this.state;
 
         switch (item.postType) {
             case 'image':
-                return <ImageTile 
-                    key ={'index' + index} 
-                    data={item} 
-                    navigator={navigate} 
-                    isProfilePage={isProfilePage} 
+                return <ImageTile
+                    key={'index' + index}
+                    data={item}
+                    navigator={navigate}
+                    isProfilePage={isProfilePage}
                     viewOffsetY={offsetY}
                 />;
             case 'text':
-                return <TextTile key={'index' + index} data={item} navigator={navigate} isProfilePage={isProfilePage}/>;
+                return <TextTile key={'index' + index} data={item} navigator={navigate} isProfilePage={isProfilePage} />;
             case 'video':
                 return null;
             default:
@@ -92,37 +114,40 @@ class TileList extends React.PureComponent {
         if (isBottomLoading) {
             return <ActivityIndicator size="large" color={primaryColor} />
         } else {
-            if(data.length > 0) {
+            if (data.length > 0) {
                 return this.renderLoadMoreButton();
             } else {
-                return ;
+                return;
             }
         }
     }
-    
-	renderLoadMoreButton() {
-		return (
-			<Button
-				onPress={this.props.loadMore}
-				title={string.LoadMore}
-				accessibilityLabel={string.LoadMore}
-				color={primaryColor}
-			/>
-		)
-	}
+
+    renderLoadMoreButton() {
+        return (
+            <Button
+                onPress={this.props.loadMore}
+                title={string.LoadMore}
+                accessibilityLabel={string.LoadMore}
+                color={primaryColor}
+            />
+        )
+    }
 }
 
 const style = StyleSheet.create({
-	emptyPage: {
+    emptyPage: {
         paddingTop: Dimensions.get('window').width * 0.3,
-	}
+    },
+    adBanner: {
+        marginBottom: 5
+    }
 });
 
 const mapStateToProps = (state) => {
-	return {
+    return {
         isLoading: state.List.isLoading,
-		isBottomLoading: state.List.isBottomLoading
-	}
+        isBottomLoading: state.List.isBottomLoading
+    }
 }
 
 export default connect(mapStateToProps, undefined)(TileList);
