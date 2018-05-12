@@ -28,7 +28,7 @@ persistor.purge();
 // disable the SetTimeInterval Yellow Box
 console.disableYellowBox = true;
 
-const JustJoking = () => {    
+const JustJokes = () => {    
     return (
         <Provider store={store}>
             <PersistGate loading={null} persistor={persistor}>
@@ -38,4 +38,4 @@ const JustJoking = () => {
     );
 }
 
-AppRegistry.registerComponent('JustJoking', () => JustJoking);
+AppRegistry.registerComponent('JustJokes', () => JustJokes);

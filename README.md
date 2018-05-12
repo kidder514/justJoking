@@ -1,9 +1,8 @@
 ## Main tasks
 
 ### Feature in release 1.0.0
-- help page
-- rechecking all firestore config
 - changeName to just jokes maybe, before that check how name will affect you ranking
+- rechecking all firestore config
 - setup dev and production environment, and user different google, firebase and other account
 
 ### Features in release 1.1.0
