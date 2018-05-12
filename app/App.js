@@ -13,7 +13,7 @@ import {
 	DrawerNavigator,
 	HeaderBackButton,
 } from 'react-navigation';
-import { View, ActivityIndicator, StyleSheet, Dimensions } from 'react-native';
+import { View, ActivityIndicator, StyleSheet, Dimensions, Button } from 'react-native';
 import getSlideFromRightTransition from 'react-navigation-slide-from-right-transition';
 import string from './localization/string';
 import { primaryColor, greyColor, whiteColor, textColor, blackColor } from './asset/style/common';
@@ -384,13 +384,33 @@ class App extends React.PureComponent {
 		init();
 	}
 
+	onRetry = () => {
+		const { init } = this.props;		
+		init();		
+	}
+
 	render() {
 		const { config, isSignedIn, isLoading, loadingText } = this.props;
 
 		if (config.isInitiating) {
 			return (
-				<View style={style.loadingPage}>
+				<View style={style.fullPage}>
 					<ActivityIndicator size="large" color={primaryColor} />				
+				</View>
+			)
+		}
+
+		if (!config.isVersionCheckFinished) {
+			return (
+				<View style={style.fullPage}>
+					<Text style={style.retryText}>{string.ServerNotAbleToInit}</Text>
+					<View >
+						<Button
+							onPress={this.onRetry}
+							title={string.Retry}
+							color={primaryColor}
+						/>
+					</View>
 				</View>
 			)
 		}
@@ -424,10 +444,16 @@ class App extends React.PureComponent {
 };
 
 const style = StyleSheet.create({
-	loadingPage: {
+	fullPage: {
 		flex: 1,
 		justifyContent: 'center',
-		alignItems: 'center'
+		alignItems: 'center',
+		paddingLeft: 40,
+		paddingRight: 40
+	},
+	retryText: {
+		textAlign: 'center',
+		paddingBottom: 20,
 	},
 	outterWrapper:{
 		flex: 1,

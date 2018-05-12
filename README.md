@@ -1,13 +1,10 @@
 ## Main tasks
 
 ### Feature in release 1.0.0
-- help page
-- add ads to app
-- 无法读取到版本信息的情况下可以login
-- changeName to just jokes maybe, before that check how name will affect you ranking
 - edit all the text to make them appropriate 
-- App store optimization 
+- help page
 - rechecking all firestore config
+- changeName to just jokes maybe, before that check how name will affect you ranking
 - setup dev and production environment, and user different google, firebase and other account
 
 ### Features in release 1.1.0

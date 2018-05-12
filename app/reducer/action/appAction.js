@@ -11,6 +11,10 @@ export const initEnd = () => {
 	return {type: 'INIT_END'};
 }
 
+export const checkVersionComplete = () => {
+	return {type: 'CHECK_VERSION_COMPLETE'};
+}
+
 export const checkVersionStart = (data) => {
 	return {type: 'CHECK_VERSION_START'};
 }
@@ -30,6 +34,9 @@ export function init() {
 		.then( doc => {
 			if (doc.exists) {
 				dispatch(checkVersion(doc.data()));
+				if (doc.data().lowestVersion && doc.data().newestVersion) {
+					dispatch(checkVersionComplete());				
+				}
 			} else {
 				toastAndroid(string.ServerCannotLoadSystemConfig);
 			}

@@ -14,9 +14,11 @@ const string = new LocalizedStrings({
 		IsNewestVersion: 'Congratz',
 		IsNewestVersionMessage: 'Your app is already the newest version',
 		HasNewerVersion: 'Update is available',
+		ServerNotAbleToInit: 'Not able to initialize the app, please check you network and try again',
 // common
 		Back: "Back",
 		Cancel: 'Cancel',
+		Retry: 'Retry',
 		OK: 'OK',
 		Thousand: 'K',
 		Million: 'M',
