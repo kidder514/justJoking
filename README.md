@@ -1,7 +1,6 @@
 ## Main tasks
 
 ### Feature in release 1.0.0
-- edit all the text to make them appropriate 
 - help page
 - rechecking all firestore config
 - changeName to just jokes maybe, before that check how name will affect you ranking

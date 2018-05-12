@@ -23,7 +23,7 @@ import UpdateReminderPage from './component/components/UpdateReminderPage';
 
 import SignIn from './component/auth/SignIn';
 import SignUp from './component/auth/SignUp';
-import Policy from './component/auth/Policy';
+import TermCondition from './component/profile/TermCondition';
 
 import Search from './component/search/Search';
 import Inbox from './component/inbox/Inbox';
@@ -34,7 +34,6 @@ import Setting from './component/profile/Setting';
 import UserNameSetting from './component/profile/UserNameSetting';
 import TaglineSetting from './component/profile/TaglineSetting';
 import Help from './component/profile/Help';
-import TermCondition from './component/profile/TermCondition';
 
 // import FollowedList from './component/home/FollowedList';
 import HotList from './component/home/HotList';
@@ -52,7 +51,7 @@ const AuthNavigator = StackNavigator(
 			})
 		},
 		SignUp: { screen: SignUp },
-		Policy: { screen: Policy },
+		TermCondition: { screen: TermCondition },
 	}, {
 		navigationOptions: {
 			headerStyle: {

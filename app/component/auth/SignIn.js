@@ -144,7 +144,7 @@ class SignIn extends React.PureComponent {
 				<View>
 					<Text
 						style={style.policyText}
-						onPress={() => this.navigateTo('Policy')}
+						onPress={() => this.navigateTo('TermCondition')}
 					>
 						{string.AgreeWithPolicy}
 					</Text>
