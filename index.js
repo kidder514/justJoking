@@ -8,6 +8,7 @@ import thunk from 'redux-thunk';
 import logger from 'redux-logger';
 import rootReducer from './app/reducer';
 import App from './app/App';
+import Config from 'react-native-config'
 
 const persistConfig = {
     key: 'root',
@@ -15,15 +16,22 @@ const persistConfig = {
     whitelist : ['Auth']
 }
 const persistedReducer = persistReducer(persistConfig, rootReducer);
+
+if (Config.env === 'dev') {
+    const middleWare = applyMiddleware(thunk, logger);
+} else {
+    const middleWare = applyMiddleware(thunk);
+}
+
 const store = createStore(
     persistedReducer,
     undefined,
-    compose(applyMiddleware(thunk, logger))
+    compose(applyMiddleware(thunk))
 );
 const persistor = persistStore(store);
 
 // uncomment this line if you need to purge your store
-persistor.purge();
+// persistor.purge();
 
 // disable the SetTimeInterval Yellow Box
 console.disableYellowBox = true;

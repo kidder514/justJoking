@@ -7,9 +7,9 @@ import { primaryColor } from '../../asset/style/common';
 import string from '../../localization/string';
 import EmptyListPage from '../components/EmptyListPage';
 import { BannerView } from 'react-native-fbads';
-import config from '../../config';
+import Config from 'react-native-config'
 
-const AD_GAP = 2;
+const AD_GAP = 5;
 
 class TileList extends React.PureComponent {
     constructor(props) {
@@ -74,7 +74,7 @@ class TileList extends React.PureComponent {
                 dataAds.push(
                     <View style={style.adBanner} key={'ad' + index}>
                         <BannerView
-                            placementId={config.fbPlacementId}
+                            placementId={Config.fbPlacementId}
                             type="standard"
                             onPress={() => console.log('click')}
                             onError={(err) => console.log('error', err.nativeEvent)}

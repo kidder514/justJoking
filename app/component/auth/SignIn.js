@@ -159,7 +159,6 @@ class SignIn extends React.PureComponent {
 				<View style={style.iconList}>
 					<Icon onPress={this.googleSignIn} name="google--with-circle" size={30} color={primaryColor} />
 					<Icon onPress={this.facebookSignIn} name="facebook-with-circle" size={30} color={primaryColor} />
-					<Icon onPress={this.twitterSignIn} name="twitter-with-circle" size={30} color={primaryColor} />
 				</View>
 			</View>
 		);
