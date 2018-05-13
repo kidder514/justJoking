@@ -1,12 +1,10 @@
 ## Main tasks
 
 ### Feature in release 1.0.0
-- changeName to just jokes maybe, before that check how name will affect you ranking
-- rechecking all firestore config
 - setup dev and production environment, and user different google, firebase and other account
+- rechecking all firestore config
 
 ### Features in release 1.1.0
-- 
 - comment order by likes 
 - share button
 - dowload button 

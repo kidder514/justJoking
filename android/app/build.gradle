@@ -117,11 +117,33 @@ android {
             include "armeabi-v7a", "x86"
         }
     }
-    buildTypes {
+    signingConfigs {
         release {
+            if (project.hasProperty('JUSTJOKES_RELEASE_STORE_FILE')) {
+                storeFile file(JUSTJOKES_RELEASE_STORE_FILE)
+                storePassword JUSTJOKES_RELEASE_STORE_PASSWORD
+                keyAlias JUSTJOKES_RELEASE_KEY_ALIAS
+                keyPassword JUSTJOKES_RELEASE_KEY_PASSWORD
+            }
+        }
+    }
+    buildTypes {
+        debug {
+            debuggable true
+            minifyEnabled false
             minifyEnabled enableProguardInReleaseBuilds
             proguardFiles getDefaultProguardFile("proguard-android.txt"), "proguard-rules.pro"
         }
+        release {
+            debuggable false
+            minifyEnabled false
+            signingConfig signingConfigs.release            
+            minifyEnabled enableProguardInReleaseBuilds
+            proguardFiles getDefaultProguardFile("proguard-android.txt"), "proguard-rules.pro"
+        }
+    }
+    dexOptions {
+        javaMaxHeapSize "4g"
     }
     // applicationVariants are e.g. debug, release
     applicationVariants.all { variant ->
@@ -152,8 +174,7 @@ dependencies {
     compile project(':react-native-syan-image-picker')
     // please be very careful with react-native link
     // make sure all the lines it has added does not duplicate other lines
-
-    // SO please try to do the link yourself mannually !!!!!!!!
+    // So please try to do the link yourself mannually !!!!!!!!
     compile project(':react-native-image-resizer')
     compile project(':react-native-image-picker')
     compile project(':react-native-fbsdk')
