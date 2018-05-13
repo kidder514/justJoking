@@ -517,14 +517,14 @@ export function addCommentCall(data, comment) {
 			author: getState().Auth.uid,
 			authorName: getState().Auth.name,
 			authorPhoto: getState().Auth.photoURL,
+			creationTime: new Date().getTime(),	
 			comment,
 			like:[],
 			dislike:[],
 		}
-
 		docRef.doc(commentData.id).set(commentData)
 		.then(ref =>{
-			firebase.firestore().collection('posts').doc(data.id).update({'comment': data.comment + 1})
+			firebase.firestore().collection('posts').doc(data.id).update({'commentCount': data.commentCount + 1})
 			.then(() => {
 				dispatch(addComment(commentData));
 				toastAndroid(string.ServerAddCommentSuccess);

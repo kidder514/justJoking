@@ -89,10 +89,11 @@ const string = new LocalizedStrings({
 // Image Tile List
 		LongImage: 'click to see more ...',
 		ImageHasBeenSaved: 'Image has been saved',
-//Search
+		PostYourComment: "be the first one comment on this",
+// Search
 		Search: 'Search',
 		TypeHere: 'Type here ...',
-//Post 
+// Post 
 		Post: 'Post',
 		PostSomethingFunny: 'Post something funny and make people laugh.',
 		Upload: 'Upload',
@@ -109,16 +110,16 @@ const string = new LocalizedStrings({
 		ImageTypeInvalid: 'Only png, jpeg, jpg and gif types of image are supported, invalid types are ingnored automatically',
 		MaxGifLimit: 'Gif image file must not be larger that 2.5MB, larger size image are ignored',
 		LoadGifError: 'Unable to load this gif',
-//Inbox
+// Inbox
 		Inbox: 'Inbox',
-//Profile
+// Profile
 		Profile: 'Profile',
 		Share: 'Share',
 		Followers: 'Followers',
 		Following: 'Following',
 		Post: 'Post',
 		NoTagline: "He doesn't have anything to say...",
-//Setting
+// Setting
 		Setting: 'Setting',
 		Avatar: 'Avatar',
 		ChooseYourProfilePicture:'Choose your profile picture',

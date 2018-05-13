@@ -110,7 +110,7 @@ class Detail extends React.PureComponent {
 			return (
 				<View style={style.listContainer}>
 					<Text>
-						{"be the first one comment on this"}
+						{string.PostYourComment}
 					</Text>
 				</View>
 			);

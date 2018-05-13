@@ -17,16 +17,17 @@ const persistConfig = {
 }
 const persistedReducer = persistReducer(persistConfig, rootReducer);
 
-if (Config.env === 'dev') {
-    const middleWare = applyMiddleware(thunk, logger);
+let middleWare;
+if (Config.DEBUG) {
+    middleWare = applyMiddleware(thunk, logger);
 } else {
-    const middleWare = applyMiddleware(thunk);
+    middleWare = applyMiddleware(thunk);
 }
 
 const store = createStore(
     persistedReducer,
     undefined,
-    compose(applyMiddleware(thunk))
+    compose(middleWare)
 );
 const persistor = persistStore(store);
 

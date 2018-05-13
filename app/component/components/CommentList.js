@@ -33,7 +33,7 @@ class CommentList extends React.PureComponent {
         } else {
             footer = this.renderLoadMoreButton();
         }
-
+        
 		return (
             <SectionList
                 refreshing={true}

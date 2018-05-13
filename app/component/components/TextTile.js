@@ -71,12 +71,12 @@ class TextTile extends React.PureComponent {
                     {this.renderDislike()}                    
                     <TouchableOpacity style={style.iconGroup} onPress={() => this.onClickComment()}>
                         <Icon style={style.icon} name="typing" size={15}/>
-                        <Text>{numberFormatter(data.comment)}</Text>
+                        <Text>{numberFormatter(data.commentCount)}</Text>
                     </TouchableOpacity>
-                    <View style={style.iconGroup} >
+                    {/* <View style={style.iconGroup} >
                         <Icon style={style.icon} name="share" size={15}/>
                         <Text>{numberFormatter(data.share)}</Text>
-                    </View>                    
+                    </View>                     */}
                 </View>
             </View>
 		);

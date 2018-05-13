@@ -44,7 +44,6 @@ class Post extends React.Component {
 
 	reset(){
 		this.setState(clone(initialState));
-		SYImagePicker.removeAllPhoto() // remove photo so they can be selected again
 		SYImagePicker.deleteCache(); 
 	}
 

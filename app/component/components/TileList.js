@@ -53,7 +53,7 @@ class TileList extends React.PureComponent {
 
     renderContent() {
         const { isLoading, data } = this.props;
-        if (data.length > 0) {
+        if (data && data.length > 0) {
             return this.renderList();
         } else {
             return (
@@ -114,7 +114,7 @@ class TileList extends React.PureComponent {
         if (isBottomLoading) {
             return <ActivityIndicator size="large" color={primaryColor} />
         } else {
-            if (data.length > 0) {
+            if (data && data.length > 0) {
                 return this.renderLoadMoreButton();
             } else {
                 return;

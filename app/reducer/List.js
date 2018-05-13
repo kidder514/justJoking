@@ -184,10 +184,12 @@ function upateListComment(postId, list) {
     list.forEach(item => {
         let tempItem = item;
         if (item.id === postId) {
-            temItem.comment++;
+            tempItem.commentCount++;
         }
         newList.push(tempItem);
     });
+
+    return newList;
 }
 
 function sortImageList(list) {

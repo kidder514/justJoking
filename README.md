@@ -1,8 +1,9 @@
 ## Main tasks
 
 ### Feature in release 1.0.0
-- setup dev and production environment, and user different google, firebase and other account
-- rechecking all firestore config
+- retest everything
+- add at least 100 post
+
 ### Features in release 1.1.0
 - comment order by likes 
 - share button
