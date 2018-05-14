@@ -10,6 +10,8 @@ import { connect } from "react-redux";
 import { loadCommentUpCall, loadCommentBottomCall, addCommentCall } from '../../reducer/action/listAction';
 import CommentList from '../components/CommentList';
 import { toastAndroid } from '../../reducer/action/appAction';
+import { BannerView } from 'react-native-fbads';
+import Config from 'react-native-config'
 
 class Detail extends React.PureComponent {
 	static navigationOptions = ({ navigation, navigationOptions }) => {
@@ -60,6 +62,7 @@ class Detail extends React.PureComponent {
 		return (
 			<View style={style.container}>
 				{this.renderPost()}
+				{this.renderAd()}
 				{this.renderComment()}
 				{this.renderInputFooter()}
 			</View>
@@ -89,6 +92,18 @@ class Detail extends React.PureComponent {
 				/>
 			);
 		}
+	}
+
+	renderAd() {
+		return (
+			<View style={style.adBanner}>
+				<BannerView
+					placementId={Config.fbPlacementId}
+					type="standard"
+					onError={(err) => console.log('error', err.nativeEvent)}
+				/>
+			</View>
+		);
 	}
 
 	renderComment() {
@@ -159,13 +174,15 @@ class Detail extends React.PureComponent {
 
 const style = StyleSheet.create({
 	container: {
-		flex: 1
+		flex: 1,
+		paddingBottom: 50
 	},
     listContainer: {
 		flex: 1,
         backgroundColor: whiteColor,
 		marginBottom: 10,
-		
+		paddingLeft: 10,
+		paddingRight: 10
 	},
 	inputContainer: {		
 		backgroundColor: whiteColor,
@@ -186,7 +203,10 @@ const style = StyleSheet.create({
 		bottom: 8,
 		right: 10,
 		zIndex: 2,
-	}
+	},
+    adBanner: {
+        marginBottom: 5
+    }
 });
 
 const mapStateToProps = (state) => {
@@ -201,6 +221,7 @@ const mapStateToProps = (state) => {
 const mapDispatchToProps = (dispatch) => {
 	return {
 		loadCommentUpCall: (id) => dispatch(loadCommentUpCall(id)),
+		loadCommentBottomCall: (id, offsetTime) => dispatch(loadCommentBottomCall(id, offsetTime)),
 		addCommentCall: (data, comment) => dispatch(addCommentCall(data, comment))
 	}
 }

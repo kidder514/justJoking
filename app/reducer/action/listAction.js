@@ -240,8 +240,8 @@ export function textPostCall(text) {
 			dislike: [],
 			share: [],
 			tag: '',
-			comment: [],
-			text: text,
+			commentCount: 0,
+			text
 		}
 
 		firebase.firestore().collection('posts').doc(tempPost.id).set(tempPost)
@@ -509,7 +509,7 @@ export function commentDislikeCall(data) {
 
 export function addCommentCall(data, comment) {
 	return (dispatch, getState) => {
-		dispatch(addCommentStart());		
+		dispatch(addCommentStart());	
 		const docRef = firebase.firestore().collection('comments').doc(data.id).collection('comments');
 		const commentData = {
 			id: uuidv4(),

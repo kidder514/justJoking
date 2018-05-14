@@ -161,7 +161,11 @@ function updateListLikeDislike(post, list) {
     list.forEach(item => {
         let tempItem = item;
         if (tempItem.id === post.id) {
-            newList.push(post);
+            if (item.postType !== 'image'){
+                newList.push(post)
+            } else {
+                newList.push(sortImage(post));
+            }
         } else {
             newList.push(tempItem)
         }

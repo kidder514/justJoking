@@ -76,7 +76,6 @@ class TileList extends React.PureComponent {
                         <BannerView
                             placementId={Config.fbPlacementId}
                             type="standard"
-                            onPress={() => console.log('click')}
                             onError={(err) => console.log('error', err.nativeEvent)}
                         />
                     </View>

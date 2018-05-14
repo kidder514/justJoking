@@ -245,6 +245,8 @@ class ImageTile extends React.PureComponent {
         const { thumbnails, id } = this.props.data;
         const { shouldLoad } = this.state;
         let thumbnailList = [];
+        if (thumbnails && thumbnails.length <= 0) return;
+
         thumbnails.map((thumbnail, index) => {
             thumbnailList.push(
                 <TouchableHighlight
