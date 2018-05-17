@@ -1,5 +1,6 @@
 import { likeArrayProcessor } from './action/listActionUtil';
 import { clone } from '../util/util';
+import { ITEM_NUMBER_EACH_LOAD } from './action/listAction';
 
 const initState = {
     hotList: [],
@@ -15,6 +16,8 @@ const initState = {
     isCommentAdding: false,
     isCommentBottomLoading: false,
 }
+
+const DISPLAY_LIMIT = 30;
 
 function List(state = initState, action) {
 	switch (action.type) {
@@ -121,17 +124,17 @@ function reduceLoadList(payload, stateList){
 }
 
 function handleListUp(newList, stateList) {
-    if (newList.length >= 20) {
+    if (newList.length >= ITEM_NUMBER_EACH_LOAD) {
         // if length >= 20, replace the old list with new list
         return newList;
     } else {
         // if length < 20, add to the list first
         // then only keep at most 50 element in the list 
         let list = newList.concat(stateList)
-        if (list.length <= 50) {
+        if (list.length <= DISPLAY_LIMIT) {
             return list
         } else {
-            list.splice(50);
+            list.splice(DISPLAY_LIMIT);
             return list
         }
     }
@@ -139,10 +142,10 @@ function handleListUp(newList, stateList) {
 
 function handleListDown(newList, stateList) {
     let list = stateList.concat(newList)
-    if (list.length <= 50) {
+    if (list.length <= DISPLAY_LIMIT) {
         return list
     } else {
-        list.splice(0, months.length - 50)
+        list.splice(0, list.length - DISPLAY_LIMIT)
         return list
     }
 }

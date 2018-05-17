@@ -13,7 +13,7 @@ import {
 	DrawerNavigator,
 	HeaderBackButton,
 } from 'react-navigation';
-import { View, ActivityIndicator, StyleSheet, Dimensions, Button } from 'react-native';
+import { View, ActivityIndicator, StyleSheet, Dimensions, Button, Alert } from 'react-native';
 import getSlideFromRightTransition from 'react-navigation-slide-from-right-transition';
 import string from './localization/string';
 import { primaryColor, greyColor, whiteColor, textColor, blackColor } from './asset/style/common';
@@ -387,9 +387,15 @@ class App extends React.PureComponent {
 		const { init } = this.props;		
 		init();		
 	}
+	
+	onUpdatePress() {
+		// TODO
+		console.log(" go to store");
+	}
 
 	render() {
 		const { config, isSignedIn, isLoading, loadingText } = this.props;
+		const showUpdatePopUp = config.hasNewVersion && !config.isForceUpdateNeeded;
 
 		if (config.isInitiating) {
 			return (
@@ -417,6 +423,17 @@ class App extends React.PureComponent {
 		if (config.isForceUpdateNeeded) {
 			return <UpdateReminderPage />
 		}
+
+		if (showUpdatePopUp) {
+			Alert.alert(
+				string.HasNewerVersion,
+				string.GoToAppStoreMessage,
+				[
+					{text: string.GoToAppStore, onPress: () => this.onUpdatePress.bind(this)},
+					{text: string.Cancel}
+				]
+			)
+		}
 		
 		if (!!isSignedIn) {
 			return (
@@ -426,6 +443,7 @@ class App extends React.PureComponent {
 						<ActivityIndicator size="large" color={primaryColor} />
 						<Text>{loadingText}</Text>						
 					</View>}
+					
 				</View>
 			);
 		} else {

@@ -250,7 +250,7 @@ export function updatePhotoCall() {
 				var imageRef = firebase.storage().ref().child(getState().Auth.uid + '/avatar.png');
 				imageRef.putFile(resizerRes.uri)
 				.then(uploadRes => {
-
+					SYImagePicker.deleteCache(); 
 					// 4. update the user.photoUrl property in a database
 					firebase.firestore().doc('users/' + getState().Auth.uid).update({
 						'photoURL': uploadRes.downloadURL
@@ -267,6 +267,7 @@ export function updatePhotoCall() {
 					
 				})
 				.catch((err) => {
+					SYImagePicker.deleteCache(); 			
 					dispatch(loadEnd());
 					toastAndroid(string.ServerFailToUploadFile);
 				})			
@@ -275,7 +276,6 @@ export function updatePhotoCall() {
 				dispatch(loadEnd());
 				toastAndroid(string.ErrorResizingImage);				
 			}); 
-			SYImagePicker.deleteCache(); 
 		})
 		.catch(err => {
 			console.log(err);

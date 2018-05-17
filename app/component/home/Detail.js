@@ -1,5 +1,5 @@
 import React from 'react';
-import { View, Text, StyleSheet, Dimensions, ActivityIndicator} from 'react-native';
+import { View, Text, StyleSheet, Dimensions, ActivityIndicator, ScrollView} from 'react-native';
 import { FormInput, Button } from 'react-native-elements'
 import { primaryColor, greyColor, whiteColor } from '../../asset/style/common';
 import string from '../../localization/string';
@@ -58,12 +58,14 @@ class Detail extends React.PureComponent {
 		loadCommentBottomCall(params.data.id, list[list.length - 1].creationTime)
 	}
 
-	render(){
+	render() {
 		return (
 			<View style={style.container}>
-				{this.renderPost()}
-				{this.renderAd()}
-				{this.renderComment()}
+				<ScrollView >
+					{this.renderPost()}
+					{this.renderAd()}
+					{this.renderComment()}
+				</ScrollView>
 				{this.renderInputFooter()}
 			</View>
 		)
@@ -182,7 +184,8 @@ const style = StyleSheet.create({
         backgroundColor: whiteColor,
 		marginBottom: 10,
 		paddingLeft: 10,
-		paddingRight: 10
+		paddingRight: 10,
+		paddingBottom: 20
 	},
 	inputContainer: {		
 		backgroundColor: whiteColor,

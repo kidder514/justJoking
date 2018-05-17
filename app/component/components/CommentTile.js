@@ -16,13 +16,13 @@ class CommentTile extends React.PureComponent {
     }
 
     onClickLike() {
-        const { data, likeCall, auth } = this.props;
+        const { data, likeCall, auth, commentLikeCall } = this.props;
         if (data.dislike.indexOf(auth.uid) >= 0) return;
         commentLikeCall(data);
     }
 
     onClickDislike() {
-        const { data, dislikeCall, auth } = this.props;
+        const { data, dislikeCall, auth, commentDislikeCall } = this.props;
         if (data.like.indexOf(auth.uid) >= 0) return;
         commentDislikeCall(data);
     }

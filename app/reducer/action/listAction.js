@@ -102,6 +102,8 @@ export const commentUpdateDislike = (post) => {
 	return { type: 'COMMENT_UPDATE_DISLIKE', payload: post}
 }
 
+export const ITEM_NUMBER_EACH_LOAD = 8;
+
 export function imagePostCall(text, images){
 	let imagesTemp = {};
 	let thumbnailsTemp = {};
@@ -281,7 +283,7 @@ export function loadListUpCall(listType = 'all', offsetTime, isMyList = false, u
 			listRef = listRef.where('creationTime', '>', offsetTime);
 		}
 
-		listRef.orderBy('creationTime', 'desc').limit(20).get()
+		listRef.orderBy('creationTime', 'desc').limit(ITEM_NUMBER_EACH_LOAD).get()
 		.then(snapshot => {
 			let list = [];
 			if (snapshot.size <= 0) {
@@ -322,7 +324,7 @@ export function loadListDownCall(listType = 'all', offsetTime,  isMyList = false
 			listRef = listRef.where('creationTime', '<', offsetTime);
 		}
 
-		listRef.orderBy('creationTime', 'desc').limit(20).get()
+		listRef.orderBy('creationTime', 'desc').limit(ITEM_NUMBER_EACH_LOAD).get()
 		.then(snapshot => {
 			let list = [];
 			if (snapshot.size <= 0) {
@@ -402,7 +404,7 @@ export function loadCommentUpCall(id) {
 		dispatch(cleanComment());
 		dispatch(loadCommentUpStart());
 		let listRef = firebase.firestore().collection('comments').doc(id).collection('comments');
-		listRef.orderBy('creationTime', 'desc').limit(10).get()
+		listRef.orderBy('creationTime', 'desc').limit(ITEM_NUMBER_EACH_LOAD).get()
 		.then(snapshot => {
 			if (snapshot.size <= 0) {
 				toastAndroid(string.ServerNoMoreComment);
@@ -432,7 +434,7 @@ export function loadCommentBottomCall(id, offsetTime) {
 			listRef = listRef.where('creationTime', '<', offsetTime);
 		}
 
-		listRef.orderBy('creationTime', 'desc').limit(10).get()
+		listRef.orderBy('creationTime', 'desc').limit(ITEM_NUMBER_EACH_LOAD).get()
 		.then(snapshot => {
 			if (snapshot.size <= 0) {
 				toastAndroid(string.ServerNoMoreComment);
@@ -455,7 +457,7 @@ export function loadCommentBottomCall(id, offsetTime) {
 
 export function commentLikeCall(data){
 	return (dispatch, getState) => {
-		const docRef = firebase.firestore().collection('comments').doc(data.id);
+		const docRef = firebase.firestore().collection('comments').doc(data.postId).collection('comments').doc(data.id);
 		docRef.get()
 		.then(snapshot => {
 			if (snapshot.exists) {
@@ -482,7 +484,7 @@ export function commentLikeCall(data){
 
 export function commentDislikeCall(data) {
 	return (dispatch, getState) => {
-		const docRef = firebase.firestore().collection('comments').doc(data.id);
+		const docRef = firebase.firestore().collection('comments').doc(data.postId).collection('comments').doc(data.id);
 		docRef.get()
 		.then(snapshot => {
 			if (snapshot.exists) {
