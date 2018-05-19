@@ -1,9 +1,7 @@
 ## Main tasks
 
 ### Feature in release 1.0.0
-- add release note
-- gallery can't double click
-- change avatar then upload post, the avatar on the post is still the old avatar.
+- immediately after release, update your deeplinking.
 
 ### Features in release 1.1.0
 - add deeplink to playstore
