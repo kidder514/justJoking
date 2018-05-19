@@ -72,7 +72,7 @@ const string = new LocalizedStrings({
 //Home 
 		Home: 'Home',
 		Followed: 'Followed',
-		Hot: 'Hot',
+		Hot: 'All',
 		Image: 'Image',
 		Text: 'Text',
 		PostEmpty: 'Oops, no funny things here at the moment, join us and share your funny things',

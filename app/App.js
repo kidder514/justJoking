@@ -73,7 +73,11 @@ const PostNavigator = StackNavigator(
 const HomePrimaryNavigator = TabNavigator(
 	{
 		// Followed: { screen: FollowedList },
-		Hot: { screen: HotList },
+		Hot: { screen: HotList,
+			navigationOptions: ({ navigation }) => ({
+				title: string.Hot
+			})
+		},
 		Image: { screen: ImageList },
 		Text: { screen: TextList },
 	}, {
