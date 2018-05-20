@@ -1,12 +1,13 @@
 import React from 'react';
 import { connect } from "react-redux";
-import { View, Text, Button, StyleSheet, ScrollView, Clipboard, Alert } from 'react-native';
+import { View, Text, Button, StyleSheet, ScrollView, Clipboard, Alert, Linking } from 'react-native';
 import { whiteColor, primaryColor, greyColor } from '../../asset/style/common';
 import string from '../../localization/string';
 import { signOutCall, updatePhotoCall } from '../../reducer/action/authAction';
 import { checkVersionCall } from '../../reducer/action/appAction';
 import { Avatar, List, ListItem, CheckBox } from 'react-native-elements';
 import Icon from 'react-native-vector-icons/Entypo';
+import config from '../../config';
 
 class Setting extends React.PureComponent {
 	constructor(props) {
@@ -14,21 +15,22 @@ class Setting extends React.PureComponent {
 	}
 
 	onUpdatePress() {
-		// TODO
-		console.log(" go to store");
+		Linking.openURL(config.playStoreUrl).catch(err => 
+			toastAndroid(string.CantOpenDeepLink)			
+		);
 	}
 
 	componentDidUpdate(prevProps) {
 		const { config } = this.props;
 		const preConfig = prevProps.config;
-
+		
 		if (!config.isCheckingUpdate && preConfig.isCheckingUpdate){
 			if (config.hasNewVersion) {
 				Alert.alert(
 					string.HasNewerVersion,
 					string.GoToAppStoreMessage,
 					[
-						{text: string.GoToAppStore, onPress: () => this.onUpdatePress.bind(this)},
+						{text: string.GoToAppStore, onPress: this.onUpdatePress.bind(this)},
 						{text: string.Cancel}
 					]
 				)

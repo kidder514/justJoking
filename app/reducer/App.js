@@ -6,7 +6,7 @@ const initState = {
 	hasNewVersion: false,
 	isForceUpdateNeeded: false,
 	currentVersion: 0.1,
-	isVersionCheckFinished: false
+	isInitialVersionCheckFinished: false
 }
 
 function App(state = initState, action) {
@@ -16,7 +16,7 @@ function App(state = initState, action) {
 		case 'INIT_END':
 			return { ...state, isInitiating: false};
 		case 'CHECK_VERSION_COMPLETE':
-			return { ...state, isVersionCheckFinished: true};
+			return { ...state, isInitialVersionCheckFinished: true};
 		case 'CHECK_VERSION_START':
 			return { ...state, isCheckingUpdate: true};
 		case 'CHECK_VERSION': 

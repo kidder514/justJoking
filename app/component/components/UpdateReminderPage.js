@@ -1,7 +1,8 @@
 import React from 'react';
-import { View, Text, StyleSheet, Alert, Button, Image } from 'react-native';
+import { View, Text, StyleSheet, Alert, Button, Image, Linking } from 'react-native';
 import string from '../../localization/string';
 import { primaryColor } from '../../asset/style/common';
+import config from '../../config';
 
 class UpdateReminderPage extends React.PureComponent {
 
@@ -16,8 +17,9 @@ class UpdateReminderPage extends React.PureComponent {
     }
 
     onPress() {
-        // TODO deeplink to app store
-        console.log("go to app store ");
+        Linking.openURL(config.playStoreUrl).catch(error =>
+			toastAndroid(string.CantOpenDeepLink)
+        );
     }   
 
 	render(){

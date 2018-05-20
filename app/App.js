@@ -13,11 +13,12 @@ import {
 	DrawerNavigator,
 	HeaderBackButton,
 } from 'react-navigation';
-import { View, ActivityIndicator, StyleSheet, Dimensions, Button, Alert } from 'react-native';
+import { View, ActivityIndicator, StyleSheet, Dimensions, Button, Alert, Linking } from 'react-native';
 import getSlideFromRightTransition from 'react-navigation-slide-from-right-transition';
 import string from './localization/string';
 import { primaryColor, greyColor, whiteColor, textColor, blackColor } from './asset/style/common';
 import Icon from 'react-native-vector-icons/Entypo';
+import config from './config';
 
 import UpdateReminderPage from './component/components/UpdateReminderPage';
 
@@ -387,14 +388,33 @@ class App extends React.PureComponent {
 		init();
 	}
 
+	componentDidUpdate(prevProps) {
+		const { config } = this.props;
+		const preConfig = prevProps.config;
+		
+		if (config.isInitialVersionCheckFinished && !preConfig.isInitialVersionCheckFinished) {
+			if (config.hasNewVersion && !config.isForceUpdateNeeded) {
+				Alert.alert(
+					string.HasNewerVersion,
+					string.GoToAppStoreMessage,
+					[
+						{text: string.GoToAppStore, onPress: this.onUpdatePress.bind(this)},
+						{text: string.Cancel}
+					]
+				)
+			}
+		}
+	}
+
 	onRetry = () => {
 		const { init } = this.props;		
 		init();		
 	}
 	
 	onUpdatePress() {
-		// TODO
-		console.log(" go to store");
+		Linking.openURL(config.playStoreUrl).catch(err => 
+			toastAndroid(string.CantOpenDeepLink)			
+		);
 	}
 
 	render() {
@@ -409,11 +429,11 @@ class App extends React.PureComponent {
 			)
 		}
 
-		if (!config.isVersionCheckFinished) {
+		if (!config.isInitialVersionCheckFinished) {
 			return (
 				<View style={style.fullPage}>
 					<Text style={style.retryText}>{string.ServerNotAbleToInit}</Text>
-					<View >
+					<View>
 						<Button
 							onPress={this.onRetry}
 							title={string.Retry}
@@ -426,17 +446,6 @@ class App extends React.PureComponent {
 
 		if (config.isForceUpdateNeeded) {
 			return <UpdateReminderPage />
-		}
-
-		if (showUpdatePopUp) {
-			Alert.alert(
-				string.HasNewerVersion,
-				string.GoToAppStoreMessage,
-				[
-					{text: string.GoToAppStore, onPress: () => this.onUpdatePress.bind(this)},
-					{text: string.Cancel}
-				]
-			)
 		}
 		
 		if (!!isSignedIn) {

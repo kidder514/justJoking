@@ -15,6 +15,7 @@ const string = new LocalizedStrings({
 		IsNewestVersionMessage: 'Your app is already the newest version',
 		HasNewerVersion: 'Update is available',
 		ServerNotAbleToInit: 'Not able to initialize the app, please check you network and try again.',
+		CantOpenDeepLink: "Can't open deep link.",
 // common
 		Back: "Back",
 		Cancel: 'Cancel',

@@ -10,6 +10,8 @@
 - performace
 - facebook large ad
 - use google ad as fallback
+- change app name to just laugh
+- ASO search engine optimization.
 
 ### to be added
 - comment order by likes 

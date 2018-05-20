@@ -74,11 +74,11 @@ class Post extends React.Component {
 							RNFetchBlob.fs.stat(image.original_uri)
 							.then((status) => {
 								imageCount++;
-								if (status.size < MAX_GIF_SIZE) {
+								// if (status.size < MAX_GIF_SIZE) {
 									imageList.push(image.original_uri);
-								} else {
-									toastAndroid(string.MaxGifLimit);
-								}
+								// } else {
+									// toastAndroid(string.MaxGifLimit);
+								// }
 
 								if (imageCount === imagePicked.length) {
 									this.setState({images: imageList});

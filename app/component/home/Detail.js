@@ -37,7 +37,6 @@ class Detail extends React.PureComponent {
 	}
 
 	onSubmit = () => {
-
 		const { comment } = this.state;		
 		const params = this.props.navigation.state.params;
 		const { addCommentCall } = this.props;
