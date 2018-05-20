@@ -1,10 +1,17 @@
 ## Main tasks
 
-### Feature in release 1.0.0
+### Feature in release 0.1.0
 - immediately after release, update your deeplinking.
 
-### Features in release 1.1.0
+### Features in release 0.11
 - add deeplink to playstore
+- retest
+- crashlytics
+- performace
+- facebook large ad
+- use google ad as fallback
+
+### to be added
 - comment order by likes 
 - share button
 - dowload button 
