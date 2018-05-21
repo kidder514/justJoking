@@ -4,16 +4,14 @@
 - immediately after release, update your deeplinking.
 
 ### Features in release 0.11
-- add deeplink to playstore
-- retest
-- crashlytics
-- performace
 - facebook large ad
 - use google ad as fallback
 - change app name to just laugh
 - ASO search engine optimization.
 
 ### to be added
+- likes button too slow
+- after adding comment, it might take a while to show up
 - comment order by likes 
 - share button
 - dowload button 
