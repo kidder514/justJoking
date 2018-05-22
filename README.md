@@ -1,6 +1,7 @@
 ## Main tasks
 
 ### to be added
+- add version display in setting page.
 - facebook large ad
 - use google ad as fallback
 - likes button too slow
@@ -70,6 +71,6 @@
 - check application version
 - term and condition page
 
-## 0.2 release notes
+## 0.11 release notes
 - crashlytics
 - add deeplinking to play store
