@@ -1,15 +1,8 @@
 ## Main tasks
 
-### Feature in release 0.1.0
-- immediately after release, update your deeplinking.
-
-### Features in release 0.11
+### to be added
 - facebook large ad
 - use google ad as fallback
-- change app name to just laugh
-- ASO search engine optimization.
-
-### to be added
 - likes button too slow
 - after adding comment, it might take a while to show up
 - comment order by likes 
@@ -77,3 +70,6 @@
 - check application version
 - term and condition page
 
+## 0.2 release notes
+- crashlytics
+- add deeplinking to play store
