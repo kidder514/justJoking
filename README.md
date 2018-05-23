@@ -1,9 +1,10 @@
 ## Main tasks
 
 ### to be added
-- add version display in setting page.
+- recheck the version check feature, because on production, it display update pop up all the time.
 - facebook large ad
 - use google ad as fallback
+- auto load bottom
 - likes button too slow
 - after adding comment, it might take a while to show up
 - comment order by likes 
@@ -74,3 +75,6 @@
 ## 0.11 release notes
 - crashlytics
 - add deeplinking to play store
+
+## 0.12 release notes
+- add version display in setting page.

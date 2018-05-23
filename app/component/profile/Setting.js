@@ -178,6 +178,9 @@ class Setting extends React.PureComponent {
 						title={string.SignOut}
 					/>
 				</List>
+				<View style={style.version}>
+					<Text>{string.CurrentVersion + ': ' + config.currentVersion}</Text>
+				</View>
 			</ScrollView>
 		);
 	}
@@ -222,6 +225,11 @@ const style = StyleSheet.create({
 		marginLeft: 20,
 		paddingLeft: 10,
 		paddingRight: 10
+	},
+	version: {
+		marginLeft: 10,
+		marginBottom: 40,
+		marginTop: 10
 	}
 });
 
