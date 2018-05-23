@@ -4,7 +4,6 @@ import { View, Text, StyleSheet, Image, TouchableOpacity} from 'react-native';
 import string from '../../localization/string';
 import { primaryColor, greyColor, whiteColor } from '../../asset/style/common';
 import Icon from 'react-native-vector-icons/Entypo';
-// import { commentLikeCall, commentDislikeCall } from "../../reducer/action/listAction";
 import { commentLikeCall } from "../../reducer/action/listAction";
 import { numberFormatter } from '../../util/numberFormatter';
 
@@ -13,20 +12,12 @@ class CommentTile extends React.PureComponent {
         super(props);
 
         this.onClickLike = this.onClickLike.bind(this);
-        // this.onClickDislike = this.onClickDislike.bind(this);
     }
 
     onClickLike() {
         const { data, likeCall, auth, commentLikeCall } = this.props;
-        // if (data.dislike.indexOf(auth.uid) >= 0) return;
         commentLikeCall(data);
     }
-
-    // onClickDislike() {
-    //     const { data, dislikeCall, auth, commentDislikeCall } = this.props;
-    //     if (data.like.indexOf(auth.uid) >= 0) return;
-    //     commentDislikeCall(data);
-    // }
 
 	render(){
         const { data } = this.props;
@@ -38,7 +29,6 @@ class CommentTile extends React.PureComponent {
                 </Text>
                 <View style={style.tileBanner}>
                     {this.renderLike()}
-                    {/* {this.renderDislike()} */}
                 </View>
             </View>
 		);
@@ -90,27 +80,6 @@ class CommentTile extends React.PureComponent {
             </TouchableOpacity>
         );
     }
-
-    // renderDislike() {
-    //     const { data, auth } = this.props;
-    //     let icon;
-    //     let count;
-    //     const isDisliked = data.dislike.indexOf(auth.uid) >= 0;
-    //     if (isDisliked) {
-    //         icon = <Icon style={style.icon} name="thumbs-down" size={15} color={primaryColor}/>;
-    //         count = <Text style={style.textHighlight}>{numberFormatter(data.dislike.length)}</Text>;
-    //     } else {
-    //         icon = <Icon style={style.icon} name="thumbs-down" size={15}/>;
-    //         count = <Text>{numberFormatter(data.dislike.length)}</Text>;
-    //     }
-
-    //     return (                    
-    //         <TouchableOpacity onPress={this.onClickDislike} style={style.iconGroup} >
-    //             {icon}
-    //             {count}
-    //         </TouchableOpacity>
-    //     );
-    // }
 }
 
 
@@ -168,7 +137,6 @@ const mapStateToProps = (state) => {
 const mapDispatchToProps = (dispatch) => {
     return {
 		commentLikeCall: (data) => dispatch(commentLikeCall(data)),
-		// commentDislikeCall: (data) => dispatch(commentDislikeCall(data))
 	}
 }
 

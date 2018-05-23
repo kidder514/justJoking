@@ -17,7 +17,6 @@ import { connect } from "react-redux";
 import Icon from 'react-native-vector-icons/Entypo';
 import { primaryColor, greyColor, whiteColor, blackColor } from '../../asset/style/common';
 import { numberFormatter } from '../../util/numberFormatter';
-// import { likeCall, dislikeCall } from "../../reducer/action/listAction";
 import { likeCall } from "../../reducer/action/listAction";
 import ImageViewer from 'react-native-image-zoom-viewer';
 import LazyImage from './LazyImage';
@@ -42,7 +41,6 @@ class ImageTile extends React.PureComponent {
             offset: undefined
         };
         this.onClickLike = this.onClickLike.bind(this);
-        // this.onClickDislike = this.onClickDislike.bind(this);
         this.onClickComment = this.onClickComment.bind(this);
         this.onClickShare = this.onClickShare.bind(this);
         this.onClickDownload = this.onClickDownload.bind(this);
@@ -81,15 +79,8 @@ class ImageTile extends React.PureComponent {
 
     onClickLike() {
         const { data, likeCall, auth } = this.props;
-        // if (data.dislike.indexOf(auth.uid) >= 0) return;
         likeCall(data);
     }
-
-    // onClickDislike() {
-    //     const { data, dislikeCall, auth } = this.props;
-    //     if (data.like.indexOf(auth.uid) >= 0) return;
-    //     dislikeCall(data);
-    // }
 
     onClickComment() {
         this.closeModal();
@@ -155,7 +146,6 @@ class ImageTile extends React.PureComponent {
                 {this.renderImages()}
                 <View style={style.tileBanner}>
                     {this.renderLike()}
-                    {/* {this.renderDislike()} */}
                     <TouchableOpacity onPress={() => this.onClickComment()} style={style.iconGroup} >
                         <Icon style={style.icon} name="typing" size={15} />
                         <Text>{numberFormatter(data.commentCount)}</Text>
@@ -350,27 +340,6 @@ class ImageTile extends React.PureComponent {
             </TouchableOpacity>
         );
     }
-
-    // renderDislike() {
-    //     const { data, auth } = this.props;
-    //     let icon;
-    //     let count;
-    //     const isDisliked = data.dislike.indexOf(auth.uid) >= 0;
-    //     if (isDisliked) {
-    //         icon = <Icon style={style.icon} name="thumbs-down" size={15} color={primaryColor} />;
-    //         count = <Text style={style.textHighlight}>{numberFormatter(data.dislike.length)}</Text>;
-    //     } else {
-    //         icon = <Icon style={style.icon} name="thumbs-down" size={15} />;
-    //         count = <Text>{numberFormatter(data.dislike.length)}</Text>;
-    //     }
-
-    //     return (
-    //         <TouchableOpacity onPress={this.onClickDislike} style={style.iconGroup} >
-    //             {icon}
-    //             {count}
-    //         </TouchableOpacity>
-    //     );
-    // }
 }
 
 const style = StyleSheet.create({
@@ -462,8 +431,7 @@ const mapStateToProps = (state) => {
 
 const mapDispatchToProps = (dispatch) => {
     return {
-        likeCall: (data) => dispatch(likeCall(data)),
-        // dislikeCall: (data) => dispatch(dislikeCall(data))
+        likeCall: (data) => dispatch(likeCall(data))
     }
 }
 

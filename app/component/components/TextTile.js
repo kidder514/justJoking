@@ -4,7 +4,6 @@ import { View, Text, StyleSheet, Image, TouchableOpacity} from 'react-native';
 import string from '../../localization/string';
 import { primaryColor, greyColor, whiteColor } from '../../asset/style/common';
 import Icon from 'react-native-vector-icons/Entypo';
-// import { likeCall, dislikeCall } from "../../reducer/action/listAction";
 import { likeCall } from "../../reducer/action/listAction";
 import { numberFormatter } from '../../util/numberFormatter';
 
@@ -13,22 +12,14 @@ class TextTile extends React.PureComponent {
         super(props);
 
         this.onClickLike = this.onClickLike.bind(this);
-        // this.onClickDislike = this.onClickDislike.bind(this);
         this.onClickComment = this.onClickComment.bind(this);
         this.onClickShare = this.onClickShare.bind(this);
     }
 
     onClickLike() {
         const { data, likeCall, auth } = this.props;
-        // if (data.dislike.indexOf(auth.uid) >= 0) return;
         likeCall(data);
     }
-
-    // onClickDislike() {
-    //     const { data, dislikeCall, auth } = this.props;
-    //     if (data.like.indexOf(auth.uid) >= 0) return;
-    //     dislikeCall(data);
-    // }
 
     onClickComment() {
         const { navigation, isOnDetailPage } = this.props;
@@ -69,7 +60,6 @@ class TextTile extends React.PureComponent {
                 </View>
                 <View style={style.tileBanner}>
                     {this.renderLike()}
-                    {/* {this.renderDislike()}                     */}
                     <TouchableOpacity style={style.iconGroup} onPress={() => this.onClickComment()}>
                         <Icon style={style.icon} name="typing" size={15}/>
                         <Text>{numberFormatter(data.commentCount)}</Text>
@@ -131,27 +121,6 @@ class TextTile extends React.PureComponent {
             </TouchableOpacity>
         );
     }
-
-    // renderDislike() {
-    //     const { data, auth } = this.props;
-    //     let icon;
-    //     let count;
-    //     const isDisliked = data.dislike.indexOf(auth.uid) >= 0;
-    //     if (isDisliked) {
-    //         icon = <Icon style={style.icon} name="thumbs-down" size={15} color={primaryColor}/>;
-    //         count = <Text style={style.textHighlight}>{numberFormatter(data.dislike.length)}</Text>;
-    //     } else {
-    //         icon = <Icon style={style.icon} name="thumbs-down" size={15}/>;
-    //         count = <Text>{numberFormatter(data.dislike.length)}</Text>;
-    //     }
-
-    //     return (                    
-    //         <TouchableOpacity onPress={this.onClickDislike} style={style.iconGroup} >
-    //             {icon}
-    //             {count}
-    //         </TouchableOpacity>
-    //     );
-    // }
 }
 
 
@@ -214,8 +183,7 @@ const mapStateToProps = (state) => {
 
 const mapDispatchToProps = (dispatch) => {
     return {
-		likeCall: (data) => dispatch(likeCall(data)),
-		// dislikeCall: (data) => dispatch(dislikeCall(data))
+		likeCall: (data) => dispatch(likeCall(data))
 	}
 }
 

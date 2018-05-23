@@ -50,10 +50,6 @@ export const updateLike = (post) => {
 	return { type: 'UPDATE_LIKE', payload: {post}}
 }
 
-// export const updateDislike = (post) => {
-// 	return { type: 'UPDATE_DISLIKE', payload: {post}}
-// }
-
 export const loadCommentUpStart = () => {
 	return { type: 'LOAD_COMMENT_UP_START' };
 }
@@ -97,10 +93,6 @@ export const cleanComment = () => {
 export const commentUpdateLike = (post) => {
 	return { type: 'COMMENT_UPDATE_LIKE', payload: post}
 }
-
-// export const commentUpdateDislike = (post) => {
-// 	return { type: 'COMMENT_UPDATE_DISLIKE', payload: post}
-// }
 
 export const ITEM_NUMBER_EACH_LOAD = 8;
 
@@ -203,7 +195,6 @@ function uploadPost(dispatch, state, images, thumbnails, text) {
 		authorTagline: state.Auth.tagline,
 		postType: 'image',
 		like:[],
-		// dislike: [],
 		share: 0,
 		commentCount: 0,
 		images,
@@ -239,7 +230,6 @@ export function textPostCall(text) {
 			authorTagline: getState().Auth.tagline,
 			postType: 'text',
 			like:[],
-			// dislike: [],
 			share: [],
 			tag: '',
 			commentCount: 0,
@@ -372,33 +362,6 @@ export function likeCall(data){
 	}
 }
 
-// export function dislikeCall(data) {
-// 	return (dispatch, getState) => {
-// 		const docRef = firebase.firestore().collection('posts').doc(data.id);
-// 		docRef.get()
-// 		.then(snapshot => {
-// 			if (snapshot.exists) {
-// 				const dislike = likeArrayProcessor(snapshot.data().dislike, getState().Auth.uid);
-// 				docRef.update({'dislike': dislike})
-// 				.then(() => {
-// 					let post = snapshot.data();
-// 					post.dislike = dislike;
-// 					dispatch(updateDislike(post));		
-// 				})
-// 				.catch((error) => {
-// 					console.log(error);
-// 					toastAndroid(string.ServerNotAbleToUpdatePost);	
-// 				})
-// 			} else {
-// 				toastAndroid(string.ServerPostDoesNotExist);	
-// 			}
-// 		})
-// 		.catch(error => {
-// 			toastAndroid(string.ServerPostDoesNotExist);
-// 		})
-// 	}
-// }
-
 export function loadCommentUpCall(id) {
 	return (dispatch, getState) => {
 		dispatch(cleanComment());
@@ -482,33 +445,6 @@ export function commentLikeCall(data){
 	}
 }
 
-// export function commentDislikeCall(data) {
-// 	return (dispatch, getState) => {
-// 		const docRef = firebase.firestore().collection('comments').doc(data.postId).collection('comments').doc(data.id);
-// 		docRef.get()
-// 		.then(snapshot => {
-// 			if (snapshot.exists) {
-// 				const dislike = likeArrayProcessor(snapshot.data().dislike, getState().Auth.uid);
-// 				docRef.update({'dislike': dislike})
-// 				.then(() => {
-// 					let post = snapshot.data();
-// 					post.dislike = dislike;
-// 					dispatch(commentUpdateDislike(post));		
-// 				})
-// 				.catch((error) => {
-// 					console.log(error);
-// 					toastAndroid(string.ServerNotAbleToUpdatePost);	
-// 				})
-// 			} else {
-// 				toastAndroid(string.ServerPostDoesNotExist);	
-// 			}
-// 		})
-// 		.catch(error => {
-// 			toastAndroid(string.ServerPostDoesNotExist);
-// 		})
-// 	}
-// }
-
 export function addCommentCall(data, comment) {
 	return (dispatch, getState) => {
 		dispatch(addCommentStart());	
@@ -521,8 +457,7 @@ export function addCommentCall(data, comment) {
 			authorPhoto: getState().Auth.photoURL,
 			creationTime: new Date().getTime(),	
 			comment,
-			like:[],
-			// dislike:[],
+			like:[]
 		}
 		docRef.doc(commentData.id).set(commentData)
 		.then(ref =>{

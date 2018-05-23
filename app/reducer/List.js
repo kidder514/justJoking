@@ -49,7 +49,6 @@ function List(state = initState, action) {
         case 'CLEAN_AUTHOR_LIST':
             return { ...state, authorList: []};    
         case 'UPDATE_LIKE':
-        // case 'UPDATE_DISLIKE':
             return Object.assign({}, state, reduceUpdateLikeDislike(action.payload.post, state));
         case "LOAD_COMMENT_UP_START":
             return { ...state, isCommentLoading: true};
@@ -77,7 +76,6 @@ function List(state = initState, action) {
         case "CLEAN_COMMENT_LIST":
             return { ...state, commentList: []};
         case "COMMENT_UPDATE_LIKE":
-        // case "COMMENT_UPDATE_DISLIKE":
             return { ...state, commentList: updateListLikeDislike(action.payload, state.commentList)};
 		default:
 			return state;
