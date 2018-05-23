@@ -87,7 +87,7 @@ const string = new LocalizedStrings({
 		ServerNotAbleToUpdatePost: 'Not able to update post',
 		ServerAddCommentSuccess: 'Your comment has been added',
 		ServerAddCommentFail: 'Adding comment failed',
-		LoadMore: 'Load More ...',
+		LoadMore: 'Press to Load More',
 // Image Tile List
 		LongImage: 'click to see more ...',
 		ImageHasBeenSaved: 'Image has been saved',

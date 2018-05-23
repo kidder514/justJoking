@@ -1,17 +1,14 @@
 ## Main tasks
 
 ### to be added
-- recheck the version check feature, because on production, it display update pop up all the time.
-- facebook large ad
-- use google ad as fallback
-- auto load bottom
+- to many gif slow down the performance
 - likes button too slow
-- after adding comment, it might take a while to show up
 - comment order by likes 
 - share button
-- dowload button 
-- search Page
-- Inbox
+- facebook large ad
+- use google ad as fallback
+- after adding comment, it might take a while to show up
+- dowload button
 - second layer commet
 
 ### Features in release 1.2.0
@@ -39,10 +36,13 @@
 ## Features in release 1.8.0
 - add IOS target
 
-### Planned Features
+### Features backlog
 - Link to webview
 - online user management
 - online forum
+- search Page
+- Inbox
+
 
 # Release Notes
 
@@ -78,3 +78,6 @@
 
 ## 0.12 release notes
 - add version display in setting page.
+- fix load bottom text
+- remove dislike button
+- 
