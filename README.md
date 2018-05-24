@@ -1,8 +1,9 @@
 ## Main tasks
 
 ### to be added
-- image list optimization
-- comment list optimization
+- 给占位灰色块上面添加图片
+- 刷新并且剪裁list的时候，会有跳动
+- donation
 - check if the sectionlist really have a good performace, if it is, make the list larger to reduce the api call times
 - likes button too slow
 - comment order by likes 

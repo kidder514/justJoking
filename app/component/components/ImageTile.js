@@ -58,22 +58,34 @@ class ImageTile extends React.PureComponent {
         }
     }
 
-    componentWillUpdate(nextProps) {
-        const { viewOffsetY } = this.props;
+    componentDidUpdate(prevProps) {
+        const { viewOffsetY, hasModalOpen } = this.props;
         const { shouldLoad, offset } = this.state;
 
-        if (!shouldLoad && viewOffsetY !== nextProps.viewOffsetY) {
-            if (offset && nextProps.viewOffsetY > (offset - screenHeight)) {
-                this.setState({ shouldLoad: true });
+        if (hasModalOpen && !prevProps.hasModalOpen) {
+            this.setState({ shouldLoad: false });            
+        } else if (!hasModalOpen && prevProps.hasModalOpen) {
+            this.setState({ shouldLoad: true });
+        }
+
+        if (prevProps.viewOffsetY !== viewOffsetY) {
+            if (!!offset) {
+                if (viewOffsetY > (offset + screenHeight * 0.4) || offset > (viewOffsetY + screenHeight)) {
+                    this.setState({ shouldLoad: false });
+                } else {
+                    this.setState({ shouldLoad: true });            
+                }
             }
         }
     }
 
     openModal(index) {
+        this.props.onModalOpen();
         this.setState({ isModalVisible: true, imageIndex: index });
     }
 
     closeModal() {
+        this.props.onModalClose();        
         this.setState({ isModalVisible: false, mageIndex: undefined });
     }
 

@@ -14,14 +14,25 @@ const AD_GAP = 5;
 class TileList extends React.PureComponent {
     constructor(props) {
         super(props);
-        this.handleScroll = this.handleScroll.bind(this)
         this.state = {
-            offsetY: 0
+            offsetY: 0,
+            hasModalOpen: false
         }
+        this.handleScroll = this.handleScroll.bind(this)
+        this.onModalOpen = this.onModalOpen.bind(this);
+        this.onModalClose = this.onModalClose.bind(this);        
     }
 
     handleScroll(event, node) {
         this.setState({ offsetY: event.nativeEvent.contentOffset.y });
+    }
+
+    onModalOpen() {
+        this.setState({hasModalOpen: true});
+    }
+
+    onModalClose() {
+        this.setState({hasModalOpen: false});
     }
 
     render() {
@@ -88,7 +99,7 @@ class TileList extends React.PureComponent {
 
     renderItem(item, index) {
         const { isProfilePage, navigate } = this.props;
-        const { offsetY } = this.state;
+        const { offsetY, hasModalOpen } = this.state;
 
         switch (item.postType) {
             case 'image':
@@ -98,6 +109,9 @@ class TileList extends React.PureComponent {
                     navigator={navigate}
                     isProfilePage={isProfilePage}
                     viewOffsetY={offsetY}
+                    hasModalOpen={hasModalOpen}
+                    onModalOpen={this.onModalOpen}
+                    onModalClose={this.onModalClose}
                 />;
             case 'text':
                 return <TextTile key={'index' + index} data={item} navigator={navigate} isProfilePage={isProfilePage} />;

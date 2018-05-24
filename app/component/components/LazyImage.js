@@ -2,7 +2,7 @@ import React from 'react';
 import { Dimensions, View } from 'react-native'
 import Image from 'react-native-image-progress';
 import ProgressCircle from 'react-native-progress/Circle';
-import { primaryColor } from '../../asset/style/common';
+import { primaryColor, greyColor } from '../../asset/style/common';
 
 const screenWidth = Dimensions.get('window').width
 const screenHeight = Dimensions.get('window').height
@@ -14,13 +14,7 @@ class LazyImage extends React.PureComponent {
         const placeholderSmallPath = require('../../asset/image/placeholdersmall.jpg');
         const placeholderLargePath = require('../../asset/image/placeholderlarge.jpg');
         return(
-            <View style={{height, width}}>
-                <Image 
-                    source={isSingleImage? placeholderSmallPath : placeholderLargePath}
-                    style={{height, width}}
-                    overflow='hidden'
-                    resizeMode={'cover'}
-                />
+            <View style={{height, width, backgroundColor: greyColor }}>
             </View>
         )
     }
