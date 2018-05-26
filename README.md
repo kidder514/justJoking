@@ -1,18 +1,16 @@
 ## Main tasks
 
 ### to be added
-- 给占位灰色块上面添加图片
-- 刷新并且剪裁list的时候，会有跳动
-- donation
-- check if the sectionlist really have a good performace, if it is, make the list larger to reduce the api call times
-- likes button too slow
-- comment order by likes 
 - facebook large ad
 - use google ad as fallback
+- 刷新并且剪裁list的时候，会有跳动
 - share button
+- donation
+- comment order by likes
 - after adding comment, it might take a while to show up
 - dowload button
-- second layer commet
+- likes button too slow
+- hide not displayed image after vertical sliding
 
 ### Features in release 1.2.0
 - push notification
@@ -45,7 +43,7 @@
 - online forum
 - search Page
 - Inbox
-
+- second layer commet
 
 # Release Notes
 
