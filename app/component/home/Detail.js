@@ -10,8 +10,7 @@ import { connect } from "react-redux";
 import { loadCommentUpCall, loadCommentBottomCall, addCommentCall } from '../../reducer/action/listAction';
 import CommentList from '../components/CommentList';
 import { toastAndroid } from '../../reducer/action/appAction';
-import { BannerView } from 'react-native-fbads';
-import Config from 'react-native-config'
+import AdBannerComponent from '../components/AdBannerComponent';
 
 class Detail extends React.PureComponent {
 	static navigationOptions = ({ navigation, navigationOptions }) => {
@@ -98,11 +97,7 @@ class Detail extends React.PureComponent {
 	renderAd() {
 		return (
 			<View style={style.adBanner}>
-				<BannerView
-					placementId={Config.fbPlacementId}
-					type="standard"
-					onError={(err) => console.log('error', err.nativeEvent)}
-				/>
+				<AdBannerComponent />
 			</View>
 		);
 	}
