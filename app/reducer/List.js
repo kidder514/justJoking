@@ -125,12 +125,12 @@ function handleListUp(newList, stateList) {
         return newList;
     } else {
         // if length < 20, add to the list first
-        // then only keep at most 50 element in the list 
+        // then only keep at config.listSizeLimit element in the list 
         let list = newList.concat(stateList)
-        if (list.length <= confg.listSizeLimit) {
+        if (list.length <= config.listSizeLimit) {
             return list
         } else {
-            list.splice(confg.listSizeLimit);
+            list.splice(config.listSizeLimit);
             return list
         }
     }
@@ -138,10 +138,10 @@ function handleListUp(newList, stateList) {
 
 function handleListDown(newList, stateList) {
     let list = stateList.concat(newList)
-    if (list.length <= confg.listSizeLimit) {
+    if (list.length <= config.listSizeLimit) {
         return list
     } else {
-        list.splice(0, list.length - confg.listSizeLimit)
+        list.splice(0, list.length - config.listSizeLimit)
         return list
     }
 }
