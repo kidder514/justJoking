@@ -1,8 +1,6 @@
 ## Main tasks
 
 ### to be added
-- facebook banner 
-- use google ad as fallback
 - 刷新并且剪裁list的时候，会有跳动
 - share button
 - see if you can add increase the limite of a list size

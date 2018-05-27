@@ -7,8 +7,7 @@ import { primaryColor } from '../../asset/style/common';
 import string from '../../localization/string';
 import EmptyListPage from '../components/EmptyListPage';
 import AdBannerComponent from './AdBannerComponent';
-
-const AD_GAP = 3;
+import config from '../../config';
 
 class TileList extends React.PureComponent {
     constructor(props) {
@@ -69,7 +68,7 @@ class TileList extends React.PureComponent {
         let dataAds = [];
         data.forEach((item, index) => {
             dataAds.push(this.renderItem(item, index));
-            if (index % AD_GAP === 0) {
+            if (index % config.adGap === 0) {
                 dataAds.push(
                     <View style={style.adBanner} key={'ad' + index}>
                         <AdBannerComponent/>

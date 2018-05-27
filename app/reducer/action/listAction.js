@@ -5,6 +5,7 @@ import string from '../../localization/string';
 import ImageResizer from 'react-native-image-resizer';
 import uuidv4 from 'uuid/v4';
 import { likeArrayProcessor } from './listActionUtil';
+import config from '../../config';
 
 export const addPost = (post) => {
 	return { type: 'ADD_POST', payload: post };
@@ -93,8 +94,6 @@ export const cleanComment = () => {
 export const commentUpdateLike = (post) => {
 	return { type: 'COMMENT_UPDATE_LIKE', payload: post}
 }
-
-export const ITEM_NUMBER_EACH_LOAD = 8;
 
 export function imagePostCall(text, images){
 	let imagesTemp = {};
@@ -273,7 +272,7 @@ export function loadListUpCall(listType = 'all', offsetTime, isMyList = false, u
 			listRef = listRef.where('creationTime', '>', offsetTime);
 		}
 
-		listRef.orderBy('creationTime', 'desc').limit(ITEM_NUMBER_EACH_LOAD).get()
+		listRef.orderBy('creationTime', 'desc').limit(config.itemNumberEachLoad).get()
 		.then(snapshot => {
 			let list = [];
 			if (snapshot.size <= 0) {
@@ -314,7 +313,7 @@ export function loadListDownCall(listType = 'all', offsetTime,  isMyList = false
 			listRef = listRef.where('creationTime', '<', offsetTime);
 		}
 
-		listRef.orderBy('creationTime', 'desc').limit(ITEM_NUMBER_EACH_LOAD).get()
+		listRef.orderBy('creationTime', 'desc').limit(config.itemNumberEachLoad).get()
 		.then(snapshot => {
 			let list = [];
 			if (snapshot.size <= 0) {
@@ -367,7 +366,7 @@ export function loadCommentUpCall(id) {
 		dispatch(cleanComment());
 		dispatch(loadCommentUpStart());
 		let listRef = firebase.firestore().collection('comments').doc(id).collection('comments');
-		listRef.orderBy('creationTime', 'desc').limit(ITEM_NUMBER_EACH_LOAD).get()
+		listRef.orderBy('creationTime', 'desc').limit(config.itemNumberEachLoad).get()
 		.then(snapshot => {
 			if (snapshot.size <= 0) {
 				toastAndroid(string.ServerNoMoreComment);
@@ -397,7 +396,7 @@ export function loadCommentBottomCall(id, offsetTime) {
 			listRef = listRef.where('creationTime', '<', offsetTime);
 		}
 
-		listRef.orderBy('creationTime', 'desc').limit(ITEM_NUMBER_EACH_LOAD).get()
+		listRef.orderBy('creationTime', 'desc').limit(config.itemNumberEachLoad).get()
 		.then(snapshot => {
 			if (snapshot.size <= 0) {
 				toastAndroid(string.ServerNoMoreComment);
