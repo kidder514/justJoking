@@ -3,6 +3,12 @@ import { Dimensions, View, Text } from 'react-native'
 import { primaryColor, greyColor, whiteColor } from '../../asset/style/common';
 import { BannerView } from 'react-native-fbads';
 import Config from 'react-native-config'
+import firebase from 'react-native-firebase';
+
+const Banner = firebase.admob.Banner;
+const AdRequest = firebase.admob.AdRequest;
+const request = new AdRequest();
+request.addKeyword('foobar');
 
 class AdBannerComponent extends React.PureComponent {
     constructor(props) {
@@ -30,12 +36,16 @@ class AdBannerComponent extends React.PureComponent {
                 />
             )
         } else {
-                return (
-                <View>
-                    <Text>{"google admob"}</Text>
-                </View>
-                )
+            return (
+                <Banner
+                    unitId={Config.gAdmobUnitId}
+                    size={"SMART_BANNER"}
+                    request={request.build()}
+                />
+            )
         }
     }
 }
+
+
 export default AdBannerComponent;

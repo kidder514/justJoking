@@ -73,12 +73,10 @@ class ImageTile extends React.PureComponent {
     }
 
     openModal(index) {
-        this.props.onModalOpen();
         this.setState({ isModalVisible: true, imageIndex: index });
     }
 
     closeModal() {
-        this.props.onModalClose();        
         this.setState({ isModalVisible: false, mageIndex: undefined });
     }
 

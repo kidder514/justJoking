@@ -8,7 +8,7 @@ import string from '../../localization/string';
 import EmptyListPage from '../components/EmptyListPage';
 import AdBannerComponent from './AdBannerComponent';
 
-const AD_GAP = 5;
+const AD_GAP = 3;
 
 class TileList extends React.PureComponent {
     constructor(props) {
