@@ -1,15 +1,14 @@
 ## Main tasks
 
 ### to be added
-- 刷新并且剪裁list的时候，会有跳动
 - share button
-- see if you can add increase the limite of a list size
-- donation
+- hide not displayed image after vertical sliding
+- 刷新并且剪裁list的时候，会有跳动
 - comment order by likes
 - after adding comment, it might take a while to show up
 - dowload button
 - likes button too slow
-- hide not displayed image after vertical sliding
+- image size in image gallery should be full width
 
 ### Features in release 1.2.0
 - push notification
@@ -80,4 +79,4 @@
 - add version display in setting page.
 - fix load bottom text
 - remove dislike button
-- 
+- add google admob ads as fallback
