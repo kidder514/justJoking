@@ -1,7 +1,9 @@
 ## Main tasks
 
 ### to be added
+- long image does not show up
 - share button
+- localization
 - hide not displayed image after vertical sliding
 - 刷新并且剪裁list的时候，会有跳动
 - comment order by likes
