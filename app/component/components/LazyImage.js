@@ -27,7 +27,7 @@ class LazyImage extends React.PureComponent {
         )
     }
     render() {
-        const { imageUrl, height, width, shouldLoad } = this.props;
+        const { imageUrl, height, width, shouldLoad, onImageLoad } = this.props;
         if (shouldLoad) {
             return <Image 
                 source={{uri: imageUrl}}
@@ -40,6 +40,7 @@ class LazyImage extends React.PureComponent {
                   borderWidth: 0,
                   color: primaryColor
                 }}
+                onLoad={onImageLoad}
             />
         }
         return this.renderPlaceholder()

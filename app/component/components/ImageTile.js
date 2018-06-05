@@ -47,6 +47,7 @@ class ImageTile extends React.PureComponent {
         this.openModal = this.openModal.bind(this);
         this.closeModal = this.closeModal.bind(this);
         this.onLayout = this.onLayout.bind(this);
+        this.onImageLoad = this.onImageLoad.bind(this);
     }
 
     componentDidMount() {
@@ -129,6 +130,16 @@ class ImageTile extends React.PureComponent {
                     .then(toastAndroid(string.ImageHasBeenSaved))
                     .catch(err => console.log('err:', err))
             });
+        });
+    }
+
+    onImageLoad = () => {
+        const { images } = this.props.data;
+        Image.getSize(images[0], (width, height) => {
+            const finalHeight = height/(width/screenWidth);
+            if (finalHeight > 2 * screenHeight) {
+                this.setState({isLongImage: true})
+            }
         });
     }
 
@@ -228,6 +239,7 @@ class ImageTile extends React.PureComponent {
                         imageUrl={imageUrl}
                         isSingleImage={true}
                         shouldLoad={shouldLoad}
+                        onImageLoad={this.onImageLoad}
                     />
                 </View>
             </TouchableHighlight>
