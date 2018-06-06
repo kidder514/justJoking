@@ -1,10 +1,12 @@
 ## Main tasks
 
 ### to be added
-- long image does not show up
+- optimise the image viewer
 - share button
 - localization
 - hide not displayed image after vertical sliding
+- try change app name
+- check all page and change them to scrollview
 - 刷新并且剪裁list的时候，会有跳动
 - comment order by likes
 - after adding comment, it might take a while to show up
@@ -82,3 +84,6 @@
 - fix load bottom text
 - remove dislike button
 - add google admob ads as fallback
+
+## 0.13 release notes
+- long image support message

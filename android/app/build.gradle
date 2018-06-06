@@ -163,6 +163,7 @@ android {
 }
 
 dependencies {
+    compile project(':react-native-photo-view')
     implementation project(':react-native-config')
     implementation(project(':react-native-fbads')){         
         exclude group: "com.google.android.gms" // very important

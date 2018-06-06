@@ -17,8 +17,8 @@ import { connect } from "react-redux";
 import Icon from 'react-native-vector-icons/Entypo';
 import { primaryColor, greyColor, whiteColor, blackColor } from '../../asset/style/common';
 import { numberFormatter } from '../../util/numberFormatter';
+import PhotoView from 'react-native-photo-view';
 import { likeCall } from "../../reducer/action/listAction";
-import ImageViewer from 'react-native-image-zoom-viewer';
 import LazyImage from './LazyImage';
 import RNFetchBlob from 'react-native-fetch-blob'
 import { toastAndroid } from '../../reducer/action/appAction';
@@ -292,17 +292,15 @@ class ImageTile extends React.PureComponent {
                 return { url: imageUrl };
             });
             return (
-                <ImageViewer
-                    imageUrls={images}
-                    index={this.state.imageIndex}
-                    maxOverflow={150}
-                    failImageSource={{ uri: require('../../asset/image/placeholdersmall.jpg') }}
-                    loadingRender={() => <ActivityIndicator style={style.galleryLoadingSpinner} size={30} color={primaryColor} />}
-                    onClick={() => this.closeModal()}
-                    renderImage={(props) => <Image {...props} resizeMode={'contain'} />}
-                    renderIndicator={() => { }}
-                    renderFooter={() => this.renderFooter()}
-                    backgroundColor={blackColor}
+                <PhotoView
+                    source={{uri: images[0].url}}
+                    minimumZoomScale={0.5}
+                    maximumZoomScale={4}
+                    androidScaleType="fitStart"
+                    onTap={() => this.closeModal()}
+                    onViewTap={() => this.closeModal()}
+                    style={{width: screenWidth, height: screenHeight}} 
+                    loadingIndicatorSource={<ActivityIndicator style={style.galleryLoadingSpinner} size={30} color={primaryColor} />}
                 />
             );
         } else {
