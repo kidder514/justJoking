@@ -17,7 +17,7 @@ import { connect } from "react-redux";
 import Icon from 'react-native-vector-icons/Entypo';
 import { primaryColor, greyColor, whiteColor, blackColor } from '../../asset/style/common';
 import { numberFormatter } from '../../util/numberFormatter';
-import PhotoView from 'react-native-photo-view';
+import ImageViewer from './ImageViewer'
 import { likeCall } from "../../reducer/action/listAction";
 import LazyImage from './LazyImage';
 import RNFetchBlob from 'react-native-fetch-blob'
@@ -170,13 +170,11 @@ class ImageTile extends React.PureComponent {
                     </TouchableOpacity> */}
                 </View>
                 {isModalVisible &&
-                    <Modal
-                        // visible={true}
-                        animationType={'fade'}
-                        onRequestClose={() => this.closeModal()}
-                    >
-                        {this.renderGallery()}
-                    </Modal>
+                    <ImageViewer 
+                        source={{uri: data.images[0]}}
+                        onClose={() => this.closeModal()}
+                        onClickComment={() => this.onClickComment()}
+                    />
                 }
             </View >
         );
@@ -286,53 +284,6 @@ class ImageTile extends React.PureComponent {
         );
     }
 
-    renderGallery() {
-        if (this.state.imageIndex !== undefined) {
-            const images = this.props.data.images.map((imageUrl) => {
-                return { url: imageUrl };
-            });
-            return (
-                <PhotoView
-                    source={{uri: images[0].url}}
-                    minimumZoomScale={0.5}
-                    maximumZoomScale={4}
-                    androidScaleType="fitStart"
-                    onTap={() => this.closeModal()}
-                    onViewTap={() => this.closeModal()}
-                    style={{width: screenWidth, height: screenHeight}} 
-                    loadingIndicatorSource={<ActivityIndicator style={style.galleryLoadingSpinner} size={30} color={primaryColor} />}
-                />
-            );
-        } else {
-            return undefined;
-        }
-    }
-
-    renderFooter() {
-        return (
-            <View style={style.galleryFooter}>
-                {/* <TouchableOpacity
-                    onPress={() => this.onClickDownload()}
-                    style={style.galleryButtonLeft}
-                >
-                    <Icon name="download" size={25} color={whiteColor} />
-                </TouchableOpacity> */}
-                {/* <TouchableOpacity
-                    onPress={() => this.onClickShare()}
-                    style={style.galleryButton}
-                >
-                    <Icon name="share" size={25} color={whiteColor} />
-                </TouchableOpacity> */}
-                <TouchableOpacity
-                    onPress={() => this.onClickComment()}
-                    style={style.galleryButton}
-                >
-                    <Icon name="typing" size={25} color={whiteColor} />
-                </TouchableOpacity>
-            </View>
-        )
-    }
-
     renderLike() {
         const { data, auth } = this.props;
         let icon;
@@ -413,27 +364,6 @@ const style = StyleSheet.create({
         position: 'absolute',
         right: 10
     },
-    galleryFooter: {
-        flexDirection: 'row',
-        alignItems: 'center',
-        justifyContent: 'flex-end',
-        height: 40,
-        paddingLeft: 30,
-        paddingRight: 30,
-        width: screenWidth,
-        backgroundColor: 'rgba(0,0,0, 0.6)',
-    },
-    galleryButton: {
-        marginLeft: 15
-    },
-    gallerRightFooter: {
-        flexDirection: 'row'
-    },
-    galleryLoadingSpinner: {
-        position: 'absolute',
-        left: screenWidth / 2 - 15,
-        top: screenHeight / 2 - 30
-    }
 });
 
 const mapStateToProps = (state) => {

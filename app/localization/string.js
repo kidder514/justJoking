@@ -92,6 +92,7 @@ const string = new LocalizedStrings({
 		LongImage: 'click to see more ...',
 		ImageHasBeenSaved: 'Image has been saved',
 		PostYourComment: "be the first one comment on this",
+		NoImageSource: "No Image Source",
 // Search
 		Search: 'Search',
 		TypeHere: 'Type here ...',

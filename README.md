@@ -1,7 +1,16 @@
 ## Main tasks
 
+
+### release Note
+- in android/app/build/gradle, change android.defaultConfig.versionName to the current version number
+- in android/app/build/gradle, change android.defaultConfig.versionCode to +1
+- in config.js file, change currentVersion to current version number
+- edit release note
+- run "npm run android-build:release" to build apk
+- upload APK to android developer console
+- after the update has appeared in app store, change the version number in firebase
+
 ### to be added
-- optimise the image viewer
 - share button
 - localization
 - hide not displayed image after vertical sliding
@@ -13,6 +22,8 @@
 - dowload button
 - likes button too slow
 - image size in image gallery should be full width
+- optimise things for tablet and bigger screen, now your icon and things looks tiny on them.
+- firebase -> production -> Cloud Firestore -> Set spending limits , check this out before it is too late
 
 ### Features in release 1.2.0
 - push notification
@@ -87,3 +98,4 @@
 
 ## 0.13 release notes
 - long image support message
+- optimise the image viewer
