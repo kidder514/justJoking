@@ -2,8 +2,8 @@
 
 
 ### release Note
-- in android/app/build/gradle, change android.defaultConfig.versionName to the current version number
-- in android/app/build/gradle, change android.defaultConfig.versionCode to +1
+- in android/app/build.gradle, change android.defaultConfig.versionName to the current version number
+- in android/app/build.gradle, change android.defaultConfig.versionCode to +1
 - in config.js file, change currentVersion to current version number
 - edit release note
 - run "npm run android-build:release" to build apk
