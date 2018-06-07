@@ -98,4 +98,6 @@
 
 ## 0.13 release notes
 - long image support message
-- optimise the image viewer
+- optimised the image viewer
+- comment page style fix
+- tagline display fix on auther page

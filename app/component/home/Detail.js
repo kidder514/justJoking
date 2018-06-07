@@ -179,7 +179,8 @@ const style = StyleSheet.create({
 		marginBottom: 10,
 		paddingLeft: 10,
 		paddingRight: 10,
-		paddingBottom: 20
+		paddingBottom: 20,
+		minHeight: 300
 	},
 	inputContainer: {		
 		backgroundColor: whiteColor,
@@ -193,6 +194,7 @@ const style = StyleSheet.create({
 		borderWidth:1,
 		borderColor: greyColor,
 		borderRadius: 5,
+		height: 50,
 		width: Dimensions.get('window').width - 70
 	},
 	submitButton: {

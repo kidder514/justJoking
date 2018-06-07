@@ -34,7 +34,7 @@ class AuthorProfile extends React.PureComponent {
 
 	renderUserInfo() {
 		const auth = this.props.navigation.state.params;
-		const tagline = auth.tagline.length > 0 ? auth.tagline.length : string.NoTagline;
+		const tagline = auth.tagline.length > 0 ? auth.tagline : string.NoTagline;
 		return (
 			<View style={style.headerContainer}>						
 				<View style={style.avatarWrapper}>
