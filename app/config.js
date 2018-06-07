@@ -1,6 +1,6 @@
 
 const config = {
-    currentVersion: 0.12,
+    currentVersion: 0.13,
     adGap: 3,
     itemNumberEachLoad: 10,
     listSizeLimit: 30,
