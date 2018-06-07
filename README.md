@@ -11,17 +11,16 @@
 - after the update has appeared in app store, change the version number in firebase
 
 ### to be added
+- long image can't display and is blured
 - share button
 - localization
 - hide not displayed image after vertical sliding
-- try change app name
 - check all page and change them to scrollview
 - 刷新并且剪裁list的时候，会有跳动
 - comment order by likes
 - after adding comment, it might take a while to show up
 - dowload button
 - likes button too slow
-- image size in image gallery should be full width
 - optimise things for tablet and bigger screen, now your icon and things looks tiny on them.
 - firebase -> production -> Cloud Firestore -> Set spending limits , check this out before it is too late
 
@@ -101,3 +100,7 @@
 - optimised the image viewer
 - comment page style fix
 - tagline display fix on auther page
+
+## 0.14 release notes
+- Change App Launcher name
+- Change developer name to company name

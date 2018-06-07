@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">JustJokes</string>
+    <string name="app_name">@string/appName</string>
     <string name="facebook_app_id">@string/facebookId</string>
     <string name="fb_login_protocol_scheme">@string/facebookLoginProtocolScheme</string>
 </resources>
