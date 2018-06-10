@@ -11,18 +11,33 @@
 - after the update has appeared in app store, change the version number in firebase
 
 ### to be added
+- remove all the section and leave only one
+- add translation
 - long image can't display and is blured
+- why fb ads has no impression
 - share button
 - localization
-- hide not displayed image after vertical sliding
+- video 
 - check all page and change them to scrollview
 - 刷新并且剪裁list的时候，会有跳动
 - comment order by likes
-- after adding comment, it might take a while to show up
 - dowload button
 - likes button too slow
 - optimise things for tablet and bigger screen, now your icon and things looks tiny on them.
 - firebase -> production -> Cloud Firestore -> Set spending limits , check this out before it is too late
+- deep link to content that can lead user to post's detail page
+
+### ASO tasks
+- localization app - for all other language
+- google tag manager
+- get your app indexed by google
+- google firebase index to display your app in google search
+- 找地方发你的app链接来找人下载
+- create video for free www.powtoon.com
+- ask category manager to let them add your app to featured list
+- find publish partner
+- rater.localytics.com
+- free aso cheat sheet j.mp/freeASO
 
 ### Features in release 1.2.0
 - push notification
