@@ -11,12 +11,12 @@
 - after the update has appeared in app store, change the version number in firebase
 
 ### to be added
-- remove all the section and leave only one
+- check update pop up and see if it works
 - add translation
 - long image can't display and is blured
+- tabbar "home" and "profile" not updated
 - why fb ads has no impression
 - share button
-- localization
 - video 
 - check all page and change them to scrollview
 - 刷新并且剪裁list的时候，会有跳动
@@ -119,3 +119,5 @@
 ## 0.14 release notes
 - Change App Launcher name
 - Change developer name to company name
+- localization feature added
+- remove all the section and leave only one
