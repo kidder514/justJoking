@@ -46,6 +46,13 @@ export const updatePhoto = (photo) => {
 	}
 }
 
+export const updateLanguage = (langCode) => {
+	return {
+		type: 'UPDATE_LANGUAGE',
+		payload: langCode
+	}
+}
+
 export function signUpWithEmailCall(name, email, password){
 	return dispatch => {
 		dispatch(loadOn(string.LoadingSigningUp));

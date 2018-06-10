@@ -1,4 +1,4 @@
-const en = {
+const zhWT = {
 // app 
 		LaunchingApp: 'Launching app',
 		ServerCannotLoadSystemConfig: 'Cannot load system configuration, please check your internet and try again later',
@@ -13,6 +13,7 @@ const en = {
 		ServerNotAbleToInit: 'Not able to initialize the app, please check you network and try again.',
 		CantOpenDeepLink: "Can't open deep link.",
 		CurrentVersion: 'Current Version',
+		ChangeLanguage: 'Change Language',
 // common
 		Back: "Back",
 		Cancel: 'Cancel',
@@ -44,7 +45,6 @@ const en = {
 		EnterEmail: 'Your E-mail Address ...',
 		EnterPassword: 'Your Password ...',
 		AgreeWithPolicy: 'By using this app, you agree with our policy',
-		signInWith: 'Or you can sign in with',
 		EmailEmpty: "Dont't forget your e-mail address",
 		PasswordEmpty: 'Seems you forgot to enter a password',
 		EmailInvalid: "Uhm, This e-mail doesn't look right.",
@@ -155,4 +155,4 @@ const en = {
 		PermissionWriteExternalStorageRequired: 'Please grant this app write permission to storage',
 	};
 
-export default en;
+export default zhWT;

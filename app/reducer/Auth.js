@@ -1,6 +1,7 @@
 
 const initState = {
 	isSignedIn: false,
+	language: '',
 }
 
 function Auth(state = initState, action) {
@@ -13,13 +14,15 @@ function Auth(state = initState, action) {
 				...action.payload,
 			};
 		case 'SIGNOUT':
-			return initState;
+			return { ...initState, language: state.language};
 		case 'UPDATE_NAME':
 			return { ...state, name: action.payload };
 		case 'UPDATE_TAGLINE':
 			return { ...state, tagline: action.payload };
 		case 'UPDATE_PHOTO':
 			return { ...state, photoURL: action.payload };
+		case 'UPDATE_LANGUAGE':
+			return { ...state, language: action.payload };
 		default:
 			return state;
 	}

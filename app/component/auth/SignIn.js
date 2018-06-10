@@ -1,9 +1,8 @@
 import React from 'react';
 import { connect } from "react-redux";
-import { StyleSheet, Text, TextInput, Button, Image, View } from 'react-native';
-import { NavigationActions } from 'react-navigation';
+import { StyleSheet, Text, TextInput, Button, Image, View, Picker } from 'react-native';
 import string from '../../localization/string';
-import { signInWithEmailCall, signInWithSocialCall } from '../../reducer/action/authAction';
+import { signInWithEmailCall, signInWithSocialCall, updateLanguage } from '../../reducer/action/authAction';
 import { primaryColor, greyColor, warningColor, whiteColor } from '../../asset/style/common';
 import Icon from 'react-native-vector-icons/Entypo';
 import validator from 'validator';
@@ -18,6 +17,7 @@ const initState = {
 	password: "",
 	errorPassword: "",
 	error: "",
+	langCode: string.getLanguage(),
 }
 
 class SignIn extends React.PureComponent {
@@ -30,6 +30,7 @@ class SignIn extends React.PureComponent {
 		this.facebookSignIn = this.facebookSignIn.bind(this);
 		this.twitterSignIn = this.twitterSignIn.bind(this);
 		this.navigateTo = this.navigateTo.bind(this);
+		this.onSelectLang = this.onSelectLang.bind(this);
 	}
 
 	submit() {
@@ -101,6 +102,15 @@ class SignIn extends React.PureComponent {
 		navigate(screen);
 	}
 
+	onSelectLang = (langCode) => {
+		this.setState({ langCode });
+		if (string.getAvailableLanguages().indexOf(langCode) !== -1) {
+			const { updateLanguage } = this.props;
+			updateLanguage(langCode);
+			string.setLanguage(langCode);
+		}
+	}
+
 	render() {
 		return (
 			<View style={style.container}>
@@ -160,9 +170,38 @@ class SignIn extends React.PureComponent {
 					<Icon onPress={this.googleSignIn} name="google--with-circle" size={30} color={primaryColor} />
 					<Icon onPress={this.facebookSignIn} name="facebook-with-circle" size={30} color={primaryColor} />
 				</View>
+				<View style={style.langPickerContainer}>
+					<View style={style.langPickerLabelContainer}>
+						<Icon name="language" size={20} color={primaryColor} style={{paddingRight: 10}}/>
+						<Text>
+							{string.ChangeLanguage}
+						</Text>
+					</View>
+					{this.renderLangPicker()}
+				</View>
 			</View>
 		);
 	}
+
+	renderLangPicker() {
+		const { langCode } = this.state;
+		const availableLang = string.getAvailableLanguages();
+		const langPickers = availableLang.map((langCode, index) => {
+			return <Picker.Item label={string[langCode]} value={langCode} key={'language-index-' + index}/>
+		});
+		
+		return (
+			<Picker
+				selectedValue={langCode}
+				style={{ height: 50, width: 200 }}
+				onValueChange={(langCode, index) => this.onSelectLang(langCode)}
+				mode='dialog'
+			>
+				{langPickers}
+			</Picker>
+		)
+	}
+
 }
 
 const style = StyleSheet.create({
@@ -171,6 +210,15 @@ const style = StyleSheet.create({
 		justifyContent: 'center',
 		alignItems: 'center',
 		backgroundColor: whiteColor,
+	},
+	langPickerContainer: {
+		flexDirection: 'column',
+		alignItems: 'center',
+		marginTop: 30,
+		marginBottom: 10,
+	},
+	langPickerLabelContainer: {
+		flexDirection: 'row',
 	},
 	logo: {
 		width: 100,
@@ -228,7 +276,8 @@ const mapStateToProps = (state) => {
 const mapDispatchToProps = (dispatch) => {
 	return {
 		signInWithEmailCall: (email, password) => {dispatch(signInWithEmailCall(email, password))},
-		signInWithSocialCall: (credential) => {dispatch(signInWithSocialCall(credential))}
+		signInWithSocialCall: (credential) => {dispatch(signInWithSocialCall(credential))},
+		updateLanguage: (langCode) => {dispatch(updateLanguage(langCode))}
 	};
 };
 

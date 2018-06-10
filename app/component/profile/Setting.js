@@ -1,23 +1,24 @@
 import React from 'react';
 import { connect } from "react-redux";
-import { View, Text, Button, StyleSheet, ScrollView, Clipboard, Alert, Linking } from 'react-native';
+import { View, Text, StyleSheet, ScrollView, Alert, Linking, Picker } from 'react-native';
 import { whiteColor, primaryColor, greyColor } from '../../asset/style/common';
 import string from '../../localization/string';
-import { signOutCall, updatePhotoCall } from '../../reducer/action/authAction';
+import { signOutCall, updatePhotoCall, updateLanguage } from '../../reducer/action/authAction';
 import { checkVersionCall } from '../../reducer/action/appAction';
-import { Avatar, List, ListItem, CheckBox } from 'react-native-elements';
+import { Avatar, List, ListItem } from 'react-native-elements';
 import Icon from 'react-native-vector-icons/Entypo';
 import config from '../../config';
 
 class Setting extends React.PureComponent {
 	constructor(props) {
 		super(props);
-	}
+		this.state = {
+			langCode: string.getLanguage(),
+		};
 
-	onUpdatePress() {
-		Linking.openURL(config.playStoreUrl).catch(err => 
-			toastAndroid(string.CantOpenDeepLink)			
-		);
+		this.checkUpdate = this.checkUpdate.bind(this);
+		this.onUpdatePress = this.onUpdatePress.bind(this);
+		this.onSelectLang = this.onSelectLang.bind(this);
 	}
 
 	componentDidUpdate(prevProps) {
@@ -30,7 +31,7 @@ class Setting extends React.PureComponent {
 					string.HasNewerVersion,
 					string.GoToAppStoreMessage,
 					[
-						{text: string.GoToAppStore, onPress: this.onUpdatePress.bind(this)},
+						{text: string.GoToAppStore, onPress: this.onUpdatePress},
 						{text: string.Cancel}
 					]
 				)
@@ -47,9 +48,24 @@ class Setting extends React.PureComponent {
 	
 	}
 
+	onUpdatePress() {
+		Linking.openURL(config.playStoreUrl).catch(err => 
+			toastAndroid(string.CantOpenDeepLink)			
+		);
+	}
+
 	checkUpdate = () => {
 		const { checkVersionCall } = this.props;
 		checkVersionCall();
+	}
+
+	onSelectLang = (langCode) => {
+		this.setState({ langCode });
+		if (string.getAvailableLanguages().indexOf(langCode) !== -1) {
+			const { updateLanguage } = this.props;
+			updateLanguage(langCode);
+			string.setLanguage(langCode);
+		}
 	}
 
 	render() {
@@ -163,7 +179,7 @@ class Setting extends React.PureComponent {
 						avatar={<Icon name="ccw" size={20} color={primaryColor} />}
 						titleStyle={style.title}
 						title={string.CheckAppUpdates}
-						onPress={this.checkUpdate.bind(this)}
+						onPress={this.checkUpdate}
 					/>
 					<ListItem
 						avatar={<Icon name="open-book" size={20} color={primaryColor} />}
@@ -178,11 +194,39 @@ class Setting extends React.PureComponent {
 						title={string.SignOut}
 					/>
 				</List>
+				<View style={style.langPickerContainer}>
+					<View style={style.langPickerLabelContainer}>
+						<Icon name="language" size={20} color={primaryColor} style={{paddingRight: 10}}/>
+						<Text>
+							{string.ChangeLanguage}
+						</Text>
+					</View>
+					{this.renderLangPicker()}
+				</View>
 				<View style={style.version}>
 					<Text>{string.CurrentVersion + ': ' + config.currentVersion}</Text>
 				</View>
 			</ScrollView>
 		);
+	}
+
+	renderLangPicker() {
+		const { langCode } = this.state;
+		const availableLang = string.getAvailableLanguages();
+		const langPickers = availableLang.map((code, index) => {
+			return <Picker.Item label={string[code]} value={code} key={'language-index-' + index}/>
+		});
+		
+		return (
+			<Picker
+				selectedValue={langCode}
+				style={{ height: 50, width: 200 }}
+				onValueChange={(code, index) => this.onSelectLang(code)}
+				mode='dialog'
+			>
+				{langPickers}
+			</Picker>
+		)
 	}
 }
 
@@ -197,6 +241,22 @@ const style = StyleSheet.create({
 		paddingLeft: 20,
 		borderBottomWidth: 1,
 		borderBottomColor: greyColor
+	},
+	langPickerContainer: {
+		justifyContent: 'space-between',
+		flexDirection: 'row',
+		alignItems: 'center',
+		paddingLeft: 10,
+		marginTop: 20,
+		marginBottom: 20,
+		backgroundColor: whiteColor,
+		borderBottomWidth: 1,
+		borderBottomColor: greyColor,
+		borderTopWidth: 1,
+		borderTopColor: greyColor
+	},
+	langPickerLabelContainer: {
+		flexDirection: 'row',
 	},
 	// TODO inbox feature to be implemented.
 	// checkBoxGroup: {
@@ -236,7 +296,8 @@ const style = StyleSheet.create({
 const mapStateToProps = (state) => {
 	return {
 		auth: state.Auth,
-		config: state.App
+		config: state.App,
+		language: state.Auth.language
 	}
 }
 
@@ -244,7 +305,8 @@ const mapDispatchToProps = (dispatch) => {
 	return {
 		signOutCall: () => { dispatch(signOutCall())},
 		updatePhotoCall: () => { dispatch(updatePhotoCall())},
-		checkVersionCall: () => { dispatch(checkVersionCall())}
+		checkVersionCall: () => { dispatch(checkVersionCall())},
+		updateLanguage: (langCode) => {dispatch(updateLanguage(langCode))}
 	};
 };
 

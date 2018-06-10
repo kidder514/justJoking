@@ -1,22 +1,18 @@
 import React from 'react';
-import PropTypes from 'prop-types';
 import SplashScreen from 'react-native-splash-screen';
 import { connect } from 'react-redux';
 import { Text } from 'react-native-elements'
 import { init } from './reducer/action/appAction';
 import {
-	NavigationActions,
 	TabNavigator,
 	StackNavigator,
 	TabBarBottom,
 	TabBarTop,
-	DrawerNavigator,
-	HeaderBackButton,
 } from 'react-navigation';
 import { View, ActivityIndicator, StyleSheet, Dimensions, Button, Alert, Linking } from 'react-native';
 import getSlideFromRightTransition from 'react-navigation-slide-from-right-transition';
 import string from './localization/string';
-import { primaryColor, greyColor, whiteColor, textColor, blackColor } from './asset/style/common';
+import { primaryColor, whiteColor, textColor } from './asset/style/common';
 import Icon from 'react-native-vector-icons/Entypo';
 import config from './config';
 
@@ -26,9 +22,6 @@ import SignIn from './component/auth/SignIn';
 import SignUp from './component/auth/SignUp';
 import TermCondition from './component/profile/TermCondition';
 
-import Search from './component/search/Search';
-import Inbox from './component/inbox/Inbox';
-
 import Profile from './component/profile/Profile';
 import AuthorProfile from './component/profile/AuthorProfile';
 import Setting from './component/profile/Setting';
@@ -36,10 +29,7 @@ import UserNameSetting from './component/profile/UserNameSetting';
 import TaglineSetting from './component/profile/TaglineSetting';
 import Help from './component/profile/Help';
 
-// import FollowedList from './component/home/FollowedList';
 import HotList from './component/home/HotList';
-import ImageList from './component/home/ImageList';
-import TextList from './component/home/TextList';
 import Post from './component/home/Post';
 import Detail from './component/home/Detail';
 
@@ -73,14 +63,11 @@ const PostNavigator = StackNavigator(
 
 const HomePrimaryNavigator = TabNavigator(
 	{
-		// Followed: { screen: FollowedList },
 		Hot: { screen: HotList,
 			navigationOptions: ({ navigation }) => ({
 				title: string.Hot
 			})
-		},
-		Image: { screen: ImageList },
-		Text: { screen: TextList },
+		}
 	}, {
 		tabBarComponent: TabBarTop,
 		tabBarPosition: 'top',
@@ -118,23 +105,6 @@ const HomeNavigator = StackNavigator(
 		AuthorProfile: {
 			screen: AuthorProfile,
 			navigationOptions: ({ navigation }) => ({
-				// TODO share authr profile
-				// headerRight:
-				// 	<Text
-				// 		style={{
-				// 			backgroundColor: primaryColor,
-				// 			color: whiteColor,
-				// 			paddingTop: 5,
-				// 			paddingBottom: 5,
-				// 			paddingRight: 10,
-				// 			paddingLeft: 10,
-				// 			marginRight: 20,
-				// 			justifyContent: 'center',
-				// 			alignItems: 'center'
-				// 		}}
-				// 	>
-				// 		{string.Share}
-				// 	</Text>,
 				tabBarVisible: false,
 				headerStyle: {
 					height: 40,
@@ -166,23 +136,6 @@ const ProfileNavigator = StackNavigator(
 		Profile: {
 			screen: Profile,
 			navigationOptions: ({ navigation }) => ({
-				// TODO share auther profile
-				// headerRight:
-				// 	<Text
-				// 		style={{
-				// 			backgroundColor: primaryColor,
-				// 			color: whiteColor,
-				// 			paddingTop: 5,
-				// 			paddingBottom: 5,
-				// 			paddingRight: 10,
-				// 			paddingLeft: 10,
-				// 			marginRight: 20,
-				// 			justifyContent: 'center',
-				// 			alignItems: 'center'
-				// 		}}
-				// 	>
-				// 		{string.Share}
-				// 	</Text>,
 				headerStyle: {
 					height: 40,
 				},
@@ -322,17 +275,6 @@ const MainNavigator = TabNavigator(
 				)
 			}
 		},
-		// Search: {
-		// 	screen: Search,
-		// 	navigationOptions: {
-		// 		title: string.Search,
-		// 		tabBarIcon: ({ focused, tintColor }) => (
-		// 			focused ?
-		// 				<Icon name="magnifying-glass" size={30} color={primaryColor} /> :
-		// 				<Icon name="magnifying-glass" size={30} color={tintColor} />
-		// 		)
-		// 	}
-		// },
 		Post: {
 			screen: PostNavigator,
 			navigationOptions: {
@@ -344,17 +286,6 @@ const MainNavigator = TabNavigator(
 				),
 			}
 		},
-		// Inbox: {
-		// 	screen: Inbox,
-		// 	navigationOptions: {
-		// 		title: string.Inbox,
-		// 		tabBarIcon: ({ focused, tintColor }) => (
-		// 			focused ?
-		// 				<Icon name="message" size={30} color={primaryColor} /> :
-		// 				<Icon name="message" size={30} color={tintColor} />
-		// 		)
-		// 	}
-		// },
 		Profile: {
 			screen: ProfileNavigator,
 			navigationOptions: {
@@ -383,8 +314,10 @@ const MainNavigator = TabNavigator(
 
 class App extends React.PureComponent {
 	componentDidMount() {
-		const { init } = this.props;
+		const { init, language } = this.props;
 		SplashScreen.hide();
+		if (language !== '') { string.setLanguage(language); }
+
 		init();
 	}
 
@@ -513,7 +446,8 @@ const mapStateToProps = state => ({
 	isSignedIn: state.Auth.isSignedIn,
 	isLoading: state.Ui.isLoading,
 	loadingText: state.Ui.loadingText,
-	config: state.App
+	config: state.App,
+	language: state.Auth.language
 });
 
 const mapDispatchToProps = (dispatch) => {
