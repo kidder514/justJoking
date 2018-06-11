@@ -1,6 +1,5 @@
 ## Main tasks
 
-
 ### release Note
 - in android/app/build.gradle, change android.defaultConfig.versionName to the current version number
 - in android/app/build.gradle, change android.defaultConfig.versionCode to +1
@@ -11,33 +10,31 @@
 - after the update has appeared in app store, change the version number in firebase
 
 ### to be added
-- check update pop up and see if it works
-- add translation
-- long image can't display and is blured
+- share button
+- dowload button
+- comment order by likes
+- likes button too slow
+- 刷新并且剪裁list的时候，会有跳动
+- add notification
+- check all page and change them to scrollview
+- super long image can't display and is blured
 - tabbar "home" and "profile" not updated
 - why fb ads has no impression
-- share button
 - video 
-- check all page and change them to scrollview
-- 刷新并且剪裁list的时候，会有跳动
-- comment order by likes
-- dowload button
-- likes button too slow
 - optimise things for tablet and bigger screen, now your icon and things looks tiny on them.
 - firebase -> production -> Cloud Firestore -> Set spending limits , check this out before it is too late
 - deep link to content that can lead user to post's detail page
 
 ### ASO tasks
 - localization app - for all other language
-- google tag manager
-- get your app indexed by google
-- google firebase index to display your app in google search
 - 找地方发你的app链接来找人下载
 - create video for free www.powtoon.com
 - ask category manager to let them add your app to featured list
 - find publish partner
 - rater.localytics.com
 - free aso cheat sheet j.mp/freeASO
+- google firebase index to display your app in google search
+
 
 ### Features in release 1.2.0
 - push notification
@@ -121,3 +118,4 @@
 - Change developer name to company name
 - localization feature added
 - remove all the section and leave only one
+- add traditional Chinese and simplified Chinese translation

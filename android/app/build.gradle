@@ -103,8 +103,8 @@ android {
         applicationId "com.justjokes"
         minSdkVersion 16
         targetSdkVersion 26
-        versionCode 4
-        versionName "0.13"
+        versionCode 5
+        versionName "0.14"
         multiDexEnabled true
         vectorDrawables.useSupportLibrary = true
         ndk {
