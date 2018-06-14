@@ -14,6 +14,7 @@ const zhWT = {
 	CantOpenDeepLink: "無法打開應用商店鏈接",
 	CurrentVersion: '當前版本',
 	ChangeLanguage: '選擇語言',
+	FromFunnyThings: '來自搞笑東西APP ...',
 	// common
 	Back: "後退",
 	Cancel: '取消',
@@ -87,6 +88,7 @@ const zhWT = {
 	// Image Tile List
 	LongImage: '點擊查看全圖',
 	ImageHasBeenSaved: '圖片已保存',
+	ImageSavingFailed: '圖片保存失敗',
 	PostYourComment: "爭做第一個評論的人",
 	NoImageSource: "無圖片資源",
 	// Search

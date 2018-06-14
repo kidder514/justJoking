@@ -14,6 +14,7 @@ const enAU = {
 		CantOpenDeepLink: "Can't open deep link.",
 		CurrentVersion: 'Current Version',
 		ChangeLanguage: 'Change Language',
+		FromFunnyThings: 'from Funny Things App ...',
 // common
 		Back: "Back",
 		Cancel: 'Cancel',
@@ -87,6 +88,7 @@ const enAU = {
 // Image Tile List
 		LongImage: 'click to see more ...',
 		ImageHasBeenSaved: 'Image has been saved',
+		ImageSavingFailed: 'Failed to save image',
 		PostYourComment: "be the first one comment on this",
 		NoImageSource: "No Image Source",
 // Search

@@ -14,6 +14,7 @@ const zhCN = {
 		CantOpenDeepLink: "无法打开应用商店链接",
 		CurrentVersion: '当前版本',
 		ChangeLanguage: '选择语言',
+		FromFunnyThings: '来自搞笑东西APP...',
 // common
 		Back: "后退",
 		Cancel: '取消',
@@ -87,6 +88,7 @@ const zhCN = {
 // Image Tile List
 		LongImage: '点击查看全图',
 		ImageHasBeenSaved: '图片已保存',
+		ImageSavingFailed: '图片保存失败',
 		PostYourComment: "争做第一个评论的人",
 		NoImageSource: "无图片资源",
 // Search

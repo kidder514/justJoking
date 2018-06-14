@@ -25,7 +25,7 @@ class ImageViewer extends React.PureComponent {
             content = this.renderPhotoView();
         }
         
-        const { onTap, onViewTap, onClose } = this.props;
+        const { onClose } = this.props;
         return (         
             <Modal
                 animationType={'fade'}
@@ -67,12 +67,7 @@ class ImageViewer extends React.PureComponent {
         const { onClickComment } = this.props;
         return (
             <View style={style.galleryFooter}>
-                {/* <TouchableOpacity
-                    onPress={() => this.onClickDownload()}
-                    style={style.galleryButtonLeft}
-                >
-                    <Icon name="download" size={25} color={whiteColor} />
-                </TouchableOpacity> */}
+                {this.renderDownloadButton()}
                 {/* <TouchableOpacity
                     onPress={() => this.onClickShare()}
                     style={style.galleryButton}
@@ -83,10 +78,27 @@ class ImageViewer extends React.PureComponent {
                     onPress={() => onClickComment()}
                     style={style.galleryButton}
                 >
-                    <Icon name="typing" size={25} color={whiteColor} />
+                    <Icon name="typing" size={35} color={whiteColor} />
                 </TouchableOpacity>
             </View>
         )
+    }
+
+    renderDownloadButton() {
+        const { isDownloading, onClickDownload } = this.props;
+
+        if (isDownloading) {
+            return <ActivityIndicator size="small" color={whiteColor} />;
+        } else {
+            return (
+                <TouchableOpacity
+                    onPress={() => onClickDownload()}
+                    style={style.galleryButtonLeft}
+                >
+                    <Icon name="download" size={35} color={whiteColor} />
+                </TouchableOpacity>
+            )
+        }
     }
 }
 
@@ -114,14 +126,14 @@ const style = StyleSheet.create({
         justifyContent: 'flex-end',
         position: 'absolute',
         bottom: 0,
-        height: 40,
+        height: 50,
         paddingLeft: 30,
         paddingRight: 30,
         width: screenWidth,
         backgroundColor: 'rgba(0,0,0, 0.6)',
     },
     galleryButton: {
-        marginLeft: 15
+        marginLeft: 20
     },
     gallerRightFooter: {
         flexDirection: 'row'

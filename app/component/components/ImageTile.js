@@ -5,17 +5,14 @@ import {
     Image,
     StyleSheet,
     Dimensions,
-    Modal,
-    Button,
     TouchableHighlight,
     TouchableOpacity,
-    ActivityIndicator,
     CameraRoll
 } from 'react-native';
 import string from '../../localization/string';
 import { connect } from "react-redux";
 import Icon from 'react-native-vector-icons/Entypo';
-import { primaryColor, greyColor, whiteColor, blackColor } from '../../asset/style/common';
+import { primaryColor, whiteColor } from '../../asset/style/common';
 import { numberFormatter } from '../../util/numberFormatter';
 import ImageViewer from './ImageViewer'
 import { likeCall } from "../../reducer/action/listAction";
@@ -23,6 +20,8 @@ import LazyImage from './LazyImage';
 import RNFetchBlob from 'react-native-fetch-blob'
 import { toastAndroid } from '../../reducer/action/appAction';
 import { requestExternalStoragePermission } from '../../util/permission';
+import Share from 'react-native-share';
+import { loadEnd, loadOn } from '../../reducer/action/uiAction';
 
 const imageBorderWidth = 1;
 const screenWidth = Dimensions.get('window').width
@@ -38,7 +37,9 @@ class ImageTile extends React.PureComponent {
             isModalVisible: false,
             imageIndex: undefined,
             shouldLoad: false,
-            offset: undefined
+            offset: undefined,
+            imagePath: '',
+            isDownloading: false
         };
         this.onClickLike = this.onClickLike.bind(this);
         this.onClickComment = this.onClickComment.bind(this);
@@ -48,6 +49,8 @@ class ImageTile extends React.PureComponent {
         this.closeModal = this.closeModal.bind(this);
         this.onLayout = this.onLayout.bind(this);
         this.onImageLoad = this.onImageLoad.bind(this);
+        this.onDownloadOn = this.onDownloadOn.bind(this);
+        this.onDownloadEnd = this.onDownloadEnd.bind(this);
     }
 
     componentDidMount() {
@@ -61,7 +64,7 @@ class ImageTile extends React.PureComponent {
 
     componentDidUpdate(prevProps) {
         const { viewOffsetY } = this.props;
-        const { shouldLoad, offset } = this.state;
+        const { offset } = this.state;
         if (prevProps.viewOffsetY !== viewOffsetY) {
             if (offset != undefined) {
                 if ((offset + screenHeight * 0.4) >= viewOffsetY && offset <= (viewOffsetY + screenHeight)) {
@@ -112,25 +115,104 @@ class ImageTile extends React.PureComponent {
         this.setState({ offset: event.nativeEvent.layout.y });
     }
 
-    onClickShare() {
+    onDownloadOn() {
+        this.setState({ isDownloading: true });
+    }
 
+    onDownloadEnd() {
+        this.setState({ isDownloading: false });
+    }
+
+    onClickShare() {
+        const { data } = this.props;
+        let imageUrl = data.images[0].toLowerCase();
+        let fileExtension;
+        if (imageUrl.indexOf('gif') !== -1) {
+            fileExtension = "gif";
+        } else if(imageUrl.indexOf('jpg') !== -1 || imageUrl.indexOf('jpeg') !== -1) {
+            fileExtension = "jpg";
+        } else if (imageUrl.indexOf('png') !== -1) {
+            fileExtension = "png";
+        } else {
+            fileExtension = "png";
+        }
+
+        let shareOptions = {
+            title: string.FromFunnyThings,
+            message: string.FromFunnyThings,
+            url: "data:image/" + fileExtension + ";base64,<base64_data>",
+            
+            subject: string.FromFunnyThings //  for email
+          };
+
+        Share.open(shareOptions).catch((err) => { err && console.log(err); })
     }
 
     onClickDownload() {
-        const { images } = this.props.data
-        requestExternalStoragePermission()
-        .then(() => {
-            RNFetchBlob
-            .config({
-                fileCache: true,
+        const { data, loadEnd, loadOn } = this.props;
+        const { imagePath } = this.state;
+        if (imagePath !== '') {
+            loadOn();
+            this.onDownloadOn()
+            CameraRoll.saveToCameraRoll(imagePath, 'photo')
+            .then(() => {
+                loadEnd();
+                this.onDownloadEnd();
+                toastAndroid(string.ImageHasBeenSaved)
             })
-            .fetch('GET', images[0])
-            .then((res) => {
-                CameraRoll.saveToCameraRoll(res.path())
-                    .then(toastAndroid(string.ImageHasBeenSaved))
-                    .catch(err => console.log('err:', err))
+            .catch(err => {
+                loadEnd();
+                this.onDownloadEnd();
+                toastAndroid(string.ImageSavingFailed)
+                console.log('err:', err)
             });
-        });
+        } else {
+            let imageUrl = data.images[0].toLowerCase();
+            let fileExtension;
+            if (imageUrl.indexOf('gif') !== -1) {
+                fileExtension = "gif";
+            } else if(imageUrl.indexOf('jpg') !== -1 || imageUrl.indexOf('jpeg') !== -1) {
+                fileExtension = "jpg";
+            } else if (imageUrl.indexOf('png') !== -1) {
+                fileExtension = "png";
+            } else {
+                fileExtension = "png";
+            }
+    
+            const { images } = this.props.data
+            loadOn();
+            this.onDownloadOn();
+            requestExternalStoragePermission()
+            .then(() => {
+                RNFetchBlob
+                .config({
+                    fileCache: true,
+                    appendExt: fileExtension
+                })
+                .fetch('GET', images[0])
+                .then((res) => {
+                    CameraRoll.saveToCameraRoll(res.path(), 'photo')
+                        .then(() => {
+                            loadEnd();
+                            this.onDownloadEnd();
+                            toastAndroid(string.ImageHasBeenSaved);
+                            this.setState({imagePath: res.path()});
+                        })
+                        .catch(err => {
+                            loadEnd();
+                            this.onDownloadEnd();
+                            toastAndroid(string.ImageSavingFailed)
+                            console.log('err:', err)
+                        })
+                })
+                .catch(error => {
+                    loadEnd();
+                    this.onDownloadEnd();
+                    toastAndroid(string.ImageSavingFailed)
+                    console.log(error);
+                })
+            });
+        }
     }
 
     onImageLoad = () => {
@@ -145,7 +227,7 @@ class ImageTile extends React.PureComponent {
 
     render() {
         const { data } = this.props;
-        const { isModalVisible } = this.state;
+        const { isModalVisible, isDownloading } = this.state;
         return (
             <View style={style.tileContainer} onLayout={(e) => this.onLayout(e)} >
                 {this.renderHeader()}
@@ -164,16 +246,18 @@ class ImageTile extends React.PureComponent {
                         <Icon style={style.icon} name="typing" size={15} />
                         <Text>{numberFormatter(data.commentCount)}</Text>
                     </TouchableOpacity>
-                    {/* <TouchableOpacity onPress={() => this.onClickShare()} style={style.iconGroup} >
+                    <TouchableOpacity onPress={() => this.onClickShare()} style={style.iconGroup} >
                         <Icon style={style.icon} name="share" size={15} />
                         <Text>{numberFormatter(data.share)}</Text>
-                    </TouchableOpacity> */}
+                    </TouchableOpacity>
                 </View>
                 {isModalVisible &&
                     <ImageViewer 
                         source={{uri: data.images[0]}}
                         onClose={() => this.closeModal()}
                         onClickComment={() => this.onClickComment()}
+                        onClickDownload={() => this.onClickDownload()}
+                        isDownloading={isDownloading}
                     />
                 }
             </View >
@@ -374,7 +458,9 @@ const mapStateToProps = (state) => {
 
 const mapDispatchToProps = (dispatch) => {
     return {
-        likeCall: (data) => dispatch(likeCall(data))
+        likeCall: (data) => dispatch(likeCall(data)),
+        loadOn: () => dispatch(loadOn()),
+        loadEnd: () => dispatch(loadEnd())
     }
 }
 

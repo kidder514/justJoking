@@ -15,6 +15,7 @@
 - comment order by likes
 - likes button too slow
 - 刷新并且剪裁list的时候，会有跳动
+- add little badge of update number on app icon
 - add notification
 - check all page and change them to scrollview
 - super long image can't display and is blured
