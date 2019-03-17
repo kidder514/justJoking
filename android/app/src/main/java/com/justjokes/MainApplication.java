@@ -4,6 +4,7 @@ import android.app.Application;
 
 import com.facebook.CallbackManager;
 import com.facebook.react.ReactApplication;
+import com.rnfs.RNFSPackage;
 import cl.json.RNSharePackage;
 import com.reactnative.photoview.PhotoViewPackage;
 import com.lugg.ReactNativeConfig.ReactNativeConfigPackage;
@@ -49,6 +50,7 @@ public class MainApplication extends Application implements ReactApplication {
     protected List<ReactPackage> getPackages() {
       return Arrays.<ReactPackage>asList(
           new MainReactPackage(),
+            new RNFSPackage(),
             new RNSharePackage(),
             new PhotoViewPackage(),
             new ReactNativeConfigPackage(),

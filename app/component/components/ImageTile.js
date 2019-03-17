@@ -18,9 +18,11 @@ import ImageViewer from './ImageViewer'
 import { likeCall } from "../../reducer/action/listAction";
 import LazyImage from './LazyImage';
 import RNFetchBlob from 'react-native-fetch-blob'
+import Share from 'react-native-share';
+import RNFS from 'react-native-fs';
 import { toastAndroid } from '../../reducer/action/appAction';
 import { requestExternalStoragePermission } from '../../util/permission';
-import Share from 'react-native-share';
+import config from '../../config';
 import { loadEnd, loadOn } from '../../reducer/action/uiAction';
 
 const imageBorderWidth = 1;
@@ -39,6 +41,7 @@ class ImageTile extends React.PureComponent {
             shouldLoad: false,
             offset: undefined,
             imagePath: '',
+            imageBase64: '',
             isDownloading: false
         };
         this.onClickLike = this.onClickLike.bind(this);
@@ -125,6 +128,7 @@ class ImageTile extends React.PureComponent {
 
     onClickShare() {
         const { data } = this.props;
+        const { imagePath, imageBase64 } = this.state;
         let imageUrl = data.images[0].toLowerCase();
         let fileExtension;
         if (imageUrl.indexOf('gif') !== -1) {
@@ -136,16 +140,27 @@ class ImageTile extends React.PureComponent {
         } else {
             fileExtension = "png";
         }
+        
+        if (imagePath !== "") {
+            console.log("path");
+            console.log("iamge path:" + imagePath);
+            console.log("image base 64" + imageBase64);
+            console.log("DocumentDirectoryPath" + RNFS.DocumentDirectoryPath);
+            console.log(RNFS.CachesDirectoryPath);
 
-        let shareOptions = {
-            title: string.FromFunnyThings,
-            message: string.FromFunnyThings,
-            url: "data:image/" + fileExtension + ";base64,<base64_data>",
-            
-            subject: string.FromFunnyThings //  for email
-          };
+            let shareOptions = {
+                title: string.FromFunnyThings + " " + config.playStoreUrl,
+                type: 'image/' + fileExtension,
+                message: string.FromFunnyThings + " " + config.playStoreUrl,
+                url: 'data:image/'+fileExtension+';base64,'+imageBase64,
+                subject: string.FromFunnyThings + " " + config.playStoreUrl,
+                showAppsToView: true
+              };
+    
+            Share.open(shareOptions).catch((err) => { err && console.log(err); })
+        } else {
 
-        Share.open(shareOptions).catch((err) => { err && console.log(err); })
+        }
     }
 
     onClickDownload() {
@@ -196,7 +211,9 @@ class ImageTile extends React.PureComponent {
                             loadEnd();
                             this.onDownloadEnd();
                             toastAndroid(string.ImageHasBeenSaved);
-                            this.setState({imagePath: res.path()});
+                            this.setState({imagePath: res.path()}, () => {
+                                res.base64().then(data => this.setState({imageBase64: data}));
+                            });
                         })
                         .catch(err => {
                             loadEnd();
@@ -257,6 +274,7 @@ class ImageTile extends React.PureComponent {
                         onClose={() => this.closeModal()}
                         onClickComment={() => this.onClickComment()}
                         onClickDownload={() => this.onClickDownload()}
+                        onClickShare={() => this.onClickShare()}
                         isDownloading={isDownloading}
                     />
                 }

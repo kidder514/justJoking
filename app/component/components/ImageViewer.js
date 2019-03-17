@@ -64,16 +64,16 @@ class ImageViewer extends React.PureComponent {
     }
     
     renderFooter() {
-        const { onClickComment } = this.props;
+        const { onClickComment, onClickShare } = this.props;
         return (
             <View style={style.galleryFooter}>
                 {this.renderDownloadButton()}
-                {/* <TouchableOpacity
-                    onPress={() => this.onClickShare()}
+                <TouchableOpacity
+                    onPress={() => onClickShare()}
                     style={style.galleryButton}
                 >
-                    <Icon name="share" size={25} color={whiteColor} />
-                </TouchableOpacity> */}
+                    <Icon name="share" size={35} color={whiteColor} />
+                </TouchableOpacity>
                 <TouchableOpacity
                     onPress={() => onClickComment()}
                     style={style.galleryButton}
@@ -133,7 +133,7 @@ const style = StyleSheet.create({
         backgroundColor: 'rgba(0,0,0, 0.6)',
     },
     galleryButton: {
-        marginLeft: 20
+        marginLeft: 30
     },
     gallerRightFooter: {
         flexDirection: 'row'
